@@ -1,0 +1,3854 @@
+function Td(e,r){for(var n=0;n<r.length;n++){const t=r[n];if(typeof t!="string"&&!Array.isArray(t)){for(const i in t)if(i!=="default"&&!(i in e)){const o=Object.getOwnPropertyDescriptor(t,i);o&&Object.defineProperty(e,i,o.get?o:{enumerable:!0,get:()=>t[i]})}}}return Object.freeze(Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}))}(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))t(i);new MutationObserver(i=>{for(const o of i)if(o.type==="childList")for(const l of o.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&t(l)}).observe(document,{childList:!0,subtree:!0});function n(i){const o={};return i.integrity&&(o.integrity=i.integrity),i.referrerPolicy&&(o.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?o.credentials="include":i.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function t(i){if(i.ep)return;i.ep=!0;const o=n(i);fetch(i.href,o)}})();function du(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var Id={exports:{}},al={},Od={exports:{}},G={};/**
+ * @license React
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var ji=Symbol.for("react.element"),$0=Symbol.for("react.portal"),L0=Symbol.for("react.fragment"),A0=Symbol.for("react.strict_mode"),D0=Symbol.for("react.profiler"),U0=Symbol.for("react.provider"),F0=Symbol.for("react.context"),H0=Symbol.for("react.forward_ref"),B0=Symbol.for("react.suspense"),V0=Symbol.for("react.memo"),W0=Symbol.for("react.lazy"),Ec=Symbol.iterator;function G0(e){return e===null||typeof e!="object"?null:(e=Ec&&e[Ec]||e["@@iterator"],typeof e=="function"?e:null)}var Md={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},Nd=Object.assign,Rd={};function Ct(e,r,n){this.props=e,this.context=r,this.refs=Rd,this.updater=n||Md}Ct.prototype.isReactComponent={};Ct.prototype.setState=function(e,r){if(typeof e!="object"&&typeof e!="function"&&e!=null)throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");this.updater.enqueueSetState(this,e,r,"setState")};Ct.prototype.forceUpdate=function(e){this.updater.enqueueForceUpdate(this,e,"forceUpdate")};function zd(){}zd.prototype=Ct.prototype;function mu(e,r,n){this.props=e,this.context=r,this.refs=Rd,this.updater=n||Md}var pu=mu.prototype=new zd;pu.constructor=mu;Nd(pu,Ct.prototype);pu.isPureReactComponent=!0;var jc=Array.isArray,$d=Object.prototype.hasOwnProperty,hu={current:null},Ld={key:!0,ref:!0,__self:!0,__source:!0};function Ad(e,r,n){var t,i={},o=null,l=null;if(r!=null)for(t in r.ref!==void 0&&(l=r.ref),r.key!==void 0&&(o=""+r.key),r)$d.call(r,t)&&!Ld.hasOwnProperty(t)&&(i[t]=r[t]);var a=arguments.length-2;if(a===1)i.children=n;else if(1<a){for(var s=Array(a),u=0;u<a;u++)s[u]=arguments[u+2];i.children=s}if(e&&e.defaultProps)for(t in a=e.defaultProps,a)i[t]===void 0&&(i[t]=a[t]);return{$$typeof:ji,type:e,key:o,ref:l,props:i,_owner:hu.current}}function Q0(e,r){return{$$typeof:ji,type:e.type,key:r,ref:e.ref,props:e.props,_owner:e._owner}}function gu(e){return typeof e=="object"&&e!==null&&e.$$typeof===ji}function X0(e){var r={"=":"=0",":":"=2"};return"$"+e.replace(/[=:]/g,function(n){return r[n]})}var Pc=/\/+/g;function Xl(e,r){return typeof e=="object"&&e!==null&&e.key!=null?X0(""+e.key):r.toString(36)}function fo(e,r,n,t,i){var o=typeof e;(o==="undefined"||o==="boolean")&&(e=null);var l=!1;if(e===null)l=!0;else switch(o){case"string":case"number":l=!0;break;case"object":switch(e.$$typeof){case ji:case $0:l=!0}}if(l)return l=e,i=i(l),e=t===""?"."+Xl(l,0):t,jc(i)?(n="",e!=null&&(n=e.replace(Pc,"$&/")+"/"),fo(i,r,n,"",function(u){return u})):i!=null&&(gu(i)&&(i=Q0(i,n+(!i.key||l&&l.key===i.key?"":(""+i.key).replace(Pc,"$&/")+"/")+e)),r.push(i)),1;if(l=0,t=t===""?".":t+":",jc(e))for(var a=0;a<e.length;a++){o=e[a];var s=t+Xl(o,a);l+=fo(o,r,n,s,i)}else if(s=G0(e),typeof s=="function")for(e=s.call(e),a=0;!(o=e.next()).done;)o=o.value,s=t+Xl(o,a++),l+=fo(o,r,n,s,i);else if(o==="object")throw r=String(e),Error("Objects are not valid as a React child (found: "+(r==="[object Object]"?"object with keys {"+Object.keys(e).join(", ")+"}":r)+"). If you meant to render a collection of children, use an array instead.");return l}function Fi(e,r,n){if(e==null)return e;var t=[],i=0;return fo(e,t,"","",function(o){return r.call(n,o,i++)}),t}function K0(e){if(e._status===-1){var r=e._result;r=r(),r.then(function(n){(e._status===0||e._status===-1)&&(e._status=1,e._result=n)},function(n){(e._status===0||e._status===-1)&&(e._status=2,e._result=n)}),e._status===-1&&(e._status=0,e._result=r)}if(e._status===1)return e._result.default;throw e._result}var Ne={current:null},mo={transition:null},Y0={ReactCurrentDispatcher:Ne,ReactCurrentBatchConfig:mo,ReactCurrentOwner:hu};function Dd(){throw Error("act(...) is not supported in production builds of React.")}G.Children={map:Fi,forEach:function(e,r,n){Fi(e,function(){r.apply(this,arguments)},n)},count:function(e){var r=0;return Fi(e,function(){r++}),r},toArray:function(e){return Fi(e,function(r){return r})||[]},only:function(e){if(!gu(e))throw Error("React.Children.only expected to receive a single React element child.");return e}};G.Component=Ct;G.Fragment=L0;G.Profiler=D0;G.PureComponent=mu;G.StrictMode=A0;G.Suspense=B0;G.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=Y0;G.act=Dd;G.cloneElement=function(e,r,n){if(e==null)throw Error("React.cloneElement(...): The argument must be a React element, but you passed "+e+".");var t=Nd({},e.props),i=e.key,o=e.ref,l=e._owner;if(r!=null){if(r.ref!==void 0&&(o=r.ref,l=hu.current),r.key!==void 0&&(i=""+r.key),e.type&&e.type.defaultProps)var a=e.type.defaultProps;for(s in r)$d.call(r,s)&&!Ld.hasOwnProperty(s)&&(t[s]=r[s]===void 0&&a!==void 0?a[s]:r[s])}var s=arguments.length-2;if(s===1)t.children=n;else if(1<s){a=Array(s);for(var u=0;u<s;u++)a[u]=arguments[u+2];t.children=a}return{$$typeof:ji,type:e.type,key:i,ref:o,props:t,_owner:l}};G.createContext=function(e){return e={$$typeof:F0,_currentValue:e,_currentValue2:e,_threadCount:0,Provider:null,Consumer:null,_defaultValue:null,_globalName:null},e.Provider={$$typeof:U0,_context:e},e.Consumer=e};G.createElement=Ad;G.createFactory=function(e){var r=Ad.bind(null,e);return r.type=e,r};G.createRef=function(){return{current:null}};G.forwardRef=function(e){return{$$typeof:H0,render:e}};G.isValidElement=gu;G.lazy=function(e){return{$$typeof:W0,_payload:{_status:-1,_result:e},_init:K0}};G.memo=function(e,r){return{$$typeof:V0,type:e,compare:r===void 0?null:r}};G.startTransition=function(e){var r=mo.transition;mo.transition={};try{e()}finally{mo.transition=r}};G.unstable_act=Dd;G.useCallback=function(e,r){return Ne.current.useCallback(e,r)};G.useContext=function(e){return Ne.current.useContext(e)};G.useDebugValue=function(){};G.useDeferredValue=function(e){return Ne.current.useDeferredValue(e)};G.useEffect=function(e,r){return Ne.current.useEffect(e,r)};G.useId=function(){return Ne.current.useId()};G.useImperativeHandle=function(e,r,n){return Ne.current.useImperativeHandle(e,r,n)};G.useInsertionEffect=function(e,r){return Ne.current.useInsertionEffect(e,r)};G.useLayoutEffect=function(e,r){return Ne.current.useLayoutEffect(e,r)};G.useMemo=function(e,r){return Ne.current.useMemo(e,r)};G.useReducer=function(e,r,n){return Ne.current.useReducer(e,r,n)};G.useRef=function(e){return Ne.current.useRef(e)};G.useState=function(e){return Ne.current.useState(e)};G.useSyncExternalStore=function(e,r,n){return Ne.current.useSyncExternalStore(e,r,n)};G.useTransition=function(){return Ne.current.useTransition()};G.version="18.3.1";Od.exports=G;var w=Od.exports;const _e=du(w),vu=Td({__proto__:null,default:_e},[w]);/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var q0=w,Z0=Symbol.for("react.element"),J0=Symbol.for("react.fragment"),eg=Object.prototype.hasOwnProperty,rg=q0.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,ng={key:!0,ref:!0,__self:!0,__source:!0};function Ud(e,r,n){var t,i={},o=null,l=null;n!==void 0&&(o=""+n),r.key!==void 0&&(o=""+r.key),r.ref!==void 0&&(l=r.ref);for(t in r)eg.call(r,t)&&!ng.hasOwnProperty(t)&&(i[t]=r[t]);if(e&&e.defaultProps)for(t in r=e.defaultProps,r)i[t]===void 0&&(i[t]=r[t]);return{$$typeof:Z0,type:e,key:o,ref:l,props:i,_owner:rg.current}}al.Fragment=J0;al.jsx=Ud;al.jsxs=Ud;Id.exports=al;var E=Id.exports,$a={},Fd={exports:{}},Xe={},Hd={exports:{}},Bd={};/**
+ * @license React
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */(function(e){function r(P,O){var U=P.length;P.push(O);e:for(;0<U;){var V=U-1>>>1,W=P[V];if(0<i(W,O))P[V]=O,P[U]=W,U=V;else break e}}function n(P){return P.length===0?null:P[0]}function t(P){if(P.length===0)return null;var O=P[0],U=P.pop();if(U!==O){P[0]=U;e:for(var V=0,W=P.length,ze=W>>>1;V<ze;){var ie=2*(V+1)-1,He=P[ie],$e=ie+1,xe=P[$e];if(0>i(He,U))$e<W&&0>i(xe,He)?(P[V]=xe,P[$e]=U,V=$e):(P[V]=He,P[ie]=U,V=ie);else if($e<W&&0>i(xe,U))P[V]=xe,P[$e]=U,V=$e;else break e}}return O}function i(P,O){var U=P.sortIndex-O.sortIndex;return U!==0?U:P.id-O.id}if(typeof performance=="object"&&typeof performance.now=="function"){var o=performance;e.unstable_now=function(){return o.now()}}else{var l=Date,a=l.now();e.unstable_now=function(){return l.now()-a}}var s=[],u=[],c=1,d=null,m=3,g=!1,b=!1,S=!1,x=typeof setTimeout=="function"?setTimeout:null,p=typeof clearTimeout=="function"?clearTimeout:null,f=typeof setImmediate<"u"?setImmediate:null;typeof navigator<"u"&&navigator.scheduling!==void 0&&navigator.scheduling.isInputPending!==void 0&&navigator.scheduling.isInputPending.bind(navigator.scheduling);function h(P){for(var O=n(u);O!==null;){if(O.callback===null)t(u);else if(O.startTime<=P)t(u),O.sortIndex=O.expirationTime,r(s,O);else break;O=n(u)}}function v(P){if(S=!1,h(P),!b)if(n(s)!==null)b=!0,F(k);else{var O=n(u);O!==null&&B(v,O.startTime-P)}}function k(P,O){b=!1,S&&(S=!1,p(y),y=-1),g=!0;var U=m;try{for(h(O),d=n(s);d!==null&&(!(d.expirationTime>O)||P&&!L());){var V=d.callback;if(typeof V=="function"){d.callback=null,m=d.priorityLevel;var W=V(d.expirationTime<=O);O=e.unstable_now(),typeof W=="function"?d.callback=W:d===n(s)&&t(s),h(O)}else t(s);d=n(s)}if(d!==null)var ze=!0;else{var ie=n(u);ie!==null&&B(v,ie.startTime-O),ze=!1}return ze}finally{d=null,m=U,g=!1}}var C=!1,_=null,y=-1,I=5,T=-1;function L(){return!(e.unstable_now()-T<I)}function N(){if(_!==null){var P=e.unstable_now();T=P;var O=!0;try{O=_(!0,P)}finally{O?z():(C=!1,_=null)}}else C=!1}var z;if(typeof f=="function")z=function(){f(N)};else if(typeof MessageChannel<"u"){var A=new MessageChannel,D=A.port2;A.port1.onmessage=N,z=function(){D.postMessage(null)}}else z=function(){x(N,0)};function F(P){_=P,C||(C=!0,z())}function B(P,O){y=x(function(){P(e.unstable_now())},O)}e.unstable_IdlePriority=5,e.unstable_ImmediatePriority=1,e.unstable_LowPriority=4,e.unstable_NormalPriority=3,e.unstable_Profiling=null,e.unstable_UserBlockingPriority=2,e.unstable_cancelCallback=function(P){P.callback=null},e.unstable_continueExecution=function(){b||g||(b=!0,F(k))},e.unstable_forceFrameRate=function(P){0>P||125<P?console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported"):I=0<P?Math.floor(1e3/P):5},e.unstable_getCurrentPriorityLevel=function(){return m},e.unstable_getFirstCallbackNode=function(){return n(s)},e.unstable_next=function(P){switch(m){case 1:case 2:case 3:var O=3;break;default:O=m}var U=m;m=O;try{return P()}finally{m=U}},e.unstable_pauseExecution=function(){},e.unstable_requestPaint=function(){},e.unstable_runWithPriority=function(P,O){switch(P){case 1:case 2:case 3:case 4:case 5:break;default:P=3}var U=m;m=P;try{return O()}finally{m=U}},e.unstable_scheduleCallback=function(P,O,U){var V=e.unstable_now();switch(typeof U=="object"&&U!==null?(U=U.delay,U=typeof U=="number"&&0<U?V+U:V):U=V,P){case 1:var W=-1;break;case 2:W=250;break;case 5:W=1073741823;break;case 4:W=1e4;break;default:W=5e3}return W=U+W,P={id:c++,callback:O,priorityLevel:P,startTime:U,expirationTime:W,sortIndex:-1},U>V?(P.sortIndex=U,r(u,P),n(s)===null&&P===n(u)&&(S?(p(y),y=-1):S=!0,B(v,U-V))):(P.sortIndex=W,r(s,P),b||g||(b=!0,F(k))),P},e.unstable_shouldYield=L,e.unstable_wrapCallback=function(P){var O=m;return function(){var U=m;m=O;try{return P.apply(this,arguments)}finally{m=U}}}})(Bd);Hd.exports=Bd;var tg=Hd.exports;/**
+ * @license React
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var ig=w,Qe=tg;function j(e){for(var r="https://reactjs.org/docs/error-decoder.html?invariant="+e,n=1;n<arguments.length;n++)r+="&args[]="+encodeURIComponent(arguments[n]);return"Minified React error #"+e+"; visit "+r+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}var Vd=new Set,oi={};function On(e,r){ft(e,r),ft(e+"Capture",r)}function ft(e,r){for(oi[e]=r,e=0;e<r.length;e++)Vd.add(r[e])}var Rr=!(typeof window>"u"||typeof window.document>"u"||typeof window.document.createElement>"u"),La=Object.prototype.hasOwnProperty,og=/^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,Tc={},Ic={};function lg(e){return La.call(Ic,e)?!0:La.call(Tc,e)?!1:og.test(e)?Ic[e]=!0:(Tc[e]=!0,!1)}function ag(e,r,n,t){if(n!==null&&n.type===0)return!1;switch(typeof r){case"function":case"symbol":return!0;case"boolean":return t?!1:n!==null?!n.acceptsBooleans:(e=e.toLowerCase().slice(0,5),e!=="data-"&&e!=="aria-");default:return!1}}function sg(e,r,n,t){if(r===null||typeof r>"u"||ag(e,r,n,t))return!0;if(t)return!1;if(n!==null)switch(n.type){case 3:return!r;case 4:return r===!1;case 5:return isNaN(r);case 6:return isNaN(r)||1>r}return!1}function Re(e,r,n,t,i,o,l){this.acceptsBooleans=r===2||r===3||r===4,this.attributeName=t,this.attributeNamespace=i,this.mustUseProperty=n,this.propertyName=e,this.type=r,this.sanitizeURL=o,this.removeEmptyString=l}var ke={};"children dangerouslySetInnerHTML defaultValue defaultChecked innerHTML suppressContentEditableWarning suppressHydrationWarning style".split(" ").forEach(function(e){ke[e]=new Re(e,0,!1,e,null,!1,!1)});[["acceptCharset","accept-charset"],["className","class"],["htmlFor","for"],["httpEquiv","http-equiv"]].forEach(function(e){var r=e[0];ke[r]=new Re(r,1,!1,e[1],null,!1,!1)});["contentEditable","draggable","spellCheck","value"].forEach(function(e){ke[e]=new Re(e,2,!1,e.toLowerCase(),null,!1,!1)});["autoReverse","externalResourcesRequired","focusable","preserveAlpha"].forEach(function(e){ke[e]=new Re(e,2,!1,e,null,!1,!1)});"allowFullScreen async autoFocus autoPlay controls default defer disabled disablePictureInPicture disableRemotePlayback formNoValidate hidden loop noModule noValidate open playsInline readOnly required reversed scoped seamless itemScope".split(" ").forEach(function(e){ke[e]=new Re(e,3,!1,e.toLowerCase(),null,!1,!1)});["checked","multiple","muted","selected"].forEach(function(e){ke[e]=new Re(e,3,!0,e,null,!1,!1)});["capture","download"].forEach(function(e){ke[e]=new Re(e,4,!1,e,null,!1,!1)});["cols","rows","size","span"].forEach(function(e){ke[e]=new Re(e,6,!1,e,null,!1,!1)});["rowSpan","start"].forEach(function(e){ke[e]=new Re(e,5,!1,e.toLowerCase(),null,!1,!1)});var yu=/[\-:]([a-z])/g;function bu(e){return e[1].toUpperCase()}"accent-height alignment-baseline arabic-form baseline-shift cap-height clip-path clip-rule color-interpolation color-interpolation-filters color-profile color-rendering dominant-baseline enable-background fill-opacity fill-rule flood-color flood-opacity font-family font-size font-size-adjust font-stretch font-style font-variant font-weight glyph-name glyph-orientation-horizontal glyph-orientation-vertical horiz-adv-x horiz-origin-x image-rendering letter-spacing lighting-color marker-end marker-mid marker-start overline-position overline-thickness paint-order panose-1 pointer-events rendering-intent shape-rendering stop-color stop-opacity strikethrough-position strikethrough-thickness stroke-dasharray stroke-dashoffset stroke-linecap stroke-linejoin stroke-miterlimit stroke-opacity stroke-width text-anchor text-decoration text-rendering underline-position underline-thickness unicode-bidi unicode-range units-per-em v-alphabetic v-hanging v-ideographic v-mathematical vector-effect vert-adv-y vert-origin-x vert-origin-y word-spacing writing-mode xmlns:xlink x-height".split(" ").forEach(function(e){var r=e.replace(yu,bu);ke[r]=new Re(r,1,!1,e,null,!1,!1)});"xlink:actuate xlink:arcrole xlink:role xlink:show xlink:title xlink:type".split(" ").forEach(function(e){var r=e.replace(yu,bu);ke[r]=new Re(r,1,!1,e,"http://www.w3.org/1999/xlink",!1,!1)});["xml:base","xml:lang","xml:space"].forEach(function(e){var r=e.replace(yu,bu);ke[r]=new Re(r,1,!1,e,"http://www.w3.org/XML/1998/namespace",!1,!1)});["tabIndex","crossOrigin"].forEach(function(e){ke[e]=new Re(e,1,!1,e.toLowerCase(),null,!1,!1)});ke.xlinkHref=new Re("xlinkHref",1,!1,"xlink:href","http://www.w3.org/1999/xlink",!0,!1);["src","href","action","formAction"].forEach(function(e){ke[e]=new Re(e,1,!1,e.toLowerCase(),null,!0,!0)});function wu(e,r,n,t){var i=ke.hasOwnProperty(r)?ke[r]:null;(i!==null?i.type!==0:t||!(2<r.length)||r[0]!=="o"&&r[0]!=="O"||r[1]!=="n"&&r[1]!=="N")&&(sg(r,n,i,t)&&(n=null),t||i===null?lg(r)&&(n===null?e.removeAttribute(r):e.setAttribute(r,""+n)):i.mustUseProperty?e[i.propertyName]=n===null?i.type===3?!1:"":n:(r=i.attributeName,t=i.attributeNamespace,n===null?e.removeAttribute(r):(i=i.type,n=i===3||i===4&&n===!0?"":""+n,t?e.setAttributeNS(t,r,n):e.setAttribute(r,n))))}var Ar=ig.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED,Hi=Symbol.for("react.element"),Vn=Symbol.for("react.portal"),Wn=Symbol.for("react.fragment"),_u=Symbol.for("react.strict_mode"),Aa=Symbol.for("react.profiler"),Wd=Symbol.for("react.provider"),Gd=Symbol.for("react.context"),Su=Symbol.for("react.forward_ref"),Da=Symbol.for("react.suspense"),Ua=Symbol.for("react.suspense_list"),ku=Symbol.for("react.memo"),Vr=Symbol.for("react.lazy"),Qd=Symbol.for("react.offscreen"),Oc=Symbol.iterator;function Nt(e){return e===null||typeof e!="object"?null:(e=Oc&&e[Oc]||e["@@iterator"],typeof e=="function"?e:null)}var te=Object.assign,Kl;function Bt(e){if(Kl===void 0)try{throw Error()}catch(n){var r=n.stack.trim().match(/\n( *(at )?)/);Kl=r&&r[1]||""}return`
+`+Kl+e}var Yl=!1;function ql(e,r){if(!e||Yl)return"";Yl=!0;var n=Error.prepareStackTrace;Error.prepareStackTrace=void 0;try{if(r)if(r=function(){throw Error()},Object.defineProperty(r.prototype,"props",{set:function(){throw Error()}}),typeof Reflect=="object"&&Reflect.construct){try{Reflect.construct(r,[])}catch(u){var t=u}Reflect.construct(e,[],r)}else{try{r.call()}catch(u){t=u}e.call(r.prototype)}else{try{throw Error()}catch(u){t=u}e()}}catch(u){if(u&&t&&typeof u.stack=="string"){for(var i=u.stack.split(`
+`),o=t.stack.split(`
+`),l=i.length-1,a=o.length-1;1<=l&&0<=a&&i[l]!==o[a];)a--;for(;1<=l&&0<=a;l--,a--)if(i[l]!==o[a]){if(l!==1||a!==1)do if(l--,a--,0>a||i[l]!==o[a]){var s=`
+`+i[l].replace(" at new "," at ");return e.displayName&&s.includes("<anonymous>")&&(s=s.replace("<anonymous>",e.displayName)),s}while(1<=l&&0<=a);break}}}finally{Yl=!1,Error.prepareStackTrace=n}return(e=e?e.displayName||e.name:"")?Bt(e):""}function ug(e){switch(e.tag){case 5:return Bt(e.type);case 16:return Bt("Lazy");case 13:return Bt("Suspense");case 19:return Bt("SuspenseList");case 0:case 2:case 15:return e=ql(e.type,!1),e;case 11:return e=ql(e.type.render,!1),e;case 1:return e=ql(e.type,!0),e;default:return""}}function Fa(e){if(e==null)return null;if(typeof e=="function")return e.displayName||e.name||null;if(typeof e=="string")return e;switch(e){case Wn:return"Fragment";case Vn:return"Portal";case Aa:return"Profiler";case _u:return"StrictMode";case Da:return"Suspense";case Ua:return"SuspenseList"}if(typeof e=="object")switch(e.$$typeof){case Gd:return(e.displayName||"Context")+".Consumer";case Wd:return(e._context.displayName||"Context")+".Provider";case Su:var r=e.render;return e=e.displayName,e||(e=r.displayName||r.name||"",e=e!==""?"ForwardRef("+e+")":"ForwardRef"),e;case ku:return r=e.displayName||null,r!==null?r:Fa(e.type)||"Memo";case Vr:r=e._payload,e=e._init;try{return Fa(e(r))}catch{}}return null}function cg(e){var r=e.type;switch(e.tag){case 24:return"Cache";case 9:return(r.displayName||"Context")+".Consumer";case 10:return(r._context.displayName||"Context")+".Provider";case 18:return"DehydratedFragment";case 11:return e=r.render,e=e.displayName||e.name||"",r.displayName||(e!==""?"ForwardRef("+e+")":"ForwardRef");case 7:return"Fragment";case 5:return r;case 4:return"Portal";case 3:return"Root";case 6:return"Text";case 16:return Fa(r);case 8:return r===_u?"StrictMode":"Mode";case 22:return"Offscreen";case 12:return"Profiler";case 21:return"Scope";case 13:return"Suspense";case 19:return"SuspenseList";case 25:return"TracingMarker";case 1:case 0:case 17:case 2:case 14:case 15:if(typeof r=="function")return r.displayName||r.name||null;if(typeof r=="string")return r}return null}function an(e){switch(typeof e){case"boolean":case"number":case"string":case"undefined":return e;case"object":return e;default:return""}}function Xd(e){var r=e.type;return(e=e.nodeName)&&e.toLowerCase()==="input"&&(r==="checkbox"||r==="radio")}function fg(e){var r=Xd(e)?"checked":"value",n=Object.getOwnPropertyDescriptor(e.constructor.prototype,r),t=""+e[r];if(!e.hasOwnProperty(r)&&typeof n<"u"&&typeof n.get=="function"&&typeof n.set=="function"){var i=n.get,o=n.set;return Object.defineProperty(e,r,{configurable:!0,get:function(){return i.call(this)},set:function(l){t=""+l,o.call(this,l)}}),Object.defineProperty(e,r,{enumerable:n.enumerable}),{getValue:function(){return t},setValue:function(l){t=""+l},stopTracking:function(){e._valueTracker=null,delete e[r]}}}}function Bi(e){e._valueTracker||(e._valueTracker=fg(e))}function Kd(e){if(!e)return!1;var r=e._valueTracker;if(!r)return!0;var n=r.getValue(),t="";return e&&(t=Xd(e)?e.checked?"true":"false":e.value),e=t,e!==n?(r.setValue(e),!0):!1}function To(e){if(e=e||(typeof document<"u"?document:void 0),typeof e>"u")return null;try{return e.activeElement||e.body}catch{return e.body}}function Ha(e,r){var n=r.checked;return te({},r,{defaultChecked:void 0,defaultValue:void 0,value:void 0,checked:n??e._wrapperState.initialChecked})}function Mc(e,r){var n=r.defaultValue==null?"":r.defaultValue,t=r.checked!=null?r.checked:r.defaultChecked;n=an(r.value!=null?r.value:n),e._wrapperState={initialChecked:t,initialValue:n,controlled:r.type==="checkbox"||r.type==="radio"?r.checked!=null:r.value!=null}}function Yd(e,r){r=r.checked,r!=null&&wu(e,"checked",r,!1)}function Ba(e,r){Yd(e,r);var n=an(r.value),t=r.type;if(n!=null)t==="number"?(n===0&&e.value===""||e.value!=n)&&(e.value=""+n):e.value!==""+n&&(e.value=""+n);else if(t==="submit"||t==="reset"){e.removeAttribute("value");return}r.hasOwnProperty("value")?Va(e,r.type,n):r.hasOwnProperty("defaultValue")&&Va(e,r.type,an(r.defaultValue)),r.checked==null&&r.defaultChecked!=null&&(e.defaultChecked=!!r.defaultChecked)}function Nc(e,r,n){if(r.hasOwnProperty("value")||r.hasOwnProperty("defaultValue")){var t=r.type;if(!(t!=="submit"&&t!=="reset"||r.value!==void 0&&r.value!==null))return;r=""+e._wrapperState.initialValue,n||r===e.value||(e.value=r),e.defaultValue=r}n=e.name,n!==""&&(e.name=""),e.defaultChecked=!!e._wrapperState.initialChecked,n!==""&&(e.name=n)}function Va(e,r,n){(r!=="number"||To(e.ownerDocument)!==e)&&(n==null?e.defaultValue=""+e._wrapperState.initialValue:e.defaultValue!==""+n&&(e.defaultValue=""+n))}var Vt=Array.isArray;function it(e,r,n,t){if(e=e.options,r){r={};for(var i=0;i<n.length;i++)r["$"+n[i]]=!0;for(n=0;n<e.length;n++)i=r.hasOwnProperty("$"+e[n].value),e[n].selected!==i&&(e[n].selected=i),i&&t&&(e[n].defaultSelected=!0)}else{for(n=""+an(n),r=null,i=0;i<e.length;i++){if(e[i].value===n){e[i].selected=!0,t&&(e[i].defaultSelected=!0);return}r!==null||e[i].disabled||(r=e[i])}r!==null&&(r.selected=!0)}}function Wa(e,r){if(r.dangerouslySetInnerHTML!=null)throw Error(j(91));return te({},r,{value:void 0,defaultValue:void 0,children:""+e._wrapperState.initialValue})}function Rc(e,r){var n=r.value;if(n==null){if(n=r.children,r=r.defaultValue,n!=null){if(r!=null)throw Error(j(92));if(Vt(n)){if(1<n.length)throw Error(j(93));n=n[0]}r=n}r==null&&(r=""),n=r}e._wrapperState={initialValue:an(n)}}function qd(e,r){var n=an(r.value),t=an(r.defaultValue);n!=null&&(n=""+n,n!==e.value&&(e.value=n),r.defaultValue==null&&e.defaultValue!==n&&(e.defaultValue=n)),t!=null&&(e.defaultValue=""+t)}function zc(e){var r=e.textContent;r===e._wrapperState.initialValue&&r!==""&&r!==null&&(e.value=r)}function Zd(e){switch(e){case"svg":return"http://www.w3.org/2000/svg";case"math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}function Ga(e,r){return e==null||e==="http://www.w3.org/1999/xhtml"?Zd(r):e==="http://www.w3.org/2000/svg"&&r==="foreignObject"?"http://www.w3.org/1999/xhtml":e}var Vi,Jd=function(e){return typeof MSApp<"u"&&MSApp.execUnsafeLocalFunction?function(r,n,t,i){MSApp.execUnsafeLocalFunction(function(){return e(r,n,t,i)})}:e}(function(e,r){if(e.namespaceURI!=="http://www.w3.org/2000/svg"||"innerHTML"in e)e.innerHTML=r;else{for(Vi=Vi||document.createElement("div"),Vi.innerHTML="<svg>"+r.valueOf().toString()+"</svg>",r=Vi.firstChild;e.firstChild;)e.removeChild(e.firstChild);for(;r.firstChild;)e.appendChild(r.firstChild)}});function li(e,r){if(r){var n=e.firstChild;if(n&&n===e.lastChild&&n.nodeType===3){n.nodeValue=r;return}}e.textContent=r}var Qt={animationIterationCount:!0,aspectRatio:!0,borderImageOutset:!0,borderImageSlice:!0,borderImageWidth:!0,boxFlex:!0,boxFlexGroup:!0,boxOrdinalGroup:!0,columnCount:!0,columns:!0,flex:!0,flexGrow:!0,flexPositive:!0,flexShrink:!0,flexNegative:!0,flexOrder:!0,gridArea:!0,gridRow:!0,gridRowEnd:!0,gridRowSpan:!0,gridRowStart:!0,gridColumn:!0,gridColumnEnd:!0,gridColumnSpan:!0,gridColumnStart:!0,fontWeight:!0,lineClamp:!0,lineHeight:!0,opacity:!0,order:!0,orphans:!0,tabSize:!0,widows:!0,zIndex:!0,zoom:!0,fillOpacity:!0,floodOpacity:!0,stopOpacity:!0,strokeDasharray:!0,strokeDashoffset:!0,strokeMiterlimit:!0,strokeOpacity:!0,strokeWidth:!0},dg=["Webkit","ms","Moz","O"];Object.keys(Qt).forEach(function(e){dg.forEach(function(r){r=r+e.charAt(0).toUpperCase()+e.substring(1),Qt[r]=Qt[e]})});function em(e,r,n){return r==null||typeof r=="boolean"||r===""?"":n||typeof r!="number"||r===0||Qt.hasOwnProperty(e)&&Qt[e]?(""+r).trim():r+"px"}function rm(e,r){e=e.style;for(var n in r)if(r.hasOwnProperty(n)){var t=n.indexOf("--")===0,i=em(n,r[n],t);n==="float"&&(n="cssFloat"),t?e.setProperty(n,i):e[n]=i}}var mg=te({menuitem:!0},{area:!0,base:!0,br:!0,col:!0,embed:!0,hr:!0,img:!0,input:!0,keygen:!0,link:!0,meta:!0,param:!0,source:!0,track:!0,wbr:!0});function Qa(e,r){if(r){if(mg[e]&&(r.children!=null||r.dangerouslySetInnerHTML!=null))throw Error(j(137,e));if(r.dangerouslySetInnerHTML!=null){if(r.children!=null)throw Error(j(60));if(typeof r.dangerouslySetInnerHTML!="object"||!("__html"in r.dangerouslySetInnerHTML))throw Error(j(61))}if(r.style!=null&&typeof r.style!="object")throw Error(j(62))}}function Xa(e,r){if(e.indexOf("-")===-1)return typeof r.is=="string";switch(e){case"annotation-xml":case"color-profile":case"font-face":case"font-face-src":case"font-face-uri":case"font-face-format":case"font-face-name":case"missing-glyph":return!1;default:return!0}}var Ka=null;function xu(e){return e=e.target||e.srcElement||window,e.correspondingUseElement&&(e=e.correspondingUseElement),e.nodeType===3?e.parentNode:e}var Ya=null,ot=null,lt=null;function $c(e){if(e=Ii(e)){if(typeof Ya!="function")throw Error(j(280));var r=e.stateNode;r&&(r=dl(r),Ya(e.stateNode,e.type,r))}}function nm(e){ot?lt?lt.push(e):lt=[e]:ot=e}function tm(){if(ot){var e=ot,r=lt;if(lt=ot=null,$c(e),r)for(e=0;e<r.length;e++)$c(r[e])}}function im(e,r){return e(r)}function om(){}var Zl=!1;function lm(e,r,n){if(Zl)return e(r,n);Zl=!0;try{return im(e,r,n)}finally{Zl=!1,(ot!==null||lt!==null)&&(om(),tm())}}function ai(e,r){var n=e.stateNode;if(n===null)return null;var t=dl(n);if(t===null)return null;n=t[r];e:switch(r){case"onClick":case"onClickCapture":case"onDoubleClick":case"onDoubleClickCapture":case"onMouseDown":case"onMouseDownCapture":case"onMouseMove":case"onMouseMoveCapture":case"onMouseUp":case"onMouseUpCapture":case"onMouseEnter":(t=!t.disabled)||(e=e.type,t=!(e==="button"||e==="input"||e==="select"||e==="textarea")),e=!t;break e;default:e=!1}if(e)return null;if(n&&typeof n!="function")throw Error(j(231,r,typeof n));return n}var qa=!1;if(Rr)try{var Rt={};Object.defineProperty(Rt,"passive",{get:function(){qa=!0}}),window.addEventListener("test",Rt,Rt),window.removeEventListener("test",Rt,Rt)}catch{qa=!1}function pg(e,r,n,t,i,o,l,a,s){var u=Array.prototype.slice.call(arguments,3);try{r.apply(n,u)}catch(c){this.onError(c)}}var Xt=!1,Io=null,Oo=!1,Za=null,hg={onError:function(e){Xt=!0,Io=e}};function gg(e,r,n,t,i,o,l,a,s){Xt=!1,Io=null,pg.apply(hg,arguments)}function vg(e,r,n,t,i,o,l,a,s){if(gg.apply(this,arguments),Xt){if(Xt){var u=Io;Xt=!1,Io=null}else throw Error(j(198));Oo||(Oo=!0,Za=u)}}function Mn(e){var r=e,n=e;if(e.alternate)for(;r.return;)r=r.return;else{e=r;do r=e,r.flags&4098&&(n=r.return),e=r.return;while(e)}return r.tag===3?n:null}function am(e){if(e.tag===13){var r=e.memoizedState;if(r===null&&(e=e.alternate,e!==null&&(r=e.memoizedState)),r!==null)return r.dehydrated}return null}function Lc(e){if(Mn(e)!==e)throw Error(j(188))}function yg(e){var r=e.alternate;if(!r){if(r=Mn(e),r===null)throw Error(j(188));return r!==e?null:e}for(var n=e,t=r;;){var i=n.return;if(i===null)break;var o=i.alternate;if(o===null){if(t=i.return,t!==null){n=t;continue}break}if(i.child===o.child){for(o=i.child;o;){if(o===n)return Lc(i),e;if(o===t)return Lc(i),r;o=o.sibling}throw Error(j(188))}if(n.return!==t.return)n=i,t=o;else{for(var l=!1,a=i.child;a;){if(a===n){l=!0,n=i,t=o;break}if(a===t){l=!0,t=i,n=o;break}a=a.sibling}if(!l){for(a=o.child;a;){if(a===n){l=!0,n=o,t=i;break}if(a===t){l=!0,t=o,n=i;break}a=a.sibling}if(!l)throw Error(j(189))}}if(n.alternate!==t)throw Error(j(190))}if(n.tag!==3)throw Error(j(188));return n.stateNode.current===n?e:r}function sm(e){return e=yg(e),e!==null?um(e):null}function um(e){if(e.tag===5||e.tag===6)return e;for(e=e.child;e!==null;){var r=um(e);if(r!==null)return r;e=e.sibling}return null}var cm=Qe.unstable_scheduleCallback,Ac=Qe.unstable_cancelCallback,bg=Qe.unstable_shouldYield,wg=Qe.unstable_requestPaint,ae=Qe.unstable_now,_g=Qe.unstable_getCurrentPriorityLevel,Cu=Qe.unstable_ImmediatePriority,fm=Qe.unstable_UserBlockingPriority,Mo=Qe.unstable_NormalPriority,Sg=Qe.unstable_LowPriority,dm=Qe.unstable_IdlePriority,sl=null,Sr=null;function kg(e){if(Sr&&typeof Sr.onCommitFiberRoot=="function")try{Sr.onCommitFiberRoot(sl,e,void 0,(e.current.flags&128)===128)}catch{}}var fr=Math.clz32?Math.clz32:Eg,xg=Math.log,Cg=Math.LN2;function Eg(e){return e>>>=0,e===0?32:31-(xg(e)/Cg|0)|0}var Wi=64,Gi=4194304;function Wt(e){switch(e&-e){case 1:return 1;case 2:return 2;case 4:return 4;case 8:return 8;case 16:return 16;case 32:return 32;case 64:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:return e&4194240;case 4194304:case 8388608:case 16777216:case 33554432:case 67108864:return e&130023424;case 134217728:return 134217728;case 268435456:return 268435456;case 536870912:return 536870912;case 1073741824:return 1073741824;default:return e}}function No(e,r){var n=e.pendingLanes;if(n===0)return 0;var t=0,i=e.suspendedLanes,o=e.pingedLanes,l=n&268435455;if(l!==0){var a=l&~i;a!==0?t=Wt(a):(o&=l,o!==0&&(t=Wt(o)))}else l=n&~i,l!==0?t=Wt(l):o!==0&&(t=Wt(o));if(t===0)return 0;if(r!==0&&r!==t&&!(r&i)&&(i=t&-t,o=r&-r,i>=o||i===16&&(o&4194240)!==0))return r;if(t&4&&(t|=n&16),r=e.entangledLanes,r!==0)for(e=e.entanglements,r&=t;0<r;)n=31-fr(r),i=1<<n,t|=e[n],r&=~i;return t}function jg(e,r){switch(e){case 1:case 2:case 4:return r+250;case 8:case 16:case 32:case 64:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:return r+5e3;case 4194304:case 8388608:case 16777216:case 33554432:case 67108864:return-1;case 134217728:case 268435456:case 536870912:case 1073741824:return-1;default:return-1}}function Pg(e,r){for(var n=e.suspendedLanes,t=e.pingedLanes,i=e.expirationTimes,o=e.pendingLanes;0<o;){var l=31-fr(o),a=1<<l,s=i[l];s===-1?(!(a&n)||a&t)&&(i[l]=jg(a,r)):s<=r&&(e.expiredLanes|=a),o&=~a}}function Ja(e){return e=e.pendingLanes&-1073741825,e!==0?e:e&1073741824?1073741824:0}function mm(){var e=Wi;return Wi<<=1,!(Wi&4194240)&&(Wi=64),e}function Jl(e){for(var r=[],n=0;31>n;n++)r.push(e);return r}function Pi(e,r,n){e.pendingLanes|=r,r!==536870912&&(e.suspendedLanes=0,e.pingedLanes=0),e=e.eventTimes,r=31-fr(r),e[r]=n}function Tg(e,r){var n=e.pendingLanes&~r;e.pendingLanes=r,e.suspendedLanes=0,e.pingedLanes=0,e.expiredLanes&=r,e.mutableReadLanes&=r,e.entangledLanes&=r,r=e.entanglements;var t=e.eventTimes;for(e=e.expirationTimes;0<n;){var i=31-fr(n),o=1<<i;r[i]=0,t[i]=-1,e[i]=-1,n&=~o}}function Eu(e,r){var n=e.entangledLanes|=r;for(e=e.entanglements;n;){var t=31-fr(n),i=1<<t;i&r|e[t]&r&&(e[t]|=r),n&=~i}}var X=0;function pm(e){return e&=-e,1<e?4<e?e&268435455?16:536870912:4:1}var hm,ju,gm,vm,ym,es=!1,Qi=[],Zr=null,Jr=null,en=null,si=new Map,ui=new Map,Gr=[],Ig="mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset submit".split(" ");function Dc(e,r){switch(e){case"focusin":case"focusout":Zr=null;break;case"dragenter":case"dragleave":Jr=null;break;case"mouseover":case"mouseout":en=null;break;case"pointerover":case"pointerout":si.delete(r.pointerId);break;case"gotpointercapture":case"lostpointercapture":ui.delete(r.pointerId)}}function zt(e,r,n,t,i,o){return e===null||e.nativeEvent!==o?(e={blockedOn:r,domEventName:n,eventSystemFlags:t,nativeEvent:o,targetContainers:[i]},r!==null&&(r=Ii(r),r!==null&&ju(r)),e):(e.eventSystemFlags|=t,r=e.targetContainers,i!==null&&r.indexOf(i)===-1&&r.push(i),e)}function Og(e,r,n,t,i){switch(r){case"focusin":return Zr=zt(Zr,e,r,n,t,i),!0;case"dragenter":return Jr=zt(Jr,e,r,n,t,i),!0;case"mouseover":return en=zt(en,e,r,n,t,i),!0;case"pointerover":var o=i.pointerId;return si.set(o,zt(si.get(o)||null,e,r,n,t,i)),!0;case"gotpointercapture":return o=i.pointerId,ui.set(o,zt(ui.get(o)||null,e,r,n,t,i)),!0}return!1}function bm(e){var r=gn(e.target);if(r!==null){var n=Mn(r);if(n!==null){if(r=n.tag,r===13){if(r=am(n),r!==null){e.blockedOn=r,ym(e.priority,function(){gm(n)});return}}else if(r===3&&n.stateNode.current.memoizedState.isDehydrated){e.blockedOn=n.tag===3?n.stateNode.containerInfo:null;return}}}e.blockedOn=null}function po(e){if(e.blockedOn!==null)return!1;for(var r=e.targetContainers;0<r.length;){var n=rs(e.domEventName,e.eventSystemFlags,r[0],e.nativeEvent);if(n===null){n=e.nativeEvent;var t=new n.constructor(n.type,n);Ka=t,n.target.dispatchEvent(t),Ka=null}else return r=Ii(n),r!==null&&ju(r),e.blockedOn=n,!1;r.shift()}return!0}function Uc(e,r,n){po(e)&&n.delete(r)}function Mg(){es=!1,Zr!==null&&po(Zr)&&(Zr=null),Jr!==null&&po(Jr)&&(Jr=null),en!==null&&po(en)&&(en=null),si.forEach(Uc),ui.forEach(Uc)}function $t(e,r){e.blockedOn===r&&(e.blockedOn=null,es||(es=!0,Qe.unstable_scheduleCallback(Qe.unstable_NormalPriority,Mg)))}function ci(e){function r(i){return $t(i,e)}if(0<Qi.length){$t(Qi[0],e);for(var n=1;n<Qi.length;n++){var t=Qi[n];t.blockedOn===e&&(t.blockedOn=null)}}for(Zr!==null&&$t(Zr,e),Jr!==null&&$t(Jr,e),en!==null&&$t(en,e),si.forEach(r),ui.forEach(r),n=0;n<Gr.length;n++)t=Gr[n],t.blockedOn===e&&(t.blockedOn=null);for(;0<Gr.length&&(n=Gr[0],n.blockedOn===null);)bm(n),n.blockedOn===null&&Gr.shift()}var at=Ar.ReactCurrentBatchConfig,Ro=!0;function Ng(e,r,n,t){var i=X,o=at.transition;at.transition=null;try{X=1,Pu(e,r,n,t)}finally{X=i,at.transition=o}}function Rg(e,r,n,t){var i=X,o=at.transition;at.transition=null;try{X=4,Pu(e,r,n,t)}finally{X=i,at.transition=o}}function Pu(e,r,n,t){if(Ro){var i=rs(e,r,n,t);if(i===null)ua(e,r,t,zo,n),Dc(e,t);else if(Og(i,e,r,n,t))t.stopPropagation();else if(Dc(e,t),r&4&&-1<Ig.indexOf(e)){for(;i!==null;){var o=Ii(i);if(o!==null&&hm(o),o=rs(e,r,n,t),o===null&&ua(e,r,t,zo,n),o===i)break;i=o}i!==null&&t.stopPropagation()}else ua(e,r,t,null,n)}}var zo=null;function rs(e,r,n,t){if(zo=null,e=xu(t),e=gn(e),e!==null)if(r=Mn(e),r===null)e=null;else if(n=r.tag,n===13){if(e=am(r),e!==null)return e;e=null}else if(n===3){if(r.stateNode.current.memoizedState.isDehydrated)return r.tag===3?r.stateNode.containerInfo:null;e=null}else r!==e&&(e=null);return zo=e,null}function wm(e){switch(e){case"cancel":case"click":case"close":case"contextmenu":case"copy":case"cut":case"auxclick":case"dblclick":case"dragend":case"dragstart":case"drop":case"focusin":case"focusout":case"input":case"invalid":case"keydown":case"keypress":case"keyup":case"mousedown":case"mouseup":case"paste":case"pause":case"play":case"pointercancel":case"pointerdown":case"pointerup":case"ratechange":case"reset":case"resize":case"seeked":case"submit":case"touchcancel":case"touchend":case"touchstart":case"volumechange":case"change":case"selectionchange":case"textInput":case"compositionstart":case"compositionend":case"compositionupdate":case"beforeblur":case"afterblur":case"beforeinput":case"blur":case"fullscreenchange":case"focus":case"hashchange":case"popstate":case"select":case"selectstart":return 1;case"drag":case"dragenter":case"dragexit":case"dragleave":case"dragover":case"mousemove":case"mouseout":case"mouseover":case"pointermove":case"pointerout":case"pointerover":case"scroll":case"toggle":case"touchmove":case"wheel":case"mouseenter":case"mouseleave":case"pointerenter":case"pointerleave":return 4;case"message":switch(_g()){case Cu:return 1;case fm:return 4;case Mo:case Sg:return 16;case dm:return 536870912;default:return 16}default:return 16}}var Xr=null,Tu=null,ho=null;function _m(){if(ho)return ho;var e,r=Tu,n=r.length,t,i="value"in Xr?Xr.value:Xr.textContent,o=i.length;for(e=0;e<n&&r[e]===i[e];e++);var l=n-e;for(t=1;t<=l&&r[n-t]===i[o-t];t++);return ho=i.slice(e,1<t?1-t:void 0)}function go(e){var r=e.keyCode;return"charCode"in e?(e=e.charCode,e===0&&r===13&&(e=13)):e=r,e===10&&(e=13),32<=e||e===13?e:0}function Xi(){return!0}function Fc(){return!1}function Ke(e){function r(n,t,i,o,l){this._reactName=n,this._targetInst=i,this.type=t,this.nativeEvent=o,this.target=l,this.currentTarget=null;for(var a in e)e.hasOwnProperty(a)&&(n=e[a],this[a]=n?n(o):o[a]);return this.isDefaultPrevented=(o.defaultPrevented!=null?o.defaultPrevented:o.returnValue===!1)?Xi:Fc,this.isPropagationStopped=Fc,this}return te(r.prototype,{preventDefault:function(){this.defaultPrevented=!0;var n=this.nativeEvent;n&&(n.preventDefault?n.preventDefault():typeof n.returnValue!="unknown"&&(n.returnValue=!1),this.isDefaultPrevented=Xi)},stopPropagation:function(){var n=this.nativeEvent;n&&(n.stopPropagation?n.stopPropagation():typeof n.cancelBubble!="unknown"&&(n.cancelBubble=!0),this.isPropagationStopped=Xi)},persist:function(){},isPersistent:Xi}),r}var Et={eventPhase:0,bubbles:0,cancelable:0,timeStamp:function(e){return e.timeStamp||Date.now()},defaultPrevented:0,isTrusted:0},Iu=Ke(Et),Ti=te({},Et,{view:0,detail:0}),zg=Ke(Ti),ea,ra,Lt,ul=te({},Ti,{screenX:0,screenY:0,clientX:0,clientY:0,pageX:0,pageY:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,getModifierState:Ou,button:0,buttons:0,relatedTarget:function(e){return e.relatedTarget===void 0?e.fromElement===e.srcElement?e.toElement:e.fromElement:e.relatedTarget},movementX:function(e){return"movementX"in e?e.movementX:(e!==Lt&&(Lt&&e.type==="mousemove"?(ea=e.screenX-Lt.screenX,ra=e.screenY-Lt.screenY):ra=ea=0,Lt=e),ea)},movementY:function(e){return"movementY"in e?e.movementY:ra}}),Hc=Ke(ul),$g=te({},ul,{dataTransfer:0}),Lg=Ke($g),Ag=te({},Ti,{relatedTarget:0}),na=Ke(Ag),Dg=te({},Et,{animationName:0,elapsedTime:0,pseudoElement:0}),Ug=Ke(Dg),Fg=te({},Et,{clipboardData:function(e){return"clipboardData"in e?e.clipboardData:window.clipboardData}}),Hg=Ke(Fg),Bg=te({},Et,{data:0}),Bc=Ke(Bg),Vg={Esc:"Escape",Spacebar:" ",Left:"ArrowLeft",Up:"ArrowUp",Right:"ArrowRight",Down:"ArrowDown",Del:"Delete",Win:"OS",Menu:"ContextMenu",Apps:"ContextMenu",Scroll:"ScrollLock",MozPrintableKey:"Unidentified"},Wg={8:"Backspace",9:"Tab",12:"Clear",13:"Enter",16:"Shift",17:"Control",18:"Alt",19:"Pause",20:"CapsLock",27:"Escape",32:" ",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",45:"Insert",46:"Delete",112:"F1",113:"F2",114:"F3",115:"F4",116:"F5",117:"F6",118:"F7",119:"F8",120:"F9",121:"F10",122:"F11",123:"F12",144:"NumLock",145:"ScrollLock",224:"Meta"},Gg={Alt:"altKey",Control:"ctrlKey",Meta:"metaKey",Shift:"shiftKey"};function Qg(e){var r=this.nativeEvent;return r.getModifierState?r.getModifierState(e):(e=Gg[e])?!!r[e]:!1}function Ou(){return Qg}var Xg=te({},Ti,{key:function(e){if(e.key){var r=Vg[e.key]||e.key;if(r!=="Unidentified")return r}return e.type==="keypress"?(e=go(e),e===13?"Enter":String.fromCharCode(e)):e.type==="keydown"||e.type==="keyup"?Wg[e.keyCode]||"Unidentified":""},code:0,location:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,repeat:0,locale:0,getModifierState:Ou,charCode:function(e){return e.type==="keypress"?go(e):0},keyCode:function(e){return e.type==="keydown"||e.type==="keyup"?e.keyCode:0},which:function(e){return e.type==="keypress"?go(e):e.type==="keydown"||e.type==="keyup"?e.keyCode:0}}),Kg=Ke(Xg),Yg=te({},ul,{pointerId:0,width:0,height:0,pressure:0,tangentialPressure:0,tiltX:0,tiltY:0,twist:0,pointerType:0,isPrimary:0}),Vc=Ke(Yg),qg=te({},Ti,{touches:0,targetTouches:0,changedTouches:0,altKey:0,metaKey:0,ctrlKey:0,shiftKey:0,getModifierState:Ou}),Zg=Ke(qg),Jg=te({},Et,{propertyName:0,elapsedTime:0,pseudoElement:0}),ev=Ke(Jg),rv=te({},ul,{deltaX:function(e){return"deltaX"in e?e.deltaX:"wheelDeltaX"in e?-e.wheelDeltaX:0},deltaY:function(e){return"deltaY"in e?e.deltaY:"wheelDeltaY"in e?-e.wheelDeltaY:"wheelDelta"in e?-e.wheelDelta:0},deltaZ:0,deltaMode:0}),nv=Ke(rv),tv=[9,13,27,32],Mu=Rr&&"CompositionEvent"in window,Kt=null;Rr&&"documentMode"in document&&(Kt=document.documentMode);var iv=Rr&&"TextEvent"in window&&!Kt,Sm=Rr&&(!Mu||Kt&&8<Kt&&11>=Kt),Wc=" ",Gc=!1;function km(e,r){switch(e){case"keyup":return tv.indexOf(r.keyCode)!==-1;case"keydown":return r.keyCode!==229;case"keypress":case"mousedown":case"focusout":return!0;default:return!1}}function xm(e){return e=e.detail,typeof e=="object"&&"data"in e?e.data:null}var Gn=!1;function ov(e,r){switch(e){case"compositionend":return xm(r);case"keypress":return r.which!==32?null:(Gc=!0,Wc);case"textInput":return e=r.data,e===Wc&&Gc?null:e;default:return null}}function lv(e,r){if(Gn)return e==="compositionend"||!Mu&&km(e,r)?(e=_m(),ho=Tu=Xr=null,Gn=!1,e):null;switch(e){case"paste":return null;case"keypress":if(!(r.ctrlKey||r.altKey||r.metaKey)||r.ctrlKey&&r.altKey){if(r.char&&1<r.char.length)return r.char;if(r.which)return String.fromCharCode(r.which)}return null;case"compositionend":return Sm&&r.locale!=="ko"?null:r.data;default:return null}}var av={color:!0,date:!0,datetime:!0,"datetime-local":!0,email:!0,month:!0,number:!0,password:!0,range:!0,search:!0,tel:!0,text:!0,time:!0,url:!0,week:!0};function Qc(e){var r=e&&e.nodeName&&e.nodeName.toLowerCase();return r==="input"?!!av[e.type]:r==="textarea"}function Cm(e,r,n,t){nm(t),r=$o(r,"onChange"),0<r.length&&(n=new Iu("onChange","change",null,n,t),e.push({event:n,listeners:r}))}var Yt=null,fi=null;function sv(e){$m(e,0)}function cl(e){var r=Kn(e);if(Kd(r))return e}function uv(e,r){if(e==="change")return r}var Em=!1;if(Rr){var ta;if(Rr){var ia="oninput"in document;if(!ia){var Xc=document.createElement("div");Xc.setAttribute("oninput","return;"),ia=typeof Xc.oninput=="function"}ta=ia}else ta=!1;Em=ta&&(!document.documentMode||9<document.documentMode)}function Kc(){Yt&&(Yt.detachEvent("onpropertychange",jm),fi=Yt=null)}function jm(e){if(e.propertyName==="value"&&cl(fi)){var r=[];Cm(r,fi,e,xu(e)),lm(sv,r)}}function cv(e,r,n){e==="focusin"?(Kc(),Yt=r,fi=n,Yt.attachEvent("onpropertychange",jm)):e==="focusout"&&Kc()}function fv(e){if(e==="selectionchange"||e==="keyup"||e==="keydown")return cl(fi)}function dv(e,r){if(e==="click")return cl(r)}function mv(e,r){if(e==="input"||e==="change")return cl(r)}function pv(e,r){return e===r&&(e!==0||1/e===1/r)||e!==e&&r!==r}var hr=typeof Object.is=="function"?Object.is:pv;function di(e,r){if(hr(e,r))return!0;if(typeof e!="object"||e===null||typeof r!="object"||r===null)return!1;var n=Object.keys(e),t=Object.keys(r);if(n.length!==t.length)return!1;for(t=0;t<n.length;t++){var i=n[t];if(!La.call(r,i)||!hr(e[i],r[i]))return!1}return!0}function Yc(e){for(;e&&e.firstChild;)e=e.firstChild;return e}function qc(e,r){var n=Yc(e);e=0;for(var t;n;){if(n.nodeType===3){if(t=e+n.textContent.length,e<=r&&t>=r)return{node:n,offset:r-e};e=t}e:{for(;n;){if(n.nextSibling){n=n.nextSibling;break e}n=n.parentNode}n=void 0}n=Yc(n)}}function Pm(e,r){return e&&r?e===r?!0:e&&e.nodeType===3?!1:r&&r.nodeType===3?Pm(e,r.parentNode):"contains"in e?e.contains(r):e.compareDocumentPosition?!!(e.compareDocumentPosition(r)&16):!1:!1}function Tm(){for(var e=window,r=To();r instanceof e.HTMLIFrameElement;){try{var n=typeof r.contentWindow.location.href=="string"}catch{n=!1}if(n)e=r.contentWindow;else break;r=To(e.document)}return r}function Nu(e){var r=e&&e.nodeName&&e.nodeName.toLowerCase();return r&&(r==="input"&&(e.type==="text"||e.type==="search"||e.type==="tel"||e.type==="url"||e.type==="password")||r==="textarea"||e.contentEditable==="true")}function hv(e){var r=Tm(),n=e.focusedElem,t=e.selectionRange;if(r!==n&&n&&n.ownerDocument&&Pm(n.ownerDocument.documentElement,n)){if(t!==null&&Nu(n)){if(r=t.start,e=t.end,e===void 0&&(e=r),"selectionStart"in n)n.selectionStart=r,n.selectionEnd=Math.min(e,n.value.length);else if(e=(r=n.ownerDocument||document)&&r.defaultView||window,e.getSelection){e=e.getSelection();var i=n.textContent.length,o=Math.min(t.start,i);t=t.end===void 0?o:Math.min(t.end,i),!e.extend&&o>t&&(i=t,t=o,o=i),i=qc(n,o);var l=qc(n,t);i&&l&&(e.rangeCount!==1||e.anchorNode!==i.node||e.anchorOffset!==i.offset||e.focusNode!==l.node||e.focusOffset!==l.offset)&&(r=r.createRange(),r.setStart(i.node,i.offset),e.removeAllRanges(),o>t?(e.addRange(r),e.extend(l.node,l.offset)):(r.setEnd(l.node,l.offset),e.addRange(r)))}}for(r=[],e=n;e=e.parentNode;)e.nodeType===1&&r.push({element:e,left:e.scrollLeft,top:e.scrollTop});for(typeof n.focus=="function"&&n.focus(),n=0;n<r.length;n++)e=r[n],e.element.scrollLeft=e.left,e.element.scrollTop=e.top}}var gv=Rr&&"documentMode"in document&&11>=document.documentMode,Qn=null,ns=null,qt=null,ts=!1;function Zc(e,r,n){var t=n.window===n?n.document:n.nodeType===9?n:n.ownerDocument;ts||Qn==null||Qn!==To(t)||(t=Qn,"selectionStart"in t&&Nu(t)?t={start:t.selectionStart,end:t.selectionEnd}:(t=(t.ownerDocument&&t.ownerDocument.defaultView||window).getSelection(),t={anchorNode:t.anchorNode,anchorOffset:t.anchorOffset,focusNode:t.focusNode,focusOffset:t.focusOffset}),qt&&di(qt,t)||(qt=t,t=$o(ns,"onSelect"),0<t.length&&(r=new Iu("onSelect","select",null,r,n),e.push({event:r,listeners:t}),r.target=Qn)))}function Ki(e,r){var n={};return n[e.toLowerCase()]=r.toLowerCase(),n["Webkit"+e]="webkit"+r,n["Moz"+e]="moz"+r,n}var Xn={animationend:Ki("Animation","AnimationEnd"),animationiteration:Ki("Animation","AnimationIteration"),animationstart:Ki("Animation","AnimationStart"),transitionend:Ki("Transition","TransitionEnd")},oa={},Im={};Rr&&(Im=document.createElement("div").style,"AnimationEvent"in window||(delete Xn.animationend.animation,delete Xn.animationiteration.animation,delete Xn.animationstart.animation),"TransitionEvent"in window||delete Xn.transitionend.transition);function fl(e){if(oa[e])return oa[e];if(!Xn[e])return e;var r=Xn[e],n;for(n in r)if(r.hasOwnProperty(n)&&n in Im)return oa[e]=r[n];return e}var Om=fl("animationend"),Mm=fl("animationiteration"),Nm=fl("animationstart"),Rm=fl("transitionend"),zm=new Map,Jc="abort auxClick cancel canPlay canPlayThrough click close contextMenu copy cut drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop durationChange emptied encrypted ended error gotPointerCapture input invalid keyDown keyPress keyUp load loadedData loadedMetadata loadStart lostPointerCapture mouseDown mouseMove mouseOut mouseOver mouseUp paste pause play playing pointerCancel pointerDown pointerMove pointerOut pointerOver pointerUp progress rateChange reset resize seeked seeking stalled submit suspend timeUpdate touchCancel touchEnd touchStart volumeChange scroll toggle touchMove waiting wheel".split(" ");function un(e,r){zm.set(e,r),On(r,[e])}for(var la=0;la<Jc.length;la++){var aa=Jc[la],vv=aa.toLowerCase(),yv=aa[0].toUpperCase()+aa.slice(1);un(vv,"on"+yv)}un(Om,"onAnimationEnd");un(Mm,"onAnimationIteration");un(Nm,"onAnimationStart");un("dblclick","onDoubleClick");un("focusin","onFocus");un("focusout","onBlur");un(Rm,"onTransitionEnd");ft("onMouseEnter",["mouseout","mouseover"]);ft("onMouseLeave",["mouseout","mouseover"]);ft("onPointerEnter",["pointerout","pointerover"]);ft("onPointerLeave",["pointerout","pointerover"]);On("onChange","change click focusin focusout input keydown keyup selectionchange".split(" "));On("onSelect","focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange".split(" "));On("onBeforeInput",["compositionend","keypress","textInput","paste"]);On("onCompositionEnd","compositionend focusout keydown keypress keyup mousedown".split(" "));On("onCompositionStart","compositionstart focusout keydown keypress keyup mousedown".split(" "));On("onCompositionUpdate","compositionupdate focusout keydown keypress keyup mousedown".split(" "));var Gt="abort canplay canplaythrough durationchange emptied encrypted ended error loadeddata loadedmetadata loadstart pause play playing progress ratechange resize seeked seeking stalled suspend timeupdate volumechange waiting".split(" "),bv=new Set("cancel close invalid load scroll toggle".split(" ").concat(Gt));function ef(e,r,n){var t=e.type||"unknown-event";e.currentTarget=n,vg(t,r,void 0,e),e.currentTarget=null}function $m(e,r){r=(r&4)!==0;for(var n=0;n<e.length;n++){var t=e[n],i=t.event;t=t.listeners;e:{var o=void 0;if(r)for(var l=t.length-1;0<=l;l--){var a=t[l],s=a.instance,u=a.currentTarget;if(a=a.listener,s!==o&&i.isPropagationStopped())break e;ef(i,a,u),o=s}else for(l=0;l<t.length;l++){if(a=t[l],s=a.instance,u=a.currentTarget,a=a.listener,s!==o&&i.isPropagationStopped())break e;ef(i,a,u),o=s}}}if(Oo)throw e=Za,Oo=!1,Za=null,e}function Z(e,r){var n=r[ss];n===void 0&&(n=r[ss]=new Set);var t=e+"__bubble";n.has(t)||(Lm(r,e,2,!1),n.add(t))}function sa(e,r,n){var t=0;r&&(t|=4),Lm(n,e,t,r)}var Yi="_reactListening"+Math.random().toString(36).slice(2);function mi(e){if(!e[Yi]){e[Yi]=!0,Vd.forEach(function(n){n!=="selectionchange"&&(bv.has(n)||sa(n,!1,e),sa(n,!0,e))});var r=e.nodeType===9?e:e.ownerDocument;r===null||r[Yi]||(r[Yi]=!0,sa("selectionchange",!1,r))}}function Lm(e,r,n,t){switch(wm(r)){case 1:var i=Ng;break;case 4:i=Rg;break;default:i=Pu}n=i.bind(null,r,n,e),i=void 0,!qa||r!=="touchstart"&&r!=="touchmove"&&r!=="wheel"||(i=!0),t?i!==void 0?e.addEventListener(r,n,{capture:!0,passive:i}):e.addEventListener(r,n,!0):i!==void 0?e.addEventListener(r,n,{passive:i}):e.addEventListener(r,n,!1)}function ua(e,r,n,t,i){var o=t;if(!(r&1)&&!(r&2)&&t!==null)e:for(;;){if(t===null)return;var l=t.tag;if(l===3||l===4){var a=t.stateNode.containerInfo;if(a===i||a.nodeType===8&&a.parentNode===i)break;if(l===4)for(l=t.return;l!==null;){var s=l.tag;if((s===3||s===4)&&(s=l.stateNode.containerInfo,s===i||s.nodeType===8&&s.parentNode===i))return;l=l.return}for(;a!==null;){if(l=gn(a),l===null)return;if(s=l.tag,s===5||s===6){t=o=l;continue e}a=a.parentNode}}t=t.return}lm(function(){var u=o,c=xu(n),d=[];e:{var m=zm.get(e);if(m!==void 0){var g=Iu,b=e;switch(e){case"keypress":if(go(n)===0)break e;case"keydown":case"keyup":g=Kg;break;case"focusin":b="focus",g=na;break;case"focusout":b="blur",g=na;break;case"beforeblur":case"afterblur":g=na;break;case"click":if(n.button===2)break e;case"auxclick":case"dblclick":case"mousedown":case"mousemove":case"mouseup":case"mouseout":case"mouseover":case"contextmenu":g=Hc;break;case"drag":case"dragend":case"dragenter":case"dragexit":case"dragleave":case"dragover":case"dragstart":case"drop":g=Lg;break;case"touchcancel":case"touchend":case"touchmove":case"touchstart":g=Zg;break;case Om:case Mm:case Nm:g=Ug;break;case Rm:g=ev;break;case"scroll":g=zg;break;case"wheel":g=nv;break;case"copy":case"cut":case"paste":g=Hg;break;case"gotpointercapture":case"lostpointercapture":case"pointercancel":case"pointerdown":case"pointermove":case"pointerout":case"pointerover":case"pointerup":g=Vc}var S=(r&4)!==0,x=!S&&e==="scroll",p=S?m!==null?m+"Capture":null:m;S=[];for(var f=u,h;f!==null;){h=f;var v=h.stateNode;if(h.tag===5&&v!==null&&(h=v,p!==null&&(v=ai(f,p),v!=null&&S.push(pi(f,v,h)))),x)break;f=f.return}0<S.length&&(m=new g(m,b,null,n,c),d.push({event:m,listeners:S}))}}if(!(r&7)){e:{if(m=e==="mouseover"||e==="pointerover",g=e==="mouseout"||e==="pointerout",m&&n!==Ka&&(b=n.relatedTarget||n.fromElement)&&(gn(b)||b[zr]))break e;if((g||m)&&(m=c.window===c?c:(m=c.ownerDocument)?m.defaultView||m.parentWindow:window,g?(b=n.relatedTarget||n.toElement,g=u,b=b?gn(b):null,b!==null&&(x=Mn(b),b!==x||b.tag!==5&&b.tag!==6)&&(b=null)):(g=null,b=u),g!==b)){if(S=Hc,v="onMouseLeave",p="onMouseEnter",f="mouse",(e==="pointerout"||e==="pointerover")&&(S=Vc,v="onPointerLeave",p="onPointerEnter",f="pointer"),x=g==null?m:Kn(g),h=b==null?m:Kn(b),m=new S(v,f+"leave",g,n,c),m.target=x,m.relatedTarget=h,v=null,gn(c)===u&&(S=new S(p,f+"enter",b,n,c),S.target=h,S.relatedTarget=x,v=S),x=v,g&&b)r:{for(S=g,p=b,f=0,h=S;h;h=Hn(h))f++;for(h=0,v=p;v;v=Hn(v))h++;for(;0<f-h;)S=Hn(S),f--;for(;0<h-f;)p=Hn(p),h--;for(;f--;){if(S===p||p!==null&&S===p.alternate)break r;S=Hn(S),p=Hn(p)}S=null}else S=null;g!==null&&rf(d,m,g,S,!1),b!==null&&x!==null&&rf(d,x,b,S,!0)}}e:{if(m=u?Kn(u):window,g=m.nodeName&&m.nodeName.toLowerCase(),g==="select"||g==="input"&&m.type==="file")var k=uv;else if(Qc(m))if(Em)k=mv;else{k=fv;var C=cv}else(g=m.nodeName)&&g.toLowerCase()==="input"&&(m.type==="checkbox"||m.type==="radio")&&(k=dv);if(k&&(k=k(e,u))){Cm(d,k,n,c);break e}C&&C(e,m,u),e==="focusout"&&(C=m._wrapperState)&&C.controlled&&m.type==="number"&&Va(m,"number",m.value)}switch(C=u?Kn(u):window,e){case"focusin":(Qc(C)||C.contentEditable==="true")&&(Qn=C,ns=u,qt=null);break;case"focusout":qt=ns=Qn=null;break;case"mousedown":ts=!0;break;case"contextmenu":case"mouseup":case"dragend":ts=!1,Zc(d,n,c);break;case"selectionchange":if(gv)break;case"keydown":case"keyup":Zc(d,n,c)}var _;if(Mu)e:{switch(e){case"compositionstart":var y="onCompositionStart";break e;case"compositionend":y="onCompositionEnd";break e;case"compositionupdate":y="onCompositionUpdate";break e}y=void 0}else Gn?km(e,n)&&(y="onCompositionEnd"):e==="keydown"&&n.keyCode===229&&(y="onCompositionStart");y&&(Sm&&n.locale!=="ko"&&(Gn||y!=="onCompositionStart"?y==="onCompositionEnd"&&Gn&&(_=_m()):(Xr=c,Tu="value"in Xr?Xr.value:Xr.textContent,Gn=!0)),C=$o(u,y),0<C.length&&(y=new Bc(y,e,null,n,c),d.push({event:y,listeners:C}),_?y.data=_:(_=xm(n),_!==null&&(y.data=_)))),(_=iv?ov(e,n):lv(e,n))&&(u=$o(u,"onBeforeInput"),0<u.length&&(c=new Bc("onBeforeInput","beforeinput",null,n,c),d.push({event:c,listeners:u}),c.data=_))}$m(d,r)})}function pi(e,r,n){return{instance:e,listener:r,currentTarget:n}}function $o(e,r){for(var n=r+"Capture",t=[];e!==null;){var i=e,o=i.stateNode;i.tag===5&&o!==null&&(i=o,o=ai(e,n),o!=null&&t.unshift(pi(e,o,i)),o=ai(e,r),o!=null&&t.push(pi(e,o,i))),e=e.return}return t}function Hn(e){if(e===null)return null;do e=e.return;while(e&&e.tag!==5);return e||null}function rf(e,r,n,t,i){for(var o=r._reactName,l=[];n!==null&&n!==t;){var a=n,s=a.alternate,u=a.stateNode;if(s!==null&&s===t)break;a.tag===5&&u!==null&&(a=u,i?(s=ai(n,o),s!=null&&l.unshift(pi(n,s,a))):i||(s=ai(n,o),s!=null&&l.push(pi(n,s,a)))),n=n.return}l.length!==0&&e.push({event:r,listeners:l})}var wv=/\r\n?/g,_v=/\u0000|\uFFFD/g;function nf(e){return(typeof e=="string"?e:""+e).replace(wv,`
+`).replace(_v,"")}function qi(e,r,n){if(r=nf(r),nf(e)!==r&&n)throw Error(j(425))}function Lo(){}var is=null,os=null;function ls(e,r){return e==="textarea"||e==="noscript"||typeof r.children=="string"||typeof r.children=="number"||typeof r.dangerouslySetInnerHTML=="object"&&r.dangerouslySetInnerHTML!==null&&r.dangerouslySetInnerHTML.__html!=null}var as=typeof setTimeout=="function"?setTimeout:void 0,Sv=typeof clearTimeout=="function"?clearTimeout:void 0,tf=typeof Promise=="function"?Promise:void 0,kv=typeof queueMicrotask=="function"?queueMicrotask:typeof tf<"u"?function(e){return tf.resolve(null).then(e).catch(xv)}:as;function xv(e){setTimeout(function(){throw e})}function ca(e,r){var n=r,t=0;do{var i=n.nextSibling;if(e.removeChild(n),i&&i.nodeType===8)if(n=i.data,n==="/$"){if(t===0){e.removeChild(i),ci(r);return}t--}else n!=="$"&&n!=="$?"&&n!=="$!"||t++;n=i}while(n);ci(r)}function rn(e){for(;e!=null;e=e.nextSibling){var r=e.nodeType;if(r===1||r===3)break;if(r===8){if(r=e.data,r==="$"||r==="$!"||r==="$?")break;if(r==="/$")return null}}return e}function of(e){e=e.previousSibling;for(var r=0;e;){if(e.nodeType===8){var n=e.data;if(n==="$"||n==="$!"||n==="$?"){if(r===0)return e;r--}else n==="/$"&&r++}e=e.previousSibling}return null}var jt=Math.random().toString(36).slice(2),_r="__reactFiber$"+jt,hi="__reactProps$"+jt,zr="__reactContainer$"+jt,ss="__reactEvents$"+jt,Cv="__reactListeners$"+jt,Ev="__reactHandles$"+jt;function gn(e){var r=e[_r];if(r)return r;for(var n=e.parentNode;n;){if(r=n[zr]||n[_r]){if(n=r.alternate,r.child!==null||n!==null&&n.child!==null)for(e=of(e);e!==null;){if(n=e[_r])return n;e=of(e)}return r}e=n,n=e.parentNode}return null}function Ii(e){return e=e[_r]||e[zr],!e||e.tag!==5&&e.tag!==6&&e.tag!==13&&e.tag!==3?null:e}function Kn(e){if(e.tag===5||e.tag===6)return e.stateNode;throw Error(j(33))}function dl(e){return e[hi]||null}var us=[],Yn=-1;function cn(e){return{current:e}}function J(e){0>Yn||(e.current=us[Yn],us[Yn]=null,Yn--)}function q(e,r){Yn++,us[Yn]=e.current,e.current=r}var sn={},Ie=cn(sn),De=cn(!1),xn=sn;function dt(e,r){var n=e.type.contextTypes;if(!n)return sn;var t=e.stateNode;if(t&&t.__reactInternalMemoizedUnmaskedChildContext===r)return t.__reactInternalMemoizedMaskedChildContext;var i={},o;for(o in n)i[o]=r[o];return t&&(e=e.stateNode,e.__reactInternalMemoizedUnmaskedChildContext=r,e.__reactInternalMemoizedMaskedChildContext=i),i}function Ue(e){return e=e.childContextTypes,e!=null}function Ao(){J(De),J(Ie)}function lf(e,r,n){if(Ie.current!==sn)throw Error(j(168));q(Ie,r),q(De,n)}function Am(e,r,n){var t=e.stateNode;if(r=r.childContextTypes,typeof t.getChildContext!="function")return n;t=t.getChildContext();for(var i in t)if(!(i in r))throw Error(j(108,cg(e)||"Unknown",i));return te({},n,t)}function Do(e){return e=(e=e.stateNode)&&e.__reactInternalMemoizedMergedChildContext||sn,xn=Ie.current,q(Ie,e),q(De,De.current),!0}function af(e,r,n){var t=e.stateNode;if(!t)throw Error(j(169));n?(e=Am(e,r,xn),t.__reactInternalMemoizedMergedChildContext=e,J(De),J(Ie),q(Ie,e)):J(De),q(De,n)}var Ir=null,ml=!1,fa=!1;function Dm(e){Ir===null?Ir=[e]:Ir.push(e)}function jv(e){ml=!0,Dm(e)}function fn(){if(!fa&&Ir!==null){fa=!0;var e=0,r=X;try{var n=Ir;for(X=1;e<n.length;e++){var t=n[e];do t=t(!0);while(t!==null)}Ir=null,ml=!1}catch(i){throw Ir!==null&&(Ir=Ir.slice(e+1)),cm(Cu,fn),i}finally{X=r,fa=!1}}return null}var qn=[],Zn=0,Uo=null,Fo=0,Ze=[],Je=0,Cn=null,Or=1,Mr="";function mn(e,r){qn[Zn++]=Fo,qn[Zn++]=Uo,Uo=e,Fo=r}function Um(e,r,n){Ze[Je++]=Or,Ze[Je++]=Mr,Ze[Je++]=Cn,Cn=e;var t=Or;e=Mr;var i=32-fr(t)-1;t&=~(1<<i),n+=1;var o=32-fr(r)+i;if(30<o){var l=i-i%5;o=(t&(1<<l)-1).toString(32),t>>=l,i-=l,Or=1<<32-fr(r)+i|n<<i|t,Mr=o+e}else Or=1<<o|n<<i|t,Mr=e}function Ru(e){e.return!==null&&(mn(e,1),Um(e,1,0))}function zu(e){for(;e===Uo;)Uo=qn[--Zn],qn[Zn]=null,Fo=qn[--Zn],qn[Zn]=null;for(;e===Cn;)Cn=Ze[--Je],Ze[Je]=null,Mr=Ze[--Je],Ze[Je]=null,Or=Ze[--Je],Ze[Je]=null}var Ge=null,We=null,ee=!1,cr=null;function Fm(e,r){var n=er(5,null,null,0);n.elementType="DELETED",n.stateNode=r,n.return=e,r=e.deletions,r===null?(e.deletions=[n],e.flags|=16):r.push(n)}function sf(e,r){switch(e.tag){case 5:var n=e.type;return r=r.nodeType!==1||n.toLowerCase()!==r.nodeName.toLowerCase()?null:r,r!==null?(e.stateNode=r,Ge=e,We=rn(r.firstChild),!0):!1;case 6:return r=e.pendingProps===""||r.nodeType!==3?null:r,r!==null?(e.stateNode=r,Ge=e,We=null,!0):!1;case 13:return r=r.nodeType!==8?null:r,r!==null?(n=Cn!==null?{id:Or,overflow:Mr}:null,e.memoizedState={dehydrated:r,treeContext:n,retryLane:1073741824},n=er(18,null,null,0),n.stateNode=r,n.return=e,e.child=n,Ge=e,We=null,!0):!1;default:return!1}}function cs(e){return(e.mode&1)!==0&&(e.flags&128)===0}function fs(e){if(ee){var r=We;if(r){var n=r;if(!sf(e,r)){if(cs(e))throw Error(j(418));r=rn(n.nextSibling);var t=Ge;r&&sf(e,r)?Fm(t,n):(e.flags=e.flags&-4097|2,ee=!1,Ge=e)}}else{if(cs(e))throw Error(j(418));e.flags=e.flags&-4097|2,ee=!1,Ge=e}}}function uf(e){for(e=e.return;e!==null&&e.tag!==5&&e.tag!==3&&e.tag!==13;)e=e.return;Ge=e}function Zi(e){if(e!==Ge)return!1;if(!ee)return uf(e),ee=!0,!1;var r;if((r=e.tag!==3)&&!(r=e.tag!==5)&&(r=e.type,r=r!=="head"&&r!=="body"&&!ls(e.type,e.memoizedProps)),r&&(r=We)){if(cs(e))throw Hm(),Error(j(418));for(;r;)Fm(e,r),r=rn(r.nextSibling)}if(uf(e),e.tag===13){if(e=e.memoizedState,e=e!==null?e.dehydrated:null,!e)throw Error(j(317));e:{for(e=e.nextSibling,r=0;e;){if(e.nodeType===8){var n=e.data;if(n==="/$"){if(r===0){We=rn(e.nextSibling);break e}r--}else n!=="$"&&n!=="$!"&&n!=="$?"||r++}e=e.nextSibling}We=null}}else We=Ge?rn(e.stateNode.nextSibling):null;return!0}function Hm(){for(var e=We;e;)e=rn(e.nextSibling)}function mt(){We=Ge=null,ee=!1}function $u(e){cr===null?cr=[e]:cr.push(e)}var Pv=Ar.ReactCurrentBatchConfig;function At(e,r,n){if(e=n.ref,e!==null&&typeof e!="function"&&typeof e!="object"){if(n._owner){if(n=n._owner,n){if(n.tag!==1)throw Error(j(309));var t=n.stateNode}if(!t)throw Error(j(147,e));var i=t,o=""+e;return r!==null&&r.ref!==null&&typeof r.ref=="function"&&r.ref._stringRef===o?r.ref:(r=function(l){var a=i.refs;l===null?delete a[o]:a[o]=l},r._stringRef=o,r)}if(typeof e!="string")throw Error(j(284));if(!n._owner)throw Error(j(290,e))}return e}function Ji(e,r){throw e=Object.prototype.toString.call(r),Error(j(31,e==="[object Object]"?"object with keys {"+Object.keys(r).join(", ")+"}":e))}function cf(e){var r=e._init;return r(e._payload)}function Bm(e){function r(p,f){if(e){var h=p.deletions;h===null?(p.deletions=[f],p.flags|=16):h.push(f)}}function n(p,f){if(!e)return null;for(;f!==null;)r(p,f),f=f.sibling;return null}function t(p,f){for(p=new Map;f!==null;)f.key!==null?p.set(f.key,f):p.set(f.index,f),f=f.sibling;return p}function i(p,f){return p=ln(p,f),p.index=0,p.sibling=null,p}function o(p,f,h){return p.index=h,e?(h=p.alternate,h!==null?(h=h.index,h<f?(p.flags|=2,f):h):(p.flags|=2,f)):(p.flags|=1048576,f)}function l(p){return e&&p.alternate===null&&(p.flags|=2),p}function a(p,f,h,v){return f===null||f.tag!==6?(f=ya(h,p.mode,v),f.return=p,f):(f=i(f,h),f.return=p,f)}function s(p,f,h,v){var k=h.type;return k===Wn?c(p,f,h.props.children,v,h.key):f!==null&&(f.elementType===k||typeof k=="object"&&k!==null&&k.$$typeof===Vr&&cf(k)===f.type)?(v=i(f,h.props),v.ref=At(p,f,h),v.return=p,v):(v=ko(h.type,h.key,h.props,null,p.mode,v),v.ref=At(p,f,h),v.return=p,v)}function u(p,f,h,v){return f===null||f.tag!==4||f.stateNode.containerInfo!==h.containerInfo||f.stateNode.implementation!==h.implementation?(f=ba(h,p.mode,v),f.return=p,f):(f=i(f,h.children||[]),f.return=p,f)}function c(p,f,h,v,k){return f===null||f.tag!==7?(f=wn(h,p.mode,v,k),f.return=p,f):(f=i(f,h),f.return=p,f)}function d(p,f,h){if(typeof f=="string"&&f!==""||typeof f=="number")return f=ya(""+f,p.mode,h),f.return=p,f;if(typeof f=="object"&&f!==null){switch(f.$$typeof){case Hi:return h=ko(f.type,f.key,f.props,null,p.mode,h),h.ref=At(p,null,f),h.return=p,h;case Vn:return f=ba(f,p.mode,h),f.return=p,f;case Vr:var v=f._init;return d(p,v(f._payload),h)}if(Vt(f)||Nt(f))return f=wn(f,p.mode,h,null),f.return=p,f;Ji(p,f)}return null}function m(p,f,h,v){var k=f!==null?f.key:null;if(typeof h=="string"&&h!==""||typeof h=="number")return k!==null?null:a(p,f,""+h,v);if(typeof h=="object"&&h!==null){switch(h.$$typeof){case Hi:return h.key===k?s(p,f,h,v):null;case Vn:return h.key===k?u(p,f,h,v):null;case Vr:return k=h._init,m(p,f,k(h._payload),v)}if(Vt(h)||Nt(h))return k!==null?null:c(p,f,h,v,null);Ji(p,h)}return null}function g(p,f,h,v,k){if(typeof v=="string"&&v!==""||typeof v=="number")return p=p.get(h)||null,a(f,p,""+v,k);if(typeof v=="object"&&v!==null){switch(v.$$typeof){case Hi:return p=p.get(v.key===null?h:v.key)||null,s(f,p,v,k);case Vn:return p=p.get(v.key===null?h:v.key)||null,u(f,p,v,k);case Vr:var C=v._init;return g(p,f,h,C(v._payload),k)}if(Vt(v)||Nt(v))return p=p.get(h)||null,c(f,p,v,k,null);Ji(f,v)}return null}function b(p,f,h,v){for(var k=null,C=null,_=f,y=f=0,I=null;_!==null&&y<h.length;y++){_.index>y?(I=_,_=null):I=_.sibling;var T=m(p,_,h[y],v);if(T===null){_===null&&(_=I);break}e&&_&&T.alternate===null&&r(p,_),f=o(T,f,y),C===null?k=T:C.sibling=T,C=T,_=I}if(y===h.length)return n(p,_),ee&&mn(p,y),k;if(_===null){for(;y<h.length;y++)_=d(p,h[y],v),_!==null&&(f=o(_,f,y),C===null?k=_:C.sibling=_,C=_);return ee&&mn(p,y),k}for(_=t(p,_);y<h.length;y++)I=g(_,p,y,h[y],v),I!==null&&(e&&I.alternate!==null&&_.delete(I.key===null?y:I.key),f=o(I,f,y),C===null?k=I:C.sibling=I,C=I);return e&&_.forEach(function(L){return r(p,L)}),ee&&mn(p,y),k}function S(p,f,h,v){var k=Nt(h);if(typeof k!="function")throw Error(j(150));if(h=k.call(h),h==null)throw Error(j(151));for(var C=k=null,_=f,y=f=0,I=null,T=h.next();_!==null&&!T.done;y++,T=h.next()){_.index>y?(I=_,_=null):I=_.sibling;var L=m(p,_,T.value,v);if(L===null){_===null&&(_=I);break}e&&_&&L.alternate===null&&r(p,_),f=o(L,f,y),C===null?k=L:C.sibling=L,C=L,_=I}if(T.done)return n(p,_),ee&&mn(p,y),k;if(_===null){for(;!T.done;y++,T=h.next())T=d(p,T.value,v),T!==null&&(f=o(T,f,y),C===null?k=T:C.sibling=T,C=T);return ee&&mn(p,y),k}for(_=t(p,_);!T.done;y++,T=h.next())T=g(_,p,y,T.value,v),T!==null&&(e&&T.alternate!==null&&_.delete(T.key===null?y:T.key),f=o(T,f,y),C===null?k=T:C.sibling=T,C=T);return e&&_.forEach(function(N){return r(p,N)}),ee&&mn(p,y),k}function x(p,f,h,v){if(typeof h=="object"&&h!==null&&h.type===Wn&&h.key===null&&(h=h.props.children),typeof h=="object"&&h!==null){switch(h.$$typeof){case Hi:e:{for(var k=h.key,C=f;C!==null;){if(C.key===k){if(k=h.type,k===Wn){if(C.tag===7){n(p,C.sibling),f=i(C,h.props.children),f.return=p,p=f;break e}}else if(C.elementType===k||typeof k=="object"&&k!==null&&k.$$typeof===Vr&&cf(k)===C.type){n(p,C.sibling),f=i(C,h.props),f.ref=At(p,C,h),f.return=p,p=f;break e}n(p,C);break}else r(p,C);C=C.sibling}h.type===Wn?(f=wn(h.props.children,p.mode,v,h.key),f.return=p,p=f):(v=ko(h.type,h.key,h.props,null,p.mode,v),v.ref=At(p,f,h),v.return=p,p=v)}return l(p);case Vn:e:{for(C=h.key;f!==null;){if(f.key===C)if(f.tag===4&&f.stateNode.containerInfo===h.containerInfo&&f.stateNode.implementation===h.implementation){n(p,f.sibling),f=i(f,h.children||[]),f.return=p,p=f;break e}else{n(p,f);break}else r(p,f);f=f.sibling}f=ba(h,p.mode,v),f.return=p,p=f}return l(p);case Vr:return C=h._init,x(p,f,C(h._payload),v)}if(Vt(h))return b(p,f,h,v);if(Nt(h))return S(p,f,h,v);Ji(p,h)}return typeof h=="string"&&h!==""||typeof h=="number"?(h=""+h,f!==null&&f.tag===6?(n(p,f.sibling),f=i(f,h),f.return=p,p=f):(n(p,f),f=ya(h,p.mode,v),f.return=p,p=f),l(p)):n(p,f)}return x}var pt=Bm(!0),Vm=Bm(!1),Ho=cn(null),Bo=null,Jn=null,Lu=null;function Au(){Lu=Jn=Bo=null}function Du(e){var r=Ho.current;J(Ho),e._currentValue=r}function ds(e,r,n){for(;e!==null;){var t=e.alternate;if((e.childLanes&r)!==r?(e.childLanes|=r,t!==null&&(t.childLanes|=r)):t!==null&&(t.childLanes&r)!==r&&(t.childLanes|=r),e===n)break;e=e.return}}function st(e,r){Bo=e,Lu=Jn=null,e=e.dependencies,e!==null&&e.firstContext!==null&&(e.lanes&r&&(Ae=!0),e.firstContext=null)}function nr(e){var r=e._currentValue;if(Lu!==e)if(e={context:e,memoizedValue:r,next:null},Jn===null){if(Bo===null)throw Error(j(308));Jn=e,Bo.dependencies={lanes:0,firstContext:e}}else Jn=Jn.next=e;return r}var vn=null;function Uu(e){vn===null?vn=[e]:vn.push(e)}function Wm(e,r,n,t){var i=r.interleaved;return i===null?(n.next=n,Uu(r)):(n.next=i.next,i.next=n),r.interleaved=n,$r(e,t)}function $r(e,r){e.lanes|=r;var n=e.alternate;for(n!==null&&(n.lanes|=r),n=e,e=e.return;e!==null;)e.childLanes|=r,n=e.alternate,n!==null&&(n.childLanes|=r),n=e,e=e.return;return n.tag===3?n.stateNode:null}var Wr=!1;function Fu(e){e.updateQueue={baseState:e.memoizedState,firstBaseUpdate:null,lastBaseUpdate:null,shared:{pending:null,interleaved:null,lanes:0},effects:null}}function Gm(e,r){e=e.updateQueue,r.updateQueue===e&&(r.updateQueue={baseState:e.baseState,firstBaseUpdate:e.firstBaseUpdate,lastBaseUpdate:e.lastBaseUpdate,shared:e.shared,effects:e.effects})}function Nr(e,r){return{eventTime:e,lane:r,tag:0,payload:null,callback:null,next:null}}function nn(e,r,n){var t=e.updateQueue;if(t===null)return null;if(t=t.shared,Q&2){var i=t.pending;return i===null?r.next=r:(r.next=i.next,i.next=r),t.pending=r,$r(e,n)}return i=t.interleaved,i===null?(r.next=r,Uu(t)):(r.next=i.next,i.next=r),t.interleaved=r,$r(e,n)}function vo(e,r,n){if(r=r.updateQueue,r!==null&&(r=r.shared,(n&4194240)!==0)){var t=r.lanes;t&=e.pendingLanes,n|=t,r.lanes=n,Eu(e,n)}}function ff(e,r){var n=e.updateQueue,t=e.alternate;if(t!==null&&(t=t.updateQueue,n===t)){var i=null,o=null;if(n=n.firstBaseUpdate,n!==null){do{var l={eventTime:n.eventTime,lane:n.lane,tag:n.tag,payload:n.payload,callback:n.callback,next:null};o===null?i=o=l:o=o.next=l,n=n.next}while(n!==null);o===null?i=o=r:o=o.next=r}else i=o=r;n={baseState:t.baseState,firstBaseUpdate:i,lastBaseUpdate:o,shared:t.shared,effects:t.effects},e.updateQueue=n;return}e=n.lastBaseUpdate,e===null?n.firstBaseUpdate=r:e.next=r,n.lastBaseUpdate=r}function Vo(e,r,n,t){var i=e.updateQueue;Wr=!1;var o=i.firstBaseUpdate,l=i.lastBaseUpdate,a=i.shared.pending;if(a!==null){i.shared.pending=null;var s=a,u=s.next;s.next=null,l===null?o=u:l.next=u,l=s;var c=e.alternate;c!==null&&(c=c.updateQueue,a=c.lastBaseUpdate,a!==l&&(a===null?c.firstBaseUpdate=u:a.next=u,c.lastBaseUpdate=s))}if(o!==null){var d=i.baseState;l=0,c=u=s=null,a=o;do{var m=a.lane,g=a.eventTime;if((t&m)===m){c!==null&&(c=c.next={eventTime:g,lane:0,tag:a.tag,payload:a.payload,callback:a.callback,next:null});e:{var b=e,S=a;switch(m=r,g=n,S.tag){case 1:if(b=S.payload,typeof b=="function"){d=b.call(g,d,m);break e}d=b;break e;case 3:b.flags=b.flags&-65537|128;case 0:if(b=S.payload,m=typeof b=="function"?b.call(g,d,m):b,m==null)break e;d=te({},d,m);break e;case 2:Wr=!0}}a.callback!==null&&a.lane!==0&&(e.flags|=64,m=i.effects,m===null?i.effects=[a]:m.push(a))}else g={eventTime:g,lane:m,tag:a.tag,payload:a.payload,callback:a.callback,next:null},c===null?(u=c=g,s=d):c=c.next=g,l|=m;if(a=a.next,a===null){if(a=i.shared.pending,a===null)break;m=a,a=m.next,m.next=null,i.lastBaseUpdate=m,i.shared.pending=null}}while(!0);if(c===null&&(s=d),i.baseState=s,i.firstBaseUpdate=u,i.lastBaseUpdate=c,r=i.shared.interleaved,r!==null){i=r;do l|=i.lane,i=i.next;while(i!==r)}else o===null&&(i.shared.lanes=0);jn|=l,e.lanes=l,e.memoizedState=d}}function df(e,r,n){if(e=r.effects,r.effects=null,e!==null)for(r=0;r<e.length;r++){var t=e[r],i=t.callback;if(i!==null){if(t.callback=null,t=n,typeof i!="function")throw Error(j(191,i));i.call(t)}}}var Oi={},kr=cn(Oi),gi=cn(Oi),vi=cn(Oi);function yn(e){if(e===Oi)throw Error(j(174));return e}function Hu(e,r){switch(q(vi,r),q(gi,e),q(kr,Oi),e=r.nodeType,e){case 9:case 11:r=(r=r.documentElement)?r.namespaceURI:Ga(null,"");break;default:e=e===8?r.parentNode:r,r=e.namespaceURI||null,e=e.tagName,r=Ga(r,e)}J(kr),q(kr,r)}function ht(){J(kr),J(gi),J(vi)}function Qm(e){yn(vi.current);var r=yn(kr.current),n=Ga(r,e.type);r!==n&&(q(gi,e),q(kr,n))}function Bu(e){gi.current===e&&(J(kr),J(gi))}var re=cn(0);function Wo(e){for(var r=e;r!==null;){if(r.tag===13){var n=r.memoizedState;if(n!==null&&(n=n.dehydrated,n===null||n.data==="$?"||n.data==="$!"))return r}else if(r.tag===19&&r.memoizedProps.revealOrder!==void 0){if(r.flags&128)return r}else if(r.child!==null){r.child.return=r,r=r.child;continue}if(r===e)break;for(;r.sibling===null;){if(r.return===null||r.return===e)return null;r=r.return}r.sibling.return=r.return,r=r.sibling}return null}var da=[];function Vu(){for(var e=0;e<da.length;e++)da[e]._workInProgressVersionPrimary=null;da.length=0}var yo=Ar.ReactCurrentDispatcher,ma=Ar.ReactCurrentBatchConfig,En=0,ne=null,fe=null,he=null,Go=!1,Zt=!1,yi=0,Tv=0;function Ee(){throw Error(j(321))}function Wu(e,r){if(r===null)return!1;for(var n=0;n<r.length&&n<e.length;n++)if(!hr(e[n],r[n]))return!1;return!0}function Gu(e,r,n,t,i,o){if(En=o,ne=r,r.memoizedState=null,r.updateQueue=null,r.lanes=0,yo.current=e===null||e.memoizedState===null?Nv:Rv,e=n(t,i),Zt){o=0;do{if(Zt=!1,yi=0,25<=o)throw Error(j(301));o+=1,he=fe=null,r.updateQueue=null,yo.current=zv,e=n(t,i)}while(Zt)}if(yo.current=Qo,r=fe!==null&&fe.next!==null,En=0,he=fe=ne=null,Go=!1,r)throw Error(j(300));return e}function Qu(){var e=yi!==0;return yi=0,e}function br(){var e={memoizedState:null,baseState:null,baseQueue:null,queue:null,next:null};return he===null?ne.memoizedState=he=e:he=he.next=e,he}function tr(){if(fe===null){var e=ne.alternate;e=e!==null?e.memoizedState:null}else e=fe.next;var r=he===null?ne.memoizedState:he.next;if(r!==null)he=r,fe=e;else{if(e===null)throw Error(j(310));fe=e,e={memoizedState:fe.memoizedState,baseState:fe.baseState,baseQueue:fe.baseQueue,queue:fe.queue,next:null},he===null?ne.memoizedState=he=e:he=he.next=e}return he}function bi(e,r){return typeof r=="function"?r(e):r}function pa(e){var r=tr(),n=r.queue;if(n===null)throw Error(j(311));n.lastRenderedReducer=e;var t=fe,i=t.baseQueue,o=n.pending;if(o!==null){if(i!==null){var l=i.next;i.next=o.next,o.next=l}t.baseQueue=i=o,n.pending=null}if(i!==null){o=i.next,t=t.baseState;var a=l=null,s=null,u=o;do{var c=u.lane;if((En&c)===c)s!==null&&(s=s.next={lane:0,action:u.action,hasEagerState:u.hasEagerState,eagerState:u.eagerState,next:null}),t=u.hasEagerState?u.eagerState:e(t,u.action);else{var d={lane:c,action:u.action,hasEagerState:u.hasEagerState,eagerState:u.eagerState,next:null};s===null?(a=s=d,l=t):s=s.next=d,ne.lanes|=c,jn|=c}u=u.next}while(u!==null&&u!==o);s===null?l=t:s.next=a,hr(t,r.memoizedState)||(Ae=!0),r.memoizedState=t,r.baseState=l,r.baseQueue=s,n.lastRenderedState=t}if(e=n.interleaved,e!==null){i=e;do o=i.lane,ne.lanes|=o,jn|=o,i=i.next;while(i!==e)}else i===null&&(n.lanes=0);return[r.memoizedState,n.dispatch]}function ha(e){var r=tr(),n=r.queue;if(n===null)throw Error(j(311));n.lastRenderedReducer=e;var t=n.dispatch,i=n.pending,o=r.memoizedState;if(i!==null){n.pending=null;var l=i=i.next;do o=e(o,l.action),l=l.next;while(l!==i);hr(o,r.memoizedState)||(Ae=!0),r.memoizedState=o,r.baseQueue===null&&(r.baseState=o),n.lastRenderedState=o}return[o,t]}function Xm(){}function Km(e,r){var n=ne,t=tr(),i=r(),o=!hr(t.memoizedState,i);if(o&&(t.memoizedState=i,Ae=!0),t=t.queue,Xu(Zm.bind(null,n,t,e),[e]),t.getSnapshot!==r||o||he!==null&&he.memoizedState.tag&1){if(n.flags|=2048,wi(9,qm.bind(null,n,t,i,r),void 0,null),ve===null)throw Error(j(349));En&30||Ym(n,r,i)}return i}function Ym(e,r,n){e.flags|=16384,e={getSnapshot:r,value:n},r=ne.updateQueue,r===null?(r={lastEffect:null,stores:null},ne.updateQueue=r,r.stores=[e]):(n=r.stores,n===null?r.stores=[e]:n.push(e))}function qm(e,r,n,t){r.value=n,r.getSnapshot=t,Jm(r)&&ep(e)}function Zm(e,r,n){return n(function(){Jm(r)&&ep(e)})}function Jm(e){var r=e.getSnapshot;e=e.value;try{var n=r();return!hr(e,n)}catch{return!0}}function ep(e){var r=$r(e,1);r!==null&&dr(r,e,1,-1)}function mf(e){var r=br();return typeof e=="function"&&(e=e()),r.memoizedState=r.baseState=e,e={pending:null,interleaved:null,lanes:0,dispatch:null,lastRenderedReducer:bi,lastRenderedState:e},r.queue=e,e=e.dispatch=Mv.bind(null,ne,e),[r.memoizedState,e]}function wi(e,r,n,t){return e={tag:e,create:r,destroy:n,deps:t,next:null},r=ne.updateQueue,r===null?(r={lastEffect:null,stores:null},ne.updateQueue=r,r.lastEffect=e.next=e):(n=r.lastEffect,n===null?r.lastEffect=e.next=e:(t=n.next,n.next=e,e.next=t,r.lastEffect=e)),e}function rp(){return tr().memoizedState}function bo(e,r,n,t){var i=br();ne.flags|=e,i.memoizedState=wi(1|r,n,void 0,t===void 0?null:t)}function pl(e,r,n,t){var i=tr();t=t===void 0?null:t;var o=void 0;if(fe!==null){var l=fe.memoizedState;if(o=l.destroy,t!==null&&Wu(t,l.deps)){i.memoizedState=wi(r,n,o,t);return}}ne.flags|=e,i.memoizedState=wi(1|r,n,o,t)}function pf(e,r){return bo(8390656,8,e,r)}function Xu(e,r){return pl(2048,8,e,r)}function np(e,r){return pl(4,2,e,r)}function tp(e,r){return pl(4,4,e,r)}function ip(e,r){if(typeof r=="function")return e=e(),r(e),function(){r(null)};if(r!=null)return e=e(),r.current=e,function(){r.current=null}}function op(e,r,n){return n=n!=null?n.concat([e]):null,pl(4,4,ip.bind(null,r,e),n)}function Ku(){}function lp(e,r){var n=tr();r=r===void 0?null:r;var t=n.memoizedState;return t!==null&&r!==null&&Wu(r,t[1])?t[0]:(n.memoizedState=[e,r],e)}function ap(e,r){var n=tr();r=r===void 0?null:r;var t=n.memoizedState;return t!==null&&r!==null&&Wu(r,t[1])?t[0]:(e=e(),n.memoizedState=[e,r],e)}function sp(e,r,n){return En&21?(hr(n,r)||(n=mm(),ne.lanes|=n,jn|=n,e.baseState=!0),r):(e.baseState&&(e.baseState=!1,Ae=!0),e.memoizedState=n)}function Iv(e,r){var n=X;X=n!==0&&4>n?n:4,e(!0);var t=ma.transition;ma.transition={};try{e(!1),r()}finally{X=n,ma.transition=t}}function up(){return tr().memoizedState}function Ov(e,r,n){var t=on(e);if(n={lane:t,action:n,hasEagerState:!1,eagerState:null,next:null},cp(e))fp(r,n);else if(n=Wm(e,r,n,t),n!==null){var i=Me();dr(n,e,t,i),dp(n,r,t)}}function Mv(e,r,n){var t=on(e),i={lane:t,action:n,hasEagerState:!1,eagerState:null,next:null};if(cp(e))fp(r,i);else{var o=e.alternate;if(e.lanes===0&&(o===null||o.lanes===0)&&(o=r.lastRenderedReducer,o!==null))try{var l=r.lastRenderedState,a=o(l,n);if(i.hasEagerState=!0,i.eagerState=a,hr(a,l)){var s=r.interleaved;s===null?(i.next=i,Uu(r)):(i.next=s.next,s.next=i),r.interleaved=i;return}}catch{}finally{}n=Wm(e,r,i,t),n!==null&&(i=Me(),dr(n,e,t,i),dp(n,r,t))}}function cp(e){var r=e.alternate;return e===ne||r!==null&&r===ne}function fp(e,r){Zt=Go=!0;var n=e.pending;n===null?r.next=r:(r.next=n.next,n.next=r),e.pending=r}function dp(e,r,n){if(n&4194240){var t=r.lanes;t&=e.pendingLanes,n|=t,r.lanes=n,Eu(e,n)}}var Qo={readContext:nr,useCallback:Ee,useContext:Ee,useEffect:Ee,useImperativeHandle:Ee,useInsertionEffect:Ee,useLayoutEffect:Ee,useMemo:Ee,useReducer:Ee,useRef:Ee,useState:Ee,useDebugValue:Ee,useDeferredValue:Ee,useTransition:Ee,useMutableSource:Ee,useSyncExternalStore:Ee,useId:Ee,unstable_isNewReconciler:!1},Nv={readContext:nr,useCallback:function(e,r){return br().memoizedState=[e,r===void 0?null:r],e},useContext:nr,useEffect:pf,useImperativeHandle:function(e,r,n){return n=n!=null?n.concat([e]):null,bo(4194308,4,ip.bind(null,r,e),n)},useLayoutEffect:function(e,r){return bo(4194308,4,e,r)},useInsertionEffect:function(e,r){return bo(4,2,e,r)},useMemo:function(e,r){var n=br();return r=r===void 0?null:r,e=e(),n.memoizedState=[e,r],e},useReducer:function(e,r,n){var t=br();return r=n!==void 0?n(r):r,t.memoizedState=t.baseState=r,e={pending:null,interleaved:null,lanes:0,dispatch:null,lastRenderedReducer:e,lastRenderedState:r},t.queue=e,e=e.dispatch=Ov.bind(null,ne,e),[t.memoizedState,e]},useRef:function(e){var r=br();return e={current:e},r.memoizedState=e},useState:mf,useDebugValue:Ku,useDeferredValue:function(e){return br().memoizedState=e},useTransition:function(){var e=mf(!1),r=e[0];return e=Iv.bind(null,e[1]),br().memoizedState=e,[r,e]},useMutableSource:function(){},useSyncExternalStore:function(e,r,n){var t=ne,i=br();if(ee){if(n===void 0)throw Error(j(407));n=n()}else{if(n=r(),ve===null)throw Error(j(349));En&30||Ym(t,r,n)}i.memoizedState=n;var o={value:n,getSnapshot:r};return i.queue=o,pf(Zm.bind(null,t,o,e),[e]),t.flags|=2048,wi(9,qm.bind(null,t,o,n,r),void 0,null),n},useId:function(){var e=br(),r=ve.identifierPrefix;if(ee){var n=Mr,t=Or;n=(t&~(1<<32-fr(t)-1)).toString(32)+n,r=":"+r+"R"+n,n=yi++,0<n&&(r+="H"+n.toString(32)),r+=":"}else n=Tv++,r=":"+r+"r"+n.toString(32)+":";return e.memoizedState=r},unstable_isNewReconciler:!1},Rv={readContext:nr,useCallback:lp,useContext:nr,useEffect:Xu,useImperativeHandle:op,useInsertionEffect:np,useLayoutEffect:tp,useMemo:ap,useReducer:pa,useRef:rp,useState:function(){return pa(bi)},useDebugValue:Ku,useDeferredValue:function(e){var r=tr();return sp(r,fe.memoizedState,e)},useTransition:function(){var e=pa(bi)[0],r=tr().memoizedState;return[e,r]},useMutableSource:Xm,useSyncExternalStore:Km,useId:up,unstable_isNewReconciler:!1},zv={readContext:nr,useCallback:lp,useContext:nr,useEffect:Xu,useImperativeHandle:op,useInsertionEffect:np,useLayoutEffect:tp,useMemo:ap,useReducer:ha,useRef:rp,useState:function(){return ha(bi)},useDebugValue:Ku,useDeferredValue:function(e){var r=tr();return fe===null?r.memoizedState=e:sp(r,fe.memoizedState,e)},useTransition:function(){var e=ha(bi)[0],r=tr().memoizedState;return[e,r]},useMutableSource:Xm,useSyncExternalStore:Km,useId:up,unstable_isNewReconciler:!1};function ar(e,r){if(e&&e.defaultProps){r=te({},r),e=e.defaultProps;for(var n in e)r[n]===void 0&&(r[n]=e[n]);return r}return r}function ms(e,r,n,t){r=e.memoizedState,n=n(t,r),n=n==null?r:te({},r,n),e.memoizedState=n,e.lanes===0&&(e.updateQueue.baseState=n)}var hl={isMounted:function(e){return(e=e._reactInternals)?Mn(e)===e:!1},enqueueSetState:function(e,r,n){e=e._reactInternals;var t=Me(),i=on(e),o=Nr(t,i);o.payload=r,n!=null&&(o.callback=n),r=nn(e,o,i),r!==null&&(dr(r,e,i,t),vo(r,e,i))},enqueueReplaceState:function(e,r,n){e=e._reactInternals;var t=Me(),i=on(e),o=Nr(t,i);o.tag=1,o.payload=r,n!=null&&(o.callback=n),r=nn(e,o,i),r!==null&&(dr(r,e,i,t),vo(r,e,i))},enqueueForceUpdate:function(e,r){e=e._reactInternals;var n=Me(),t=on(e),i=Nr(n,t);i.tag=2,r!=null&&(i.callback=r),r=nn(e,i,t),r!==null&&(dr(r,e,t,n),vo(r,e,t))}};function hf(e,r,n,t,i,o,l){return e=e.stateNode,typeof e.shouldComponentUpdate=="function"?e.shouldComponentUpdate(t,o,l):r.prototype&&r.prototype.isPureReactComponent?!di(n,t)||!di(i,o):!0}function mp(e,r,n){var t=!1,i=sn,o=r.contextType;return typeof o=="object"&&o!==null?o=nr(o):(i=Ue(r)?xn:Ie.current,t=r.contextTypes,o=(t=t!=null)?dt(e,i):sn),r=new r(n,o),e.memoizedState=r.state!==null&&r.state!==void 0?r.state:null,r.updater=hl,e.stateNode=r,r._reactInternals=e,t&&(e=e.stateNode,e.__reactInternalMemoizedUnmaskedChildContext=i,e.__reactInternalMemoizedMaskedChildContext=o),r}function gf(e,r,n,t){e=r.state,typeof r.componentWillReceiveProps=="function"&&r.componentWillReceiveProps(n,t),typeof r.UNSAFE_componentWillReceiveProps=="function"&&r.UNSAFE_componentWillReceiveProps(n,t),r.state!==e&&hl.enqueueReplaceState(r,r.state,null)}function ps(e,r,n,t){var i=e.stateNode;i.props=n,i.state=e.memoizedState,i.refs={},Fu(e);var o=r.contextType;typeof o=="object"&&o!==null?i.context=nr(o):(o=Ue(r)?xn:Ie.current,i.context=dt(e,o)),i.state=e.memoizedState,o=r.getDerivedStateFromProps,typeof o=="function"&&(ms(e,r,o,n),i.state=e.memoizedState),typeof r.getDerivedStateFromProps=="function"||typeof i.getSnapshotBeforeUpdate=="function"||typeof i.UNSAFE_componentWillMount!="function"&&typeof i.componentWillMount!="function"||(r=i.state,typeof i.componentWillMount=="function"&&i.componentWillMount(),typeof i.UNSAFE_componentWillMount=="function"&&i.UNSAFE_componentWillMount(),r!==i.state&&hl.enqueueReplaceState(i,i.state,null),Vo(e,n,i,t),i.state=e.memoizedState),typeof i.componentDidMount=="function"&&(e.flags|=4194308)}function gt(e,r){try{var n="",t=r;do n+=ug(t),t=t.return;while(t);var i=n}catch(o){i=`
+Error generating stack: `+o.message+`
+`+o.stack}return{value:e,source:r,stack:i,digest:null}}function ga(e,r,n){return{value:e,source:null,stack:n??null,digest:r??null}}function hs(e,r){try{console.error(r.value)}catch(n){setTimeout(function(){throw n})}}var $v=typeof WeakMap=="function"?WeakMap:Map;function pp(e,r,n){n=Nr(-1,n),n.tag=3,n.payload={element:null};var t=r.value;return n.callback=function(){Ko||(Ko=!0,Cs=t),hs(e,r)},n}function hp(e,r,n){n=Nr(-1,n),n.tag=3;var t=e.type.getDerivedStateFromError;if(typeof t=="function"){var i=r.value;n.payload=function(){return t(i)},n.callback=function(){hs(e,r)}}var o=e.stateNode;return o!==null&&typeof o.componentDidCatch=="function"&&(n.callback=function(){hs(e,r),typeof t!="function"&&(tn===null?tn=new Set([this]):tn.add(this));var l=r.stack;this.componentDidCatch(r.value,{componentStack:l!==null?l:""})}),n}function vf(e,r,n){var t=e.pingCache;if(t===null){t=e.pingCache=new $v;var i=new Set;t.set(r,i)}else i=t.get(r),i===void 0&&(i=new Set,t.set(r,i));i.has(n)||(i.add(n),e=Yv.bind(null,e,r,n),r.then(e,e))}function yf(e){do{var r;if((r=e.tag===13)&&(r=e.memoizedState,r=r!==null?r.dehydrated!==null:!0),r)return e;e=e.return}while(e!==null);return null}function bf(e,r,n,t,i){return e.mode&1?(e.flags|=65536,e.lanes=i,e):(e===r?e.flags|=65536:(e.flags|=128,n.flags|=131072,n.flags&=-52805,n.tag===1&&(n.alternate===null?n.tag=17:(r=Nr(-1,1),r.tag=2,nn(n,r,1))),n.lanes|=1),e)}var Lv=Ar.ReactCurrentOwner,Ae=!1;function Oe(e,r,n,t){r.child=e===null?Vm(r,null,n,t):pt(r,e.child,n,t)}function wf(e,r,n,t,i){n=n.render;var o=r.ref;return st(r,i),t=Gu(e,r,n,t,o,i),n=Qu(),e!==null&&!Ae?(r.updateQueue=e.updateQueue,r.flags&=-2053,e.lanes&=~i,Lr(e,r,i)):(ee&&n&&Ru(r),r.flags|=1,Oe(e,r,t,i),r.child)}function _f(e,r,n,t,i){if(e===null){var o=n.type;return typeof o=="function"&&!tc(o)&&o.defaultProps===void 0&&n.compare===null&&n.defaultProps===void 0?(r.tag=15,r.type=o,gp(e,r,o,t,i)):(e=ko(n.type,null,t,r,r.mode,i),e.ref=r.ref,e.return=r,r.child=e)}if(o=e.child,!(e.lanes&i)){var l=o.memoizedProps;if(n=n.compare,n=n!==null?n:di,n(l,t)&&e.ref===r.ref)return Lr(e,r,i)}return r.flags|=1,e=ln(o,t),e.ref=r.ref,e.return=r,r.child=e}function gp(e,r,n,t,i){if(e!==null){var o=e.memoizedProps;if(di(o,t)&&e.ref===r.ref)if(Ae=!1,r.pendingProps=t=o,(e.lanes&i)!==0)e.flags&131072&&(Ae=!0);else return r.lanes=e.lanes,Lr(e,r,i)}return gs(e,r,n,t,i)}function vp(e,r,n){var t=r.pendingProps,i=t.children,o=e!==null?e.memoizedState:null;if(t.mode==="hidden")if(!(r.mode&1))r.memoizedState={baseLanes:0,cachePool:null,transitions:null},q(rt,Ve),Ve|=n;else{if(!(n&1073741824))return e=o!==null?o.baseLanes|n:n,r.lanes=r.childLanes=1073741824,r.memoizedState={baseLanes:e,cachePool:null,transitions:null},r.updateQueue=null,q(rt,Ve),Ve|=e,null;r.memoizedState={baseLanes:0,cachePool:null,transitions:null},t=o!==null?o.baseLanes:n,q(rt,Ve),Ve|=t}else o!==null?(t=o.baseLanes|n,r.memoizedState=null):t=n,q(rt,Ve),Ve|=t;return Oe(e,r,i,n),r.child}function yp(e,r){var n=r.ref;(e===null&&n!==null||e!==null&&e.ref!==n)&&(r.flags|=512,r.flags|=2097152)}function gs(e,r,n,t,i){var o=Ue(n)?xn:Ie.current;return o=dt(r,o),st(r,i),n=Gu(e,r,n,t,o,i),t=Qu(),e!==null&&!Ae?(r.updateQueue=e.updateQueue,r.flags&=-2053,e.lanes&=~i,Lr(e,r,i)):(ee&&t&&Ru(r),r.flags|=1,Oe(e,r,n,i),r.child)}function Sf(e,r,n,t,i){if(Ue(n)){var o=!0;Do(r)}else o=!1;if(st(r,i),r.stateNode===null)wo(e,r),mp(r,n,t),ps(r,n,t,i),t=!0;else if(e===null){var l=r.stateNode,a=r.memoizedProps;l.props=a;var s=l.context,u=n.contextType;typeof u=="object"&&u!==null?u=nr(u):(u=Ue(n)?xn:Ie.current,u=dt(r,u));var c=n.getDerivedStateFromProps,d=typeof c=="function"||typeof l.getSnapshotBeforeUpdate=="function";d||typeof l.UNSAFE_componentWillReceiveProps!="function"&&typeof l.componentWillReceiveProps!="function"||(a!==t||s!==u)&&gf(r,l,t,u),Wr=!1;var m=r.memoizedState;l.state=m,Vo(r,t,l,i),s=r.memoizedState,a!==t||m!==s||De.current||Wr?(typeof c=="function"&&(ms(r,n,c,t),s=r.memoizedState),(a=Wr||hf(r,n,a,t,m,s,u))?(d||typeof l.UNSAFE_componentWillMount!="function"&&typeof l.componentWillMount!="function"||(typeof l.componentWillMount=="function"&&l.componentWillMount(),typeof l.UNSAFE_componentWillMount=="function"&&l.UNSAFE_componentWillMount()),typeof l.componentDidMount=="function"&&(r.flags|=4194308)):(typeof l.componentDidMount=="function"&&(r.flags|=4194308),r.memoizedProps=t,r.memoizedState=s),l.props=t,l.state=s,l.context=u,t=a):(typeof l.componentDidMount=="function"&&(r.flags|=4194308),t=!1)}else{l=r.stateNode,Gm(e,r),a=r.memoizedProps,u=r.type===r.elementType?a:ar(r.type,a),l.props=u,d=r.pendingProps,m=l.context,s=n.contextType,typeof s=="object"&&s!==null?s=nr(s):(s=Ue(n)?xn:Ie.current,s=dt(r,s));var g=n.getDerivedStateFromProps;(c=typeof g=="function"||typeof l.getSnapshotBeforeUpdate=="function")||typeof l.UNSAFE_componentWillReceiveProps!="function"&&typeof l.componentWillReceiveProps!="function"||(a!==d||m!==s)&&gf(r,l,t,s),Wr=!1,m=r.memoizedState,l.state=m,Vo(r,t,l,i);var b=r.memoizedState;a!==d||m!==b||De.current||Wr?(typeof g=="function"&&(ms(r,n,g,t),b=r.memoizedState),(u=Wr||hf(r,n,u,t,m,b,s)||!1)?(c||typeof l.UNSAFE_componentWillUpdate!="function"&&typeof l.componentWillUpdate!="function"||(typeof l.componentWillUpdate=="function"&&l.componentWillUpdate(t,b,s),typeof l.UNSAFE_componentWillUpdate=="function"&&l.UNSAFE_componentWillUpdate(t,b,s)),typeof l.componentDidUpdate=="function"&&(r.flags|=4),typeof l.getSnapshotBeforeUpdate=="function"&&(r.flags|=1024)):(typeof l.componentDidUpdate!="function"||a===e.memoizedProps&&m===e.memoizedState||(r.flags|=4),typeof l.getSnapshotBeforeUpdate!="function"||a===e.memoizedProps&&m===e.memoizedState||(r.flags|=1024),r.memoizedProps=t,r.memoizedState=b),l.props=t,l.state=b,l.context=s,t=u):(typeof l.componentDidUpdate!="function"||a===e.memoizedProps&&m===e.memoizedState||(r.flags|=4),typeof l.getSnapshotBeforeUpdate!="function"||a===e.memoizedProps&&m===e.memoizedState||(r.flags|=1024),t=!1)}return vs(e,r,n,t,o,i)}function vs(e,r,n,t,i,o){yp(e,r);var l=(r.flags&128)!==0;if(!t&&!l)return i&&af(r,n,!1),Lr(e,r,o);t=r.stateNode,Lv.current=r;var a=l&&typeof n.getDerivedStateFromError!="function"?null:t.render();return r.flags|=1,e!==null&&l?(r.child=pt(r,e.child,null,o),r.child=pt(r,null,a,o)):Oe(e,r,a,o),r.memoizedState=t.state,i&&af(r,n,!0),r.child}function bp(e){var r=e.stateNode;r.pendingContext?lf(e,r.pendingContext,r.pendingContext!==r.context):r.context&&lf(e,r.context,!1),Hu(e,r.containerInfo)}function kf(e,r,n,t,i){return mt(),$u(i),r.flags|=256,Oe(e,r,n,t),r.child}var ys={dehydrated:null,treeContext:null,retryLane:0};function bs(e){return{baseLanes:e,cachePool:null,transitions:null}}function wp(e,r,n){var t=r.pendingProps,i=re.current,o=!1,l=(r.flags&128)!==0,a;if((a=l)||(a=e!==null&&e.memoizedState===null?!1:(i&2)!==0),a?(o=!0,r.flags&=-129):(e===null||e.memoizedState!==null)&&(i|=1),q(re,i&1),e===null)return fs(r),e=r.memoizedState,e!==null&&(e=e.dehydrated,e!==null)?(r.mode&1?e.data==="$!"?r.lanes=8:r.lanes=1073741824:r.lanes=1,null):(l=t.children,e=t.fallback,o?(t=r.mode,o=r.child,l={mode:"hidden",children:l},!(t&1)&&o!==null?(o.childLanes=0,o.pendingProps=l):o=yl(l,t,0,null),e=wn(e,t,n,null),o.return=r,e.return=r,o.sibling=e,r.child=o,r.child.memoizedState=bs(n),r.memoizedState=ys,e):Yu(r,l));if(i=e.memoizedState,i!==null&&(a=i.dehydrated,a!==null))return Av(e,r,l,t,a,i,n);if(o){o=t.fallback,l=r.mode,i=e.child,a=i.sibling;var s={mode:"hidden",children:t.children};return!(l&1)&&r.child!==i?(t=r.child,t.childLanes=0,t.pendingProps=s,r.deletions=null):(t=ln(i,s),t.subtreeFlags=i.subtreeFlags&14680064),a!==null?o=ln(a,o):(o=wn(o,l,n,null),o.flags|=2),o.return=r,t.return=r,t.sibling=o,r.child=t,t=o,o=r.child,l=e.child.memoizedState,l=l===null?bs(n):{baseLanes:l.baseLanes|n,cachePool:null,transitions:l.transitions},o.memoizedState=l,o.childLanes=e.childLanes&~n,r.memoizedState=ys,t}return o=e.child,e=o.sibling,t=ln(o,{mode:"visible",children:t.children}),!(r.mode&1)&&(t.lanes=n),t.return=r,t.sibling=null,e!==null&&(n=r.deletions,n===null?(r.deletions=[e],r.flags|=16):n.push(e)),r.child=t,r.memoizedState=null,t}function Yu(e,r){return r=yl({mode:"visible",children:r},e.mode,0,null),r.return=e,e.child=r}function eo(e,r,n,t){return t!==null&&$u(t),pt(r,e.child,null,n),e=Yu(r,r.pendingProps.children),e.flags|=2,r.memoizedState=null,e}function Av(e,r,n,t,i,o,l){if(n)return r.flags&256?(r.flags&=-257,t=ga(Error(j(422))),eo(e,r,l,t)):r.memoizedState!==null?(r.child=e.child,r.flags|=128,null):(o=t.fallback,i=r.mode,t=yl({mode:"visible",children:t.children},i,0,null),o=wn(o,i,l,null),o.flags|=2,t.return=r,o.return=r,t.sibling=o,r.child=t,r.mode&1&&pt(r,e.child,null,l),r.child.memoizedState=bs(l),r.memoizedState=ys,o);if(!(r.mode&1))return eo(e,r,l,null);if(i.data==="$!"){if(t=i.nextSibling&&i.nextSibling.dataset,t)var a=t.dgst;return t=a,o=Error(j(419)),t=ga(o,t,void 0),eo(e,r,l,t)}if(a=(l&e.childLanes)!==0,Ae||a){if(t=ve,t!==null){switch(l&-l){case 4:i=2;break;case 16:i=8;break;case 64:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:case 4194304:case 8388608:case 16777216:case 33554432:case 67108864:i=32;break;case 536870912:i=268435456;break;default:i=0}i=i&(t.suspendedLanes|l)?0:i,i!==0&&i!==o.retryLane&&(o.retryLane=i,$r(e,i),dr(t,e,i,-1))}return nc(),t=ga(Error(j(421))),eo(e,r,l,t)}return i.data==="$?"?(r.flags|=128,r.child=e.child,r=qv.bind(null,e),i._reactRetry=r,null):(e=o.treeContext,We=rn(i.nextSibling),Ge=r,ee=!0,cr=null,e!==null&&(Ze[Je++]=Or,Ze[Je++]=Mr,Ze[Je++]=Cn,Or=e.id,Mr=e.overflow,Cn=r),r=Yu(r,t.children),r.flags|=4096,r)}function xf(e,r,n){e.lanes|=r;var t=e.alternate;t!==null&&(t.lanes|=r),ds(e.return,r,n)}function va(e,r,n,t,i){var o=e.memoizedState;o===null?e.memoizedState={isBackwards:r,rendering:null,renderingStartTime:0,last:t,tail:n,tailMode:i}:(o.isBackwards=r,o.rendering=null,o.renderingStartTime=0,o.last=t,o.tail=n,o.tailMode=i)}function _p(e,r,n){var t=r.pendingProps,i=t.revealOrder,o=t.tail;if(Oe(e,r,t.children,n),t=re.current,t&2)t=t&1|2,r.flags|=128;else{if(e!==null&&e.flags&128)e:for(e=r.child;e!==null;){if(e.tag===13)e.memoizedState!==null&&xf(e,n,r);else if(e.tag===19)xf(e,n,r);else if(e.child!==null){e.child.return=e,e=e.child;continue}if(e===r)break e;for(;e.sibling===null;){if(e.return===null||e.return===r)break e;e=e.return}e.sibling.return=e.return,e=e.sibling}t&=1}if(q(re,t),!(r.mode&1))r.memoizedState=null;else switch(i){case"forwards":for(n=r.child,i=null;n!==null;)e=n.alternate,e!==null&&Wo(e)===null&&(i=n),n=n.sibling;n=i,n===null?(i=r.child,r.child=null):(i=n.sibling,n.sibling=null),va(r,!1,i,n,o);break;case"backwards":for(n=null,i=r.child,r.child=null;i!==null;){if(e=i.alternate,e!==null&&Wo(e)===null){r.child=i;break}e=i.sibling,i.sibling=n,n=i,i=e}va(r,!0,n,null,o);break;case"together":va(r,!1,null,null,void 0);break;default:r.memoizedState=null}return r.child}function wo(e,r){!(r.mode&1)&&e!==null&&(e.alternate=null,r.alternate=null,r.flags|=2)}function Lr(e,r,n){if(e!==null&&(r.dependencies=e.dependencies),jn|=r.lanes,!(n&r.childLanes))return null;if(e!==null&&r.child!==e.child)throw Error(j(153));if(r.child!==null){for(e=r.child,n=ln(e,e.pendingProps),r.child=n,n.return=r;e.sibling!==null;)e=e.sibling,n=n.sibling=ln(e,e.pendingProps),n.return=r;n.sibling=null}return r.child}function Dv(e,r,n){switch(r.tag){case 3:bp(r),mt();break;case 5:Qm(r);break;case 1:Ue(r.type)&&Do(r);break;case 4:Hu(r,r.stateNode.containerInfo);break;case 10:var t=r.type._context,i=r.memoizedProps.value;q(Ho,t._currentValue),t._currentValue=i;break;case 13:if(t=r.memoizedState,t!==null)return t.dehydrated!==null?(q(re,re.current&1),r.flags|=128,null):n&r.child.childLanes?wp(e,r,n):(q(re,re.current&1),e=Lr(e,r,n),e!==null?e.sibling:null);q(re,re.current&1);break;case 19:if(t=(n&r.childLanes)!==0,e.flags&128){if(t)return _p(e,r,n);r.flags|=128}if(i=r.memoizedState,i!==null&&(i.rendering=null,i.tail=null,i.lastEffect=null),q(re,re.current),t)break;return null;case 22:case 23:return r.lanes=0,vp(e,r,n)}return Lr(e,r,n)}var Sp,ws,kp,xp;Sp=function(e,r){for(var n=r.child;n!==null;){if(n.tag===5||n.tag===6)e.appendChild(n.stateNode);else if(n.tag!==4&&n.child!==null){n.child.return=n,n=n.child;continue}if(n===r)break;for(;n.sibling===null;){if(n.return===null||n.return===r)return;n=n.return}n.sibling.return=n.return,n=n.sibling}};ws=function(){};kp=function(e,r,n,t){var i=e.memoizedProps;if(i!==t){e=r.stateNode,yn(kr.current);var o=null;switch(n){case"input":i=Ha(e,i),t=Ha(e,t),o=[];break;case"select":i=te({},i,{value:void 0}),t=te({},t,{value:void 0}),o=[];break;case"textarea":i=Wa(e,i),t=Wa(e,t),o=[];break;default:typeof i.onClick!="function"&&typeof t.onClick=="function"&&(e.onclick=Lo)}Qa(n,t);var l;n=null;for(u in i)if(!t.hasOwnProperty(u)&&i.hasOwnProperty(u)&&i[u]!=null)if(u==="style"){var a=i[u];for(l in a)a.hasOwnProperty(l)&&(n||(n={}),n[l]="")}else u!=="dangerouslySetInnerHTML"&&u!=="children"&&u!=="suppressContentEditableWarning"&&u!=="suppressHydrationWarning"&&u!=="autoFocus"&&(oi.hasOwnProperty(u)?o||(o=[]):(o=o||[]).push(u,null));for(u in t){var s=t[u];if(a=i!=null?i[u]:void 0,t.hasOwnProperty(u)&&s!==a&&(s!=null||a!=null))if(u==="style")if(a){for(l in a)!a.hasOwnProperty(l)||s&&s.hasOwnProperty(l)||(n||(n={}),n[l]="");for(l in s)s.hasOwnProperty(l)&&a[l]!==s[l]&&(n||(n={}),n[l]=s[l])}else n||(o||(o=[]),o.push(u,n)),n=s;else u==="dangerouslySetInnerHTML"?(s=s?s.__html:void 0,a=a?a.__html:void 0,s!=null&&a!==s&&(o=o||[]).push(u,s)):u==="children"?typeof s!="string"&&typeof s!="number"||(o=o||[]).push(u,""+s):u!=="suppressContentEditableWarning"&&u!=="suppressHydrationWarning"&&(oi.hasOwnProperty(u)?(s!=null&&u==="onScroll"&&Z("scroll",e),o||a===s||(o=[])):(o=o||[]).push(u,s))}n&&(o=o||[]).push("style",n);var u=o;(r.updateQueue=u)&&(r.flags|=4)}};xp=function(e,r,n,t){n!==t&&(r.flags|=4)};function Dt(e,r){if(!ee)switch(e.tailMode){case"hidden":r=e.tail;for(var n=null;r!==null;)r.alternate!==null&&(n=r),r=r.sibling;n===null?e.tail=null:n.sibling=null;break;case"collapsed":n=e.tail;for(var t=null;n!==null;)n.alternate!==null&&(t=n),n=n.sibling;t===null?r||e.tail===null?e.tail=null:e.tail.sibling=null:t.sibling=null}}function je(e){var r=e.alternate!==null&&e.alternate.child===e.child,n=0,t=0;if(r)for(var i=e.child;i!==null;)n|=i.lanes|i.childLanes,t|=i.subtreeFlags&14680064,t|=i.flags&14680064,i.return=e,i=i.sibling;else for(i=e.child;i!==null;)n|=i.lanes|i.childLanes,t|=i.subtreeFlags,t|=i.flags,i.return=e,i=i.sibling;return e.subtreeFlags|=t,e.childLanes=n,r}function Uv(e,r,n){var t=r.pendingProps;switch(zu(r),r.tag){case 2:case 16:case 15:case 0:case 11:case 7:case 8:case 12:case 9:case 14:return je(r),null;case 1:return Ue(r.type)&&Ao(),je(r),null;case 3:return t=r.stateNode,ht(),J(De),J(Ie),Vu(),t.pendingContext&&(t.context=t.pendingContext,t.pendingContext=null),(e===null||e.child===null)&&(Zi(r)?r.flags|=4:e===null||e.memoizedState.isDehydrated&&!(r.flags&256)||(r.flags|=1024,cr!==null&&(Ps(cr),cr=null))),ws(e,r),je(r),null;case 5:Bu(r);var i=yn(vi.current);if(n=r.type,e!==null&&r.stateNode!=null)kp(e,r,n,t,i),e.ref!==r.ref&&(r.flags|=512,r.flags|=2097152);else{if(!t){if(r.stateNode===null)throw Error(j(166));return je(r),null}if(e=yn(kr.current),Zi(r)){t=r.stateNode,n=r.type;var o=r.memoizedProps;switch(t[_r]=r,t[hi]=o,e=(r.mode&1)!==0,n){case"dialog":Z("cancel",t),Z("close",t);break;case"iframe":case"object":case"embed":Z("load",t);break;case"video":case"audio":for(i=0;i<Gt.length;i++)Z(Gt[i],t);break;case"source":Z("error",t);break;case"img":case"image":case"link":Z("error",t),Z("load",t);break;case"details":Z("toggle",t);break;case"input":Mc(t,o),Z("invalid",t);break;case"select":t._wrapperState={wasMultiple:!!o.multiple},Z("invalid",t);break;case"textarea":Rc(t,o),Z("invalid",t)}Qa(n,o),i=null;for(var l in o)if(o.hasOwnProperty(l)){var a=o[l];l==="children"?typeof a=="string"?t.textContent!==a&&(o.suppressHydrationWarning!==!0&&qi(t.textContent,a,e),i=["children",a]):typeof a=="number"&&t.textContent!==""+a&&(o.suppressHydrationWarning!==!0&&qi(t.textContent,a,e),i=["children",""+a]):oi.hasOwnProperty(l)&&a!=null&&l==="onScroll"&&Z("scroll",t)}switch(n){case"input":Bi(t),Nc(t,o,!0);break;case"textarea":Bi(t),zc(t);break;case"select":case"option":break;default:typeof o.onClick=="function"&&(t.onclick=Lo)}t=i,r.updateQueue=t,t!==null&&(r.flags|=4)}else{l=i.nodeType===9?i:i.ownerDocument,e==="http://www.w3.org/1999/xhtml"&&(e=Zd(n)),e==="http://www.w3.org/1999/xhtml"?n==="script"?(e=l.createElement("div"),e.innerHTML="<script><\/script>",e=e.removeChild(e.firstChild)):typeof t.is=="string"?e=l.createElement(n,{is:t.is}):(e=l.createElement(n),n==="select"&&(l=e,t.multiple?l.multiple=!0:t.size&&(l.size=t.size))):e=l.createElementNS(e,n),e[_r]=r,e[hi]=t,Sp(e,r,!1,!1),r.stateNode=e;e:{switch(l=Xa(n,t),n){case"dialog":Z("cancel",e),Z("close",e),i=t;break;case"iframe":case"object":case"embed":Z("load",e),i=t;break;case"video":case"audio":for(i=0;i<Gt.length;i++)Z(Gt[i],e);i=t;break;case"source":Z("error",e),i=t;break;case"img":case"image":case"link":Z("error",e),Z("load",e),i=t;break;case"details":Z("toggle",e),i=t;break;case"input":Mc(e,t),i=Ha(e,t),Z("invalid",e);break;case"option":i=t;break;case"select":e._wrapperState={wasMultiple:!!t.multiple},i=te({},t,{value:void 0}),Z("invalid",e);break;case"textarea":Rc(e,t),i=Wa(e,t),Z("invalid",e);break;default:i=t}Qa(n,i),a=i;for(o in a)if(a.hasOwnProperty(o)){var s=a[o];o==="style"?rm(e,s):o==="dangerouslySetInnerHTML"?(s=s?s.__html:void 0,s!=null&&Jd(e,s)):o==="children"?typeof s=="string"?(n!=="textarea"||s!=="")&&li(e,s):typeof s=="number"&&li(e,""+s):o!=="suppressContentEditableWarning"&&o!=="suppressHydrationWarning"&&o!=="autoFocus"&&(oi.hasOwnProperty(o)?s!=null&&o==="onScroll"&&Z("scroll",e):s!=null&&wu(e,o,s,l))}switch(n){case"input":Bi(e),Nc(e,t,!1);break;case"textarea":Bi(e),zc(e);break;case"option":t.value!=null&&e.setAttribute("value",""+an(t.value));break;case"select":e.multiple=!!t.multiple,o=t.value,o!=null?it(e,!!t.multiple,o,!1):t.defaultValue!=null&&it(e,!!t.multiple,t.defaultValue,!0);break;default:typeof i.onClick=="function"&&(e.onclick=Lo)}switch(n){case"button":case"input":case"select":case"textarea":t=!!t.autoFocus;break e;case"img":t=!0;break e;default:t=!1}}t&&(r.flags|=4)}r.ref!==null&&(r.flags|=512,r.flags|=2097152)}return je(r),null;case 6:if(e&&r.stateNode!=null)xp(e,r,e.memoizedProps,t);else{if(typeof t!="string"&&r.stateNode===null)throw Error(j(166));if(n=yn(vi.current),yn(kr.current),Zi(r)){if(t=r.stateNode,n=r.memoizedProps,t[_r]=r,(o=t.nodeValue!==n)&&(e=Ge,e!==null))switch(e.tag){case 3:qi(t.nodeValue,n,(e.mode&1)!==0);break;case 5:e.memoizedProps.suppressHydrationWarning!==!0&&qi(t.nodeValue,n,(e.mode&1)!==0)}o&&(r.flags|=4)}else t=(n.nodeType===9?n:n.ownerDocument).createTextNode(t),t[_r]=r,r.stateNode=t}return je(r),null;case 13:if(J(re),t=r.memoizedState,e===null||e.memoizedState!==null&&e.memoizedState.dehydrated!==null){if(ee&&We!==null&&r.mode&1&&!(r.flags&128))Hm(),mt(),r.flags|=98560,o=!1;else if(o=Zi(r),t!==null&&t.dehydrated!==null){if(e===null){if(!o)throw Error(j(318));if(o=r.memoizedState,o=o!==null?o.dehydrated:null,!o)throw Error(j(317));o[_r]=r}else mt(),!(r.flags&128)&&(r.memoizedState=null),r.flags|=4;je(r),o=!1}else cr!==null&&(Ps(cr),cr=null),o=!0;if(!o)return r.flags&65536?r:null}return r.flags&128?(r.lanes=n,r):(t=t!==null,t!==(e!==null&&e.memoizedState!==null)&&t&&(r.child.flags|=8192,r.mode&1&&(e===null||re.current&1?de===0&&(de=3):nc())),r.updateQueue!==null&&(r.flags|=4),je(r),null);case 4:return ht(),ws(e,r),e===null&&mi(r.stateNode.containerInfo),je(r),null;case 10:return Du(r.type._context),je(r),null;case 17:return Ue(r.type)&&Ao(),je(r),null;case 19:if(J(re),o=r.memoizedState,o===null)return je(r),null;if(t=(r.flags&128)!==0,l=o.rendering,l===null)if(t)Dt(o,!1);else{if(de!==0||e!==null&&e.flags&128)for(e=r.child;e!==null;){if(l=Wo(e),l!==null){for(r.flags|=128,Dt(o,!1),t=l.updateQueue,t!==null&&(r.updateQueue=t,r.flags|=4),r.subtreeFlags=0,t=n,n=r.child;n!==null;)o=n,e=t,o.flags&=14680066,l=o.alternate,l===null?(o.childLanes=0,o.lanes=e,o.child=null,o.subtreeFlags=0,o.memoizedProps=null,o.memoizedState=null,o.updateQueue=null,o.dependencies=null,o.stateNode=null):(o.childLanes=l.childLanes,o.lanes=l.lanes,o.child=l.child,o.subtreeFlags=0,o.deletions=null,o.memoizedProps=l.memoizedProps,o.memoizedState=l.memoizedState,o.updateQueue=l.updateQueue,o.type=l.type,e=l.dependencies,o.dependencies=e===null?null:{lanes:e.lanes,firstContext:e.firstContext}),n=n.sibling;return q(re,re.current&1|2),r.child}e=e.sibling}o.tail!==null&&ae()>vt&&(r.flags|=128,t=!0,Dt(o,!1),r.lanes=4194304)}else{if(!t)if(e=Wo(l),e!==null){if(r.flags|=128,t=!0,n=e.updateQueue,n!==null&&(r.updateQueue=n,r.flags|=4),Dt(o,!0),o.tail===null&&o.tailMode==="hidden"&&!l.alternate&&!ee)return je(r),null}else 2*ae()-o.renderingStartTime>vt&&n!==1073741824&&(r.flags|=128,t=!0,Dt(o,!1),r.lanes=4194304);o.isBackwards?(l.sibling=r.child,r.child=l):(n=o.last,n!==null?n.sibling=l:r.child=l,o.last=l)}return o.tail!==null?(r=o.tail,o.rendering=r,o.tail=r.sibling,o.renderingStartTime=ae(),r.sibling=null,n=re.current,q(re,t?n&1|2:n&1),r):(je(r),null);case 22:case 23:return rc(),t=r.memoizedState!==null,e!==null&&e.memoizedState!==null!==t&&(r.flags|=8192),t&&r.mode&1?Ve&1073741824&&(je(r),r.subtreeFlags&6&&(r.flags|=8192)):je(r),null;case 24:return null;case 25:return null}throw Error(j(156,r.tag))}function Fv(e,r){switch(zu(r),r.tag){case 1:return Ue(r.type)&&Ao(),e=r.flags,e&65536?(r.flags=e&-65537|128,r):null;case 3:return ht(),J(De),J(Ie),Vu(),e=r.flags,e&65536&&!(e&128)?(r.flags=e&-65537|128,r):null;case 5:return Bu(r),null;case 13:if(J(re),e=r.memoizedState,e!==null&&e.dehydrated!==null){if(r.alternate===null)throw Error(j(340));mt()}return e=r.flags,e&65536?(r.flags=e&-65537|128,r):null;case 19:return J(re),null;case 4:return ht(),null;case 10:return Du(r.type._context),null;case 22:case 23:return rc(),null;case 24:return null;default:return null}}var ro=!1,Te=!1,Hv=typeof WeakSet=="function"?WeakSet:Set,M=null;function et(e,r){var n=e.ref;if(n!==null)if(typeof n=="function")try{n(null)}catch(t){oe(e,r,t)}else n.current=null}function _s(e,r,n){try{n()}catch(t){oe(e,r,t)}}var Cf=!1;function Bv(e,r){if(is=Ro,e=Tm(),Nu(e)){if("selectionStart"in e)var n={start:e.selectionStart,end:e.selectionEnd};else e:{n=(n=e.ownerDocument)&&n.defaultView||window;var t=n.getSelection&&n.getSelection();if(t&&t.rangeCount!==0){n=t.anchorNode;var i=t.anchorOffset,o=t.focusNode;t=t.focusOffset;try{n.nodeType,o.nodeType}catch{n=null;break e}var l=0,a=-1,s=-1,u=0,c=0,d=e,m=null;r:for(;;){for(var g;d!==n||i!==0&&d.nodeType!==3||(a=l+i),d!==o||t!==0&&d.nodeType!==3||(s=l+t),d.nodeType===3&&(l+=d.nodeValue.length),(g=d.firstChild)!==null;)m=d,d=g;for(;;){if(d===e)break r;if(m===n&&++u===i&&(a=l),m===o&&++c===t&&(s=l),(g=d.nextSibling)!==null)break;d=m,m=d.parentNode}d=g}n=a===-1||s===-1?null:{start:a,end:s}}else n=null}n=n||{start:0,end:0}}else n=null;for(os={focusedElem:e,selectionRange:n},Ro=!1,M=r;M!==null;)if(r=M,e=r.child,(r.subtreeFlags&1028)!==0&&e!==null)e.return=r,M=e;else for(;M!==null;){r=M;try{var b=r.alternate;if(r.flags&1024)switch(r.tag){case 0:case 11:case 15:break;case 1:if(b!==null){var S=b.memoizedProps,x=b.memoizedState,p=r.stateNode,f=p.getSnapshotBeforeUpdate(r.elementType===r.type?S:ar(r.type,S),x);p.__reactInternalSnapshotBeforeUpdate=f}break;case 3:var h=r.stateNode.containerInfo;h.nodeType===1?h.textContent="":h.nodeType===9&&h.documentElement&&h.removeChild(h.documentElement);break;case 5:case 6:case 4:case 17:break;default:throw Error(j(163))}}catch(v){oe(r,r.return,v)}if(e=r.sibling,e!==null){e.return=r.return,M=e;break}M=r.return}return b=Cf,Cf=!1,b}function Jt(e,r,n){var t=r.updateQueue;if(t=t!==null?t.lastEffect:null,t!==null){var i=t=t.next;do{if((i.tag&e)===e){var o=i.destroy;i.destroy=void 0,o!==void 0&&_s(r,n,o)}i=i.next}while(i!==t)}}function gl(e,r){if(r=r.updateQueue,r=r!==null?r.lastEffect:null,r!==null){var n=r=r.next;do{if((n.tag&e)===e){var t=n.create;n.destroy=t()}n=n.next}while(n!==r)}}function Ss(e){var r=e.ref;if(r!==null){var n=e.stateNode;switch(e.tag){case 5:e=n;break;default:e=n}typeof r=="function"?r(e):r.current=e}}function Cp(e){var r=e.alternate;r!==null&&(e.alternate=null,Cp(r)),e.child=null,e.deletions=null,e.sibling=null,e.tag===5&&(r=e.stateNode,r!==null&&(delete r[_r],delete r[hi],delete r[ss],delete r[Cv],delete r[Ev])),e.stateNode=null,e.return=null,e.dependencies=null,e.memoizedProps=null,e.memoizedState=null,e.pendingProps=null,e.stateNode=null,e.updateQueue=null}function Ep(e){return e.tag===5||e.tag===3||e.tag===4}function Ef(e){e:for(;;){for(;e.sibling===null;){if(e.return===null||Ep(e.return))return null;e=e.return}for(e.sibling.return=e.return,e=e.sibling;e.tag!==5&&e.tag!==6&&e.tag!==18;){if(e.flags&2||e.child===null||e.tag===4)continue e;e.child.return=e,e=e.child}if(!(e.flags&2))return e.stateNode}}function ks(e,r,n){var t=e.tag;if(t===5||t===6)e=e.stateNode,r?n.nodeType===8?n.parentNode.insertBefore(e,r):n.insertBefore(e,r):(n.nodeType===8?(r=n.parentNode,r.insertBefore(e,n)):(r=n,r.appendChild(e)),n=n._reactRootContainer,n!=null||r.onclick!==null||(r.onclick=Lo));else if(t!==4&&(e=e.child,e!==null))for(ks(e,r,n),e=e.sibling;e!==null;)ks(e,r,n),e=e.sibling}function xs(e,r,n){var t=e.tag;if(t===5||t===6)e=e.stateNode,r?n.insertBefore(e,r):n.appendChild(e);else if(t!==4&&(e=e.child,e!==null))for(xs(e,r,n),e=e.sibling;e!==null;)xs(e,r,n),e=e.sibling}var we=null,sr=!1;function Hr(e,r,n){for(n=n.child;n!==null;)jp(e,r,n),n=n.sibling}function jp(e,r,n){if(Sr&&typeof Sr.onCommitFiberUnmount=="function")try{Sr.onCommitFiberUnmount(sl,n)}catch{}switch(n.tag){case 5:Te||et(n,r);case 6:var t=we,i=sr;we=null,Hr(e,r,n),we=t,sr=i,we!==null&&(sr?(e=we,n=n.stateNode,e.nodeType===8?e.parentNode.removeChild(n):e.removeChild(n)):we.removeChild(n.stateNode));break;case 18:we!==null&&(sr?(e=we,n=n.stateNode,e.nodeType===8?ca(e.parentNode,n):e.nodeType===1&&ca(e,n),ci(e)):ca(we,n.stateNode));break;case 4:t=we,i=sr,we=n.stateNode.containerInfo,sr=!0,Hr(e,r,n),we=t,sr=i;break;case 0:case 11:case 14:case 15:if(!Te&&(t=n.updateQueue,t!==null&&(t=t.lastEffect,t!==null))){i=t=t.next;do{var o=i,l=o.destroy;o=o.tag,l!==void 0&&(o&2||o&4)&&_s(n,r,l),i=i.next}while(i!==t)}Hr(e,r,n);break;case 1:if(!Te&&(et(n,r),t=n.stateNode,typeof t.componentWillUnmount=="function"))try{t.props=n.memoizedProps,t.state=n.memoizedState,t.componentWillUnmount()}catch(a){oe(n,r,a)}Hr(e,r,n);break;case 21:Hr(e,r,n);break;case 22:n.mode&1?(Te=(t=Te)||n.memoizedState!==null,Hr(e,r,n),Te=t):Hr(e,r,n);break;default:Hr(e,r,n)}}function jf(e){var r=e.updateQueue;if(r!==null){e.updateQueue=null;var n=e.stateNode;n===null&&(n=e.stateNode=new Hv),r.forEach(function(t){var i=Zv.bind(null,e,t);n.has(t)||(n.add(t),t.then(i,i))})}}function lr(e,r){var n=r.deletions;if(n!==null)for(var t=0;t<n.length;t++){var i=n[t];try{var o=e,l=r,a=l;e:for(;a!==null;){switch(a.tag){case 5:we=a.stateNode,sr=!1;break e;case 3:we=a.stateNode.containerInfo,sr=!0;break e;case 4:we=a.stateNode.containerInfo,sr=!0;break e}a=a.return}if(we===null)throw Error(j(160));jp(o,l,i),we=null,sr=!1;var s=i.alternate;s!==null&&(s.return=null),i.return=null}catch(u){oe(i,r,u)}}if(r.subtreeFlags&12854)for(r=r.child;r!==null;)Pp(r,e),r=r.sibling}function Pp(e,r){var n=e.alternate,t=e.flags;switch(e.tag){case 0:case 11:case 14:case 15:if(lr(r,e),yr(e),t&4){try{Jt(3,e,e.return),gl(3,e)}catch(S){oe(e,e.return,S)}try{Jt(5,e,e.return)}catch(S){oe(e,e.return,S)}}break;case 1:lr(r,e),yr(e),t&512&&n!==null&&et(n,n.return);break;case 5:if(lr(r,e),yr(e),t&512&&n!==null&&et(n,n.return),e.flags&32){var i=e.stateNode;try{li(i,"")}catch(S){oe(e,e.return,S)}}if(t&4&&(i=e.stateNode,i!=null)){var o=e.memoizedProps,l=n!==null?n.memoizedProps:o,a=e.type,s=e.updateQueue;if(e.updateQueue=null,s!==null)try{a==="input"&&o.type==="radio"&&o.name!=null&&Yd(i,o),Xa(a,l);var u=Xa(a,o);for(l=0;l<s.length;l+=2){var c=s[l],d=s[l+1];c==="style"?rm(i,d):c==="dangerouslySetInnerHTML"?Jd(i,d):c==="children"?li(i,d):wu(i,c,d,u)}switch(a){case"input":Ba(i,o);break;case"textarea":qd(i,o);break;case"select":var m=i._wrapperState.wasMultiple;i._wrapperState.wasMultiple=!!o.multiple;var g=o.value;g!=null?it(i,!!o.multiple,g,!1):m!==!!o.multiple&&(o.defaultValue!=null?it(i,!!o.multiple,o.defaultValue,!0):it(i,!!o.multiple,o.multiple?[]:"",!1))}i[hi]=o}catch(S){oe(e,e.return,S)}}break;case 6:if(lr(r,e),yr(e),t&4){if(e.stateNode===null)throw Error(j(162));i=e.stateNode,o=e.memoizedProps;try{i.nodeValue=o}catch(S){oe(e,e.return,S)}}break;case 3:if(lr(r,e),yr(e),t&4&&n!==null&&n.memoizedState.isDehydrated)try{ci(r.containerInfo)}catch(S){oe(e,e.return,S)}break;case 4:lr(r,e),yr(e);break;case 13:lr(r,e),yr(e),i=e.child,i.flags&8192&&(o=i.memoizedState!==null,i.stateNode.isHidden=o,!o||i.alternate!==null&&i.alternate.memoizedState!==null||(Ju=ae())),t&4&&jf(e);break;case 22:if(c=n!==null&&n.memoizedState!==null,e.mode&1?(Te=(u=Te)||c,lr(r,e),Te=u):lr(r,e),yr(e),t&8192){if(u=e.memoizedState!==null,(e.stateNode.isHidden=u)&&!c&&e.mode&1)for(M=e,c=e.child;c!==null;){for(d=M=c;M!==null;){switch(m=M,g=m.child,m.tag){case 0:case 11:case 14:case 15:Jt(4,m,m.return);break;case 1:et(m,m.return);var b=m.stateNode;if(typeof b.componentWillUnmount=="function"){t=m,n=m.return;try{r=t,b.props=r.memoizedProps,b.state=r.memoizedState,b.componentWillUnmount()}catch(S){oe(t,n,S)}}break;case 5:et(m,m.return);break;case 22:if(m.memoizedState!==null){Tf(d);continue}}g!==null?(g.return=m,M=g):Tf(d)}c=c.sibling}e:for(c=null,d=e;;){if(d.tag===5){if(c===null){c=d;try{i=d.stateNode,u?(o=i.style,typeof o.setProperty=="function"?o.setProperty("display","none","important"):o.display="none"):(a=d.stateNode,s=d.memoizedProps.style,l=s!=null&&s.hasOwnProperty("display")?s.display:null,a.style.display=em("display",l))}catch(S){oe(e,e.return,S)}}}else if(d.tag===6){if(c===null)try{d.stateNode.nodeValue=u?"":d.memoizedProps}catch(S){oe(e,e.return,S)}}else if((d.tag!==22&&d.tag!==23||d.memoizedState===null||d===e)&&d.child!==null){d.child.return=d,d=d.child;continue}if(d===e)break e;for(;d.sibling===null;){if(d.return===null||d.return===e)break e;c===d&&(c=null),d=d.return}c===d&&(c=null),d.sibling.return=d.return,d=d.sibling}}break;case 19:lr(r,e),yr(e),t&4&&jf(e);break;case 21:break;default:lr(r,e),yr(e)}}function yr(e){var r=e.flags;if(r&2){try{e:{for(var n=e.return;n!==null;){if(Ep(n)){var t=n;break e}n=n.return}throw Error(j(160))}switch(t.tag){case 5:var i=t.stateNode;t.flags&32&&(li(i,""),t.flags&=-33);var o=Ef(e);xs(e,o,i);break;case 3:case 4:var l=t.stateNode.containerInfo,a=Ef(e);ks(e,a,l);break;default:throw Error(j(161))}}catch(s){oe(e,e.return,s)}e.flags&=-3}r&4096&&(e.flags&=-4097)}function Vv(e,r,n){M=e,Tp(e)}function Tp(e,r,n){for(var t=(e.mode&1)!==0;M!==null;){var i=M,o=i.child;if(i.tag===22&&t){var l=i.memoizedState!==null||ro;if(!l){var a=i.alternate,s=a!==null&&a.memoizedState!==null||Te;a=ro;var u=Te;if(ro=l,(Te=s)&&!u)for(M=i;M!==null;)l=M,s=l.child,l.tag===22&&l.memoizedState!==null?If(i):s!==null?(s.return=l,M=s):If(i);for(;o!==null;)M=o,Tp(o),o=o.sibling;M=i,ro=a,Te=u}Pf(e)}else i.subtreeFlags&8772&&o!==null?(o.return=i,M=o):Pf(e)}}function Pf(e){for(;M!==null;){var r=M;if(r.flags&8772){var n=r.alternate;try{if(r.flags&8772)switch(r.tag){case 0:case 11:case 15:Te||gl(5,r);break;case 1:var t=r.stateNode;if(r.flags&4&&!Te)if(n===null)t.componentDidMount();else{var i=r.elementType===r.type?n.memoizedProps:ar(r.type,n.memoizedProps);t.componentDidUpdate(i,n.memoizedState,t.__reactInternalSnapshotBeforeUpdate)}var o=r.updateQueue;o!==null&&df(r,o,t);break;case 3:var l=r.updateQueue;if(l!==null){if(n=null,r.child!==null)switch(r.child.tag){case 5:n=r.child.stateNode;break;case 1:n=r.child.stateNode}df(r,l,n)}break;case 5:var a=r.stateNode;if(n===null&&r.flags&4){n=a;var s=r.memoizedProps;switch(r.type){case"button":case"input":case"select":case"textarea":s.autoFocus&&n.focus();break;case"img":s.src&&(n.src=s.src)}}break;case 6:break;case 4:break;case 12:break;case 13:if(r.memoizedState===null){var u=r.alternate;if(u!==null){var c=u.memoizedState;if(c!==null){var d=c.dehydrated;d!==null&&ci(d)}}}break;case 19:case 17:case 21:case 22:case 23:case 25:break;default:throw Error(j(163))}Te||r.flags&512&&Ss(r)}catch(m){oe(r,r.return,m)}}if(r===e){M=null;break}if(n=r.sibling,n!==null){n.return=r.return,M=n;break}M=r.return}}function Tf(e){for(;M!==null;){var r=M;if(r===e){M=null;break}var n=r.sibling;if(n!==null){n.return=r.return,M=n;break}M=r.return}}function If(e){for(;M!==null;){var r=M;try{switch(r.tag){case 0:case 11:case 15:var n=r.return;try{gl(4,r)}catch(s){oe(r,n,s)}break;case 1:var t=r.stateNode;if(typeof t.componentDidMount=="function"){var i=r.return;try{t.componentDidMount()}catch(s){oe(r,i,s)}}var o=r.return;try{Ss(r)}catch(s){oe(r,o,s)}break;case 5:var l=r.return;try{Ss(r)}catch(s){oe(r,l,s)}}}catch(s){oe(r,r.return,s)}if(r===e){M=null;break}var a=r.sibling;if(a!==null){a.return=r.return,M=a;break}M=r.return}}var Wv=Math.ceil,Xo=Ar.ReactCurrentDispatcher,qu=Ar.ReactCurrentOwner,rr=Ar.ReactCurrentBatchConfig,Q=0,ve=null,ue=null,Se=0,Ve=0,rt=cn(0),de=0,_i=null,jn=0,vl=0,Zu=0,ei=null,Le=null,Ju=0,vt=1/0,Tr=null,Ko=!1,Cs=null,tn=null,no=!1,Kr=null,Yo=0,ri=0,Es=null,_o=-1,So=0;function Me(){return Q&6?ae():_o!==-1?_o:_o=ae()}function on(e){return e.mode&1?Q&2&&Se!==0?Se&-Se:Pv.transition!==null?(So===0&&(So=mm()),So):(e=X,e!==0||(e=window.event,e=e===void 0?16:wm(e.type)),e):1}function dr(e,r,n,t){if(50<ri)throw ri=0,Es=null,Error(j(185));Pi(e,n,t),(!(Q&2)||e!==ve)&&(e===ve&&(!(Q&2)&&(vl|=n),de===4&&Qr(e,Se)),Fe(e,t),n===1&&Q===0&&!(r.mode&1)&&(vt=ae()+500,ml&&fn()))}function Fe(e,r){var n=e.callbackNode;Pg(e,r);var t=No(e,e===ve?Se:0);if(t===0)n!==null&&Ac(n),e.callbackNode=null,e.callbackPriority=0;else if(r=t&-t,e.callbackPriority!==r){if(n!=null&&Ac(n),r===1)e.tag===0?jv(Of.bind(null,e)):Dm(Of.bind(null,e)),kv(function(){!(Q&6)&&fn()}),n=null;else{switch(pm(t)){case 1:n=Cu;break;case 4:n=fm;break;case 16:n=Mo;break;case 536870912:n=dm;break;default:n=Mo}n=Lp(n,Ip.bind(null,e))}e.callbackPriority=r,e.callbackNode=n}}function Ip(e,r){if(_o=-1,So=0,Q&6)throw Error(j(327));var n=e.callbackNode;if(ut()&&e.callbackNode!==n)return null;var t=No(e,e===ve?Se:0);if(t===0)return null;if(t&30||t&e.expiredLanes||r)r=qo(e,t);else{r=t;var i=Q;Q|=2;var o=Mp();(ve!==e||Se!==r)&&(Tr=null,vt=ae()+500,bn(e,r));do try{Xv();break}catch(a){Op(e,a)}while(!0);Au(),Xo.current=o,Q=i,ue!==null?r=0:(ve=null,Se=0,r=de)}if(r!==0){if(r===2&&(i=Ja(e),i!==0&&(t=i,r=js(e,i))),r===1)throw n=_i,bn(e,0),Qr(e,t),Fe(e,ae()),n;if(r===6)Qr(e,t);else{if(i=e.current.alternate,!(t&30)&&!Gv(i)&&(r=qo(e,t),r===2&&(o=Ja(e),o!==0&&(t=o,r=js(e,o))),r===1))throw n=_i,bn(e,0),Qr(e,t),Fe(e,ae()),n;switch(e.finishedWork=i,e.finishedLanes=t,r){case 0:case 1:throw Error(j(345));case 2:pn(e,Le,Tr);break;case 3:if(Qr(e,t),(t&130023424)===t&&(r=Ju+500-ae(),10<r)){if(No(e,0)!==0)break;if(i=e.suspendedLanes,(i&t)!==t){Me(),e.pingedLanes|=e.suspendedLanes&i;break}e.timeoutHandle=as(pn.bind(null,e,Le,Tr),r);break}pn(e,Le,Tr);break;case 4:if(Qr(e,t),(t&4194240)===t)break;for(r=e.eventTimes,i=-1;0<t;){var l=31-fr(t);o=1<<l,l=r[l],l>i&&(i=l),t&=~o}if(t=i,t=ae()-t,t=(120>t?120:480>t?480:1080>t?1080:1920>t?1920:3e3>t?3e3:4320>t?4320:1960*Wv(t/1960))-t,10<t){e.timeoutHandle=as(pn.bind(null,e,Le,Tr),t);break}pn(e,Le,Tr);break;case 5:pn(e,Le,Tr);break;default:throw Error(j(329))}}}return Fe(e,ae()),e.callbackNode===n?Ip.bind(null,e):null}function js(e,r){var n=ei;return e.current.memoizedState.isDehydrated&&(bn(e,r).flags|=256),e=qo(e,r),e!==2&&(r=Le,Le=n,r!==null&&Ps(r)),e}function Ps(e){Le===null?Le=e:Le.push.apply(Le,e)}function Gv(e){for(var r=e;;){if(r.flags&16384){var n=r.updateQueue;if(n!==null&&(n=n.stores,n!==null))for(var t=0;t<n.length;t++){var i=n[t],o=i.getSnapshot;i=i.value;try{if(!hr(o(),i))return!1}catch{return!1}}}if(n=r.child,r.subtreeFlags&16384&&n!==null)n.return=r,r=n;else{if(r===e)break;for(;r.sibling===null;){if(r.return===null||r.return===e)return!0;r=r.return}r.sibling.return=r.return,r=r.sibling}}return!0}function Qr(e,r){for(r&=~Zu,r&=~vl,e.suspendedLanes|=r,e.pingedLanes&=~r,e=e.expirationTimes;0<r;){var n=31-fr(r),t=1<<n;e[n]=-1,r&=~t}}function Of(e){if(Q&6)throw Error(j(327));ut();var r=No(e,0);if(!(r&1))return Fe(e,ae()),null;var n=qo(e,r);if(e.tag!==0&&n===2){var t=Ja(e);t!==0&&(r=t,n=js(e,t))}if(n===1)throw n=_i,bn(e,0),Qr(e,r),Fe(e,ae()),n;if(n===6)throw Error(j(345));return e.finishedWork=e.current.alternate,e.finishedLanes=r,pn(e,Le,Tr),Fe(e,ae()),null}function ec(e,r){var n=Q;Q|=1;try{return e(r)}finally{Q=n,Q===0&&(vt=ae()+500,ml&&fn())}}function Pn(e){Kr!==null&&Kr.tag===0&&!(Q&6)&&ut();var r=Q;Q|=1;var n=rr.transition,t=X;try{if(rr.transition=null,X=1,e)return e()}finally{X=t,rr.transition=n,Q=r,!(Q&6)&&fn()}}function rc(){Ve=rt.current,J(rt)}function bn(e,r){e.finishedWork=null,e.finishedLanes=0;var n=e.timeoutHandle;if(n!==-1&&(e.timeoutHandle=-1,Sv(n)),ue!==null)for(n=ue.return;n!==null;){var t=n;switch(zu(t),t.tag){case 1:t=t.type.childContextTypes,t!=null&&Ao();break;case 3:ht(),J(De),J(Ie),Vu();break;case 5:Bu(t);break;case 4:ht();break;case 13:J(re);break;case 19:J(re);break;case 10:Du(t.type._context);break;case 22:case 23:rc()}n=n.return}if(ve=e,ue=e=ln(e.current,null),Se=Ve=r,de=0,_i=null,Zu=vl=jn=0,Le=ei=null,vn!==null){for(r=0;r<vn.length;r++)if(n=vn[r],t=n.interleaved,t!==null){n.interleaved=null;var i=t.next,o=n.pending;if(o!==null){var l=o.next;o.next=i,t.next=l}n.pending=t}vn=null}return e}function Op(e,r){do{var n=ue;try{if(Au(),yo.current=Qo,Go){for(var t=ne.memoizedState;t!==null;){var i=t.queue;i!==null&&(i.pending=null),t=t.next}Go=!1}if(En=0,he=fe=ne=null,Zt=!1,yi=0,qu.current=null,n===null||n.return===null){de=1,_i=r,ue=null;break}e:{var o=e,l=n.return,a=n,s=r;if(r=Se,a.flags|=32768,s!==null&&typeof s=="object"&&typeof s.then=="function"){var u=s,c=a,d=c.tag;if(!(c.mode&1)&&(d===0||d===11||d===15)){var m=c.alternate;m?(c.updateQueue=m.updateQueue,c.memoizedState=m.memoizedState,c.lanes=m.lanes):(c.updateQueue=null,c.memoizedState=null)}var g=yf(l);if(g!==null){g.flags&=-257,bf(g,l,a,o,r),g.mode&1&&vf(o,u,r),r=g,s=u;var b=r.updateQueue;if(b===null){var S=new Set;S.add(s),r.updateQueue=S}else b.add(s);break e}else{if(!(r&1)){vf(o,u,r),nc();break e}s=Error(j(426))}}else if(ee&&a.mode&1){var x=yf(l);if(x!==null){!(x.flags&65536)&&(x.flags|=256),bf(x,l,a,o,r),$u(gt(s,a));break e}}o=s=gt(s,a),de!==4&&(de=2),ei===null?ei=[o]:ei.push(o),o=l;do{switch(o.tag){case 3:o.flags|=65536,r&=-r,o.lanes|=r;var p=pp(o,s,r);ff(o,p);break e;case 1:a=s;var f=o.type,h=o.stateNode;if(!(o.flags&128)&&(typeof f.getDerivedStateFromError=="function"||h!==null&&typeof h.componentDidCatch=="function"&&(tn===null||!tn.has(h)))){o.flags|=65536,r&=-r,o.lanes|=r;var v=hp(o,a,r);ff(o,v);break e}}o=o.return}while(o!==null)}Rp(n)}catch(k){r=k,ue===n&&n!==null&&(ue=n=n.return);continue}break}while(!0)}function Mp(){var e=Xo.current;return Xo.current=Qo,e===null?Qo:e}function nc(){(de===0||de===3||de===2)&&(de=4),ve===null||!(jn&268435455)&&!(vl&268435455)||Qr(ve,Se)}function qo(e,r){var n=Q;Q|=2;var t=Mp();(ve!==e||Se!==r)&&(Tr=null,bn(e,r));do try{Qv();break}catch(i){Op(e,i)}while(!0);if(Au(),Q=n,Xo.current=t,ue!==null)throw Error(j(261));return ve=null,Se=0,de}function Qv(){for(;ue!==null;)Np(ue)}function Xv(){for(;ue!==null&&!bg();)Np(ue)}function Np(e){var r=$p(e.alternate,e,Ve);e.memoizedProps=e.pendingProps,r===null?Rp(e):ue=r,qu.current=null}function Rp(e){var r=e;do{var n=r.alternate;if(e=r.return,r.flags&32768){if(n=Fv(n,r),n!==null){n.flags&=32767,ue=n;return}if(e!==null)e.flags|=32768,e.subtreeFlags=0,e.deletions=null;else{de=6,ue=null;return}}else if(n=Uv(n,r,Ve),n!==null){ue=n;return}if(r=r.sibling,r!==null){ue=r;return}ue=r=e}while(r!==null);de===0&&(de=5)}function pn(e,r,n){var t=X,i=rr.transition;try{rr.transition=null,X=1,Kv(e,r,n,t)}finally{rr.transition=i,X=t}return null}function Kv(e,r,n,t){do ut();while(Kr!==null);if(Q&6)throw Error(j(327));n=e.finishedWork;var i=e.finishedLanes;if(n===null)return null;if(e.finishedWork=null,e.finishedLanes=0,n===e.current)throw Error(j(177));e.callbackNode=null,e.callbackPriority=0;var o=n.lanes|n.childLanes;if(Tg(e,o),e===ve&&(ue=ve=null,Se=0),!(n.subtreeFlags&2064)&&!(n.flags&2064)||no||(no=!0,Lp(Mo,function(){return ut(),null})),o=(n.flags&15990)!==0,n.subtreeFlags&15990||o){o=rr.transition,rr.transition=null;var l=X;X=1;var a=Q;Q|=4,qu.current=null,Bv(e,n),Pp(n,e),hv(os),Ro=!!is,os=is=null,e.current=n,Vv(n),wg(),Q=a,X=l,rr.transition=o}else e.current=n;if(no&&(no=!1,Kr=e,Yo=i),o=e.pendingLanes,o===0&&(tn=null),kg(n.stateNode),Fe(e,ae()),r!==null)for(t=e.onRecoverableError,n=0;n<r.length;n++)i=r[n],t(i.value,{componentStack:i.stack,digest:i.digest});if(Ko)throw Ko=!1,e=Cs,Cs=null,e;return Yo&1&&e.tag!==0&&ut(),o=e.pendingLanes,o&1?e===Es?ri++:(ri=0,Es=e):ri=0,fn(),null}function ut(){if(Kr!==null){var e=pm(Yo),r=rr.transition,n=X;try{if(rr.transition=null,X=16>e?16:e,Kr===null)var t=!1;else{if(e=Kr,Kr=null,Yo=0,Q&6)throw Error(j(331));var i=Q;for(Q|=4,M=e.current;M!==null;){var o=M,l=o.child;if(M.flags&16){var a=o.deletions;if(a!==null){for(var s=0;s<a.length;s++){var u=a[s];for(M=u;M!==null;){var c=M;switch(c.tag){case 0:case 11:case 15:Jt(8,c,o)}var d=c.child;if(d!==null)d.return=c,M=d;else for(;M!==null;){c=M;var m=c.sibling,g=c.return;if(Cp(c),c===u){M=null;break}if(m!==null){m.return=g,M=m;break}M=g}}}var b=o.alternate;if(b!==null){var S=b.child;if(S!==null){b.child=null;do{var x=S.sibling;S.sibling=null,S=x}while(S!==null)}}M=o}}if(o.subtreeFlags&2064&&l!==null)l.return=o,M=l;else e:for(;M!==null;){if(o=M,o.flags&2048)switch(o.tag){case 0:case 11:case 15:Jt(9,o,o.return)}var p=o.sibling;if(p!==null){p.return=o.return,M=p;break e}M=o.return}}var f=e.current;for(M=f;M!==null;){l=M;var h=l.child;if(l.subtreeFlags&2064&&h!==null)h.return=l,M=h;else e:for(l=f;M!==null;){if(a=M,a.flags&2048)try{switch(a.tag){case 0:case 11:case 15:gl(9,a)}}catch(k){oe(a,a.return,k)}if(a===l){M=null;break e}var v=a.sibling;if(v!==null){v.return=a.return,M=v;break e}M=a.return}}if(Q=i,fn(),Sr&&typeof Sr.onPostCommitFiberRoot=="function")try{Sr.onPostCommitFiberRoot(sl,e)}catch{}t=!0}return t}finally{X=n,rr.transition=r}}return!1}function Mf(e,r,n){r=gt(n,r),r=pp(e,r,1),e=nn(e,r,1),r=Me(),e!==null&&(Pi(e,1,r),Fe(e,r))}function oe(e,r,n){if(e.tag===3)Mf(e,e,n);else for(;r!==null;){if(r.tag===3){Mf(r,e,n);break}else if(r.tag===1){var t=r.stateNode;if(typeof r.type.getDerivedStateFromError=="function"||typeof t.componentDidCatch=="function"&&(tn===null||!tn.has(t))){e=gt(n,e),e=hp(r,e,1),r=nn(r,e,1),e=Me(),r!==null&&(Pi(r,1,e),Fe(r,e));break}}r=r.return}}function Yv(e,r,n){var t=e.pingCache;t!==null&&t.delete(r),r=Me(),e.pingedLanes|=e.suspendedLanes&n,ve===e&&(Se&n)===n&&(de===4||de===3&&(Se&130023424)===Se&&500>ae()-Ju?bn(e,0):Zu|=n),Fe(e,r)}function zp(e,r){r===0&&(e.mode&1?(r=Gi,Gi<<=1,!(Gi&130023424)&&(Gi=4194304)):r=1);var n=Me();e=$r(e,r),e!==null&&(Pi(e,r,n),Fe(e,n))}function qv(e){var r=e.memoizedState,n=0;r!==null&&(n=r.retryLane),zp(e,n)}function Zv(e,r){var n=0;switch(e.tag){case 13:var t=e.stateNode,i=e.memoizedState;i!==null&&(n=i.retryLane);break;case 19:t=e.stateNode;break;default:throw Error(j(314))}t!==null&&t.delete(r),zp(e,n)}var $p;$p=function(e,r,n){if(e!==null)if(e.memoizedProps!==r.pendingProps||De.current)Ae=!0;else{if(!(e.lanes&n)&&!(r.flags&128))return Ae=!1,Dv(e,r,n);Ae=!!(e.flags&131072)}else Ae=!1,ee&&r.flags&1048576&&Um(r,Fo,r.index);switch(r.lanes=0,r.tag){case 2:var t=r.type;wo(e,r),e=r.pendingProps;var i=dt(r,Ie.current);st(r,n),i=Gu(null,r,t,e,i,n);var o=Qu();return r.flags|=1,typeof i=="object"&&i!==null&&typeof i.render=="function"&&i.$$typeof===void 0?(r.tag=1,r.memoizedState=null,r.updateQueue=null,Ue(t)?(o=!0,Do(r)):o=!1,r.memoizedState=i.state!==null&&i.state!==void 0?i.state:null,Fu(r),i.updater=hl,r.stateNode=i,i._reactInternals=r,ps(r,t,e,n),r=vs(null,r,t,!0,o,n)):(r.tag=0,ee&&o&&Ru(r),Oe(null,r,i,n),r=r.child),r;case 16:t=r.elementType;e:{switch(wo(e,r),e=r.pendingProps,i=t._init,t=i(t._payload),r.type=t,i=r.tag=e1(t),e=ar(t,e),i){case 0:r=gs(null,r,t,e,n);break e;case 1:r=Sf(null,r,t,e,n);break e;case 11:r=wf(null,r,t,e,n);break e;case 14:r=_f(null,r,t,ar(t.type,e),n);break e}throw Error(j(306,t,""))}return r;case 0:return t=r.type,i=r.pendingProps,i=r.elementType===t?i:ar(t,i),gs(e,r,t,i,n);case 1:return t=r.type,i=r.pendingProps,i=r.elementType===t?i:ar(t,i),Sf(e,r,t,i,n);case 3:e:{if(bp(r),e===null)throw Error(j(387));t=r.pendingProps,o=r.memoizedState,i=o.element,Gm(e,r),Vo(r,t,null,n);var l=r.memoizedState;if(t=l.element,o.isDehydrated)if(o={element:t,isDehydrated:!1,cache:l.cache,pendingSuspenseBoundaries:l.pendingSuspenseBoundaries,transitions:l.transitions},r.updateQueue.baseState=o,r.memoizedState=o,r.flags&256){i=gt(Error(j(423)),r),r=kf(e,r,t,n,i);break e}else if(t!==i){i=gt(Error(j(424)),r),r=kf(e,r,t,n,i);break e}else for(We=rn(r.stateNode.containerInfo.firstChild),Ge=r,ee=!0,cr=null,n=Vm(r,null,t,n),r.child=n;n;)n.flags=n.flags&-3|4096,n=n.sibling;else{if(mt(),t===i){r=Lr(e,r,n);break e}Oe(e,r,t,n)}r=r.child}return r;case 5:return Qm(r),e===null&&fs(r),t=r.type,i=r.pendingProps,o=e!==null?e.memoizedProps:null,l=i.children,ls(t,i)?l=null:o!==null&&ls(t,o)&&(r.flags|=32),yp(e,r),Oe(e,r,l,n),r.child;case 6:return e===null&&fs(r),null;case 13:return wp(e,r,n);case 4:return Hu(r,r.stateNode.containerInfo),t=r.pendingProps,e===null?r.child=pt(r,null,t,n):Oe(e,r,t,n),r.child;case 11:return t=r.type,i=r.pendingProps,i=r.elementType===t?i:ar(t,i),wf(e,r,t,i,n);case 7:return Oe(e,r,r.pendingProps,n),r.child;case 8:return Oe(e,r,r.pendingProps.children,n),r.child;case 12:return Oe(e,r,r.pendingProps.children,n),r.child;case 10:e:{if(t=r.type._context,i=r.pendingProps,o=r.memoizedProps,l=i.value,q(Ho,t._currentValue),t._currentValue=l,o!==null)if(hr(o.value,l)){if(o.children===i.children&&!De.current){r=Lr(e,r,n);break e}}else for(o=r.child,o!==null&&(o.return=r);o!==null;){var a=o.dependencies;if(a!==null){l=o.child;for(var s=a.firstContext;s!==null;){if(s.context===t){if(o.tag===1){s=Nr(-1,n&-n),s.tag=2;var u=o.updateQueue;if(u!==null){u=u.shared;var c=u.pending;c===null?s.next=s:(s.next=c.next,c.next=s),u.pending=s}}o.lanes|=n,s=o.alternate,s!==null&&(s.lanes|=n),ds(o.return,n,r),a.lanes|=n;break}s=s.next}}else if(o.tag===10)l=o.type===r.type?null:o.child;else if(o.tag===18){if(l=o.return,l===null)throw Error(j(341));l.lanes|=n,a=l.alternate,a!==null&&(a.lanes|=n),ds(l,n,r),l=o.sibling}else l=o.child;if(l!==null)l.return=o;else for(l=o;l!==null;){if(l===r){l=null;break}if(o=l.sibling,o!==null){o.return=l.return,l=o;break}l=l.return}o=l}Oe(e,r,i.children,n),r=r.child}return r;case 9:return i=r.type,t=r.pendingProps.children,st(r,n),i=nr(i),t=t(i),r.flags|=1,Oe(e,r,t,n),r.child;case 14:return t=r.type,i=ar(t,r.pendingProps),i=ar(t.type,i),_f(e,r,t,i,n);case 15:return gp(e,r,r.type,r.pendingProps,n);case 17:return t=r.type,i=r.pendingProps,i=r.elementType===t?i:ar(t,i),wo(e,r),r.tag=1,Ue(t)?(e=!0,Do(r)):e=!1,st(r,n),mp(r,t,i),ps(r,t,i,n),vs(null,r,t,!0,e,n);case 19:return _p(e,r,n);case 22:return vp(e,r,n)}throw Error(j(156,r.tag))};function Lp(e,r){return cm(e,r)}function Jv(e,r,n,t){this.tag=e,this.key=n,this.sibling=this.child=this.return=this.stateNode=this.type=this.elementType=null,this.index=0,this.ref=null,this.pendingProps=r,this.dependencies=this.memoizedState=this.updateQueue=this.memoizedProps=null,this.mode=t,this.subtreeFlags=this.flags=0,this.deletions=null,this.childLanes=this.lanes=0,this.alternate=null}function er(e,r,n,t){return new Jv(e,r,n,t)}function tc(e){return e=e.prototype,!(!e||!e.isReactComponent)}function e1(e){if(typeof e=="function")return tc(e)?1:0;if(e!=null){if(e=e.$$typeof,e===Su)return 11;if(e===ku)return 14}return 2}function ln(e,r){var n=e.alternate;return n===null?(n=er(e.tag,r,e.key,e.mode),n.elementType=e.elementType,n.type=e.type,n.stateNode=e.stateNode,n.alternate=e,e.alternate=n):(n.pendingProps=r,n.type=e.type,n.flags=0,n.subtreeFlags=0,n.deletions=null),n.flags=e.flags&14680064,n.childLanes=e.childLanes,n.lanes=e.lanes,n.child=e.child,n.memoizedProps=e.memoizedProps,n.memoizedState=e.memoizedState,n.updateQueue=e.updateQueue,r=e.dependencies,n.dependencies=r===null?null:{lanes:r.lanes,firstContext:r.firstContext},n.sibling=e.sibling,n.index=e.index,n.ref=e.ref,n}function ko(e,r,n,t,i,o){var l=2;if(t=e,typeof e=="function")tc(e)&&(l=1);else if(typeof e=="string")l=5;else e:switch(e){case Wn:return wn(n.children,i,o,r);case _u:l=8,i|=8;break;case Aa:return e=er(12,n,r,i|2),e.elementType=Aa,e.lanes=o,e;case Da:return e=er(13,n,r,i),e.elementType=Da,e.lanes=o,e;case Ua:return e=er(19,n,r,i),e.elementType=Ua,e.lanes=o,e;case Qd:return yl(n,i,o,r);default:if(typeof e=="object"&&e!==null)switch(e.$$typeof){case Wd:l=10;break e;case Gd:l=9;break e;case Su:l=11;break e;case ku:l=14;break e;case Vr:l=16,t=null;break e}throw Error(j(130,e==null?e:typeof e,""))}return r=er(l,n,r,i),r.elementType=e,r.type=t,r.lanes=o,r}function wn(e,r,n,t){return e=er(7,e,t,r),e.lanes=n,e}function yl(e,r,n,t){return e=er(22,e,t,r),e.elementType=Qd,e.lanes=n,e.stateNode={isHidden:!1},e}function ya(e,r,n){return e=er(6,e,null,r),e.lanes=n,e}function ba(e,r,n){return r=er(4,e.children!==null?e.children:[],e.key,r),r.lanes=n,r.stateNode={containerInfo:e.containerInfo,pendingChildren:null,implementation:e.implementation},r}function r1(e,r,n,t,i){this.tag=r,this.containerInfo=e,this.finishedWork=this.pingCache=this.current=this.pendingChildren=null,this.timeoutHandle=-1,this.callbackNode=this.pendingContext=this.context=null,this.callbackPriority=0,this.eventTimes=Jl(0),this.expirationTimes=Jl(-1),this.entangledLanes=this.finishedLanes=this.mutableReadLanes=this.expiredLanes=this.pingedLanes=this.suspendedLanes=this.pendingLanes=0,this.entanglements=Jl(0),this.identifierPrefix=t,this.onRecoverableError=i,this.mutableSourceEagerHydrationData=null}function ic(e,r,n,t,i,o,l,a,s){return e=new r1(e,r,n,a,s),r===1?(r=1,o===!0&&(r|=8)):r=0,o=er(3,null,null,r),e.current=o,o.stateNode=e,o.memoizedState={element:t,isDehydrated:n,cache:null,transitions:null,pendingSuspenseBoundaries:null},Fu(o),e}function n1(e,r,n){var t=3<arguments.length&&arguments[3]!==void 0?arguments[3]:null;return{$$typeof:Vn,key:t==null?null:""+t,children:e,containerInfo:r,implementation:n}}function Ap(e){if(!e)return sn;e=e._reactInternals;e:{if(Mn(e)!==e||e.tag!==1)throw Error(j(170));var r=e;do{switch(r.tag){case 3:r=r.stateNode.context;break e;case 1:if(Ue(r.type)){r=r.stateNode.__reactInternalMemoizedMergedChildContext;break e}}r=r.return}while(r!==null);throw Error(j(171))}if(e.tag===1){var n=e.type;if(Ue(n))return Am(e,n,r)}return r}function Dp(e,r,n,t,i,o,l,a,s){return e=ic(n,t,!0,e,i,o,l,a,s),e.context=Ap(null),n=e.current,t=Me(),i=on(n),o=Nr(t,i),o.callback=r??null,nn(n,o,i),e.current.lanes=i,Pi(e,i,t),Fe(e,t),e}function bl(e,r,n,t){var i=r.current,o=Me(),l=on(i);return n=Ap(n),r.context===null?r.context=n:r.pendingContext=n,r=Nr(o,l),r.payload={element:e},t=t===void 0?null:t,t!==null&&(r.callback=t),e=nn(i,r,l),e!==null&&(dr(e,i,l,o),vo(e,i,l)),l}function Zo(e){if(e=e.current,!e.child)return null;switch(e.child.tag){case 5:return e.child.stateNode;default:return e.child.stateNode}}function Nf(e,r){if(e=e.memoizedState,e!==null&&e.dehydrated!==null){var n=e.retryLane;e.retryLane=n!==0&&n<r?n:r}}function oc(e,r){Nf(e,r),(e=e.alternate)&&Nf(e,r)}function t1(){return null}var Up=typeof reportError=="function"?reportError:function(e){console.error(e)};function lc(e){this._internalRoot=e}wl.prototype.render=lc.prototype.render=function(e){var r=this._internalRoot;if(r===null)throw Error(j(409));bl(e,r,null,null)};wl.prototype.unmount=lc.prototype.unmount=function(){var e=this._internalRoot;if(e!==null){this._internalRoot=null;var r=e.containerInfo;Pn(function(){bl(null,e,null,null)}),r[zr]=null}};function wl(e){this._internalRoot=e}wl.prototype.unstable_scheduleHydration=function(e){if(e){var r=vm();e={blockedOn:null,target:e,priority:r};for(var n=0;n<Gr.length&&r!==0&&r<Gr[n].priority;n++);Gr.splice(n,0,e),n===0&&bm(e)}};function ac(e){return!(!e||e.nodeType!==1&&e.nodeType!==9&&e.nodeType!==11)}function _l(e){return!(!e||e.nodeType!==1&&e.nodeType!==9&&e.nodeType!==11&&(e.nodeType!==8||e.nodeValue!==" react-mount-point-unstable "))}function Rf(){}function i1(e,r,n,t,i){if(i){if(typeof t=="function"){var o=t;t=function(){var u=Zo(l);o.call(u)}}var l=Dp(r,t,e,0,null,!1,!1,"",Rf);return e._reactRootContainer=l,e[zr]=l.current,mi(e.nodeType===8?e.parentNode:e),Pn(),l}for(;i=e.lastChild;)e.removeChild(i);if(typeof t=="function"){var a=t;t=function(){var u=Zo(s);a.call(u)}}var s=ic(e,0,!1,null,null,!1,!1,"",Rf);return e._reactRootContainer=s,e[zr]=s.current,mi(e.nodeType===8?e.parentNode:e),Pn(function(){bl(r,s,n,t)}),s}function Sl(e,r,n,t,i){var o=n._reactRootContainer;if(o){var l=o;if(typeof i=="function"){var a=i;i=function(){var s=Zo(l);a.call(s)}}bl(r,l,e,i)}else l=i1(n,r,e,i,t);return Zo(l)}hm=function(e){switch(e.tag){case 3:var r=e.stateNode;if(r.current.memoizedState.isDehydrated){var n=Wt(r.pendingLanes);n!==0&&(Eu(r,n|1),Fe(r,ae()),!(Q&6)&&(vt=ae()+500,fn()))}break;case 13:Pn(function(){var t=$r(e,1);if(t!==null){var i=Me();dr(t,e,1,i)}}),oc(e,1)}};ju=function(e){if(e.tag===13){var r=$r(e,134217728);if(r!==null){var n=Me();dr(r,e,134217728,n)}oc(e,134217728)}};gm=function(e){if(e.tag===13){var r=on(e),n=$r(e,r);if(n!==null){var t=Me();dr(n,e,r,t)}oc(e,r)}};vm=function(){return X};ym=function(e,r){var n=X;try{return X=e,r()}finally{X=n}};Ya=function(e,r,n){switch(r){case"input":if(Ba(e,n),r=n.name,n.type==="radio"&&r!=null){for(n=e;n.parentNode;)n=n.parentNode;for(n=n.querySelectorAll("input[name="+JSON.stringify(""+r)+'][type="radio"]'),r=0;r<n.length;r++){var t=n[r];if(t!==e&&t.form===e.form){var i=dl(t);if(!i)throw Error(j(90));Kd(t),Ba(t,i)}}}break;case"textarea":qd(e,n);break;case"select":r=n.value,r!=null&&it(e,!!n.multiple,r,!1)}};im=ec;om=Pn;var o1={usingClientEntryPoint:!1,Events:[Ii,Kn,dl,nm,tm,ec]},Ut={findFiberByHostInstance:gn,bundleType:0,version:"18.3.1",rendererPackageName:"react-dom"},l1={bundleType:Ut.bundleType,version:Ut.version,rendererPackageName:Ut.rendererPackageName,rendererConfig:Ut.rendererConfig,overrideHookState:null,overrideHookStateDeletePath:null,overrideHookStateRenamePath:null,overrideProps:null,overridePropsDeletePath:null,overridePropsRenamePath:null,setErrorHandler:null,setSuspenseHandler:null,scheduleUpdate:null,currentDispatcherRef:Ar.ReactCurrentDispatcher,findHostInstanceByFiber:function(e){return e=sm(e),e===null?null:e.stateNode},findFiberByHostInstance:Ut.findFiberByHostInstance||t1,findHostInstancesForRefresh:null,scheduleRefresh:null,scheduleRoot:null,setRefreshHandler:null,getCurrentFiber:null,reconcilerVersion:"18.3.1-next-f1338f8080-20240426"};if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__<"u"){var to=__REACT_DEVTOOLS_GLOBAL_HOOK__;if(!to.isDisabled&&to.supportsFiber)try{sl=to.inject(l1),Sr=to}catch{}}Xe.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=o1;Xe.createPortal=function(e,r){var n=2<arguments.length&&arguments[2]!==void 0?arguments[2]:null;if(!ac(r))throw Error(j(200));return n1(e,r,null,n)};Xe.createRoot=function(e,r){if(!ac(e))throw Error(j(299));var n=!1,t="",i=Up;return r!=null&&(r.unstable_strictMode===!0&&(n=!0),r.identifierPrefix!==void 0&&(t=r.identifierPrefix),r.onRecoverableError!==void 0&&(i=r.onRecoverableError)),r=ic(e,1,!1,null,null,n,!1,t,i),e[zr]=r.current,mi(e.nodeType===8?e.parentNode:e),new lc(r)};Xe.findDOMNode=function(e){if(e==null)return null;if(e.nodeType===1)return e;var r=e._reactInternals;if(r===void 0)throw typeof e.render=="function"?Error(j(188)):(e=Object.keys(e).join(","),Error(j(268,e)));return e=sm(r),e=e===null?null:e.stateNode,e};Xe.flushSync=function(e){return Pn(e)};Xe.hydrate=function(e,r,n){if(!_l(r))throw Error(j(200));return Sl(null,e,r,!0,n)};Xe.hydrateRoot=function(e,r,n){if(!ac(e))throw Error(j(405));var t=n!=null&&n.hydratedSources||null,i=!1,o="",l=Up;if(n!=null&&(n.unstable_strictMode===!0&&(i=!0),n.identifierPrefix!==void 0&&(o=n.identifierPrefix),n.onRecoverableError!==void 0&&(l=n.onRecoverableError)),r=Dp(r,null,e,1,n??null,i,!1,o,l),e[zr]=r.current,mi(e),t)for(e=0;e<t.length;e++)n=t[e],i=n._getVersion,i=i(n._source),r.mutableSourceEagerHydrationData==null?r.mutableSourceEagerHydrationData=[n,i]:r.mutableSourceEagerHydrationData.push(n,i);return new wl(r)};Xe.render=function(e,r,n){if(!_l(r))throw Error(j(200));return Sl(null,e,r,!1,n)};Xe.unmountComponentAtNode=function(e){if(!_l(e))throw Error(j(40));return e._reactRootContainer?(Pn(function(){Sl(null,null,e,!1,function(){e._reactRootContainer=null,e[zr]=null})}),!0):!1};Xe.unstable_batchedUpdates=ec;Xe.unstable_renderSubtreeIntoContainer=function(e,r,n,t){if(!_l(n))throw Error(j(200));if(e==null||e._reactInternals===void 0)throw Error(j(38));return Sl(e,r,n,!1,t)};Xe.version="18.3.1-next-f1338f8080-20240426";function Fp(){if(!(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__>"u"||typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE!="function"))try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(Fp)}catch(e){console.error(e)}}Fp(),Fd.exports=Xe;var sc=Fd.exports;const Ts=du(sc),a1=Td({__proto__:null,default:Ts},[sc]);var zf=sc;$a.createRoot=zf.createRoot,$a.hydrateRoot=zf.hydrateRoot;var Hp={exports:{}};/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/(function(e){(function(){var r={}.hasOwnProperty;function n(){for(var o="",l=0;l<arguments.length;l++){var a=arguments[l];a&&(o=i(o,t(a)))}return o}function t(o){if(typeof o=="string"||typeof o=="number")return o;if(typeof o!="object")return"";if(Array.isArray(o))return n.apply(null,o);if(o.toString!==Object.prototype.toString&&!o.toString.toString().includes("[native code]"))return o.toString();var l="";for(var a in o)r.call(o,a)&&o[a]&&(l=i(l,a));return l}function i(o,l){return l?o?o+" "+l:o+l:o}e.exports?(n.default=n,e.exports=n):window.classNames=n})()})(Hp);var s1=Hp.exports;const Nn=du(s1);function Tn(){return Tn=Object.assign?Object.assign.bind():function(e){for(var r=1;r<arguments.length;r++){var n=arguments[r];for(var t in n)({}).hasOwnProperty.call(n,t)&&(e[t]=n[t])}return e},Tn.apply(null,arguments)}function K(e){"@babel/helpers - typeof";return K=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(r){return typeof r}:function(r){return r&&typeof Symbol=="function"&&r.constructor===Symbol&&r!==Symbol.prototype?"symbol":typeof r},K(e)}var u1=Symbol.for("react.element"),c1=Symbol.for("react.transitional.element"),f1=Symbol.for("react.fragment");function d1(e){return e&&K(e)==="object"&&(e.$$typeof===u1||e.$$typeof===c1)&&e.type===f1}var Is={},m1=function(r){};function p1(e,r){}function h1(e,r){}function g1(){Is={}}function Bp(e,r,n){!r&&!Is[n]&&(e(!1,n),Is[n]=!0)}function Mi(e,r){Bp(p1,e,r)}function v1(e,r){Bp(h1,e,r)}Mi.preMessage=m1;Mi.resetWarned=g1;Mi.noteOnce=v1;function y1(e,r){if(K(e)!="object"||!e)return e;var n=e[Symbol.toPrimitive];if(n!==void 0){var t=n.call(e,r);if(K(t)!="object")return t;throw new TypeError("@@toPrimitive must return a primitive value.")}return(r==="string"?String:Number)(e)}function Vp(e){var r=y1(e,"string");return K(r)=="symbol"?r:r+""}function $(e,r,n){return(r=Vp(r))in e?Object.defineProperty(e,r,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[r]=n,e}function $f(e,r){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var t=Object.getOwnPropertySymbols(e);r&&(t=t.filter(function(i){return Object.getOwnPropertyDescriptor(e,i).enumerable})),n.push.apply(n,t)}return n}function R(e){for(var r=1;r<arguments.length;r++){var n=arguments[r]!=null?arguments[r]:{};r%2?$f(Object(n),!0).forEach(function(t){$(e,t,n[t])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):$f(Object(n)).forEach(function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))})}return e}function Lf(e){return e instanceof HTMLElement||e instanceof SVGElement}function b1(e){return e&&K(e)==="object"&&Lf(e.nativeElement)?e.nativeElement:Lf(e)?e:null}function w1(e){var r=b1(e);if(r)return r;if(e instanceof _e.Component){var n;return(n=Ts.findDOMNode)===null||n===void 0?void 0:n.call(Ts,e)}return null}var Wp={exports:{}},Y={};/**
+ * @license React
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var uc=Symbol.for("react.element"),cc=Symbol.for("react.portal"),kl=Symbol.for("react.fragment"),xl=Symbol.for("react.strict_mode"),Cl=Symbol.for("react.profiler"),El=Symbol.for("react.provider"),jl=Symbol.for("react.context"),_1=Symbol.for("react.server_context"),Pl=Symbol.for("react.forward_ref"),Tl=Symbol.for("react.suspense"),Il=Symbol.for("react.suspense_list"),Ol=Symbol.for("react.memo"),Ml=Symbol.for("react.lazy"),S1=Symbol.for("react.offscreen"),Gp;Gp=Symbol.for("react.module.reference");function or(e){if(typeof e=="object"&&e!==null){var r=e.$$typeof;switch(r){case uc:switch(e=e.type,e){case kl:case Cl:case xl:case Tl:case Il:return e;default:switch(e=e&&e.$$typeof,e){case _1:case jl:case Pl:case Ml:case Ol:case El:return e;default:return r}}case cc:return r}}}Y.ContextConsumer=jl;Y.ContextProvider=El;Y.Element=uc;Y.ForwardRef=Pl;Y.Fragment=kl;Y.Lazy=Ml;Y.Memo=Ol;Y.Portal=cc;Y.Profiler=Cl;Y.StrictMode=xl;Y.Suspense=Tl;Y.SuspenseList=Il;Y.isAsyncMode=function(){return!1};Y.isConcurrentMode=function(){return!1};Y.isContextConsumer=function(e){return or(e)===jl};Y.isContextProvider=function(e){return or(e)===El};Y.isElement=function(e){return typeof e=="object"&&e!==null&&e.$$typeof===uc};Y.isForwardRef=function(e){return or(e)===Pl};Y.isFragment=function(e){return or(e)===kl};Y.isLazy=function(e){return or(e)===Ml};Y.isMemo=function(e){return or(e)===Ol};Y.isPortal=function(e){return or(e)===cc};Y.isProfiler=function(e){return or(e)===Cl};Y.isStrictMode=function(e){return or(e)===xl};Y.isSuspense=function(e){return or(e)===Tl};Y.isSuspenseList=function(e){return or(e)===Il};Y.isValidElementType=function(e){return typeof e=="string"||typeof e=="function"||e===kl||e===Cl||e===xl||e===Tl||e===Il||e===S1||typeof e=="object"&&e!==null&&(e.$$typeof===Ml||e.$$typeof===Ol||e.$$typeof===El||e.$$typeof===jl||e.$$typeof===Pl||e.$$typeof===Gp||e.getModuleId!==void 0)};Y.typeOf=or;Wp.exports=Y;var wa=Wp.exports;function Qp(e,r,n){var t=w.useRef({});return(!("value"in t.current)||n(t.current.condition,r))&&(t.current.value=e(),t.current.condition=r),t.current.value}var k1=Number(w.version.split(".")[0]),Xp=function(r,n){typeof r=="function"?r(n):K(r)==="object"&&r&&"current"in r&&(r.current=n)},Kp=function(){for(var r=arguments.length,n=new Array(r),t=0;t<r;t++)n[t]=arguments[t];var i=n.filter(Boolean);return i.length<=1?i[0]:function(o){n.forEach(function(l){Xp(l,o)})}},Yp=function(r){var n,t;if(!r)return!1;if(qp(r)&&k1>=19)return!0;var i=wa.isMemo(r)?r.type.type:r.type;return!(typeof i=="function"&&!((n=i.prototype)!==null&&n!==void 0&&n.render)&&i.$$typeof!==wa.ForwardRef||typeof r=="function"&&!((t=r.prototype)!==null&&t!==void 0&&t.render)&&r.$$typeof!==wa.ForwardRef)};function qp(e){return w.isValidElement(e)&&!d1(e)}var Zp=function(r){if(r&&qp(r)){var n=r;return n.props.propertyIsEnumerable("ref")?n.props.ref:n.ref}return null};function Dr(e,r){if(!(e instanceof r))throw new TypeError("Cannot call a class as a function")}function Af(e,r){for(var n=0;n<r.length;n++){var t=r[n];t.enumerable=t.enumerable||!1,t.configurable=!0,"value"in t&&(t.writable=!0),Object.defineProperty(e,Vp(t.key),t)}}function Ur(e,r,n){return r&&Af(e.prototype,r),n&&Af(e,n),Object.defineProperty(e,"prototype",{writable:!1}),e}function Os(e,r){return Os=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(n,t){return n.__proto__=t,n},Os(e,r)}function Nl(e,r){if(typeof r!="function"&&r!==null)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(r&&r.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),Object.defineProperty(e,"prototype",{writable:!1}),r&&Os(e,r)}function Jo(e){return Jo=Object.setPrototypeOf?Object.getPrototypeOf.bind():function(r){return r.__proto__||Object.getPrototypeOf(r)},Jo(e)}function Jp(){try{var e=!Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){}))}catch{}return(Jp=function(){return!!e})()}function _n(e){if(e===void 0)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function x1(e,r){if(r&&(K(r)=="object"||typeof r=="function"))return r;if(r!==void 0)throw new TypeError("Derived constructors may only return object or undefined");return _n(e)}function Rl(e){var r=Jp();return function(){var n,t=Jo(e);if(r){var i=Jo(this).constructor;n=Reflect.construct(t,arguments,i)}else n=t.apply(this,arguments);return x1(this,n)}}function Ms(e,r){(r==null||r>e.length)&&(r=e.length);for(var n=0,t=Array(r);n<r;n++)t[n]=e[n];return t}function C1(e){if(Array.isArray(e))return Ms(e)}function eh(e){if(typeof Symbol<"u"&&e[Symbol.iterator]!=null||e["@@iterator"]!=null)return Array.from(e)}function fc(e,r){if(e){if(typeof e=="string")return Ms(e,r);var n={}.toString.call(e).slice(8,-1);return n==="Object"&&e.constructor&&(n=e.constructor.name),n==="Map"||n==="Set"?Array.from(e):n==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?Ms(e,r):void 0}}function E1(){throw new TypeError(`Invalid attempt to spread non-iterable instance.
+In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function dn(e){return C1(e)||eh(e)||fc(e)||E1()}var rh=function(r){return+setTimeout(r,16)},nh=function(r){return clearTimeout(r)};typeof window<"u"&&"requestAnimationFrame"in window&&(rh=function(r){return window.requestAnimationFrame(r)},nh=function(r){return window.cancelAnimationFrame(r)});var Df=0,dc=new Map;function th(e){dc.delete(e)}var In=function(r){var n=arguments.length>1&&arguments[1]!==void 0?arguments[1]:1;Df+=1;var t=Df;function i(o){if(o===0)th(t),r();else{var l=rh(function(){i(o-1)});dc.set(t,l)}}return i(n),t};In.cancel=function(e){var r=dc.get(e);return th(e),nh(r)};function ih(e){if(Array.isArray(e))return e}function j1(e,r){var n=e==null?null:typeof Symbol<"u"&&e[Symbol.iterator]||e["@@iterator"];if(n!=null){var t,i,o,l,a=[],s=!0,u=!1;try{if(o=(n=n.call(e)).next,r===0){if(Object(n)!==n)return;s=!1}else for(;!(s=(t=o.call(n)).done)&&(a.push(t.value),a.length!==r);s=!0);}catch(c){u=!0,i=c}finally{try{if(!s&&n.return!=null&&(l=n.return(),Object(l)!==l))return}finally{if(u)throw i}}return a}}function oh(){throw new TypeError(`Invalid attempt to destructure non-iterable instance.
+In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)}function H(e,r){return ih(e)||j1(e,r)||fc(e,r)||oh()}function Si(e){for(var r=0,n,t=0,i=e.length;i>=4;++t,i-=4)n=e.charCodeAt(t)&255|(e.charCodeAt(++t)&255)<<8|(e.charCodeAt(++t)&255)<<16|(e.charCodeAt(++t)&255)<<24,n=(n&65535)*1540483477+((n>>>16)*59797<<16),n^=n>>>24,r=(n&65535)*1540483477+((n>>>16)*59797<<16)^(r&65535)*1540483477+((r>>>16)*59797<<16);switch(i){case 3:r^=(e.charCodeAt(t+2)&255)<<16;case 2:r^=(e.charCodeAt(t+1)&255)<<8;case 1:r^=e.charCodeAt(t)&255,r=(r&65535)*1540483477+((r>>>16)*59797<<16)}return r^=r>>>13,r=(r&65535)*1540483477+((r>>>16)*59797<<16),((r^r>>>15)>>>0).toString(36)}function Fr(){return!!(typeof window<"u"&&window.document&&window.document.createElement)}function P1(e,r){if(!e)return!1;if(e.contains)return e.contains(r);for(var n=r;n;){if(n===e)return!0;n=n.parentNode}return!1}var Uf="data-rc-order",Ff="data-rc-priority",T1="rc-util-key",Ns=new Map;function lh(){var e=arguments.length>0&&arguments[0]!==void 0?arguments[0]:{},r=e.mark;return r?r.startsWith("data-")?r:"data-".concat(r):T1}function zl(e){if(e.attachTo)return e.attachTo;var r=document.querySelector("head");return r||document.body}function I1(e){return e==="queue"?"prependQueue":e?"prepend":"append"}function mc(e){return Array.from((Ns.get(e)||e).children).filter(function(r){return r.tagName==="STYLE"})}function ah(e){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{};if(!Fr())return null;var n=r.csp,t=r.prepend,i=r.priority,o=i===void 0?0:i,l=I1(t),a=l==="prependQueue",s=document.createElement("style");s.setAttribute(Uf,l),a&&o&&s.setAttribute(Ff,"".concat(o)),n!=null&&n.nonce&&(s.nonce=n==null?void 0:n.nonce),s.innerHTML=e;var u=zl(r),c=u.firstChild;if(t){if(a){var d=(r.styles||mc(u)).filter(function(m){if(!["prepend","prependQueue"].includes(m.getAttribute(Uf)))return!1;var g=Number(m.getAttribute(Ff)||0);return o>=g});if(d.length)return u.insertBefore(s,d[d.length-1].nextSibling),s}u.insertBefore(s,c)}else u.appendChild(s);return s}function sh(e){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{},n=zl(r);return(r.styles||mc(n)).find(function(t){return t.getAttribute(lh(r))===e})}function uh(e){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{},n=sh(e,r);if(n){var t=zl(r);t.removeChild(n)}}function O1(e,r){var n=Ns.get(e);if(!n||!P1(document,n)){var t=ah("",r),i=t.parentNode;Ns.set(e,i),e.removeChild(t)}}function Sn(e,r){var n=arguments.length>2&&arguments[2]!==void 0?arguments[2]:{},t=zl(n),i=mc(t),o=R(R({},n),{},{styles:i});O1(t,o);var l=sh(r,o);if(l){var a,s;if((a=o.csp)!==null&&a!==void 0&&a.nonce&&l.nonce!==((s=o.csp)===null||s===void 0?void 0:s.nonce)){var u;l.nonce=(u=o.csp)===null||u===void 0?void 0:u.nonce}return l.innerHTML!==e&&(l.innerHTML=e),l}var c=ah(e,o);return c.setAttribute(lh(o),r),c}function M1(e,r){if(e==null)return{};var n={};for(var t in e)if({}.hasOwnProperty.call(e,t)){if(r.indexOf(t)!==-1)continue;n[t]=e[t]}return n}function yt(e,r){if(e==null)return{};var n,t,i=M1(e,r);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(e);for(t=0;t<o.length;t++)n=o[t],r.indexOf(n)===-1&&{}.propertyIsEnumerable.call(e,n)&&(i[n]=e[n])}return i}function N1(e,r){var n=arguments.length>2&&arguments[2]!==void 0?arguments[2]:!1,t=new Set;function i(o,l){var a=arguments.length>2&&arguments[2]!==void 0?arguments[2]:1,s=t.has(o);if(Mi(!s,"Warning: There may be circular references"),s)return!1;if(o===l)return!0;if(n&&a>1)return!1;t.add(o);var u=a+1;if(Array.isArray(o)){if(!Array.isArray(l)||o.length!==l.length)return!1;for(var c=0;c<o.length;c++)if(!i(o[c],l[c],u))return!1;return!0}if(o&&l&&K(o)==="object"&&K(l)==="object"){var d=Object.keys(o);return d.length!==Object.keys(l).length?!1:d.every(function(m){return i(o[m],l[m],u)})}return!1}return i(e,r)}var R1="%";function Rs(e){return e.join(R1)}var z1=function(){function e(r){Dr(this,e),$(this,"instanceId",void 0),$(this,"cache",new Map),$(this,"extracted",new Set),this.instanceId=r}return Ur(e,[{key:"get",value:function(n){return this.opGet(Rs(n))}},{key:"opGet",value:function(n){return this.cache.get(n)||null}},{key:"update",value:function(n,t){return this.opUpdate(Rs(n),t)}},{key:"opUpdate",value:function(n,t){var i=this.cache.get(n),o=t(i);o===null?this.cache.delete(n):this.cache.set(n,o)}}]),e}(),bt="data-token-hash",mr="data-css-hash",Yr="__cssinjs_instance__";function $1(){var e=Math.random().toString(12).slice(2);if(typeof document<"u"&&document.head&&document.body){var r=document.body.querySelectorAll("style[".concat(mr,"]"))||[],n=document.head.firstChild;Array.from(r).forEach(function(i){i[Yr]=i[Yr]||e,i[Yr]===e&&document.head.insertBefore(i,n)});var t={};Array.from(document.querySelectorAll("style[".concat(mr,"]"))).forEach(function(i){var o=i.getAttribute(mr);if(t[o]){if(i[Yr]===e){var l;(l=i.parentNode)===null||l===void 0||l.removeChild(i)}}else t[o]=!0})}return new z1(e)}var Ni=w.createContext({hashPriority:"low",cache:$1(),defaultCache:!0});function L1(e,r){if(e.length!==r.length)return!1;for(var n=0;n<e.length;n++)if(e[n]!==r[n])return!1;return!0}var pc=function(){function e(){Dr(this,e),$(this,"cache",void 0),$(this,"keys",void 0),$(this,"cacheCallTimes",void 0),this.cache=new Map,this.keys=[],this.cacheCallTimes=0}return Ur(e,[{key:"size",value:function(){return this.keys.length}},{key:"internalGet",value:function(n){var t,i,o=arguments.length>1&&arguments[1]!==void 0?arguments[1]:!1,l={map:this.cache};return n.forEach(function(a){if(!l)l=void 0;else{var s;l=(s=l)===null||s===void 0||(s=s.map)===null||s===void 0?void 0:s.get(a)}}),(t=l)!==null&&t!==void 0&&t.value&&o&&(l.value[1]=this.cacheCallTimes++),(i=l)===null||i===void 0?void 0:i.value}},{key:"get",value:function(n){var t;return(t=this.internalGet(n,!0))===null||t===void 0?void 0:t[0]}},{key:"has",value:function(n){return!!this.internalGet(n)}},{key:"set",value:function(n,t){var i=this;if(!this.has(n)){if(this.size()+1>e.MAX_CACHE_SIZE+e.MAX_CACHE_OFFSET){var o=this.keys.reduce(function(u,c){var d=H(u,2),m=d[1];return i.internalGet(c)[1]<m?[c,i.internalGet(c)[1]]:u},[this.keys[0],this.cacheCallTimes]),l=H(o,1),a=l[0];this.delete(a)}this.keys.push(n)}var s=this.cache;n.forEach(function(u,c){if(c===n.length-1)s.set(u,{value:[t,i.cacheCallTimes++]});else{var d=s.get(u);d?d.map||(d.map=new Map):s.set(u,{map:new Map}),s=s.get(u).map}})}},{key:"deleteByPath",value:function(n,t){var i=n.get(t[0]);if(t.length===1){var o;return i.map?n.set(t[0],{map:i.map}):n.delete(t[0]),(o=i.value)===null||o===void 0?void 0:o[0]}var l=this.deleteByPath(i.map,t.slice(1));return(!i.map||i.map.size===0)&&!i.value&&n.delete(t[0]),l}},{key:"delete",value:function(n){if(this.has(n))return this.keys=this.keys.filter(function(t){return!L1(t,n)}),this.deleteByPath(this.cache,n)}}]),e}();$(pc,"MAX_CACHE_SIZE",20);$(pc,"MAX_CACHE_OFFSET",5);var Hf=0,ch=function(){function e(r){Dr(this,e),$(this,"derivatives",void 0),$(this,"id",void 0),this.derivatives=Array.isArray(r)?r:[r],this.id=Hf,r.length===0&&(r.length>0,void 0),Hf+=1}return Ur(e,[{key:"getDerivativeToken",value:function(n){return this.derivatives.reduce(function(t,i){return i(n,t)},void 0)}}]),e}(),_a=new pc;function zs(e){var r=Array.isArray(e)?e:[e];return _a.has(r)||_a.set(r,new ch(r)),_a.get(r)}var A1=new WeakMap,Sa={};function D1(e,r){for(var n=A1,t=0;t<r.length;t+=1){var i=r[t];n.has(i)||n.set(i,new WeakMap),n=n.get(i)}return n.has(Sa)||n.set(Sa,e()),n.get(Sa)}var Bf=new WeakMap;function ni(e){var r=Bf.get(e)||"";return r||(Object.keys(e).forEach(function(n){var t=e[n];r+=n,t instanceof ch?r+=t.id:t&&K(t)==="object"?r+=ni(t):r+=t}),r=Si(r),Bf.set(e,r)),r}function Vf(e,r){return Si("".concat(r,"_").concat(ni(e)))}var $s=Fr();function ge(e){return typeof e=="number"?"".concat(e,"px"):e}function el(e,r,n){var t=arguments.length>3&&arguments[3]!==void 0?arguments[3]:{},i=arguments.length>4&&arguments[4]!==void 0?arguments[4]:!1;if(i)return e;var o=R(R({},t),{},$($({},bt,r),mr,n)),l=Object.keys(o).map(function(a){var s=o[a];return s?"".concat(a,'="').concat(s,'"'):null}).filter(function(a){return a}).join(" ");return"<style ".concat(l,">").concat(e,"</style>")}var xo=function(r){var n=arguments.length>1&&arguments[1]!==void 0?arguments[1]:"";return"--".concat(n?"".concat(n,"-"):"").concat(r).replace(/([a-z0-9])([A-Z])/g,"$1-$2").replace(/([A-Z]+)([A-Z][a-z0-9]+)/g,"$1-$2").replace(/([a-z])([A-Z0-9])/g,"$1-$2").toLowerCase()},U1=function(r,n,t){return Object.keys(r).length?".".concat(n).concat(t!=null&&t.scope?".".concat(t.scope):"","{").concat(Object.entries(r).map(function(i){var o=H(i,2),l=o[0],a=o[1];return"".concat(l,":").concat(a,";")}).join(""),"}"):""},fh=function(r,n,t){var i={},o={};return Object.entries(r).forEach(function(l){var a,s,u=H(l,2),c=u[0],d=u[1];if(t!=null&&(a=t.preserve)!==null&&a!==void 0&&a[c])o[c]=d;else if((typeof d=="string"||typeof d=="number")&&!(t!=null&&(s=t.ignore)!==null&&s!==void 0&&s[c])){var m,g=xo(c,t==null?void 0:t.prefix);i[g]=typeof d=="number"&&!(t!=null&&(m=t.unitless)!==null&&m!==void 0&&m[c])?"".concat(d,"px"):String(d),o[c]="var(".concat(g,")")}}),[o,U1(i,n,{scope:t==null?void 0:t.scope})]},Wf=Fr()?w.useLayoutEffect:w.useEffect,dh=function(r,n){var t=w.useRef(!0);Wf(function(){return r(t.current)},n),Wf(function(){return t.current=!1,function(){t.current=!0}},[])},Gf=function(r,n){dh(function(t){if(!t)return r()},n)},F1=R({},vu),Qf=F1.useInsertionEffect,H1=function(r,n,t){w.useMemo(r,t),dh(function(){return n(!0)},t)},B1=Qf?function(e,r,n){return Qf(function(){return e(),r()},n)}:H1,V1=R({},vu),W1=V1.useInsertionEffect,G1=function(r){var n=[],t=!1;function i(o){t||n.push(o)}return w.useEffect(function(){return t=!1,function(){t=!0,n.length&&n.forEach(function(o){return o()})}},r),i},Q1=function(){return function(r){r()}},X1=typeof W1<"u"?G1:Q1;function hc(e,r,n,t,i){var o=w.useContext(Ni),l=o.cache,a=[e].concat(dn(r)),s=Rs(a),u=X1([s]),c=function(b){l.opUpdate(s,function(S){var x=S||[void 0,void 0],p=H(x,2),f=p[0],h=f===void 0?0:f,v=p[1],k=v,C=k||n(),_=[h,C];return b?b(_):_})};w.useMemo(function(){c()},[s]);var d=l.opGet(s),m=d[1];return B1(function(){i==null||i(m)},function(g){return c(function(b){var S=H(b,2),x=S[0],p=S[1];return g&&x===0&&(i==null||i(m)),[x+1,p]}),function(){l.opUpdate(s,function(b){var S=b||[],x=H(S,2),p=x[0],f=p===void 0?0:p,h=x[1],v=f-1;return v===0?(u(function(){(g||!l.opGet(s))&&(t==null||t(h,!1))}),null):[f-1,h]})}},[s]),m}var K1={},Y1="css",hn=new Map;function q1(e){hn.set(e,(hn.get(e)||0)+1)}function Z1(e,r){if(typeof document<"u"){var n=document.querySelectorAll("style[".concat(bt,'="').concat(e,'"]'));n.forEach(function(t){if(t[Yr]===r){var i;(i=t.parentNode)===null||i===void 0||i.removeChild(t)}})}}var J1=0;function ey(e,r){hn.set(e,(hn.get(e)||0)-1);var n=new Set;hn.forEach(function(t,i){t<=0&&n.add(i)}),hn.size-n.size>J1&&n.forEach(function(t){Z1(t,r),hn.delete(t)})}var ry=function(r,n,t,i){var o=t.getDerivativeToken(r),l=R(R({},o),n);return i&&(l=i(l)),l},mh="token";function ny(e,r){var n=arguments.length>2&&arguments[2]!==void 0?arguments[2]:{},t=w.useContext(Ni),i=t.cache.instanceId,o=t.container,l=n.salt,a=l===void 0?"":l,s=n.override,u=s===void 0?K1:s,c=n.formatToken,d=n.getComputedToken,m=n.cssVar,g=D1(function(){return Object.assign.apply(Object,[{}].concat(dn(r)))},r),b=ni(g),S=ni(u),x=m?ni(m):"",p=hc(mh,[a,e.id,b,S,x],function(){var f,h=d?d(g,u,e):ry(g,u,e,c),v=R({},h),k="";if(m){var C=fh(h,m.key,{prefix:m.prefix,ignore:m.ignore,unitless:m.unitless,preserve:m.preserve}),_=H(C,2);h=_[0],k=_[1]}var y=Vf(h,a);h._tokenKey=y,v._tokenKey=Vf(v,a);var I=(f=m==null?void 0:m.key)!==null&&f!==void 0?f:y;h._themeKey=I,q1(I);var T="".concat(Y1,"-").concat(Si(y));return h._hashId=T,[h,T,v,k,(m==null?void 0:m.key)||""]},function(f){ey(f[0]._themeKey,i)},function(f){var h=H(f,4),v=h[0],k=h[3];if(m&&k){var C=Sn(k,Si("css-variables-".concat(v._themeKey)),{mark:mr,prepend:"queue",attachTo:o,priority:-999});C[Yr]=i,C.setAttribute(bt,v._themeKey)}});return p}var ty=function(r,n,t){var i=H(r,5),o=i[2],l=i[3],a=i[4],s=t||{},u=s.plain;if(!l)return null;var c=o._tokenKey,d=-999,m={"data-rc-order":"prependQueue","data-rc-priority":"".concat(d)},g=el(l,a,c,m,u);return[d,c,g]},iy={animationIterationCount:1,borderImageOutset:1,borderImageSlice:1,borderImageWidth:1,boxFlex:1,boxFlexGroup:1,boxOrdinalGroup:1,columnCount:1,columns:1,flex:1,flexGrow:1,flexPositive:1,flexShrink:1,flexNegative:1,flexOrder:1,gridRow:1,gridRowEnd:1,gridRowSpan:1,gridRowStart:1,gridColumn:1,gridColumnEnd:1,gridColumnSpan:1,gridColumnStart:1,msGridRow:1,msGridRowSpan:1,msGridColumn:1,msGridColumnSpan:1,fontWeight:1,lineHeight:1,opacity:1,order:1,orphans:1,tabSize:1,widows:1,zIndex:1,zoom:1,WebkitLineClamp:1,fillOpacity:1,floodOpacity:1,stopOpacity:1,strokeDasharray:1,strokeDashoffset:1,strokeMiterlimit:1,strokeOpacity:1,strokeWidth:1},ph="comm",hh="rule",gh="decl",oy="@import",ly="@namespace",ay="@keyframes",sy="@layer",uy=Math.abs,ti=String.fromCharCode;function vh(e){return e.trim()}function Ls(e,r,n){return e.replace(r,n)}function ct(e,r){return e.charCodeAt(r)|0}function wt(e,r,n){return e.slice(r,n)}function wr(e){return e.length}function cy(e){return e.length}function io(e,r){return r.push(e),e}var $l=1,_t=1,yh=0,ir=0,se=0,Pt="";function gc(e,r,n,t,i,o,l,a){return{value:e,root:r,parent:n,type:t,props:i,children:o,line:$l,column:_t,length:l,return:"",siblings:a}}function fy(){return se}function dy(){return se=ir>0?ct(Pt,--ir):0,_t--,se===10&&(_t=1,$l--),se}function pr(){return se=ir<yh?ct(Pt,ir++):0,_t++,se===10&&(_t=1,$l++),se}function qr(){return ct(Pt,ir)}function Co(){return ir}function Ll(e,r){return wt(Pt,e,r)}function ki(e){switch(e){case 0:case 9:case 10:case 13:case 32:return 5;case 33:case 43:case 44:case 47:case 62:case 64:case 126:case 59:case 123:case 125:return 4;case 58:return 3;case 34:case 39:case 40:case 91:return 2;case 41:case 93:return 1}return 0}function my(e){return $l=_t=1,yh=wr(Pt=e),ir=0,[]}function py(e){return Pt="",e}function ka(e){return vh(Ll(ir-1,As(e===91?e+2:e===40?e+1:e)))}function hy(e){for(;(se=qr())&&se<33;)pr();return ki(e)>2||ki(se)>3?"":" "}function gy(e,r){for(;--r&&pr()&&!(se<48||se>102||se>57&&se<65||se>70&&se<97););return Ll(e,Co()+(r<6&&qr()==32&&pr()==32))}function As(e){for(;pr();)switch(se){case e:return ir;case 34:case 39:e!==34&&e!==39&&As(se);break;case 40:e===41&&As(e);break;case 92:pr();break}return ir}function vy(e,r){for(;pr()&&e+se!==57;)if(e+se===84&&qr()===47)break;return"/*"+Ll(r,ir-1)+"*"+ti(e===47?e:pr())}function yy(e){for(;!ki(qr());)pr();return Ll(e,ir)}function by(e){return py(Eo("",null,null,null,[""],e=my(e),0,[0],e))}function Eo(e,r,n,t,i,o,l,a,s){for(var u=0,c=0,d=l,m=0,g=0,b=0,S=1,x=1,p=1,f=0,h=0,v="",k=i,C=o,_=t,y=v;x;)switch(b=h,h=pr()){case 40:b!=108&&ct(y,d-1)==58?(f++,y+="("):y+=ka(h);break;case 41:f--,y+=")";break;case 34:case 39:case 91:y+=ka(h);break;case 9:case 10:case 13:case 32:if(f>0){y+=ti(h);break}y+=hy(b);break;case 92:y+=gy(Co()-1,7);continue;case 47:switch(qr()){case 42:case 47:io(wy(vy(pr(),Co()),r,n,s),s),(ki(b||1)==5||ki(qr()||1)==5)&&wr(y)&&wt(y,-1,void 0)!==" "&&(y+=" ");break;default:y+="/"}break;case 123*S:a[u++]=wr(y)*p;case 125*S:case 59:case 0:if(f>0&&h){y+=ti(h);break}switch(h){case 0:case 125:x=0;case 59+c:p==-1&&(y=Ls(y,/\f/g,"")),g>0&&(wr(y)-d||S===0)&&io(g>32?Kf(y+";",t,n,d-1,s):Kf(Ls(y," ","")+";",t,n,d-2,s),s);break;case 59:y+=";";default:if(io(_=Xf(y,r,n,u,c,i,a,v,k=[],C=[],d,o),o),h===123)if(c===0)Eo(y,r,_,_,k,o,d,a,C);else{switch(m){case 99:if(ct(y,3)===110)break;case 108:if(ct(y,2)===97)break;default:c=0;case 100:case 109:case 115:}c?Eo(e,_,_,t&&io(Xf(e,_,_,0,0,i,a,v,i,k=[],d,C),C),i,C,d,a,t?k:C):Eo(y,_,_,_,[""],C,0,a,C)}}u=c=g=0,S=p=1,v=y="",d=l;break;case 58:d=1+wr(y),g=b;default:if(S<1){if(h==123)--S;else if(h==125&&S++==0&&dy()==125)continue}switch(y+=ti(h),h*S){case 38:p=c>0?1:(y+="\f",-1);break;case 44:if(f>0)break;a[u++]=(wr(y)-1)*p,p=1;break;case 64:qr()===45&&(y+=ka(pr())),m=qr(),c=d=wr(v=y+=yy(Co())),h++;break;case 45:b===45&&wr(y)==2&&(S=0)}}return o}function Xf(e,r,n,t,i,o,l,a,s,u,c,d){for(var m=i-1,g=i===0?o:[""],b=cy(g),S=0,x=0,p=0;S<t;++S)for(var f=0,h=wt(e,m+1,m=uy(x=l[S])),v=e;f<b;++f)(v=vh(x>0?g[f]+" "+h:Ls(h,/&\f/g,g[f])))&&(s[p++]=v);return gc(e,r,n,i===0?hh:a,s,u,c,d)}function wy(e,r,n,t){return gc(e,r,n,ph,ti(fy()),wt(e,2,-2),0,t)}function Kf(e,r,n,t,i){return gc(e,r,n,gh,wt(e,0,t),wt(e,t+1,-1),t,i)}function Ds(e,r){for(var n="",t=0;t<e.length;t++)n+=r(e[t],t,e,r)||"";return n}function _y(e,r,n,t){switch(e.type){case sy:if(e.children.length)break;case oy:case ly:case gh:return e.return=e.return||e.value;case ph:return"";case ay:return e.return=e.value+"{"+Ds(e.children,t)+"}";case hh:if(!wr(e.value=e.props.join(",")))return""}return wr(n=Ds(e.children,t))?e.return=e.value+"{"+n+"}":""}var Yf="data-ant-cssinjs-cache-path",bh="_FILE_STYLE__",kn,wh=!0;function Sy(){if(!kn&&(kn={},Fr())){var e=document.createElement("div");e.className=Yf,e.style.position="fixed",e.style.visibility="hidden",e.style.top="-9999px",document.body.appendChild(e);var r=getComputedStyle(e).content||"";r=r.replace(/^"/,"").replace(/"$/,""),r.split(";").forEach(function(i){var o=i.split(":"),l=H(o,2),a=l[0],s=l[1];kn[a]=s});var n=document.querySelector("style[".concat(Yf,"]"));if(n){var t;wh=!1,(t=n.parentNode)===null||t===void 0||t.removeChild(n)}document.body.removeChild(e)}}function ky(e){return Sy(),!!kn[e]}function xy(e){var r=kn[e],n=null;if(r&&Fr())if(wh)n=bh;else{var t=document.querySelector("style[".concat(mr,'="').concat(kn[e],'"]'));t?n=t.innerHTML:delete kn[e]}return[n,r]}var Cy="_skip_check_",_h="_multi_value_";function jo(e){var r=Ds(by(e),_y);return r.replace(/\{%%%\:[^;];}/g,";")}function Ey(e){return K(e)==="object"&&e&&(Cy in e||_h in e)}function qf(e,r,n){if(!r)return e;var t=".".concat(r),i=n==="low"?":where(".concat(t,")"):t,o=e.split(",").map(function(l){var a,s=l.trim().split(/\s+/),u=s[0]||"",c=((a=u.match(/^\w+/))===null||a===void 0?void 0:a[0])||"";return u="".concat(c).concat(i).concat(u.slice(c.length)),[u].concat(dn(s.slice(1))).join(" ")});return o.join(",")}var jy=function e(r){var n=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{},t=arguments.length>2&&arguments[2]!==void 0?arguments[2]:{root:!0,parentSelectors:[]},i=t.root,o=t.injectHash,l=t.parentSelectors,a=n.hashId,s=n.layer;n.path;var u=n.hashPriority,c=n.transformers,d=c===void 0?[]:c;n.linters;var m="",g={};function b(p){var f=p.getName(a);if(!g[f]){var h=e(p.style,n,{root:!1,parentSelectors:l}),v=H(h,1),k=v[0];g[f]="@keyframes ".concat(p.getName(a)).concat(k)}}function S(p){var f=arguments.length>1&&arguments[1]!==void 0?arguments[1]:[];return p.forEach(function(h){Array.isArray(h)?S(h,f):h&&f.push(h)}),f}var x=S(Array.isArray(r)?r:[r]);return x.forEach(function(p){var f=typeof p=="string"&&!i?{}:p;if(typeof f=="string")m+="".concat(f,`
+`);else if(f._keyframe)b(f);else{var h=d.reduce(function(v,k){var C;return(k==null||(C=k.visit)===null||C===void 0?void 0:C.call(k,v))||v},f);Object.keys(h).forEach(function(v){var k=h[v];if(K(k)==="object"&&k&&(v!=="animationName"||!k._keyframe)&&!Ey(k)){var C=!1,_=v.trim(),y=!1;(i||o)&&a?_.startsWith("@")?C=!0:_==="&"?_=qf("",a,u):_=qf(v,a,u):i&&!a&&(_==="&"||_==="")&&(_="",y=!0);var I=e(k,n,{root:y,injectHash:C,parentSelectors:[].concat(dn(l),[_])}),T=H(I,2),L=T[0],N=T[1];g=R(R({},g),N),m+="".concat(_).concat(L)}else{let D=function(F,B){var P=F.replace(/[A-Z]/g,function(U){return"-".concat(U.toLowerCase())}),O=B;!iy[F]&&typeof O=="number"&&O!==0&&(O="".concat(O,"px")),F==="animationName"&&B!==null&&B!==void 0&&B._keyframe&&(b(B),O=B.getName(a)),m+="".concat(P,":").concat(O,";")};var z,A=(z=k==null?void 0:k.value)!==null&&z!==void 0?z:k;K(k)==="object"&&k!==null&&k!==void 0&&k[_h]&&Array.isArray(A)?A.forEach(function(F){D(v,F)}):D(v,A)}})}}),i?s&&(m&&(m="@layer ".concat(s.name," {").concat(m,"}")),s.dependencies&&(g["@layer ".concat(s.name)]=s.dependencies.map(function(p){return"@layer ".concat(p,", ").concat(s.name,";")}).join(`
+`))):m="{".concat(m,"}"),[m,g]};function Sh(e,r){return Si("".concat(e.join("%")).concat(r))}function Py(){return null}var kh="style";function Us(e,r){var n=e.token,t=e.path,i=e.hashId,o=e.layer,l=e.nonce,a=e.clientOnly,s=e.order,u=s===void 0?0:s,c=w.useContext(Ni),d=c.autoClear;c.mock;var m=c.defaultCache,g=c.hashPriority,b=c.container,S=c.ssrInline,x=c.transformers,p=c.linters,f=c.cache,h=c.layer,v=n._tokenKey,k=[v];h&&k.push("layer"),k.push.apply(k,dn(t));var C=$s,_=hc(kh,k,function(){var N=k.join("|");if(ky(N)){var z=xy(N),A=H(z,2),D=A[0],F=A[1];if(D)return[D,v,F,{},a,u]}var B=r(),P=jy(B,{hashId:i,hashPriority:g,layer:h?o:void 0,path:t.join("-"),transformers:x,linters:p}),O=H(P,2),U=O[0],V=O[1],W=jo(U),ze=Sh(k,W);return[W,v,ze,V,a,u]},function(N,z){var A=H(N,3),D=A[2];(z||d)&&$s&&uh(D,{mark:mr,attachTo:b})},function(N){var z=H(N,4),A=z[0];z[1];var D=z[2],F=z[3];if(C&&A!==bh){var B={mark:mr,prepend:h?!1:"queue",attachTo:b,priority:u},P=typeof l=="function"?l():l;P&&(B.csp={nonce:P});var O=[],U=[];Object.keys(F).forEach(function(W){W.startsWith("@layer")?O.push(W):U.push(W)}),O.forEach(function(W){Sn(jo(F[W]),"_layer-".concat(W),R(R({},B),{},{prepend:!0}))});var V=Sn(A,D,B);V[Yr]=f.instanceId,V.setAttribute(bt,v),U.forEach(function(W){Sn(jo(F[W]),"_effect-".concat(W),B)})}}),y=H(_,3),I=y[0],T=y[1],L=y[2];return function(N){var z;return!S||C||!m?z=w.createElement(Py,null):z=w.createElement("style",Tn({},$($({},bt,T),mr,L),{dangerouslySetInnerHTML:{__html:I}})),w.createElement(w.Fragment,null,z,N)}}var Ty=function(r,n,t){var i=H(r,6),o=i[0],l=i[1],a=i[2],s=i[3],u=i[4],c=i[5],d=t||{},m=d.plain;if(u)return null;var g=o,b={"data-rc-order":"prependQueue","data-rc-priority":"".concat(c)};return g=el(o,l,a,b,m),s&&Object.keys(s).forEach(function(S){if(!n[S]){n[S]=!0;var x=jo(s[S]),p=el(x,l,"_effect-".concat(S),b,m);S.startsWith("@layer")?g=p+g:g+=p}}),[c,a,g]},xh="cssVar",Iy=function(r,n){var t=r.key,i=r.prefix,o=r.unitless,l=r.ignore,a=r.token,s=r.scope,u=s===void 0?"":s,c=w.useContext(Ni),d=c.cache.instanceId,m=c.container,g=a._tokenKey,b=[].concat(dn(r.path),[t,u,g]),S=hc(xh,b,function(){var x=n(),p=fh(x,t,{prefix:i,unitless:o,ignore:l,scope:u}),f=H(p,2),h=f[0],v=f[1],k=Sh(b,v);return[h,v,k,t]},function(x){var p=H(x,3),f=p[2];$s&&uh(f,{mark:mr,attachTo:m})},function(x){var p=H(x,3),f=p[1],h=p[2];if(f){var v=Sn(f,h,{mark:mr,prepend:"queue",attachTo:m,priority:-999});v[Yr]=d,v.setAttribute(bt,t)}});return S},Oy=function(r,n,t){var i=H(r,4),o=i[1],l=i[2],a=i[3],s=t||{},u=s.plain;if(!o)return null;var c=-999,d={"data-rc-order":"prependQueue","data-rc-priority":"".concat(c)},m=el(o,a,l,d,u);return[c,l,m]};$($($({},kh,Ty),mh,ty),xh,Oy);function Bn(e){return e.notSplit=!0,e}Bn(["borderTop","borderBottom"]),Bn(["borderTop"]),Bn(["borderBottom"]),Bn(["borderLeft","borderRight"]),Bn(["borderLeft"]),Bn(["borderRight"]);var vc=w.createContext({});function My(e){return ih(e)||eh(e)||fc(e)||oh()}function Fs(e,r){for(var n=e,t=0;t<r.length;t+=1){if(n==null)return;n=n[r[t]]}return n}function Ch(e,r,n,t){if(!r.length)return n;var i=My(r),o=i[0],l=i.slice(1),a;return!e&&typeof o=="number"?a=[]:Array.isArray(e)?a=dn(e):a=R({},e),t&&n===void 0&&l.length===1?delete a[o][l[0]]:a[o]=Ch(a[o],l,n,t),a}function xa(e,r,n){var t=arguments.length>3&&arguments[3]!==void 0?arguments[3]:!1;return r.length&&t&&n===void 0&&!Fs(e,r.slice(0,-1))?e:Ch(e,r,n,t)}function Ny(e){return K(e)==="object"&&e!==null&&Object.getPrototypeOf(e)===Object.prototype}function Zf(e){return Array.isArray(e)?[]:{}}var Ry=typeof Reflect>"u"?Object.keys:Reflect.ownKeys;function zy(){for(var e=arguments.length,r=new Array(e),n=0;n<e;n++)r[n]=arguments[n];var t=Zf(r[0]);return r.forEach(function(i){function o(l,a){var s=new Set(a),u=Fs(i,l),c=Array.isArray(u);if(c||Ny(u)){if(!s.has(u)){s.add(u);var d=Fs(t,l);c?t=xa(t,l,[]):(!d||K(d)!=="object")&&(t=xa(t,l,Zf(u))),Ry(u).forEach(function(m){o([].concat(dn(l),[m]),s)})}}else t=xa(t,l,u)}o([])}),t}const $y=w.createContext({}),Ly=w.createContext(void 0),Be="${label} is not a valid ${type}",Al={Modal:{okText:"OK",cancelText:"Cancel",justOkText:"OK"},Form:{optional:"(optional)",defaultValidateMessages:{default:"Field validation error for ${label}",required:"Please enter ${label}",enum:"${label} must be one of [${enum}]",whitespace:"${label} cannot be a blank character",date:{format:"${label} date format is invalid",parse:"${label} cannot be converted to a date",invalid:"${label} is an invalid date"},types:{string:Be,method:Be,array:Be,object:Be,number:Be,date:Be,boolean:Be,integer:Be,float:Be,regexp:Be,email:Be,url:Be,hex:Be},string:{len:"${label} must be ${len} characters",min:"${label} must be at least ${min} characters",max:"${label} must be up to ${max} characters",range:"${label} must be between ${min}-${max} characters"},number:{len:"${label} must be equal to ${len}",min:"${label} must be minimum ${min}",max:"${label} must be maximum ${max}",range:"${label} must be between ${min}-${max}"},array:{len:"Must be ${len} ${label}",min:"At least ${min} ${label}",max:"At most ${max} ${label}",range:"The amount of ${label} must be between ${min}-${max}"},pattern:{mismatch:"${label} does not match the pattern ${pattern}"}}}};Object.assign({},Al.Modal);let Po=[];const Jf=()=>Po.reduce((e,r)=>Object.assign(Object.assign({},e),r),Al.Modal);function Ay(e){if(e){const r=Object.assign({},e);return Po.push(r),Jf(),()=>{Po=Po.filter(n=>n!==r),Jf()}}Object.assign({},Al.Modal)}const Eh=w.createContext(void 0),Dy="internalMark",Uy=e=>{const{locale:r={},children:n,_ANT_MARK__:t}=e;w.useEffect(()=>Ay(r==null?void 0:r.Modal),[r]);const i=w.useMemo(()=>Object.assign(Object.assign({},r),{exist:!0}),[r]);return w.createElement(Eh.Provider,{value:i},n)},jh={blue:"#1677FF",purple:"#722ED1",cyan:"#13C2C2",green:"#52C41A",magenta:"#EB2F96",pink:"#EB2F96",red:"#F5222D",orange:"#FA8C16",yellow:"#FADB14",volcano:"#FA541C",geekblue:"#2F54EB",gold:"#FAAD14",lime:"#A0D911"},xi=Object.assign(Object.assign({},jh),{colorPrimary:"#1677ff",colorSuccess:"#52c41a",colorWarning:"#faad14",colorError:"#ff4d4f",colorInfo:"#1677ff",colorLink:"",colorTextBase:"",colorBgBase:"",fontFamily:`-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+'Noto Color Emoji'`,fontFamilyCode:"'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",fontSize:14,lineWidth:1,lineType:"solid",motionUnit:.1,motionBase:0,motionEaseOutCirc:"cubic-bezier(0.08, 0.82, 0.17, 1)",motionEaseInOutCirc:"cubic-bezier(0.78, 0.14, 0.15, 0.86)",motionEaseOut:"cubic-bezier(0.215, 0.61, 0.355, 1)",motionEaseInOut:"cubic-bezier(0.645, 0.045, 0.355, 1)",motionEaseOutBack:"cubic-bezier(0.12, 0.4, 0.29, 1.46)",motionEaseInBack:"cubic-bezier(0.71, -0.46, 0.88, 0.6)",motionEaseInQuint:"cubic-bezier(0.755, 0.05, 0.855, 0.06)",motionEaseOutQuint:"cubic-bezier(0.23, 1, 0.32, 1)",borderRadius:6,sizeUnit:4,sizeStep:4,sizePopupArrow:16,controlHeight:32,zIndexBase:0,zIndexPopupBase:1e3,opacityImage:1,wireframe:!1,motion:!0}),pe=Math.round;function Ca(e,r){const n=e.replace(/^[^(]*\((.*)/,"$1").replace(/\).*/,"").match(/\d*\.?\d+%?/g)||[],t=n.map(i=>parseFloat(i));for(let i=0;i<3;i+=1)t[i]=r(t[i]||0,n[i]||"",i);return n[3]?t[3]=n[3].includes("%")?t[3]/100:t[3]:t[3]=1,t}const ed=(e,r,n)=>n===0?e:e/100;function Ft(e,r){const n=r||255;return e>n?n:e<0?0:e}class le{constructor(r){$(this,"isValid",!0),$(this,"r",0),$(this,"g",0),$(this,"b",0),$(this,"a",1),$(this,"_h",void 0),$(this,"_s",void 0),$(this,"_l",void 0),$(this,"_v",void 0),$(this,"_max",void 0),$(this,"_min",void 0),$(this,"_brightness",void 0);function n(i){return i[0]in r&&i[1]in r&&i[2]in r}if(r)if(typeof r=="string"){let o=function(l){return i.startsWith(l)};var t=o;const i=r.trim();/^#?[A-F\d]{3,8}$/i.test(i)?this.fromHexString(i):o("rgb")?this.fromRgbString(i):o("hsl")?this.fromHslString(i):(o("hsv")||o("hsb"))&&this.fromHsvString(i)}else if(r instanceof le)this.r=r.r,this.g=r.g,this.b=r.b,this.a=r.a,this._h=r._h,this._s=r._s,this._l=r._l,this._v=r._v;else if(n("rgb"))this.r=Ft(r.r),this.g=Ft(r.g),this.b=Ft(r.b),this.a=typeof r.a=="number"?Ft(r.a,1):1;else if(n("hsl"))this.fromHsl(r);else if(n("hsv"))this.fromHsv(r);else throw new Error("@ant-design/fast-color: unsupported input "+JSON.stringify(r))}setR(r){return this._sc("r",r)}setG(r){return this._sc("g",r)}setB(r){return this._sc("b",r)}setA(r){return this._sc("a",r,1)}setHue(r){const n=this.toHsv();return n.h=r,this._c(n)}getLuminance(){function r(o){const l=o/255;return l<=.03928?l/12.92:Math.pow((l+.055)/1.055,2.4)}const n=r(this.r),t=r(this.g),i=r(this.b);return .2126*n+.7152*t+.0722*i}getHue(){if(typeof this._h>"u"){const r=this.getMax()-this.getMin();r===0?this._h=0:this._h=pe(60*(this.r===this.getMax()?(this.g-this.b)/r+(this.g<this.b?6:0):this.g===this.getMax()?(this.b-this.r)/r+2:(this.r-this.g)/r+4))}return this._h}getSaturation(){if(typeof this._s>"u"){const r=this.getMax()-this.getMin();r===0?this._s=0:this._s=r/this.getMax()}return this._s}getLightness(){return typeof this._l>"u"&&(this._l=(this.getMax()+this.getMin())/510),this._l}getValue(){return typeof this._v>"u"&&(this._v=this.getMax()/255),this._v}getBrightness(){return typeof this._brightness>"u"&&(this._brightness=(this.r*299+this.g*587+this.b*114)/1e3),this._brightness}darken(r=10){const n=this.getHue(),t=this.getSaturation();let i=this.getLightness()-r/100;return i<0&&(i=0),this._c({h:n,s:t,l:i,a:this.a})}lighten(r=10){const n=this.getHue(),t=this.getSaturation();let i=this.getLightness()+r/100;return i>1&&(i=1),this._c({h:n,s:t,l:i,a:this.a})}mix(r,n=50){const t=this._c(r),i=n/100,o=a=>(t[a]-this[a])*i+this[a],l={r:pe(o("r")),g:pe(o("g")),b:pe(o("b")),a:pe(o("a")*100)/100};return this._c(l)}tint(r=10){return this.mix({r:255,g:255,b:255,a:1},r)}shade(r=10){return this.mix({r:0,g:0,b:0,a:1},r)}onBackground(r){const n=this._c(r),t=this.a+n.a*(1-this.a),i=o=>pe((this[o]*this.a+n[o]*n.a*(1-this.a))/t);return this._c({r:i("r"),g:i("g"),b:i("b"),a:t})}isDark(){return this.getBrightness()<128}isLight(){return this.getBrightness()>=128}equals(r){return this.r===r.r&&this.g===r.g&&this.b===r.b&&this.a===r.a}clone(){return this._c(this)}toHexString(){let r="#";const n=(this.r||0).toString(16);r+=n.length===2?n:"0"+n;const t=(this.g||0).toString(16);r+=t.length===2?t:"0"+t;const i=(this.b||0).toString(16);if(r+=i.length===2?i:"0"+i,typeof this.a=="number"&&this.a>=0&&this.a<1){const o=pe(this.a*255).toString(16);r+=o.length===2?o:"0"+o}return r}toHsl(){return{h:this.getHue(),s:this.getSaturation(),l:this.getLightness(),a:this.a}}toHslString(){const r=this.getHue(),n=pe(this.getSaturation()*100),t=pe(this.getLightness()*100);return this.a!==1?`hsla(${r},${n}%,${t}%,${this.a})`:`hsl(${r},${n}%,${t}%)`}toHsv(){return{h:this.getHue(),s:this.getSaturation(),v:this.getValue(),a:this.a}}toRgb(){return{r:this.r,g:this.g,b:this.b,a:this.a}}toRgbString(){return this.a!==1?`rgba(${this.r},${this.g},${this.b},${this.a})`:`rgb(${this.r},${this.g},${this.b})`}toString(){return this.toRgbString()}_sc(r,n,t){const i=this.clone();return i[r]=Ft(n,t),i}_c(r){return new this.constructor(r)}getMax(){return typeof this._max>"u"&&(this._max=Math.max(this.r,this.g,this.b)),this._max}getMin(){return typeof this._min>"u"&&(this._min=Math.min(this.r,this.g,this.b)),this._min}fromHexString(r){const n=r.replace("#","");function t(i,o){return parseInt(n[i]+n[o||i],16)}n.length<6?(this.r=t(0),this.g=t(1),this.b=t(2),this.a=n[3]?t(3)/255:1):(this.r=t(0,1),this.g=t(2,3),this.b=t(4,5),this.a=n[6]?t(6,7)/255:1)}fromHsl({h:r,s:n,l:t,a:i}){if(this._h=r%360,this._s=n,this._l=t,this.a=typeof i=="number"?i:1,n<=0){const m=pe(t*255);this.r=m,this.g=m,this.b=m}let o=0,l=0,a=0;const s=r/60,u=(1-Math.abs(2*t-1))*n,c=u*(1-Math.abs(s%2-1));s>=0&&s<1?(o=u,l=c):s>=1&&s<2?(o=c,l=u):s>=2&&s<3?(l=u,a=c):s>=3&&s<4?(l=c,a=u):s>=4&&s<5?(o=c,a=u):s>=5&&s<6&&(o=u,a=c);const d=t-u/2;this.r=pe((o+d)*255),this.g=pe((l+d)*255),this.b=pe((a+d)*255)}fromHsv({h:r,s:n,v:t,a:i}){this._h=r%360,this._s=n,this._v=t,this.a=typeof i=="number"?i:1;const o=pe(t*255);if(this.r=o,this.g=o,this.b=o,n<=0)return;const l=r/60,a=Math.floor(l),s=l-a,u=pe(t*(1-n)*255),c=pe(t*(1-n*s)*255),d=pe(t*(1-n*(1-s))*255);switch(a){case 0:this.g=d,this.b=u;break;case 1:this.r=c,this.b=u;break;case 2:this.r=u,this.b=d;break;case 3:this.r=u,this.g=c;break;case 4:this.r=d,this.g=u;break;case 5:default:this.g=u,this.b=c;break}}fromHsvString(r){const n=Ca(r,ed);this.fromHsv({h:n[0],s:n[1],v:n[2],a:n[3]})}fromHslString(r){const n=Ca(r,ed);this.fromHsl({h:n[0],s:n[1],l:n[2],a:n[3]})}fromRgbString(r){const n=Ca(r,(t,i)=>i.includes("%")?pe(t/100*255):t);this.r=n[0],this.g=n[1],this.b=n[2],this.a=n[3]}}var oo=2,rd=.16,Fy=.05,Hy=.05,By=.15,Ph=5,Th=4,Vy=[{index:7,amount:15},{index:6,amount:25},{index:5,amount:30},{index:5,amount:45},{index:5,amount:65},{index:5,amount:85},{index:4,amount:90},{index:3,amount:95},{index:2,amount:97},{index:1,amount:98}];function nd(e,r,n){var t;return Math.round(e.h)>=60&&Math.round(e.h)<=240?t=n?Math.round(e.h)-oo*r:Math.round(e.h)+oo*r:t=n?Math.round(e.h)+oo*r:Math.round(e.h)-oo*r,t<0?t+=360:t>=360&&(t-=360),t}function td(e,r,n){if(e.h===0&&e.s===0)return e.s;var t;return n?t=e.s-rd*r:r===Th?t=e.s+rd:t=e.s+Fy*r,t>1&&(t=1),n&&r===Ph&&t>.1&&(t=.1),t<.06&&(t=.06),Math.round(t*100)/100}function id(e,r,n){var t;return n?t=e.v+Hy*r:t=e.v-By*r,t=Math.max(0,Math.min(1,t)),Math.round(t*100)/100}function Ci(e){for(var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{},n=[],t=new le(e),i=t.toHsv(),o=Ph;o>0;o-=1){var l=new le({h:nd(i,o,!0),s:td(i,o,!0),v:id(i,o,!0)});n.push(l)}n.push(t);for(var a=1;a<=Th;a+=1){var s=new le({h:nd(i,a),s:td(i,a),v:id(i,a)});n.push(s)}return r.theme==="dark"?Vy.map(function(u){var c=u.index,d=u.amount;return new le(r.backgroundColor||"#141414").mix(n[c],d).toHexString()}):n.map(function(u){return u.toHexString()})}var Ea={red:"#F5222D",volcano:"#FA541C",orange:"#FA8C16",gold:"#FAAD14",yellow:"#FADB14",lime:"#A0D911",green:"#52C41A",cyan:"#13C2C2",blue:"#1677FF",geekblue:"#2F54EB",purple:"#722ED1",magenta:"#EB2F96",grey:"#666666"},Hs=["#fff1f0","#ffccc7","#ffa39e","#ff7875","#ff4d4f","#f5222d","#cf1322","#a8071a","#820014","#5c0011"];Hs.primary=Hs[5];var Bs=["#fff2e8","#ffd8bf","#ffbb96","#ff9c6e","#ff7a45","#fa541c","#d4380d","#ad2102","#871400","#610b00"];Bs.primary=Bs[5];var Vs=["#fff7e6","#ffe7ba","#ffd591","#ffc069","#ffa940","#fa8c16","#d46b08","#ad4e00","#873800","#612500"];Vs.primary=Vs[5];var Ws=["#fffbe6","#fff1b8","#ffe58f","#ffd666","#ffc53d","#faad14","#d48806","#ad6800","#874d00","#613400"];Ws.primary=Ws[5];var Gs=["#feffe6","#ffffb8","#fffb8f","#fff566","#ffec3d","#fadb14","#d4b106","#ad8b00","#876800","#614700"];Gs.primary=Gs[5];var Qs=["#fcffe6","#f4ffb8","#eaff8f","#d3f261","#bae637","#a0d911","#7cb305","#5b8c00","#3f6600","#254000"];Qs.primary=Qs[5];var Xs=["#f6ffed","#d9f7be","#b7eb8f","#95de64","#73d13d","#52c41a","#389e0d","#237804","#135200","#092b00"];Xs.primary=Xs[5];var Ks=["#e6fffb","#b5f5ec","#87e8de","#5cdbd3","#36cfc9","#13c2c2","#08979c","#006d75","#00474f","#002329"];Ks.primary=Ks[5];var rl=["#e6f4ff","#bae0ff","#91caff","#69b1ff","#4096ff","#1677ff","#0958d9","#003eb3","#002c8c","#001d66"];rl.primary=rl[5];var Ys=["#f0f5ff","#d6e4ff","#adc6ff","#85a5ff","#597ef7","#2f54eb","#1d39c4","#10239e","#061178","#030852"];Ys.primary=Ys[5];var qs=["#f9f0ff","#efdbff","#d3adf7","#b37feb","#9254de","#722ed1","#531dab","#391085","#22075e","#120338"];qs.primary=qs[5];var Zs=["#fff0f6","#ffd6e7","#ffadd2","#ff85c0","#f759ab","#eb2f96","#c41d7f","#9e1068","#780650","#520339"];Zs.primary=Zs[5];var Js=["#a6a6a6","#999999","#8c8c8c","#808080","#737373","#666666","#404040","#1a1a1a","#000000","#000000"];Js.primary=Js[5];var ja={red:Hs,volcano:Bs,orange:Vs,gold:Ws,yellow:Gs,lime:Qs,green:Xs,cyan:Ks,blue:rl,geekblue:Ys,purple:qs,magenta:Zs,grey:Js};function Wy(e,{generateColorPalettes:r,generateNeutralColorPalettes:n}){const{colorSuccess:t,colorWarning:i,colorError:o,colorInfo:l,colorPrimary:a,colorBgBase:s,colorTextBase:u}=e,c=r(a),d=r(t),m=r(i),g=r(o),b=r(l),S=n(s,u),x=e.colorLink||e.colorInfo,p=r(x),f=new le(g[1]).mix(new le(g[3]),50).toHexString();return Object.assign(Object.assign({},S),{colorPrimaryBg:c[1],colorPrimaryBgHover:c[2],colorPrimaryBorder:c[3],colorPrimaryBorderHover:c[4],colorPrimaryHover:c[5],colorPrimary:c[6],colorPrimaryActive:c[7],colorPrimaryTextHover:c[8],colorPrimaryText:c[9],colorPrimaryTextActive:c[10],colorSuccessBg:d[1],colorSuccessBgHover:d[2],colorSuccessBorder:d[3],colorSuccessBorderHover:d[4],colorSuccessHover:d[4],colorSuccess:d[6],colorSuccessActive:d[7],colorSuccessTextHover:d[8],colorSuccessText:d[9],colorSuccessTextActive:d[10],colorErrorBg:g[1],colorErrorBgHover:g[2],colorErrorBgFilledHover:f,colorErrorBgActive:g[3],colorErrorBorder:g[3],colorErrorBorderHover:g[4],colorErrorHover:g[5],colorError:g[6],colorErrorActive:g[7],colorErrorTextHover:g[8],colorErrorText:g[9],colorErrorTextActive:g[10],colorWarningBg:m[1],colorWarningBgHover:m[2],colorWarningBorder:m[3],colorWarningBorderHover:m[4],colorWarningHover:m[4],colorWarning:m[6],colorWarningActive:m[7],colorWarningTextHover:m[8],colorWarningText:m[9],colorWarningTextActive:m[10],colorInfoBg:b[1],colorInfoBgHover:b[2],colorInfoBorder:b[3],colorInfoBorderHover:b[4],colorInfoHover:b[4],colorInfo:b[6],colorInfoActive:b[7],colorInfoTextHover:b[8],colorInfoText:b[9],colorInfoTextActive:b[10],colorLinkHover:p[4],colorLink:p[6],colorLinkActive:p[7],colorBgMask:new le("#000").setA(.45).toRgbString(),colorWhite:"#fff"})}const Gy=e=>{let r=e,n=e,t=e,i=e;return e<6&&e>=5?r=e+1:e<16&&e>=6?r=e+2:e>=16&&(r=16),e<7&&e>=5?n=4:e<8&&e>=7?n=5:e<14&&e>=8?n=6:e<16&&e>=14?n=7:e>=16&&(n=8),e<6&&e>=2?t=1:e>=6&&(t=2),e>4&&e<8?i=4:e>=8&&(i=6),{borderRadius:e,borderRadiusXS:t,borderRadiusSM:n,borderRadiusLG:r,borderRadiusOuter:i}};function Qy(e){const{motionUnit:r,motionBase:n,borderRadius:t,lineWidth:i}=e;return Object.assign({motionDurationFast:`${(n+r).toFixed(1)}s`,motionDurationMid:`${(n+r*2).toFixed(1)}s`,motionDurationSlow:`${(n+r*3).toFixed(1)}s`,lineWidthBold:i+1},Gy(t))}const Xy=e=>{const{controlHeight:r}=e;return{controlHeightSM:r*.75,controlHeightXS:r*.5,controlHeightLG:r*1.25}};function Ky(e){return(e+8)/e}function Yy(e){const r=Array.from({length:10}).map((n,t)=>{const i=t-1,o=e*Math.pow(Math.E,i/5),l=t>1?Math.floor(o):Math.ceil(o);return Math.floor(l/2)*2});return r[1]=e,r.map(n=>({size:n,lineHeight:Ky(n)}))}const qy=e=>{const r=Yy(e),n=r.map(c=>c.size),t=r.map(c=>c.lineHeight),i=n[1],o=n[0],l=n[2],a=t[1],s=t[0],u=t[2];return{fontSizeSM:o,fontSize:i,fontSizeLG:l,fontSizeXL:n[3],fontSizeHeading1:n[6],fontSizeHeading2:n[5],fontSizeHeading3:n[4],fontSizeHeading4:n[3],fontSizeHeading5:n[2],lineHeight:a,lineHeightLG:u,lineHeightSM:s,fontHeight:Math.round(a*i),fontHeightLG:Math.round(u*l),fontHeightSM:Math.round(s*o),lineHeightHeading1:t[6],lineHeightHeading2:t[5],lineHeightHeading3:t[4],lineHeightHeading4:t[3],lineHeightHeading5:t[2]}};function Zy(e){const{sizeUnit:r,sizeStep:n}=e;return{sizeXXL:r*(n+8),sizeXL:r*(n+4),sizeLG:r*(n+2),sizeMD:r*(n+1),sizeMS:r*n,size:r*n,sizeSM:r*(n-1),sizeXS:r*(n-2),sizeXXS:r*(n-3)}}const qe=(e,r)=>new le(e).setA(r).toRgbString(),Ht=(e,r)=>new le(e).darken(r).toHexString(),Jy=e=>{const r=Ci(e);return{1:r[0],2:r[1],3:r[2],4:r[3],5:r[4],6:r[5],7:r[6],8:r[4],9:r[5],10:r[6]}},e3=(e,r)=>{const n=e||"#fff",t=r||"#000";return{colorBgBase:n,colorTextBase:t,colorText:qe(t,.88),colorTextSecondary:qe(t,.65),colorTextTertiary:qe(t,.45),colorTextQuaternary:qe(t,.25),colorFill:qe(t,.15),colorFillSecondary:qe(t,.06),colorFillTertiary:qe(t,.04),colorFillQuaternary:qe(t,.02),colorBgSolid:qe(t,1),colorBgSolidHover:qe(t,.75),colorBgSolidActive:qe(t,.95),colorBgLayout:Ht(n,4),colorBgContainer:Ht(n,0),colorBgElevated:Ht(n,0),colorBgSpotlight:qe(t,.85),colorBgBlur:"transparent",colorBorder:Ht(n,15),colorBorderSecondary:Ht(n,6)}};function r3(e){Ea.pink=Ea.magenta,ja.pink=ja.magenta;const r=Object.keys(jh).map(n=>{const t=e[n]===Ea[n]?ja[n]:Ci(e[n]);return Array.from({length:10},()=>1).reduce((i,o,l)=>(i[`${n}-${l+1}`]=t[l],i[`${n}${l+1}`]=t[l],i),{})}).reduce((n,t)=>(n=Object.assign(Object.assign({},n),t),n),{});return Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({},e),r),Wy(e,{generateColorPalettes:Jy,generateNeutralColorPalettes:e3})),qy(e.fontSize)),Zy(e)),Xy(e)),Qy(e))}const Ih=zs(r3),eu={token:xi,override:{override:xi},hashed:!0},Oh=_e.createContext(eu),nl="ant",yc="anticon",n3=(e,r)=>r||(e?`${nl}-${e}`:nl),xr=w.createContext({getPrefixCls:n3,iconPrefixCls:yc}),{Consumer:Ow}=xr,od={};function t3(e){const r=w.useContext(xr),{getPrefixCls:n,direction:t,getPopupContainer:i}=r,o=r[e];return Object.assign(Object.assign({classNames:od,styles:od},o),{getPrefixCls:n,direction:t,getPopupContainer:i})}const i3=`-ant-${Date.now()}-${Math.random()}`;function o3(e,r){const n={},t=(l,a)=>{let s=l.clone();return s=(a==null?void 0:a(s))||s,s.toRgbString()},i=(l,a)=>{const s=new le(l),u=Ci(s.toRgbString());n[`${a}-color`]=t(s),n[`${a}-color-disabled`]=u[1],n[`${a}-color-hover`]=u[4],n[`${a}-color-active`]=u[6],n[`${a}-color-outline`]=s.clone().setA(.2).toRgbString(),n[`${a}-color-deprecated-bg`]=u[0],n[`${a}-color-deprecated-border`]=u[2]};if(r.primaryColor){i(r.primaryColor,"primary");const l=new le(r.primaryColor),a=Ci(l.toRgbString());a.forEach((u,c)=>{n[`primary-${c+1}`]=u}),n["primary-color-deprecated-l-35"]=t(l,u=>u.lighten(35)),n["primary-color-deprecated-l-20"]=t(l,u=>u.lighten(20)),n["primary-color-deprecated-t-20"]=t(l,u=>u.tint(20)),n["primary-color-deprecated-t-50"]=t(l,u=>u.tint(50)),n["primary-color-deprecated-f-12"]=t(l,u=>u.setA(u.a*.12));const s=new le(a[0]);n["primary-color-active-deprecated-f-30"]=t(s,u=>u.setA(u.a*.3)),n["primary-color-active-deprecated-d-02"]=t(s,u=>u.darken(2))}return r.successColor&&i(r.successColor,"success"),r.warningColor&&i(r.warningColor,"warning"),r.errorColor&&i(r.errorColor,"error"),r.infoColor&&i(r.infoColor,"info"),`
+  :root {
+    ${Object.keys(n).map(l=>`--${e}-${l}: ${n[l]};`).join(`
+`)}
+  }
+  `.trim()}function l3(e,r){const n=o3(e,r);Fr()&&Sn(n,`${i3}-dynamic-theme`)}const tl=w.createContext(!1),a3=({children:e,disabled:r})=>{const n=w.useContext(tl);return w.createElement(tl.Provider,{value:r??n},e)},St=w.createContext(void 0),s3=({children:e,size:r})=>{const n=w.useContext(St);return w.createElement(St.Provider,{value:r||n},e)};function u3(){const e=w.useContext(tl),r=w.useContext(St);return{componentDisabled:e,componentSize:r}}var Mh=Ur(function e(){Dr(this,e)}),Nh="CALC_UNIT",c3=new RegExp(Nh,"g");function Pa(e){return typeof e=="number"?"".concat(e).concat(Nh):e}var f3=function(e){Nl(n,e);var r=Rl(n);function n(t,i){var o;Dr(this,n),o=r.call(this),$(_n(o),"result",""),$(_n(o),"unitlessCssVar",void 0),$(_n(o),"lowPriority",void 0);var l=K(t);return o.unitlessCssVar=i,t instanceof n?o.result="(".concat(t.result,")"):l==="number"?o.result=Pa(t):l==="string"&&(o.result=t),o}return Ur(n,[{key:"add",value:function(i){return i instanceof n?this.result="".concat(this.result," + ").concat(i.getResult()):(typeof i=="number"||typeof i=="string")&&(this.result="".concat(this.result," + ").concat(Pa(i))),this.lowPriority=!0,this}},{key:"sub",value:function(i){return i instanceof n?this.result="".concat(this.result," - ").concat(i.getResult()):(typeof i=="number"||typeof i=="string")&&(this.result="".concat(this.result," - ").concat(Pa(i))),this.lowPriority=!0,this}},{key:"mul",value:function(i){return this.lowPriority&&(this.result="(".concat(this.result,")")),i instanceof n?this.result="".concat(this.result," * ").concat(i.getResult(!0)):(typeof i=="number"||typeof i=="string")&&(this.result="".concat(this.result," * ").concat(i)),this.lowPriority=!1,this}},{key:"div",value:function(i){return this.lowPriority&&(this.result="(".concat(this.result,")")),i instanceof n?this.result="".concat(this.result," / ").concat(i.getResult(!0)):(typeof i=="number"||typeof i=="string")&&(this.result="".concat(this.result," / ").concat(i)),this.lowPriority=!1,this}},{key:"getResult",value:function(i){return this.lowPriority||i?"(".concat(this.result,")"):this.result}},{key:"equal",value:function(i){var o=this,l=i||{},a=l.unit,s=!0;return typeof a=="boolean"?s=a:Array.from(this.unitlessCssVar).some(function(u){return o.result.includes(u)})&&(s=!1),this.result=this.result.replace(c3,s?"px":""),typeof this.lowPriority<"u"?"calc(".concat(this.result,")"):this.result}}]),n}(Mh),d3=function(e){Nl(n,e);var r=Rl(n);function n(t){var i;return Dr(this,n),i=r.call(this),$(_n(i),"result",0),t instanceof n?i.result=t.result:typeof t=="number"&&(i.result=t),i}return Ur(n,[{key:"add",value:function(i){return i instanceof n?this.result+=i.result:typeof i=="number"&&(this.result+=i),this}},{key:"sub",value:function(i){return i instanceof n?this.result-=i.result:typeof i=="number"&&(this.result-=i),this}},{key:"mul",value:function(i){return i instanceof n?this.result*=i.result:typeof i=="number"&&(this.result*=i),this}},{key:"div",value:function(i){return i instanceof n?this.result/=i.result:typeof i=="number"&&(this.result/=i),this}},{key:"equal",value:function(){return this.result}}]),n}(Mh),m3=function(r,n){var t=r==="css"?f3:d3;return function(i){return new t(i,n)}},ld=function(r,n){return"".concat([n,r.replace(/([A-Z]+)([A-Z][a-z]+)/g,"$1-$2").replace(/([a-z])([A-Z])/g,"$1-$2")].filter(Boolean).join("-"))};function kt(e){var r=w.useRef();r.current=e;var n=w.useCallback(function(){for(var t,i=arguments.length,o=new Array(i),l=0;l<i;l++)o[l]=arguments[l];return(t=r.current)===null||t===void 0?void 0:t.call.apply(t,[r].concat(o))},[]);return n}function Ei(e){var r=w.useRef(!1),n=w.useState(e),t=H(n,2),i=t[0],o=t[1];w.useEffect(function(){return r.current=!1,function(){r.current=!0}},[]);function l(a,s){s&&r.current||o(a)}return[i,l]}function Ta(e){return e!==void 0}function Rh(e,r){var n=r||{},t=n.defaultValue,i=n.value,o=n.onChange,l=n.postState,a=Ei(function(){return Ta(i)?i:Ta(t)?typeof t=="function"?t():t:e}),s=H(a,2),u=s[0],c=s[1],d=i!==void 0?i:u,m=l?l(d):d,g=kt(o),b=Ei([d]),S=H(b,2),x=S[0],p=S[1];Gf(function(){var h=x[0];u!==h&&g(u,h)},[x]),Gf(function(){Ta(i)||c(i)},[i]);var f=kt(function(h,v){c(h,v),p([d],v)});return[m,f]}function ad(e,r,n,t){var i=R({},r[e]);if(t!=null&&t.deprecatedTokens){var o=t.deprecatedTokens;o.forEach(function(a){var s=H(a,2),u=s[0],c=s[1];if(i!=null&&i[u]||i!=null&&i[c]){var d;(d=i[c])!==null&&d!==void 0||(i[c]=i==null?void 0:i[u])}})}var l=R(R({},n),i);return Object.keys(l).forEach(function(a){l[a]===r[a]&&delete l[a]}),l}var zh=typeof CSSINJS_STATISTIC<"u",ru=!0;function Dl(){for(var e=arguments.length,r=new Array(e),n=0;n<e;n++)r[n]=arguments[n];if(!zh)return Object.assign.apply(Object,[{}].concat(r));ru=!1;var t={};return r.forEach(function(i){if(K(i)==="object"){var o=Object.keys(i);o.forEach(function(l){Object.defineProperty(t,l,{configurable:!0,enumerable:!0,get:function(){return i[l]}})})}}),ru=!0,t}var sd={};function p3(){}var h3=function(r){var n,t=r,i=p3;return zh&&typeof Proxy<"u"&&(n=new Set,t=new Proxy(r,{get:function(l,a){if(ru){var s;(s=n)===null||s===void 0||s.add(a)}return l[a]}}),i=function(l,a){var s;sd[l]={global:Array.from(n),component:R(R({},(s=sd[l])===null||s===void 0?void 0:s.component),a)}}),{token:t,keys:n,flush:i}};function ud(e,r,n){if(typeof n=="function"){var t;return n(Dl(r,(t=r[e])!==null&&t!==void 0?t:{}))}return n??{}}function g3(e){return e==="js"?{max:Math.max,min:Math.min}:{max:function(){for(var n=arguments.length,t=new Array(n),i=0;i<n;i++)t[i]=arguments[i];return"max(".concat(t.map(function(o){return ge(o)}).join(","),")")},min:function(){for(var n=arguments.length,t=new Array(n),i=0;i<n;i++)t[i]=arguments[i];return"min(".concat(t.map(function(o){return ge(o)}).join(","),")")}}}var v3=1e3*60*10,y3=function(){function e(){Dr(this,e),$(this,"map",new Map),$(this,"objectIDMap",new WeakMap),$(this,"nextID",0),$(this,"lastAccessBeat",new Map),$(this,"accessBeat",0)}return Ur(e,[{key:"set",value:function(n,t){this.clear();var i=this.getCompositeKey(n);this.map.set(i,t),this.lastAccessBeat.set(i,Date.now())}},{key:"get",value:function(n){var t=this.getCompositeKey(n),i=this.map.get(t);return this.lastAccessBeat.set(t,Date.now()),this.accessBeat+=1,i}},{key:"getCompositeKey",value:function(n){var t=this,i=n.map(function(o){return o&&K(o)==="object"?"obj_".concat(t.getObjectID(o)):"".concat(K(o),"_").concat(o)});return i.join("|")}},{key:"getObjectID",value:function(n){if(this.objectIDMap.has(n))return this.objectIDMap.get(n);var t=this.nextID;return this.objectIDMap.set(n,t),this.nextID+=1,t}},{key:"clear",value:function(){var n=this;if(this.accessBeat>1e4){var t=Date.now();this.lastAccessBeat.forEach(function(i,o){t-i>v3&&(n.map.delete(o),n.lastAccessBeat.delete(o))}),this.accessBeat=0}}}]),e}(),cd=new y3;function b3(e,r){return _e.useMemo(function(){var n=cd.get(r);if(n)return n;var t=e();return cd.set(r,t),t},r)}var w3=function(){return{}};function _3(e){var r=e.useCSP,n=r===void 0?w3:r,t=e.useToken,i=e.usePrefix,o=e.getResetStyles,l=e.getCommonStyle,a=e.getCompUnitless;function s(m,g,b,S){var x=Array.isArray(m)?m[0]:m;function p(y){return"".concat(String(x)).concat(y.slice(0,1).toUpperCase()).concat(y.slice(1))}var f=(S==null?void 0:S.unitless)||{},h=typeof a=="function"?a(m):{},v=R(R({},h),{},$({},p("zIndexPopup"),!0));Object.keys(f).forEach(function(y){v[p(y)]=f[y]});var k=R(R({},S),{},{unitless:v,prefixToken:p}),C=c(m,g,b,k),_=u(x,b,k);return function(y){var I=arguments.length>1&&arguments[1]!==void 0?arguments[1]:y,T=C(y,I),L=H(T,2),N=L[1],z=_(I),A=H(z,2),D=A[0],F=A[1];return[D,N,F]}}function u(m,g,b){var S=b.unitless,x=b.injectStyle,p=x===void 0?!0:x,f=b.prefixToken,h=b.ignore,v=function(_){var y=_.rootCls,I=_.cssVar,T=I===void 0?{}:I,L=t(),N=L.realToken;return Iy({path:[m],prefix:T.prefix,key:T.key,unitless:S,ignore:h,token:N,scope:y},function(){var z=ud(m,N,g),A=ad(m,N,z,{deprecatedTokens:b==null?void 0:b.deprecatedTokens});return Object.keys(z).forEach(function(D){A[f(D)]=A[D],delete A[D]}),A}),null},k=function(_){var y=t(),I=y.cssVar;return[function(T){return p&&I?_e.createElement(_e.Fragment,null,_e.createElement(v,{rootCls:_,cssVar:I,component:m}),T):T},I==null?void 0:I.key]};return k}function c(m,g,b){var S=arguments.length>3&&arguments[3]!==void 0?arguments[3]:{},x=Array.isArray(m)?m:[m,m],p=H(x,1),f=p[0],h=x.join("-"),v=e.layer||{name:"antd"};return function(k){var C=arguments.length>1&&arguments[1]!==void 0?arguments[1]:k,_=t(),y=_.theme,I=_.realToken,T=_.hashId,L=_.token,N=_.cssVar,z=i(),A=z.rootPrefixCls,D=z.iconPrefixCls,F=n(),B=N?"css":"js",P=b3(function(){var ie=new Set;return N&&Object.keys(S.unitless||{}).forEach(function(He){ie.add(xo(He,N.prefix)),ie.add(xo(He,ld(f,N.prefix)))}),m3(B,ie)},[B,f,N==null?void 0:N.prefix]),O=g3(B),U=O.max,V=O.min,W={theme:y,token:L,hashId:T,nonce:function(){return F.nonce},clientOnly:S.clientOnly,layer:v,order:S.order||-999};typeof o=="function"&&Us(R(R({},W),{},{clientOnly:!1,path:["Shared",A]}),function(){return o(L,{prefix:{rootPrefixCls:A,iconPrefixCls:D},csp:F})});var ze=Us(R(R({},W),{},{path:[h,k,D]}),function(){if(S.injectStyle===!1)return[];var ie=h3(L),He=ie.token,$e=ie.flush,xe=ud(f,I,b),It=".".concat(k),Rn=ad(f,I,xe,{deprecatedTokens:S.deprecatedTokens});N&&xe&&K(xe)==="object"&&Object.keys(xe).forEach(function(Ln){xe[Ln]="var(".concat(xo(Ln,ld(f,N.prefix)),")")});var zn=Dl(He,{componentCls:It,prefixCls:k,iconCls:".".concat(D),antCls:".".concat(A),calc:P,max:U,min:V},N?xe:Rn),$n=g(zn,{hashId:T,prefixCls:k,rootPrefixCls:A,iconPrefixCls:D});$e(f,Rn);var Cr=typeof l=="function"?l(zn,k,C,S.resetFont):null;return[S.resetStyle===!1?null:Cr,$n]});return[ze,T]}}function d(m,g,b){var S=arguments.length>3&&arguments[3]!==void 0?arguments[3]:{},x=c(m,g,b,R({resetStyle:!1,order:-998},S)),p=function(h){var v=h.prefixCls,k=h.rootCls,C=k===void 0?v:k;return x(v,C),null};return p}return{genStyleHooks:s,genSubStyleComponent:d,genComponentStyleHook:c}}const S3="5.29.3";function Ia(e){return e>=0&&e<=255}function lo(e,r){const{r:n,g:t,b:i,a:o}=new le(e).toRgb();if(o<1)return e;const{r:l,g:a,b:s}=new le(r).toRgb();for(let u=.01;u<=1;u+=.01){const c=Math.round((n-l*(1-u))/u),d=Math.round((t-a*(1-u))/u),m=Math.round((i-s*(1-u))/u);if(Ia(c)&&Ia(d)&&Ia(m))return new le({r:c,g:d,b:m,a:Math.round(u*100)/100}).toRgbString()}return new le({r:n,g:t,b:i,a:1}).toRgbString()}var k3=function(e,r){var n={};for(var t in e)Object.prototype.hasOwnProperty.call(e,t)&&r.indexOf(t)<0&&(n[t]=e[t]);if(e!=null&&typeof Object.getOwnPropertySymbols=="function")for(var i=0,t=Object.getOwnPropertySymbols(e);i<t.length;i++)r.indexOf(t[i])<0&&Object.prototype.propertyIsEnumerable.call(e,t[i])&&(n[t[i]]=e[t[i]]);return n};function $h(e){const{override:r}=e,n=k3(e,["override"]),t=Object.assign({},r);Object.keys(xi).forEach(m=>{delete t[m]});const i=Object.assign(Object.assign({},n),t),o=480,l=576,a=768,s=992,u=1200,c=1600;if(i.motion===!1){const m="0s";i.motionDurationFast=m,i.motionDurationMid=m,i.motionDurationSlow=m}return Object.assign(Object.assign(Object.assign({},i),{colorFillContent:i.colorFillSecondary,colorFillContentHover:i.colorFill,colorFillAlter:i.colorFillQuaternary,colorBgContainerDisabled:i.colorFillTertiary,colorBorderBg:i.colorBgContainer,colorSplit:lo(i.colorBorderSecondary,i.colorBgContainer),colorTextPlaceholder:i.colorTextQuaternary,colorTextDisabled:i.colorTextQuaternary,colorTextHeading:i.colorText,colorTextLabel:i.colorTextSecondary,colorTextDescription:i.colorTextTertiary,colorTextLightSolid:i.colorWhite,colorHighlight:i.colorError,colorBgTextHover:i.colorFillSecondary,colorBgTextActive:i.colorFill,colorIcon:i.colorTextTertiary,colorIconHover:i.colorText,colorErrorOutline:lo(i.colorErrorBg,i.colorBgContainer),colorWarningOutline:lo(i.colorWarningBg,i.colorBgContainer),fontSizeIcon:i.fontSizeSM,lineWidthFocus:i.lineWidth*3,lineWidth:i.lineWidth,controlOutlineWidth:i.lineWidth*2,controlInteractiveSize:i.controlHeight/2,controlItemBgHover:i.colorFillTertiary,controlItemBgActive:i.colorPrimaryBg,controlItemBgActiveHover:i.colorPrimaryBgHover,controlItemBgActiveDisabled:i.colorFill,controlTmpOutline:i.colorFillQuaternary,controlOutline:lo(i.colorPrimaryBg,i.colorBgContainer),lineType:i.lineType,borderRadius:i.borderRadius,borderRadiusXS:i.borderRadiusXS,borderRadiusSM:i.borderRadiusSM,borderRadiusLG:i.borderRadiusLG,fontWeightStrong:600,opacityLoading:.65,linkDecoration:"none",linkHoverDecoration:"none",linkFocusDecoration:"none",controlPaddingHorizontal:12,controlPaddingHorizontalSM:8,paddingXXS:i.sizeXXS,paddingXS:i.sizeXS,paddingSM:i.sizeSM,padding:i.size,paddingMD:i.sizeMD,paddingLG:i.sizeLG,paddingXL:i.sizeXL,paddingContentHorizontalLG:i.sizeLG,paddingContentVerticalLG:i.sizeMS,paddingContentHorizontal:i.sizeMS,paddingContentVertical:i.sizeSM,paddingContentHorizontalSM:i.size,paddingContentVerticalSM:i.sizeXS,marginXXS:i.sizeXXS,marginXS:i.sizeXS,marginSM:i.sizeSM,margin:i.size,marginMD:i.sizeMD,marginLG:i.sizeLG,marginXL:i.sizeXL,marginXXL:i.sizeXXL,boxShadow:`
+      0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 9px 28px 8px rgba(0, 0, 0, 0.05)
+    `,boxShadowSecondary:`
+      0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 9px 28px 8px rgba(0, 0, 0, 0.05)
+    `,boxShadowTertiary:`
+      0 1px 2px 0 rgba(0, 0, 0, 0.03),
+      0 1px 6px -1px rgba(0, 0, 0, 0.02),
+      0 2px 4px 0 rgba(0, 0, 0, 0.02)
+    `,screenXS:o,screenXSMin:o,screenXSMax:l-1,screenSM:l,screenSMMin:l,screenSMMax:a-1,screenMD:a,screenMDMin:a,screenMDMax:s-1,screenLG:s,screenLGMin:s,screenLGMax:u-1,screenXL:u,screenXLMin:u,screenXLMax:c-1,screenXXL:c,screenXXLMin:c,boxShadowPopoverArrow:"2px 2px 5px rgba(0, 0, 0, 0.05)",boxShadowCard:`
+      0 1px 2px -2px ${new le("rgba(0, 0, 0, 0.16)").toRgbString()},
+      0 3px 6px 0 ${new le("rgba(0, 0, 0, 0.12)").toRgbString()},
+      0 5px 12px 4px ${new le("rgba(0, 0, 0, 0.09)").toRgbString()}
+    `,boxShadowDrawerRight:`
+      -6px 0 16px 0 rgba(0, 0, 0, 0.08),
+      -3px 0 6px -4px rgba(0, 0, 0, 0.12),
+      -9px 0 28px 8px rgba(0, 0, 0, 0.05)
+    `,boxShadowDrawerLeft:`
+      6px 0 16px 0 rgba(0, 0, 0, 0.08),
+      3px 0 6px -4px rgba(0, 0, 0, 0.12),
+      9px 0 28px 8px rgba(0, 0, 0, 0.05)
+    `,boxShadowDrawerUp:`
+      0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 9px 28px 8px rgba(0, 0, 0, 0.05)
+    `,boxShadowDrawerDown:`
+      0 -6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 -3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 -9px 28px 8px rgba(0, 0, 0, 0.05)
+    `,boxShadowTabsOverflowLeft:"inset 10px 0 8px -8px rgba(0, 0, 0, 0.08)",boxShadowTabsOverflowRight:"inset -10px 0 8px -8px rgba(0, 0, 0, 0.08)",boxShadowTabsOverflowTop:"inset 0 10px 8px -8px rgba(0, 0, 0, 0.08)",boxShadowTabsOverflowBottom:"inset 0 -10px 8px -8px rgba(0, 0, 0, 0.08)"}),t)}var fd=function(e,r){var n={};for(var t in e)Object.prototype.hasOwnProperty.call(e,t)&&r.indexOf(t)<0&&(n[t]=e[t]);if(e!=null&&typeof Object.getOwnPropertySymbols=="function")for(var i=0,t=Object.getOwnPropertySymbols(e);i<t.length;i++)r.indexOf(t[i])<0&&Object.prototype.propertyIsEnumerable.call(e,t[i])&&(n[t[i]]=e[t[i]]);return n};const Lh={lineHeight:!0,lineHeightSM:!0,lineHeightLG:!0,lineHeightHeading1:!0,lineHeightHeading2:!0,lineHeightHeading3:!0,lineHeightHeading4:!0,lineHeightHeading5:!0,opacityLoading:!0,fontWeightStrong:!0,zIndexPopupBase:!0,zIndexBase:!0,opacityImage:!0},x3={motionBase:!0,motionUnit:!0},C3={screenXS:!0,screenXSMin:!0,screenXSMax:!0,screenSM:!0,screenSMMin:!0,screenSMMax:!0,screenMD:!0,screenMDMin:!0,screenMDMax:!0,screenLG:!0,screenLGMin:!0,screenLGMax:!0,screenXL:!0,screenXLMin:!0,screenXLMax:!0,screenXXL:!0,screenXXLMin:!0},Ah=(e,r,n)=>{const t=n.getDerivativeToken(e),{override:i}=r,o=fd(r,["override"]);let l=Object.assign(Object.assign({},t),{override:i});return l=$h(l),o&&Object.entries(o).forEach(([a,s])=>{const{theme:u}=s,c=fd(s,["theme"]);let d=c;u&&(d=Ah(Object.assign(Object.assign({},l),c),{override:c},u)),l[a]=d}),l};function Ul(){const{token:e,hashed:r,theme:n,override:t,cssVar:i}=_e.useContext(Oh),o=`${S3}-${r||""}`,l=n||Ih,[a,s,u]=ny(l,[xi,e],{salt:o,override:t,getComputedToken:Ah,formatToken:$h,cssVar:i&&{prefix:i.prefix,key:i.key,unitless:Lh,ignore:x3,preserve:C3}});return[l,u,r?s:"",a,i]}const Dh=(e,r=!1)=>({boxSizing:"border-box",margin:0,padding:0,color:e.colorText,fontSize:e.fontSize,lineHeight:e.lineHeight,listStyle:"none",fontFamily:r?"inherit":e.fontFamily}),E3=()=>({display:"inline-flex",alignItems:"center",color:"inherit",fontStyle:"normal",lineHeight:0,textAlign:"center",textTransform:"none",verticalAlign:"-0.125em",textRendering:"optimizeLegibility","-webkit-font-smoothing":"antialiased","-moz-osx-font-smoothing":"grayscale","> *":{lineHeight:1},svg:{display:"inline-block"}}),j3=e=>({a:{color:e.colorLink,textDecoration:e.linkDecoration,backgroundColor:"transparent",outline:"none",cursor:"pointer",transition:`color ${e.motionDurationSlow}`,"-webkit-text-decoration-skip":"objects","&:hover":{color:e.colorLinkHover},"&:active":{color:e.colorLinkActive},"&:active, &:hover":{textDecoration:e.linkHoverDecoration,outline:0},"&:focus":{textDecoration:e.linkFocusDecoration,outline:0},"&[disabled]":{color:e.colorTextDisabled,cursor:"not-allowed"}}}),P3=(e,r,n,t)=>{const i=`[class^="${r}"], [class*=" ${r}"]`,o=n?`.${n}`:i,l={boxSizing:"border-box","&::before, &::after":{boxSizing:"border-box"}};let a={};return t!==!1&&(a={fontFamily:e.fontFamily,fontSize:e.fontSize}),{[o]:Object.assign(Object.assign(Object.assign({},a),l),{[i]:l})}},T3=(e,r)=>({outline:`${ge(e.lineWidthFocus)} solid ${e.colorPrimaryBorder}`,outlineOffset:r??1,transition:"outline-offset 0s, outline 0s"}),I3=(e,r)=>({"&:focus-visible":T3(e,r)}),Uh=e=>({[`.${e}`]:Object.assign(Object.assign({},E3()),{[`.${e} .${e}-icon`]:{display:"block"}})}),{genStyleHooks:Fh,genComponentStyleHook:O3}=_3({usePrefix:()=>{const{getPrefixCls:e,iconPrefixCls:r}=w.useContext(xr);return{rootPrefixCls:e(),iconPrefixCls:r}},useToken:()=>{const[e,r,n,t,i]=Ul();return{theme:e,realToken:r,hashId:n,token:t,cssVar:i}},useCSP:()=>{const{csp:e}=w.useContext(xr);return e??{}},getResetStyles:(e,r)=>{var n;const t=j3(e);return[t,{"&":t},Uh((n=r==null?void 0:r.prefix.iconPrefixCls)!==null&&n!==void 0?n:yc)]},getCommonStyle:P3,getCompUnitless:()=>Lh}),M3=(e,r)=>{const[n,t]=Ul();return Us({token:t,hashId:"",path:["ant-design-icons",e],nonce:()=>r==null?void 0:r.nonce,layer:{name:"antd"}},()=>Uh(e))},N3=Object.assign({},vu),{useId:dd}=N3,R3=()=>"",z3=typeof dd>"u"?R3:dd;function $3(e,r,n){var t;const i=e||{},o=i.inherit===!1||!r?Object.assign(Object.assign({},eu),{hashed:(t=r==null?void 0:r.hashed)!==null&&t!==void 0?t:eu.hashed,cssVar:r==null?void 0:r.cssVar}):r,l=z3();return Qp(()=>{var a,s;if(!e)return r;const u=Object.assign({},o.components);Object.keys(e.components||{}).forEach(m=>{u[m]=Object.assign(Object.assign({},u[m]),e.components[m])});const c=`css-var-${l.replace(/:/g,"")}`,d=((a=i.cssVar)!==null&&a!==void 0?a:o.cssVar)&&Object.assign(Object.assign(Object.assign({prefix:n==null?void 0:n.prefixCls},typeof o.cssVar=="object"?o.cssVar:{}),typeof i.cssVar=="object"?i.cssVar:{}),{key:typeof i.cssVar=="object"&&((s=i.cssVar)===null||s===void 0?void 0:s.key)||c});return Object.assign(Object.assign(Object.assign({},o),i),{token:Object.assign(Object.assign({},o.token),i.token),components:u,cssVar:d})},[i,o],(a,s)=>a.some((u,c)=>{const d=s[c];return!N1(u,d,!0)}))}var L3=["children"],Hh=w.createContext({});function A3(e){var r=e.children,n=yt(e,L3);return w.createElement(Hh.Provider,{value:n},r)}var D3=function(e){Nl(n,e);var r=Rl(n);function n(){return Dr(this,n),r.apply(this,arguments)}return Ur(n,[{key:"render",value:function(){return this.props.children}}]),n}(w.Component);function U3(e){var r=w.useReducer(function(a){return a+1},0),n=H(r,2),t=n[1],i=w.useRef(e),o=kt(function(){return i.current}),l=kt(function(a){i.current=typeof a=="function"?a(i.current):a,t()});return[o,l]}var Br="none",ao="appear",so="enter",uo="leave",md="none",ur="prepare",nt="start",tt="active",bc="end",Bh="prepared";function pd(e,r){var n={};return n[e.toLowerCase()]=r.toLowerCase(),n["Webkit".concat(e)]="webkit".concat(r),n["Moz".concat(e)]="moz".concat(r),n["ms".concat(e)]="MS".concat(r),n["O".concat(e)]="o".concat(r.toLowerCase()),n}function F3(e,r){var n={animationend:pd("Animation","AnimationEnd"),transitionend:pd("Transition","TransitionEnd")};return e&&("AnimationEvent"in r||delete n.animationend.animation,"TransitionEvent"in r||delete n.transitionend.transition),n}var H3=F3(Fr(),typeof window<"u"?window:{}),Vh={};if(Fr()){var B3=document.createElement("div");Vh=B3.style}var co={};function Wh(e){if(co[e])return co[e];var r=H3[e];if(r)for(var n=Object.keys(r),t=n.length,i=0;i<t;i+=1){var o=n[i];if(Object.prototype.hasOwnProperty.call(r,o)&&o in Vh)return co[e]=r[o],co[e]}return""}var Gh=Wh("animationend"),Qh=Wh("transitionend"),Xh=!!(Gh&&Qh),hd=Gh||"animationend",gd=Qh||"transitionend";function vd(e,r){if(!e)return null;if(K(e)==="object"){var n=r.replace(/-\w/g,function(t){return t[1].toUpperCase()});return e[n]}return"".concat(e,"-").concat(r)}const V3=function(e){var r=w.useRef();function n(i){i&&(i.removeEventListener(gd,e),i.removeEventListener(hd,e))}function t(i){r.current&&r.current!==i&&n(r.current),i&&i!==r.current&&(i.addEventListener(gd,e),i.addEventListener(hd,e),r.current=i)}return w.useEffect(function(){return function(){n(r.current)}},[]),[t,n]};var Kh=Fr()?w.useLayoutEffect:w.useEffect;const W3=function(){var e=w.useRef(null);function r(){In.cancel(e.current)}function n(t){var i=arguments.length>1&&arguments[1]!==void 0?arguments[1]:2;r();var o=In(function(){i<=1?t({isCanceled:function(){return o!==e.current}}):n(t,i-1)});e.current=o}return w.useEffect(function(){return function(){r()}},[]),[n,r]};var G3=[ur,nt,tt,bc],Q3=[ur,Bh],Yh=!1,X3=!0;function qh(e){return e===tt||e===bc}const K3=function(e,r,n){var t=Ei(md),i=H(t,2),o=i[0],l=i[1],a=W3(),s=H(a,2),u=s[0],c=s[1];function d(){l(ur,!0)}var m=r?Q3:G3;return Kh(function(){if(o!==md&&o!==bc){var g=m.indexOf(o),b=m[g+1],S=n(o);S===Yh?l(b,!0):b&&u(function(x){function p(){x.isCanceled()||l(b,!0)}S===!0?p():Promise.resolve(S).then(p)})}},[e,o]),w.useEffect(function(){return function(){c()}},[]),[d,o]};function Y3(e,r,n,t){var i=t.motionEnter,o=i===void 0?!0:i,l=t.motionAppear,a=l===void 0?!0:l,s=t.motionLeave,u=s===void 0?!0:s,c=t.motionDeadline,d=t.motionLeaveImmediately,m=t.onAppearPrepare,g=t.onEnterPrepare,b=t.onLeavePrepare,S=t.onAppearStart,x=t.onEnterStart,p=t.onLeaveStart,f=t.onAppearActive,h=t.onEnterActive,v=t.onLeaveActive,k=t.onAppearEnd,C=t.onEnterEnd,_=t.onLeaveEnd,y=t.onVisibleChanged,I=Ei(),T=H(I,2),L=T[0],N=T[1],z=U3(Br),A=H(z,2),D=A[0],F=A[1],B=Ei(null),P=H(B,2),O=P[0],U=P[1],V=D(),W=w.useRef(!1),ze=w.useRef(null);function ie(){return n()}var He=w.useRef(!1);function $e(){F(Br),U(null,!0)}var xe=kt(function(Ce){var me=D();if(me!==Br){var Ye=ie();if(!(Ce&&!Ce.deadline&&Ce.target!==Ye)){var An=He.current,Dn;me===ao&&An?Dn=k==null?void 0:k(Ye,Ce):me===so&&An?Dn=C==null?void 0:C(Ye,Ce):me===uo&&An&&(Dn=_==null?void 0:_(Ye,Ce)),An&&Dn!==!1&&$e()}}}),It=V3(xe),Rn=H(It,1),zn=Rn[0],$n=function(me){switch(me){case ao:return $($($({},ur,m),nt,S),tt,f);case so:return $($($({},ur,g),nt,x),tt,h);case uo:return $($($({},ur,b),nt,p),tt,v);default:return{}}},Cr=w.useMemo(function(){return $n(V)},[V]),Ln=K3(V,!e,function(Ce){if(Ce===ur){var me=Cr[ur];return me?me(ie()):Yh}if(Er in Cr){var Ye;U(((Ye=Cr[Er])===null||Ye===void 0?void 0:Ye.call(Cr,ie(),null))||null)}return Er===tt&&V!==Br&&(zn(ie()),c>0&&(clearTimeout(ze.current),ze.current=setTimeout(function(){xe({deadline:!0})},c))),Er===Bh&&$e(),X3}),$i=H(Ln,2),Bl=$i[0],Er=$i[1],Vl=qh(Er);He.current=Vl;var Li=w.useRef(null);Kh(function(){if(!(W.current&&Li.current===r)){N(r);var Ce=W.current;W.current=!0;var me;!Ce&&r&&a&&(me=ao),Ce&&r&&o&&(me=so),(Ce&&!r&&u||!Ce&&d&&!r&&u)&&(me=uo);var Ye=$n(me);me&&(e||Ye[ur])?(F(me),Bl()):F(Br),Li.current=r}},[r]),w.useEffect(function(){(V===ao&&!a||V===so&&!o||V===uo&&!u)&&F(Br)},[a,o,u]),w.useEffect(function(){return function(){W.current=!1,clearTimeout(ze.current)}},[]);var Ot=w.useRef(!1);w.useEffect(function(){L&&(Ot.current=!0),L!==void 0&&V===Br&&((Ot.current||L)&&(y==null||y(L)),Ot.current=!0)},[L,V]);var Mt=O;return Cr[ur]&&Er===nt&&(Mt=R({transition:"none"},Mt)),[V,Er,Mt,L??r]}function q3(e){var r=e;K(e)==="object"&&(r=e.transitionSupport);function n(i,o){return!!(i.motionName&&r&&o!==!1)}var t=w.forwardRef(function(i,o){var l=i.visible,a=l===void 0?!0:l,s=i.removeOnLeave,u=s===void 0?!0:s,c=i.forceRender,d=i.children,m=i.motionName,g=i.leavedClassName,b=i.eventProps,S=w.useContext(Hh),x=S.motion,p=n(i,x),f=w.useRef(),h=w.useRef();function v(){try{return f.current instanceof HTMLElement?f.current:w1(h.current)}catch{return null}}var k=Y3(p,a,v,i),C=H(k,4),_=C[0],y=C[1],I=C[2],T=C[3],L=w.useRef(T);T&&(L.current=!0);var N=w.useCallback(function(P){f.current=P,Xp(o,P)},[o]),z,A=R(R({},b),{},{visible:a});if(!d)z=null;else if(_===Br)T?z=d(R({},A),N):!u&&L.current&&g?z=d(R(R({},A),{},{className:g}),N):c||!u&&!g?z=d(R(R({},A),{},{style:{display:"none"}}),N):z=null;else{var D;y===ur?D="prepare":qh(y)?D="active":y===nt&&(D="start");var F=vd(m,"".concat(_,"-").concat(D));z=d(R(R({},A),{},{className:Nn(vd(m,_),$($({},F,F&&D),m,typeof m=="string")),style:I}),N)}if(w.isValidElement(z)&&Yp(z)){var B=Zp(z);B||(z=w.cloneElement(z,{ref:N}))}return w.createElement(D3,{ref:h},z)});return t.displayName="CSSMotion",t}const Zh=q3(Xh);var nu="add",tu="keep",iu="remove",Oa="removed";function Z3(e){var r;return e&&K(e)==="object"&&"key"in e?r=e:r={key:e},R(R({},r),{},{key:String(r.key)})}function ou(){var e=arguments.length>0&&arguments[0]!==void 0?arguments[0]:[];return e.map(Z3)}function J3(){var e=arguments.length>0&&arguments[0]!==void 0?arguments[0]:[],r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:[],n=[],t=0,i=r.length,o=ou(e),l=ou(r);o.forEach(function(u){for(var c=!1,d=t;d<i;d+=1){var m=l[d];if(m.key===u.key){t<d&&(n=n.concat(l.slice(t,d).map(function(g){return R(R({},g),{},{status:nu})})),t=d),n.push(R(R({},m),{},{status:tu})),t+=1,c=!0;break}}c||n.push(R(R({},u),{},{status:iu}))}),t<i&&(n=n.concat(l.slice(t).map(function(u){return R(R({},u),{},{status:nu})})));var a={};n.forEach(function(u){var c=u.key;a[c]=(a[c]||0)+1});var s=Object.keys(a).filter(function(u){return a[u]>1});return s.forEach(function(u){n=n.filter(function(c){var d=c.key,m=c.status;return d!==u||m!==iu}),n.forEach(function(c){c.key===u&&(c.status=tu)})}),n}var eb=["component","children","onVisibleChanged","onAllRemoved"],rb=["status"],nb=["eventProps","visible","children","motionName","motionAppear","motionEnter","motionLeave","motionLeaveImmediately","motionDeadline","removeOnLeave","leavedClassName","onAppearPrepare","onAppearStart","onAppearActive","onAppearEnd","onEnterStart","onEnterActive","onEnterEnd","onLeaveStart","onLeaveActive","onLeaveEnd"];function tb(e){var r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:Zh,n=function(t){Nl(o,t);var i=Rl(o);function o(){var l;Dr(this,o);for(var a=arguments.length,s=new Array(a),u=0;u<a;u++)s[u]=arguments[u];return l=i.call.apply(i,[this].concat(s)),$(_n(l),"state",{keyEntities:[]}),$(_n(l),"removeKey",function(c){l.setState(function(d){var m=d.keyEntities.map(function(g){return g.key!==c?g:R(R({},g),{},{status:Oa})});return{keyEntities:m}},function(){var d=l.state.keyEntities,m=d.filter(function(g){var b=g.status;return b!==Oa}).length;m===0&&l.props.onAllRemoved&&l.props.onAllRemoved()})}),l}return Ur(o,[{key:"render",value:function(){var a=this,s=this.state.keyEntities,u=this.props,c=u.component,d=u.children,m=u.onVisibleChanged;u.onAllRemoved;var g=yt(u,eb),b=c||w.Fragment,S={};return nb.forEach(function(x){S[x]=g[x],delete g[x]}),delete g.keys,w.createElement(b,g,s.map(function(x,p){var f=x.status,h=yt(x,rb),v=f===nu||f===tu;return w.createElement(r,Tn({},S,{key:h.key,visible:v,eventProps:h,onVisibleChanged:function(C){m==null||m(C,{key:h.key}),C||a.removeKey(h.key)}}),function(k,C){return d(R(R({},k),{},{index:p}),C)})}))}}],[{key:"getDerivedStateFromProps",value:function(a,s){var u=a.keys,c=s.keyEntities,d=ou(u),m=J3(c,d);return{keyEntities:m.filter(function(g){var b=c.find(function(S){var x=S.key;return g.key===x});return!(b&&b.status===Oa&&g.status===iu)})}}}]),o}(w.Component);return $(n,"defaultProps",{component:"div"}),n}tb(Xh);const yd=w.createContext(!0);function ib(e){const r=w.useContext(yd),{children:n}=e,[,t]=Ul(),{motion:i}=t,o=w.useRef(!1);return o.current||(o.current=r!==i),o.current?w.createElement(yd.Provider,{value:i},w.createElement(A3,{motion:i},n)):n}const ob=()=>null;var lb=function(e,r){var n={};for(var t in e)Object.prototype.hasOwnProperty.call(e,t)&&r.indexOf(t)<0&&(n[t]=e[t]);if(e!=null&&typeof Object.getOwnPropertySymbols=="function")for(var i=0,t=Object.getOwnPropertySymbols(e);i<t.length;i++)r.indexOf(t[i])<0&&Object.prototype.propertyIsEnumerable.call(e,t[i])&&(n[t[i]]=e[t[i]]);return n};const ab=["getTargetContainer","getPopupContainer","renderEmpty","input","pagination","form","select","button"];let Jh;function sb(){return Jh||nl}function ub(e){return Object.keys(e).some(r=>r.endsWith("Color"))}const cb=e=>{const{prefixCls:r,iconPrefixCls:n,theme:t,holderRender:i}=e;r!==void 0&&(Jh=r),t&&ub(t)&&l3(sb(),t)},fb=e=>{const{children:r,csp:n,autoInsertSpaceInButton:t,alert:i,anchor:o,form:l,locale:a,componentSize:s,direction:u,space:c,splitter:d,virtual:m,dropdownMatchSelectWidth:g,popupMatchSelectWidth:b,popupOverflow:S,legacyLocale:x,parentContext:p,iconPrefixCls:f,theme:h,componentDisabled:v,segmented:k,statistic:C,spin:_,calendar:y,carousel:I,cascader:T,collapse:L,typography:N,checkbox:z,descriptions:A,divider:D,drawer:F,skeleton:B,steps:P,image:O,layout:U,list:V,mentions:W,modal:ze,progress:ie,result:He,slider:$e,breadcrumb:xe,menu:It,pagination:Rn,input:zn,textArea:$n,empty:Cr,badge:Ln,radio:$i,rate:Bl,switch:Er,transfer:Vl,avatar:Li,message:Ot,tag:Mt,table:Ce,card:me,tabs:Ye,timeline:An,timePicker:Dn,upload:d0,notification:m0,tree:p0,colorPicker:h0,datePicker:g0,rangePicker:v0,flex:y0,wave:b0,dropdown:w0,warning:_0,tour:S0,tooltip:k0,popover:x0,popconfirm:C0,floatButton:E0,floatButtonGroup:j0,variant:P0,inputNumber:T0,treeSelect:I0}=e,_c=w.useCallback((ce,be)=>{const{prefixCls:gr}=e;if(be)return be;const vr=gr||p.getPrefixCls("");return ce?`${vr}-${ce}`:vr},[p.getPrefixCls,e.prefixCls]),Ai=f||p.iconPrefixCls||yc,Di=n||p.csp;M3(Ai,Di);const Wl=$3(h,p.theme,{prefixCls:_c("")}),Gl={csp:Di,autoInsertSpaceInButton:t,alert:i,anchor:o,locale:a||x,direction:u,space:c,splitter:d,virtual:m,popupMatchSelectWidth:b??g,popupOverflow:S,getPrefixCls:_c,iconPrefixCls:Ai,theme:Wl,segmented:k,statistic:C,spin:_,calendar:y,carousel:I,cascader:T,collapse:L,typography:N,checkbox:z,descriptions:A,divider:D,drawer:F,skeleton:B,steps:P,image:O,input:zn,textArea:$n,layout:U,list:V,mentions:W,modal:ze,progress:ie,result:He,slider:$e,breadcrumb:xe,menu:It,pagination:Rn,empty:Cr,badge:Ln,radio:$i,rate:Bl,switch:Er,transfer:Vl,avatar:Li,message:Ot,tag:Mt,table:Ce,card:me,tabs:Ye,timeline:An,timePicker:Dn,upload:d0,notification:m0,tree:p0,colorPicker:h0,datePicker:g0,rangePicker:v0,flex:y0,wave:b0,dropdown:w0,warning:_0,tour:S0,tooltip:k0,popover:x0,popconfirm:C0,floatButton:E0,floatButtonGroup:j0,variant:P0,inputNumber:T0,treeSelect:I0},Un=Object.assign({},p);Object.keys(Gl).forEach(ce=>{Gl[ce]!==void 0&&(Un[ce]=Gl[ce])}),ab.forEach(ce=>{const be=e[ce];be&&(Un[ce]=be)}),typeof t<"u"&&(Un.button=Object.assign({autoInsertSpace:t},Un.button));const Fn=Qp(()=>Un,Un,(ce,be)=>{const gr=Object.keys(ce),vr=Object.keys(be);return gr.length!==vr.length||gr.some(Ui=>ce[Ui]!==be[Ui])}),{layer:Sc}=w.useContext(Ni),O0=w.useMemo(()=>({prefixCls:Ai,csp:Di,layer:Sc?"antd":void 0}),[Ai,Di,Sc]);let ye=w.createElement(w.Fragment,null,w.createElement(ob,{dropdownMatchSelectWidth:g}),r);const kc=w.useMemo(()=>{var ce,be,gr,vr;return zy(((ce=Al.Form)===null||ce===void 0?void 0:ce.defaultValidateMessages)||{},((gr=(be=Fn.locale)===null||be===void 0?void 0:be.Form)===null||gr===void 0?void 0:gr.defaultValidateMessages)||{},((vr=Fn.form)===null||vr===void 0?void 0:vr.validateMessages)||{},(l==null?void 0:l.validateMessages)||{})},[Fn,l==null?void 0:l.validateMessages]);Object.keys(kc).length>0&&(ye=w.createElement(Ly.Provider,{value:kc},ye)),a&&(ye=w.createElement(Uy,{locale:a,_ANT_MARK__:Dy},ye)),ye=w.createElement(vc.Provider,{value:O0},ye),s&&(ye=w.createElement(s3,{size:s},ye)),ye=w.createElement(ib,null,ye);const M0=w.useMemo(()=>{const ce=Wl||{},{algorithm:be,token:gr,components:vr,cssVar:Ui}=ce,N0=lb(ce,["algorithm","token","components","cssVar"]),xc=be&&(!Array.isArray(be)||be.length>0)?zs(be):Ih,Ql={};Object.entries(vr||{}).forEach(([R0,z0])=>{const jr=Object.assign({},z0);"algorithm"in jr&&(jr.algorithm===!0?jr.theme=xc:(Array.isArray(jr.algorithm)||typeof jr.algorithm=="function")&&(jr.theme=zs(jr.algorithm)),delete jr.algorithm),Ql[R0]=jr});const Cc=Object.assign(Object.assign({},xi),gr);return Object.assign(Object.assign({},N0),{theme:xc,token:Cc,components:Ql,override:Object.assign({override:Cc},Ql),cssVar:Ui})},[Wl]);return h&&(ye=w.createElement(Oh.Provider,{value:M0},ye)),Fn.warning&&(ye=w.createElement($y.Provider,{value:Fn.warning},ye)),v!==void 0&&(ye=w.createElement(a3,{disabled:v},ye)),w.createElement(xr.Provider,{value:Fn},ye)},Ri=e=>{const r=w.useContext(xr),n=w.useContext(Eh);return w.createElement(fb,Object.assign({parentContext:r,legacyLocale:n},e))};Ri.ConfigContext=xr;Ri.SizeContext=St;Ri.config=cb;Ri.useConfig=u3;Object.defineProperty(Ri,"SizeContext",{get:()=>St});function e0(e){var r;return e==null||(r=e.getRootNode)===null||r===void 0?void 0:r.call(e)}function db(e){return e0(e)instanceof ShadowRoot}function mb(e){return db(e)?e0(e):null}function pb(e){return e.replace(/-(.)/g,function(r,n){return n.toUpperCase()})}function hb(e,r){Mi(e,"[@ant-design/icons] ".concat(r))}function bd(e){return K(e)==="object"&&typeof e.name=="string"&&typeof e.theme=="string"&&(K(e.icon)==="object"||typeof e.icon=="function")}function wd(){var e=arguments.length>0&&arguments[0]!==void 0?arguments[0]:{};return Object.keys(e).reduce(function(r,n){var t=e[n];switch(n){case"class":r.className=t,delete r.class;break;default:delete r[n],r[pb(n)]=t}return r},{})}function lu(e,r,n){return n?_e.createElement(e.tag,R(R({key:r},wd(e.attrs)),n),(e.children||[]).map(function(t,i){return lu(t,"".concat(r,"-").concat(e.tag,"-").concat(i))})):_e.createElement(e.tag,R({key:r},wd(e.attrs)),(e.children||[]).map(function(t,i){return lu(t,"".concat(r,"-").concat(e.tag,"-").concat(i))}))}function r0(e){return Ci(e)[0]}function n0(e){return e?Array.isArray(e)?e:[e]:[]}var gb=`
+.anticon {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.anticon > * {
+  line-height: 1;
+}
+
+.anticon svg {
+  display: inline-block;
+}
+
+.anticon::before {
+  display: none;
+}
+
+.anticon .anticon-icon {
+  display: block;
+}
+
+.anticon[tabindex] {
+  cursor: pointer;
+}
+
+.anticon-spin::before,
+.anticon-spin {
+  display: inline-block;
+  -webkit-animation: loadingCircle 1s infinite linear;
+  animation: loadingCircle 1s infinite linear;
+}
+
+@-webkit-keyframes loadingCircle {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loadingCircle {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+`,vb=function(r){var n=w.useContext(vc),t=n.csp,i=n.prefixCls,o=n.layer,l=gb;i&&(l=l.replace(/anticon/g,i)),o&&(l="@layer ".concat(o,` {
+`).concat(l,`
+}`)),w.useEffect(function(){var a=r.current,s=mb(a);Sn(l,"@ant-design-icons",{prepend:!o,csp:t,attachTo:s})},[])},yb=["icon","className","onClick","style","primaryColor","secondaryColor"],ii={primaryColor:"#333",secondaryColor:"#E6E6E6",calculated:!1};function bb(e){var r=e.primaryColor,n=e.secondaryColor;ii.primaryColor=r,ii.secondaryColor=n||r0(r),ii.calculated=!!n}function wb(){return R({},ii)}var Tt=function(r){var n=r.icon,t=r.className,i=r.onClick,o=r.style,l=r.primaryColor,a=r.secondaryColor,s=yt(r,yb),u=w.useRef(),c=ii;if(l&&(c={primaryColor:l,secondaryColor:a||r0(l)}),vb(u),hb(bd(n),"icon should be icon definiton, but got ".concat(n)),!bd(n))return null;var d=n;return d&&typeof d.icon=="function"&&(d=R(R({},d),{},{icon:d.icon(c.primaryColor,c.secondaryColor)})),lu(d.icon,"svg-".concat(d.name),R(R({className:t,onClick:i,style:o,"data-icon":d.name,width:"1em",height:"1em",fill:"currentColor","aria-hidden":"true"},s),{},{ref:u}))};Tt.displayName="IconReact";Tt.getTwoToneColors=wb;Tt.setTwoToneColors=bb;function t0(e){var r=n0(e),n=H(r,2),t=n[0],i=n[1];return Tt.setTwoToneColors({primaryColor:t,secondaryColor:i})}function _b(){var e=Tt.getTwoToneColors();return e.calculated?[e.primaryColor,e.secondaryColor]:e.primaryColor}var Sb=["className","icon","spin","rotate","tabIndex","onClick","twoToneColor"];t0(rl.primary);var Fl=w.forwardRef(function(e,r){var n=e.className,t=e.icon,i=e.spin,o=e.rotate,l=e.tabIndex,a=e.onClick,s=e.twoToneColor,u=yt(e,Sb),c=w.useContext(vc),d=c.prefixCls,m=d===void 0?"anticon":d,g=c.rootClassName,b=Nn(g,m,$($({},"".concat(m,"-").concat(t.name),!!t.name),"".concat(m,"-spin"),!!i||t.name==="loading"),n),S=l;S===void 0&&a&&(S=-1);var x=o?{msTransform:"rotate(".concat(o,"deg)"),transform:"rotate(".concat(o,"deg)")}:void 0,p=n0(s),f=H(p,2),h=f[0],v=f[1];return w.createElement("span",Tn({role:"img","aria-label":t.name},u,{ref:r,tabIndex:S,onClick:a,className:b}),w.createElement(Tt,{icon:t,primaryColor:h,secondaryColor:v,style:x}))});Fl.displayName="AntdIcon";Fl.getTwoToneColor=_b;Fl.setTwoToneColor=t0;const kb=(e,r,n)=>_e.isValidElement(e)?_e.cloneElement(e,typeof n=="function"?n(e.props||{}):n):r;function xb(e,r){return kb(e,e,r)}var _d={LEFT:37,RIGHT:39},Cb={icon:{tag:"svg",attrs:{viewBox:"0 0 1024 1024",focusable:"false"},children:[{tag:"path",attrs:{d:"M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"}}]},name:"loading",theme:"outlined"},Eb=function(r,n){return w.createElement(Fl,Tn({},r,{ref:n,icon:Cb}))},jb=w.forwardRef(Eb);function i0(e,r){this.v=e,this.k=r}function Pe(e,r,n,t){var i=Object.defineProperty;try{i({},"",{})}catch{i=0}Pe=function(l,a,s,u){function c(d,m){Pe(l,d,function(g){return this._invoke(d,m,g)})}a?i?i(l,a,{value:s,enumerable:!u,configurable:!u,writable:!u}):l[a]=s:(c("next",0),c("throw",1),c("return",2))},Pe(e,r,n,t)}function wc(){/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */var e,r,n=typeof Symbol=="function"?Symbol:{},t=n.iterator||"@@iterator",i=n.toStringTag||"@@toStringTag";function o(g,b,S,x){var p=b&&b.prototype instanceof a?b:a,f=Object.create(p.prototype);return Pe(f,"_invoke",function(h,v,k){var C,_,y,I=0,T=k||[],L=!1,N={p:0,n:0,v:e,a:z,f:z.bind(e,4),d:function(D,F){return C=D,_=0,y=e,N.n=F,l}};function z(A,D){for(_=A,y=D,r=0;!L&&I&&!F&&r<T.length;r++){var F,B=T[r],P=N.p,O=B[2];A>3?(F=O===D)&&(y=B[(_=B[4])?5:(_=3,3)],B[4]=B[5]=e):B[0]<=P&&((F=A<2&&P<B[1])?(_=0,N.v=D,N.n=B[1]):P<O&&(F=A<3||B[0]>D||D>O)&&(B[4]=A,B[5]=D,N.n=O,_=0))}if(F||A>1)return l;throw L=!0,D}return function(A,D,F){if(I>1)throw TypeError("Generator is already running");for(L&&D===1&&z(D,F),_=D,y=F;(r=_<2?e:y)||!L;){C||(_?_<3?(_>1&&(N.n=-1),z(_,y)):N.n=y:N.v=y);try{if(I=2,C){if(_||(A="next"),r=C[A]){if(!(r=r.call(C,y)))throw TypeError("iterator result is not an object");if(!r.done)return r;y=r.value,_<2&&(_=0)}else _===1&&(r=C.return)&&r.call(C),_<2&&(y=TypeError("The iterator does not provide a '"+A+"' method"),_=1);C=e}else if((r=(L=N.n<0)?y:h.call(v,N))!==l)break}catch(B){C=e,_=1,y=B}finally{I=1}}return{value:r,done:L}}}(g,S,x),!0),f}var l={};function a(){}function s(){}function u(){}r=Object.getPrototypeOf;var c=[][t]?r(r([][t]())):(Pe(r={},t,function(){return this}),r),d=u.prototype=a.prototype=Object.create(c);function m(g){return Object.setPrototypeOf?Object.setPrototypeOf(g,u):(g.__proto__=u,Pe(g,i,"GeneratorFunction")),g.prototype=Object.create(d),g}return s.prototype=u,Pe(d,"constructor",u),Pe(u,"constructor",s),s.displayName="GeneratorFunction",Pe(u,i,"GeneratorFunction"),Pe(d),Pe(d,i,"Generator"),Pe(d,t,function(){return this}),Pe(d,"toString",function(){return"[object Generator]"}),(wc=function(){return{w:o,m}})()}function il(e,r){function n(i,o,l,a){try{var s=e[i](o),u=s.value;return u instanceof i0?r.resolve(u.v).then(function(c){n("next",c,l,a)},function(c){n("throw",c,l,a)}):r.resolve(u).then(function(c){s.value=c,l(s)},function(c){return n("throw",c,l,a)})}catch(c){a(c)}}var t;this.next||(Pe(il.prototype),Pe(il.prototype,typeof Symbol=="function"&&Symbol.asyncIterator||"@asyncIterator",function(){return this})),Pe(this,"_invoke",function(i,o,l){function a(){return new r(function(s,u){n(i,l,s,u)})}return t=t?t.then(a,a):a()},!0)}function o0(e,r,n,t,i){return new il(wc().w(e,r,n,t),i||Promise)}function Pb(e,r,n,t,i){var o=o0(e,r,n,t,i);return o.next().then(function(l){return l.done?l.value:o.next()})}function Tb(e){var r=Object(e),n=[];for(var t in r)n.unshift(t);return function i(){for(;n.length;)if((t=n.pop())in r)return i.value=t,i.done=!1,i;return i.done=!0,i}}function Sd(e){if(e!=null){var r=e[typeof Symbol=="function"&&Symbol.iterator||"@@iterator"],n=0;if(r)return r.call(e);if(typeof e.next=="function")return e;if(!isNaN(e.length))return{next:function(){return e&&n>=e.length&&(e=void 0),{value:e&&e[n++],done:!e}}}}throw new TypeError(K(e)+" is not iterable")}function xt(){var e=wc(),r=e.m(xt),n=(Object.getPrototypeOf?Object.getPrototypeOf(r):r.__proto__).constructor;function t(l){var a=typeof l=="function"&&l.constructor;return!!a&&(a===n||(a.displayName||a.name)==="GeneratorFunction")}var i={throw:1,return:2,break:3,continue:3};function o(l){var a,s;return function(u){a||(a={stop:function(){return s(u.a,2)},catch:function(){return u.v},abrupt:function(d,m){return s(u.a,i[d],m)},delegateYield:function(d,m,g){return a.resultName=m,s(u.d,Sd(d),g)},finish:function(d){return s(u.f,d)}},s=function(d,m,g){u.p=a.prev,u.n=a.next;try{return d(m,g)}finally{a.next=u.n}}),a.resultName&&(a[a.resultName]=u.v,a.resultName=void 0),a.sent=u.v,a.next=u.n;try{return l.call(this,a)}finally{u.p=a.prev,u.n=a.next}}}return(xt=function(){return{wrap:function(s,u,c,d){return e.w(o(s),u,c,d&&d.reverse())},isGeneratorFunction:t,mark:e.m,awrap:function(s,u){return new i0(s,u)},AsyncIterator:il,async:function(s,u,c,d,m){return(t(u)?o0:Pb)(o(s),u,c,d,m)},keys:Tb,values:Sd}})()}function kd(e,r,n,t,i,o,l){try{var a=e[o](l),s=a.value}catch(u){return void n(u)}a.done?r(s):Promise.resolve(s).then(t,i)}function l0(e){return function(){var r=this,n=arguments;return new Promise(function(t,i){var o=e.apply(r,n);function l(s){kd(o,t,i,l,a,"next",s)}function a(s){kd(o,t,i,l,a,"throw",s)}l(void 0)})}}var zi=R({},a1),Ib=zi.version,Ma=zi.render,Ob=zi.unmountComponentAtNode,Hl;try{var Mb=Number((Ib||"").split(".")[0]);Mb>=18&&(Hl=zi.createRoot)}catch{}function xd(e){var r=zi.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;r&&K(r)==="object"&&(r.usingClientEntryPoint=e)}var ol="__rc_react_root__";function Nb(e,r){xd(!0);var n=r[ol]||Hl(r);xd(!1),n.render(e),r[ol]=n}function Rb(e,r){Ma==null||Ma(e,r)}function zb(e,r){if(Hl){Nb(e,r);return}Rb(e,r)}function $b(e){return au.apply(this,arguments)}function au(){return au=l0(xt().mark(function e(r){return xt().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.abrupt("return",Promise.resolve().then(function(){var i;(i=r[ol])===null||i===void 0||i.unmount(),delete r[ol]}));case 1:case"end":return t.stop()}},e)})),au.apply(this,arguments)}function Lb(e){Ob(e)}function Ab(e){return su.apply(this,arguments)}function su(){return su=l0(xt().mark(function e(r){return xt().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:if(Hl===void 0){t.next=2;break}return t.abrupt("return",$b(r));case 2:Lb(r);case 3:case"end":return t.stop()}},e)})),su.apply(this,arguments)}const Db=(e,r)=>(zb(e,r),()=>Ab(r));let Ub=Db;function Fb(e){return Ub}const Hb=function(e){if(!e)return!1;if(e instanceof Element){if(e.offsetParent)return!0;if(e.getBBox){var r=e.getBBox(),n=r.width,t=r.height;if(n||t)return!0}if(e.getBoundingClientRect){var i=e.getBoundingClientRect(),o=i.width,l=i.height;if(o||l)return!0}}return!1},Bb=e=>{const{componentCls:r,colorPrimary:n}=e;return{[r]:{position:"absolute",background:"transparent",pointerEvents:"none",boxSizing:"border-box",color:`var(--wave-color, ${n})`,boxShadow:"0 0 0 0 currentcolor",opacity:.2,"&.wave-motion-appear":{transition:[`box-shadow 0.4s ${e.motionEaseOutCirc}`,`opacity 2s ${e.motionEaseOutCirc}`].join(","),"&-active":{boxShadow:"0 0 0 6px currentcolor",opacity:0},"&.wave-quick":{transition:[`box-shadow ${e.motionDurationSlow} ${e.motionEaseInOut}`,`opacity ${e.motionDurationSlow} ${e.motionEaseInOut}`].join(",")}}}}},Vb=O3("Wave",Bb),a0=`${nl}-wave-target`;function Wb(e){return e&&e!=="#fff"&&e!=="#ffffff"&&e!=="rgb(255, 255, 255)"&&e!=="rgba(255, 255, 255, 1)"&&!/rgba\((?:\d*, ){3}0\)/.test(e)&&e!=="transparent"&&e!=="canvastext"}function Gb(e){var r;const{borderTopColor:n,borderColor:t,backgroundColor:i}=getComputedStyle(e);return(r=[n,t,i].find(Wb))!==null&&r!==void 0?r:null}function Na(e){return Number.isNaN(e)?0:e}const Qb=e=>{const{className:r,target:n,component:t,registerUnmount:i}=e,o=w.useRef(null),l=w.useRef(null);w.useEffect(()=>{l.current=i()},[]);const[a,s]=w.useState(null),[u,c]=w.useState([]),[d,m]=w.useState(0),[g,b]=w.useState(0),[S,x]=w.useState(0),[p,f]=w.useState(0),[h,v]=w.useState(!1),k={left:d,top:g,width:S,height:p,borderRadius:u.map(y=>`${y}px`).join(" ")};a&&(k["--wave-color"]=a);function C(){const y=getComputedStyle(n);s(Gb(n));const I=y.position==="static",{borderLeftWidth:T,borderTopWidth:L}=y;m(I?n.offsetLeft:Na(-Number.parseFloat(T))),b(I?n.offsetTop:Na(-Number.parseFloat(L))),x(n.offsetWidth),f(n.offsetHeight);const{borderTopLeftRadius:N,borderTopRightRadius:z,borderBottomLeftRadius:A,borderBottomRightRadius:D}=y;c([N,z,D,A].map(F=>Na(Number.parseFloat(F))))}if(w.useEffect(()=>{if(n){const y=In(()=>{C(),v(!0)});let I;return typeof ResizeObserver<"u"&&(I=new ResizeObserver(C),I.observe(n)),()=>{In.cancel(y),I==null||I.disconnect()}}},[n]),!h)return null;const _=(t==="Checkbox"||t==="Radio")&&(n==null?void 0:n.classList.contains(a0));return w.createElement(Zh,{visible:!0,motionAppear:!0,motionName:"wave-motion",motionDeadline:5e3,onAppearEnd:(y,I)=>{var T,L;if(I.deadline||I.propertyName==="opacity"){const N=(T=o.current)===null||T===void 0?void 0:T.parentElement;(L=l.current)===null||L===void 0||L.call(l).then(()=>{N==null||N.remove()})}return!1}},({className:y},I)=>w.createElement("div",{ref:Kp(o,I),className:Nn(r,y,{"wave-quick":_}),style:k}))},Xb=(e,r)=>{var n;const{component:t}=r;if(t==="Checkbox"&&!(!((n=e.querySelector("input"))===null||n===void 0)&&n.checked))return;const i=document.createElement("div");i.style.position="absolute",i.style.left="0px",i.style.top="0px",e==null||e.insertBefore(i,e==null?void 0:e.firstChild);const o=Fb();let l=null;function a(){return l}l=o(w.createElement(Qb,Object.assign({},r,{target:e,registerUnmount:a})),i)},Kb=(e,r,n)=>{const{wave:t}=w.useContext(xr),[,i,o]=Ul(),l=kt(u=>{const c=e.current;if(t!=null&&t.disabled||!c)return;const d=c.querySelector(`.${a0}`)||c,{showEffect:m}=t||{};(m||Xb)(d,{className:r,token:i,component:n,event:u,hashId:o})}),a=w.useRef(null);return u=>{In.cancel(a.current),a.current=In(()=>{l(u)})}},Yb=e=>{const{children:r,disabled:n,component:t}=e,{getPrefixCls:i}=w.useContext(xr),o=w.useRef(null),l=i("wave"),[,a]=Vb(l),s=Kb(o,Nn(l,a),t);if(_e.useEffect(()=>{const c=o.current;if(!c||c.nodeType!==window.Node.ELEMENT_NODE||n)return;const d=m=>{!Hb(m.target)||!c.getAttribute||c.getAttribute("disabled")||c.disabled||c.className.includes("disabled")&&!c.className.includes("disabled:")||c.getAttribute("aria-disabled")==="true"||c.className.includes("-leave")||s(m)};return c.addEventListener("click",d,!0),()=>{c.removeEventListener("click",d,!0)}},[n]),!_e.isValidElement(r))return r??null;const u=Yp(r)?Kp(Zp(r),o):o;return xb(r,{ref:u})},s0=e=>{const r=_e.useContext(St);return _e.useMemo(()=>e?typeof e=="string"?e??r:typeof e=="function"?e(r):r:r,[e,r])},qb=e=>{const{componentCls:r}=e;return{[r]:{"&-horizontal":{[`&${r}`]:{"&-sm":{marginBlock:e.marginXS},"&-md":{marginBlock:e.margin}}}}}},Zb=e=>{const{componentCls:r,sizePaddingEdgeHorizontal:n,colorSplit:t,lineWidth:i,textPaddingInline:o,orientationMargin:l,verticalMarginInline:a}=e;return{[r]:Object.assign(Object.assign({},Dh(e)),{borderBlockStart:`${ge(i)} solid ${t}`,"&-vertical":{position:"relative",top:"-0.06em",display:"inline-block",height:"0.9em",marginInline:a,marginBlock:0,verticalAlign:"middle",borderTop:0,borderInlineStart:`${ge(i)} solid ${t}`},"&-horizontal":{display:"flex",clear:"both",width:"100%",minWidth:"100%",margin:`${ge(e.marginLG)} 0`},[`&-horizontal${r}-with-text`]:{display:"flex",alignItems:"center",margin:`${ge(e.dividerHorizontalWithTextGutterMargin)} 0`,color:e.colorTextHeading,fontWeight:500,fontSize:e.fontSizeLG,whiteSpace:"nowrap",textAlign:"center",borderBlockStart:`0 ${t}`,"&::before, &::after":{position:"relative",width:"50%",borderBlockStart:`${ge(i)} solid transparent`,borderBlockStartColor:"inherit",borderBlockEnd:0,transform:"translateY(50%)",content:"''"}},[`&-horizontal${r}-with-text-start`]:{"&::before":{width:`calc(${l} * 100%)`},"&::after":{width:`calc(100% - ${l} * 100%)`}},[`&-horizontal${r}-with-text-end`]:{"&::before":{width:`calc(100% - ${l} * 100%)`},"&::after":{width:`calc(${l} * 100%)`}},[`${r}-inner-text`]:{display:"inline-block",paddingBlock:0,paddingInline:o},"&-dashed":{background:"none",borderColor:t,borderStyle:"dashed",borderWidth:`${ge(i)} 0 0`},[`&-horizontal${r}-with-text${r}-dashed`]:{"&::before, &::after":{borderStyle:"dashed none none"}},[`&-vertical${r}-dashed`]:{borderInlineStartWidth:i,borderInlineEnd:0,borderBlockStart:0,borderBlockEnd:0},"&-dotted":{background:"none",borderColor:t,borderStyle:"dotted",borderWidth:`${ge(i)} 0 0`},[`&-horizontal${r}-with-text${r}-dotted`]:{"&::before, &::after":{borderStyle:"dotted none none"}},[`&-vertical${r}-dotted`]:{borderInlineStartWidth:i,borderInlineEnd:0,borderBlockStart:0,borderBlockEnd:0},[`&-plain${r}-with-text`]:{color:e.colorText,fontWeight:"normal",fontSize:e.fontSize},[`&-horizontal${r}-with-text-start${r}-no-default-orientation-margin-start`]:{"&::before":{width:0},"&::after":{width:"100%"},[`${r}-inner-text`]:{paddingInlineStart:n}},[`&-horizontal${r}-with-text-end${r}-no-default-orientation-margin-end`]:{"&::before":{width:"100%"},"&::after":{width:0},[`${r}-inner-text`]:{paddingInlineEnd:n}}})}},Jb=e=>({textPaddingInline:"1em",orientationMargin:.05,verticalMarginInline:e.marginXS}),ew=Fh("Divider",e=>{const r=Dl(e,{dividerHorizontalWithTextGutterMargin:e.margin,sizePaddingEdgeHorizontal:0});return[Zb(r),qb(r)]},Jb,{unitless:{orientationMargin:!0}});var rw=function(e,r){var n={};for(var t in e)Object.prototype.hasOwnProperty.call(e,t)&&r.indexOf(t)<0&&(n[t]=e[t]);if(e!=null&&typeof Object.getOwnPropertySymbols=="function")for(var i=0,t=Object.getOwnPropertySymbols(e);i<t.length;i++)r.indexOf(t[i])<0&&Object.prototype.propertyIsEnumerable.call(e,t[i])&&(n[t[i]]=e[t[i]]);return n};const nw={small:"sm",middle:"md"},uu=e=>{const{getPrefixCls:r,direction:n,className:t,style:i}=t3("divider"),{prefixCls:o,type:l="horizontal",orientation:a="center",orientationMargin:s,className:u,rootClassName:c,children:d,dashed:m,variant:g="solid",plain:b,style:S,size:x}=e,p=rw(e,["prefixCls","type","orientation","orientationMargin","className","rootClassName","children","dashed","variant","plain","style","size"]),f=r("divider",o),[h,v,k]=ew(f),C=s0(x),_=nw[C],y=!!d,I=w.useMemo(()=>a==="left"?n==="rtl"?"end":"start":a==="right"?n==="rtl"?"start":"end":a,[n,a]),T=I==="start"&&s!=null,L=I==="end"&&s!=null,N=Nn(f,t,v,k,`${f}-${l}`,{[`${f}-with-text`]:y,[`${f}-with-text-${I}`]:y,[`${f}-dashed`]:!!m,[`${f}-${g}`]:g!=="solid",[`${f}-plain`]:!!b,[`${f}-rtl`]:n==="rtl",[`${f}-no-default-orientation-margin-start`]:T,[`${f}-no-default-orientation-margin-end`]:L,[`${f}-${_}`]:!!_},u,c),z=w.useMemo(()=>typeof s=="number"?s:/^\d+$/.test(s)?Number(s):s,[s]),A={marginInlineStart:T?z:void 0,marginInlineEnd:L?z:void 0};return h(w.createElement("div",Object.assign({className:N,style:Object.assign(Object.assign({},i),S)},p,{role:"separator"}),d&&l!=="vertical"&&w.createElement("span",{className:`${f}-inner-text`,style:A},d)))};var tw=["prefixCls","className","checked","defaultChecked","disabled","loadingIcon","checkedChildren","unCheckedChildren","onClick","onChange","onKeyDown"],u0=w.forwardRef(function(e,r){var n,t=e.prefixCls,i=t===void 0?"rc-switch":t,o=e.className,l=e.checked,a=e.defaultChecked,s=e.disabled,u=e.loadingIcon,c=e.checkedChildren,d=e.unCheckedChildren,m=e.onClick,g=e.onChange,b=e.onKeyDown,S=yt(e,tw),x=Rh(!1,{value:l,defaultValue:a}),p=H(x,2),f=p[0],h=p[1];function v(y,I){var T=f;return s||(T=y,h(T),g==null||g(T,I)),T}function k(y){y.which===_d.LEFT?v(!1,y):y.which===_d.RIGHT&&v(!0,y),b==null||b(y)}function C(y){var I=v(!f,y);m==null||m(I,y)}var _=Nn(i,o,(n={},$(n,"".concat(i,"-checked"),f),$(n,"".concat(i,"-disabled"),s),n));return w.createElement("button",Tn({},S,{type:"button",role:"switch","aria-checked":f,disabled:s,className:_,ref:r,onKeyDown:k,onClick:C}),u,w.createElement("span",{className:"".concat(i,"-inner")},w.createElement("span",{className:"".concat(i,"-inner-checked")},c),w.createElement("span",{className:"".concat(i,"-inner-unchecked")},d)))});u0.displayName="Switch";const iw=e=>{const{componentCls:r,trackHeightSM:n,trackPadding:t,trackMinWidthSM:i,innerMinMarginSM:o,innerMaxMarginSM:l,handleSizeSM:a,calc:s}=e,u=`${r}-inner`,c=ge(s(a).add(s(t).mul(2)).equal()),d=ge(s(l).mul(2).equal());return{[r]:{[`&${r}-small`]:{minWidth:i,height:n,lineHeight:ge(n),[`${r}-inner`]:{paddingInlineStart:l,paddingInlineEnd:o,[`${u}-checked, ${u}-unchecked`]:{minHeight:n},[`${u}-checked`]:{marginInlineStart:`calc(-100% + ${c} - ${d})`,marginInlineEnd:`calc(100% - ${c} + ${d})`},[`${u}-unchecked`]:{marginTop:s(n).mul(-1).equal(),marginInlineStart:0,marginInlineEnd:0}},[`${r}-handle`]:{width:a,height:a},[`${r}-loading-icon`]:{top:s(s(a).sub(e.switchLoadingIconSize)).div(2).equal(),fontSize:e.switchLoadingIconSize},[`&${r}-checked`]:{[`${r}-inner`]:{paddingInlineStart:o,paddingInlineEnd:l,[`${u}-checked`]:{marginInlineStart:0,marginInlineEnd:0},[`${u}-unchecked`]:{marginInlineStart:`calc(100% - ${c} + ${d})`,marginInlineEnd:`calc(-100% + ${c} - ${d})`}},[`${r}-handle`]:{insetInlineStart:`calc(100% - ${ge(s(a).add(t).equal())})`}},[`&:not(${r}-disabled):active`]:{[`&:not(${r}-checked) ${u}`]:{[`${u}-unchecked`]:{marginInlineStart:s(e.marginXXS).div(2).equal(),marginInlineEnd:s(e.marginXXS).mul(-1).div(2).equal()}},[`&${r}-checked ${u}`]:{[`${u}-checked`]:{marginInlineStart:s(e.marginXXS).mul(-1).div(2).equal(),marginInlineEnd:s(e.marginXXS).div(2).equal()}}}}}}},ow=e=>{const{componentCls:r,handleSize:n,calc:t}=e;return{[r]:{[`${r}-loading-icon${e.iconCls}`]:{position:"relative",top:t(t(n).sub(e.fontSize)).div(2).equal(),color:e.switchLoadingIconColor,verticalAlign:"top"},[`&${r}-checked ${r}-loading-icon`]:{color:e.switchColor}}}},lw=e=>{const{componentCls:r,trackPadding:n,handleBg:t,handleShadow:i,handleSize:o,calc:l}=e,a=`${r}-handle`;return{[r]:{[a]:{position:"absolute",top:n,insetInlineStart:n,width:o,height:o,transition:`all ${e.switchDuration} ease-in-out`,"&::before":{position:"absolute",top:0,insetInlineEnd:0,bottom:0,insetInlineStart:0,backgroundColor:t,borderRadius:l(o).div(2).equal(),boxShadow:i,transition:`all ${e.switchDuration} ease-in-out`,content:'""'}},[`&${r}-checked ${a}`]:{insetInlineStart:`calc(100% - ${ge(l(o).add(n).equal())})`},[`&:not(${r}-disabled):active`]:{[`${a}::before`]:{insetInlineEnd:e.switchHandleActiveInset,insetInlineStart:0},[`&${r}-checked ${a}::before`]:{insetInlineEnd:0,insetInlineStart:e.switchHandleActiveInset}}}}},aw=e=>{const{componentCls:r,trackHeight:n,trackPadding:t,innerMinMargin:i,innerMaxMargin:o,handleSize:l,calc:a}=e,s=`${r}-inner`,u=ge(a(l).add(a(t).mul(2)).equal()),c=ge(a(o).mul(2).equal());return{[r]:{[s]:{display:"block",overflow:"hidden",borderRadius:100,height:"100%",paddingInlineStart:o,paddingInlineEnd:i,transition:`padding-inline-start ${e.switchDuration} ease-in-out, padding-inline-end ${e.switchDuration} ease-in-out`,[`${s}-checked, ${s}-unchecked`]:{display:"block",color:e.colorTextLightSolid,fontSize:e.fontSizeSM,transition:`margin-inline-start ${e.switchDuration} ease-in-out, margin-inline-end ${e.switchDuration} ease-in-out`,pointerEvents:"none",minHeight:n},[`${s}-checked`]:{marginInlineStart:`calc(-100% + ${u} - ${c})`,marginInlineEnd:`calc(100% - ${u} + ${c})`},[`${s}-unchecked`]:{marginTop:a(n).mul(-1).equal(),marginInlineStart:0,marginInlineEnd:0}},[`&${r}-checked ${s}`]:{paddingInlineStart:i,paddingInlineEnd:o,[`${s}-checked`]:{marginInlineStart:0,marginInlineEnd:0},[`${s}-unchecked`]:{marginInlineStart:`calc(100% - ${u} + ${c})`,marginInlineEnd:`calc(-100% + ${u} - ${c})`}},[`&:not(${r}-disabled):active`]:{[`&:not(${r}-checked) ${s}`]:{[`${s}-unchecked`]:{marginInlineStart:a(t).mul(2).equal(),marginInlineEnd:a(t).mul(-1).mul(2).equal()}},[`&${r}-checked ${s}`]:{[`${s}-checked`]:{marginInlineStart:a(t).mul(-1).mul(2).equal(),marginInlineEnd:a(t).mul(2).equal()}}}}}},sw=e=>{const{componentCls:r,trackHeight:n,trackMinWidth:t}=e;return{[r]:Object.assign(Object.assign(Object.assign(Object.assign({},Dh(e)),{position:"relative",display:"inline-block",boxSizing:"border-box",minWidth:t,height:n,lineHeight:ge(n),verticalAlign:"middle",background:e.colorTextQuaternary,border:"0",borderRadius:100,cursor:"pointer",transition:`all ${e.motionDurationMid}`,userSelect:"none",[`&:hover:not(${r}-disabled)`]:{background:e.colorTextTertiary}}),I3(e)),{[`&${r}-checked`]:{background:e.switchColor,[`&:hover:not(${r}-disabled)`]:{background:e.colorPrimaryHover}},[`&${r}-loading, &${r}-disabled`]:{cursor:"not-allowed",opacity:e.switchDisabledOpacity,"*":{boxShadow:"none",cursor:"not-allowed"}},[`&${r}-rtl`]:{direction:"rtl"}})}},uw=e=>{const{fontSize:r,lineHeight:n,controlHeight:t,colorWhite:i}=e,o=r*n,l=t/2,a=2,s=o-a*2,u=l-a*2;return{trackHeight:o,trackHeightSM:l,trackMinWidth:s*2+a*4,trackMinWidthSM:u*2+a*2,trackPadding:a,handleBg:i,handleSize:s,handleSizeSM:u,handleShadow:`0 2px 4px 0 ${new le("#00230b").setA(.2).toRgbString()}`,innerMinMargin:s/2,innerMaxMargin:s+a+a*2,innerMinMarginSM:u/2,innerMaxMarginSM:u+a+a*2}},cw=Fh("Switch",e=>{const r=Dl(e,{switchDuration:e.motionDurationMid,switchColor:e.colorPrimary,switchDisabledOpacity:e.opacityLoading,switchLoadingIconSize:e.calc(e.fontSizeIcon).mul(.75).equal(),switchLoadingIconColor:`rgba(0, 0, 0, ${e.opacityLoading})`,switchHandleActiveInset:"-30%"});return[sw(r),aw(r),lw(r),ow(r),iw(r)]},uw);var fw=function(e,r){var n={};for(var t in e)Object.prototype.hasOwnProperty.call(e,t)&&r.indexOf(t)<0&&(n[t]=e[t]);if(e!=null&&typeof Object.getOwnPropertySymbols=="function")for(var i=0,t=Object.getOwnPropertySymbols(e);i<t.length;i++)r.indexOf(t[i])<0&&Object.prototype.propertyIsEnumerable.call(e,t[i])&&(n[t[i]]=e[t[i]]);return n};const dw=w.forwardRef((e,r)=>{const{prefixCls:n,size:t,disabled:i,loading:o,className:l,rootClassName:a,style:s,checked:u,value:c,defaultChecked:d,defaultValue:m,onChange:g}=e,b=fw(e,["prefixCls","size","disabled","loading","className","rootClassName","style","checked","value","defaultChecked","defaultValue","onChange"]),[S,x]=Rh(!1,{value:u??c,defaultValue:d??m}),{getPrefixCls:p,direction:f,switch:h}=w.useContext(xr),v=w.useContext(tl),k=(i??v)||o,C=p("switch",n),_=w.createElement("div",{className:`${C}-handle`},o&&w.createElement(jb,{className:`${C}-loading-icon`})),[y,I,T]=cw(C),L=s0(t),N=Nn(h==null?void 0:h.className,{[`${C}-small`]:L==="small",[`${C}-loading`]:o,[`${C}-rtl`]:f==="rtl"},l,a,I,T),z=Object.assign(Object.assign({},h==null?void 0:h.style),s),A=(...D)=>{x(D[0]),g==null||g.apply(void 0,D)};return y(w.createElement(Yb,{component:"Switch",disabled:k},w.createElement(u0,Object.assign({},b,{checked:S,onChange:A,prefixCls:C,className:N,style:z,disabled:k,ref:r,loadingIcon:_}))))}),c0=dw;c0.__ANT_SWITCH=!0;const Pr=[{title:"第一棒",time:"0:00",daifa:!0,creator:"涅妃さよこ",creatorUrl:"https://space.bilibili.com/391571817?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234229292124078089?spm_id_from=333.1035.0.0"}]},{title:"预热第一棒",time:"昨日8:09",daifa:!0,creator:"洛衫酒",creatorUrl:"https://space.bilibili.com/1450237327?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1233984272880107524?spm_id_from=333.1035.0.0"}]},{title:"特典第一棒",time:"1:06",daifa:!1,creator:"Chinnpi陈皮",creatorUrl:"https://space.bilibili.com/2175570?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234246300243853319?spm_id_from=333.1035.0.0"}]},{title:"第二棒",time:"0:15",daifa:!1,creator:"寿喜烧九原",creatorUrl:"https://space.bilibili.com/98998220?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234233157591498777?spm_id_from=333.1035.0.0"}]},{title:"特典第二棒",time:"8:09",daifa:!1,creator:"Emloste爱姆",creatorUrl:"https://www.bilibili.com/opus/1234355306501242903?spm_id_from=333.1035.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234355306501242903?spm_id_from=333.1035.0.0"}]},{title:"预热第三棒",time:"昨日11:03",daifa:!1,creator:"龙胆紫苑",creatorUrl:"https://space.bilibili.com/25279854?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234029844619067400?spm_id_from=333.1035.0.0"}]},{title:"第三棒",time:"0:30",daifa:!0,creator:"月城萧山",creatorUrl:"https://space.bilibili.com/1769007709?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234237117580705794?spm_id_from=333.1035.0.0"}]},{title:"特典第三棒",time:"10:08",daifa:!1,creator:"龙胆紫苑",creatorUrl:"https://space.bilibili.com/25279854?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234386090690871304?spm_id_from=333.1035.0.0"}]},{title:"特典第四棒",time:"11:03",daifa:!1,creator:"降旗原",creatorUrl:"https://space.bilibili.com/298461?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234400145953521673?spm_id_from=333.1035.0.0"}]},{title:"预热第四棒",time:"昨日11:21",daifa:!1,creator:"Emloste爱姆",creatorUrl:"https://space.bilibili.com/344474774/dynamic?spm_id_from=333.1035.list.card_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234033699335438370?spm_id_from=333.1035.0.0"}]},{title:"第四棒",time:"0:45",daifa:!1,creator:"EhExtra",creatorUrl:"https://space.bilibili.com/3546689814137335?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234245391817375747?spm_id_from=333.1035.0.0"}]},{title:"特典第五棒",time:"11:21",daifa:!1,creator:"可爱的小伞酱",creatorUrl:"https://space.bilibili.com/521619072?spm_id_from=333.788.upinfo.head.click",links:[{type:"动画mmd",label:"查看",url:"https://www.bilibili.com/video/BV1RwuV6DEgv/?spm_id_from=333.1035.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"第五棒",time:"1:00",daifa:!1,creator:"阿姮又迷路了",creatorUrl:"https://space.bilibili.com/630803813?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234244796997959684?spm_id_from=333.1035.0.0"}]},{title:"特典第六棒",time:"13:06",daifa:!1,creator:"PODTIX",creatorUrl:"https://space.bilibili.com/91798414?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234432096233062409?spm_id_from=333.1035.0.0"}]},{title:"第六棒",time:"1:15",daifa:!0,creator:"凌黎光",creatorUrl:"https://space.bilibili.com/14622436?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234248619495784469?spm_id_from=333.1035.0.0"}]},{title:"第七棒",time:"1:30",daifa:!1,creator:"时辰猫妖Times-up",creatorUrl:"https://space.bilibili.com/478209610?spm_id_from=333.788.upinfo.head.click",links:[{type:"音游谱",label:"查看",url:"https://www.bilibili.com/video/BV1AiuJ6XEpu/?spm_id_from=333.1035.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"特典第七棒",time:"20:04",daifa:!1,creator:"_申必人_",creatorUrl:"https://space.bilibili.com/287350918?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234539560590901249?spm_id_from=333.1035.0.0"}]},{title:"第八棒",time:"1:45",daifa:!1,creator:"祈风画梅",creatorUrl:"https://space.bilibili.com/482856211?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234256350433771526?spm_id_from=333.1035.0.0"}]},{title:"第九棒",time:"2:00",daifa:!1,creator:"龙胆紫苑",creatorUrl:"https://space.bilibili.com/25279854?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234260222374051847?spm_id_from=333.1035.0.0"}]},{title:"第十棒",time:"2:15",daifa:!1,creator:"Hai-Sei",creatorUrl:"https://space.bilibili.com/42554582?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234264081414750227?spm_id_from=333.1035.0.0"}]},{title:"第十一棒",time:"2:30",daifa:!1,creator:"小祺鸽鸽",creatorUrl:"https://space.bilibili.com/485555546",links:[{type:"cosplay",label:"查看",url:"https://www.bilibili.com/opus/1234268131532210198?spm_id_from=333.1387.0.0"}]},{title:"第十二棒",time:"2:45",daifa:!1,creator:"半份抹茶麻薯",creatorUrl:"https://space.bilibili.com/14067306?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234271885323141136?spm_id_from=333.1035.0.0"}]},{title:"第十三棒",time:"3:00",daifa:!0,creator:"chair_follow",creatorUrl:"https://space.bilibili.com/3546387952175923?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234325127913537536?spm_id_from=333.1387.0.0"}]},{title:"第十四棒",time:"3:15",daifa:!1,creator:"咲葬",creatorUrl:"https://space.bilibili.com/526118631?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234279558309478400?spm_id_from=333.1035.0.0"}]},{title:"第十五棒",time:"3:30",daifa:!1,creator:"宇佐见莲孑",creatorUrl:"https://space.bilibili.com/485777213?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234283408736124936?spm_id_from=333.1035.0.0"}]},{title:"第十六棒",time:"3:45",daifa:!1,creator:"jsr丶时遗",creatorUrl:"https://space.bilibili.com/522894957?spm_id_from=333.788.upinfo.head.click",links:[{type:"同人曲",label:"查看",url:"https://www.bilibili.com/video/BV1nWM26QEKK/?spm_id_from=333.1035.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"第十七棒",time:"4:00",daifa:!1,creator:"蔼石",creatorUrl:"https://space.bilibili.com/454955917?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234291137530822663?spm_id_from=333.1035.0.0"}]},{title:"第十八棒",time:"4:15",daifa:!1,creator:"可燃冰块",creatorUrl:"https://space.bilibili.com/225531190?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234295005164601351?spm_id_from=333.1035.0.0"}]},{title:"第十九棒",time:"4:30",daifa:!1,creator:"醉倒街头的伞",creatorUrl:"https://space.bilibili.com/3546838428813504?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234298872782651392?spm_id_from=333.1035.0.0"}]},{title:"第二十棒",time:"4:45",daifa:!1,creator:"桃诗酒音",creatorUrl:"https://space.bilibili.com/484179871?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234302736108879892?spm_id_from=333.1035.0.0"}]},{title:"第二十一棒",time:"5:00",daifa:!1,creator:"鱼越ZT",creatorUrl:"https://space.bilibili.com/294427500?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234306601543794688?spm_id_from=333.1035.0.0"},{type:"插画绘制",label:"查看",url:"https://www.bilibili.com/video/BV1UVuV6VEuk/?spm_id_from=333.1035.list.card_archive.click"}]},{title:"第二十二棒",time:"5:15",daifa:!1,creator:"SleepMaj7",creatorUrl:"https://space.bilibili.com/456656810?spm_id_from=333.788.upinfo.head.click",links:[{type:"同人曲",label:"查看",url:"https://www.bilibili.com/video/BV1ih3d6UEkQ/?spm_id_from=333.1035.list.card_archive.click"}]},{title:"第二十三棒",time:"5:30",daifa:!1,creator:"yuri子",creatorUrl:"https://space.bilibili.com/606473948?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234314338960932872?spm_id_from=333.1035.0.0"}]},{title:"第二十四棒",time:"5:45",daifa:!1,creator:"_ReImU-",creatorUrl:"https://space.bilibili.com/583607911?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234318301021077510?spm_id_from=333.1035.0.0"}]},{title:"第二十五棒",time:"6:00",daifa:!1,creator:"奶油酥皮苹果卷",creatorUrl:"https://space.bilibili.com/269900330?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234322063447031828?spm_id_from=333.1035.0.0"}]},{title:"第二十六棒",time:"6:15",daifa:!1,creator:"笹熊咲こ",creatorUrl:"https://space.bilibili.com/3690983585745015?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234325928945909785?spm_id_from=333.1035.0.0"}]},{title:"第二十七棒",time:"6:30",daifa:!1,creator:"不蒙圈的羊驼",creatorUrl:"https://space.bilibili.com/296702617?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234329991938834439?spm_id_from=333.1035.0.0"}]},{title:"第二十八棒",time:"6:45",daifa:!1,creator:"蓝瞳月影",creatorUrl:"https://space.bilibili.com/154185875?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234333664119095302?spm_id_from=333.1035.0.0"}]},{title:"第二十九棒",time:"7:00",daifa:!0,creator:"EX768",creatorUrl:"https://space.bilibili.com/551042022?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234337525353414676?spm_id_from=333.1035.0.0"}]},{title:"第三十棒",time:"7:15",daifa:!1,creator:"柠檬草于",creatorUrl:"https://space.bilibili.com/3546841534695520",links:[{type:"插画绘制",label:"查看",url:"https://www.bilibili.com/video/BV1izuV6xEwF/?spm_id_from=333.1387.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"第三十一棒",time:"7:30",daifa:!1,creator:"花菜_HanaNa",creatorUrl:"https://space.bilibili.com/400859601?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234345256277770247?spm_id_from=333.1035.0.0"}]},{title:"第三十二棒",time:"7:45",daifa:!1,creator:"BP-0728",creatorUrl:"https://space.bilibili.com/280400844?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234349121763016709?spm_id_from=333.1035.0.0"}]},{title:"第三十三棒",time:"8:00",daifa:!1,creator:"Emloste爱姆",creatorUrl:"https://space.bilibili.com/344474774?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"大量插画",label:"查看",url:"https://www.bilibili.com/opus/1234352987224145944?spm_id_from=333.1035.0.0"}]},{title:"第三十四棒",time:"8:15",daifa:!1,creator:"Bruce1354",creatorUrl:"https://space.bilibili.com/7135747?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234356852698906626?spm_id_from=333.1035.0.0"}]},{title:"第三十五棒",time:"8:30",daifa:!1,creator:"他们都叫我凉子",creatorUrl:"https://space.bilibili.com/451012220?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234360718128578569?spm_id_from=333.1035.0.0"}]},{title:"第三十六棒",time:"8:45",daifa:!1,creator:"星柠为画本苦练人体",creatorUrl:"https://space.bilibili.com/348065343?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234364789797421065?spm_id_from=333.1035.0.0"}]},{title:"第三十七棒",time:"9:00",daifa:!1,creator:"岛见月青凪",creatorUrl:"https://space.bilibili.com/418336582?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234368457697394710?spm_id_from=333.1035.0.0"}]},{title:"第三十八棒",time:"9:15",daifa:!1,creator:"怀琼枫灵棉",creatorUrl:"https://space.bilibili.com/34328819?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234372482058682369?spm_id_from=333.1035.0.0"}]},{title:"第三十九棒",time:"9:30",daifa:!1,creator:"牧卜",creatorUrl:"https://space.bilibili.com/227492619?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234376356118134785?spm_id_from=333.1035.0.0"}]},{title:"第四十棒",time:"9:45",daifa:!1,creator:"Starugar",creatorUrl:"https://space.bilibili.com/379253823?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234380082024284165?spm_id_from=333.1035.0.0"}]},{title:"第四十一棒",time:"10:00",daifa:!1,creator:"伊尔谜大少爷驾到",creatorUrl:"https://space.bilibili.com/1520224?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234383911004405767?spm_id_from=333.1035.0.0"}]},{title:"第四十二棒",time:"10:15",daifa:!1,creator:"Hinanawi_Char",creatorUrl:"https://space.bilibili.com/396379663/?spm_id_from=333.788.upinfo.head.click",links:[{type:"插画绘制",label:"查看",url:"https://www.bilibili.com/video/BV1Z3uH62EjC/?spm_id_from=333.1035.list.card_archive.click"}]},{title:"第四十三棒",time:"10:30",daifa:!1,creator:"Koizumi-U上卜",creatorUrl:"https://space.bilibili.com/383031732?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234391689182838788?spm_id_from=333.1035.0.0"}]},{title:"第四十四棒",time:"10:45",daifa:!0,creator:"tree皮选手王甜枣",creatorUrl:"https://space.bilibili.com/3493289894349768?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234395679206408195?spm_id_from=333.1035.0.0"}]},{title:"第四十五棒",time:"11:00",daifa:!1,creator:"城岭红白",creatorUrl:"https://space.bilibili.com/8633865?spm_id_from=333.788.upinfo.head.click",links:[{type:"插画绘制",label:"查看",url:"https://www.bilibili.com/video/BV1XYut6dEgm/?spm_id_from=333.1035.list.card_archive.click"}]},{title:"第四十六棒",time:"11:15",daifa:!1,creator:"猎魔人BOXERRUDY鲁迪酱",creatorUrl:"https://space.bilibili.com/24896771?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234403388618178583?spm_id_from=333.1035.0.0"}]},{title:"第四十七棒",time:"11:30",daifa:!1,creator:"彩虹面包屑",creatorUrl:"https://space.bilibili.com/3493279972723027?spm_id_from=333.788.upinfo.head.click",links:[{type:"动画手书",label:"查看",url:"https://www.bilibili.com/video/BV1sKuj61EsQ/?spm_id_from=333.1035.list.card_archive.click"}]},{title:"第四十八棒",time:"11:45",daifa:!1,creator:"眠雨nia",creatorUrl:"https://space.bilibili.com/84066635?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234410995045105668?spm_id_from=333.1035.0.0"}]},{title:"第四十九棒",time:"12:00",daifa:!1,creator:"为退堂鼓灵梦击鼓",creatorUrl:"https://space.bilibili.com/391808935?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234415045201362953?spm_id_from=333.1035.0.0"}]},{title:"第五十棒",time:"12:15",daifa:!1,creator:"CHUNZHU豆瓣",creatorUrl:"https://space.bilibili.com/3546394174425197/dynamic?spm_id_from=333.1035.list.card_avatar.click",links:[{type:"cosplay",label:"查看",url:"https://www.bilibili.com/video/BV1p3uj6GEkz/?spm_id_from=333.1035.list.card_archive.click"}]},{title:"第五十一棒",time:"12:30",daifa:!1,creator:"Kyuuryou玖凌",creatorUrl:"https://space.bilibili.com/1947484?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234422565690146817?spm_id_from=333.1035.0.0"}]},{title:"第五十二棒",time:"12:45",daifa:!1,creator:"Jashon_Gameover",creatorUrl:"https://space.bilibili.com/516454795?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234426431142887457?spm_id_from=333.1035.0.0"}]},{title:"第五十三棒",time:"13:00",daifa:!1,creator:"风萧萧和曦",creatorUrl:"https://space.bilibili.com/699936564?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234430350291107877?spm_id_from=333.1035.0.0"}]},{title:"第五十四棒",time:"13:15",daifa:!1,creator:"就这个美咲爽",creatorUrl:"https://space.bilibili.com/1001623757?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234438051172712480?spm_id_from=333.1035.0.0"}]},{title:"第五十五棒",time:"13:30",daifa:!1,creator:"_申必人_",creatorUrl:"https://space.bilibili.com/287350918?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234438027572412419?spm_id_from=333.1035.0.0"}]},{title:"第五十六棒",time:"13:45",daifa:!1,creator:"橘红色芭菲",creatorUrl:"https://space.bilibili.com/177360379?spm_id_from=333.1369.opus.module_author_name.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234441893053464582?spm_id_from=333.1035.0.0"}]},{title:"第五十七棒",time:"14:00",daifa:!1,creator:"一般路过damn",creatorUrl:"https://space.bilibili.com/699460805?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234619161394544690?from_spmid=main.h5.0.o4LIbsm.dczyknl4bprm2kmumsm2d6l5&plat_id=186&share_from=dynamic&share_medium=android&share_plat=android&share_session_id=901f27b0-ec13-4c70-8abf-ca1efa8bf7ab&share_source=QQ&share_tag=s_i&spmid=dt.opus-detail.0.0&timestamp=1786295752&unique_k=DmdjB5a"}]},{title:"第五十八棒",time:"14:15",daifa:!1,creator:"azzzxp",creatorUrl:"https://space.bilibili.com/526551560?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234449623944265746?spm_id_from=333.1035.0.0"}]},{title:"第五十九棒",time:"14:30",daifa:!1,creator:"IceDreamMoon",creatorUrl:"https://space.bilibili.com/1716805878?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234453489474601000?spm_id_from=333.1035.0.0"}]},{title:"第六十棒",time:"14:45",daifa:!1,creator:"s-TEA-m",creatorUrl:"https://space.bilibili.com/500747180?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234457354890641411?spm_id_from=333.1035.0.0"}]},{title:"第六十一棒",time:"15:00",daifa:!1,creator:"ば一ばら_",creatorUrl:"https://space.bilibili.com/442647191?spm_id_from=333.788.upinfo.head.click",links:[{type:"插画绘制",label:"查看",url:"https://www.bilibili.com/video/BV1HzMo6HEYq/?spm_id_from=333.1035.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"第六十二棒",time:"15:15",daifa:!1,creator:"KENYKXX",creatorUrl:"https://space.bilibili.com/12526729?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234465085852745733?spm_id_from=333.1035.0.0"}]},{title:"第六十三棒",time:"15:30",daifa:!1,creator:"SAM271",creatorUrl:"https://space.bilibili.com/269506989?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234468951342186496?spm_id_from=333.1035.0.0"}]},{title:"第六十五棒",time:"16:00",daifa:!1,creator:"Akitsu_Nebula",creatorUrl:"https://space.bilibili.com/12402776?spm_id_from=333.788.upinfo.head.click",links:[{type:"cosplay",label:"查看",url:"https://www.bilibili.com/video/BV1WaMR6EEFp/?spm_id_from=333.1035.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"第六十六棒",time:"16:15",daifa:!1,creator:"提埃欧奈特",creatorUrl:"https://space.bilibili.com/170152828",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234480719520071686?spm_id_from=333.1387.0.0"}]},{title:"第六十七棒",time:"16:30",daifa:!1,creator:"动图-",creatorUrl:"https://space.bilibili.com/93648795?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234476862653071360?spm_id_from=333.1035.0.0"}]},{title:"第六十八棒",time:"16:45",daifa:!0,creator:"蓬莱山米库",creatorUrl:"https://space.bilibili.com/400322993?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234491888598253571?spm_id_from=333.1035.0.0"}]},{title:"第六十九棒",time:"17:00",daifa:!1,creator:"卡尔-厄普西隆",creatorUrl:"https://space.bilibili.com/198604539?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234492150595452968?spm_id_from=333.1035.0.0"}]},{title:"第七十棒",time:"17:15",daifa:!1,creator:"博麗春央",creatorUrl:"https://space.bilibili.com/28098870?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"cosplay",label:"查看",url:"https://www.bilibili.com/opus/1234496258730622980?spm_id_from=333.1035.0.0"}]},{title:"第七十一棒",time:"17:30",daifa:!1,creator:"星星星光光",creatorUrl:"https://space.bilibili.com/27011506?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234499875115106307?spm_id_from=333.1035.0.0"}]},{title:"第七十二棒",time:"17:45",daifa:!1,creator:"鹫尾百栗子",creatorUrl:"https://space.bilibili.com/335579885?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234503762062606356?spm_id_from=333.1035.0.0"}]},{title:"第七十三棒",time:"18:00",daifa:!1,creator:"妥托若",creatorUrl:"https://space.bilibili.com/439412140?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234507606054141972?spm_id_from=333.1035.0.0"}]},{title:"第七十四棒",time:"18:15",daifa:!1,creator:"绯音kirara",creatorUrl:"https://space.bilibili.com/21319075?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234511548796371009?spm_id_from=333.1035.0.0"}]},{title:"第七十五棒",time:"18:30",daifa:!1,creator:"CL齿轮",creatorUrl:"https://space.bilibili.com/288250920?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234515336965914626?spm_id_from=333.1035.0.0"}]},{title:"第七十六棒",time:"18:45",daifa:!1,creator:"久灵妖琉的幻想乐坊 / Orraine",creatorUrl:"https://space.bilibili.com/518098904?spm_id_from=333.788.upinfo.head.click",links:[{type:"音乐演奏",label:"查看",url:"https://www.bilibili.com/video/BV1qqum6REam/?spm_id_from=333.1035.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"第七十七棒",time:"19:00",daifa:!1,creator:"林檎の兎",creatorUrl:"https://space.bilibili.com/29136225?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234523312725426181?spm_id_from=333.1035.0.0"}]},{title:"第七十八棒",time:"19:15",daifa:!1,creator:"人生若如初見An",creatorUrl:"https://space.bilibili.com/128735641?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234527100858269697?spm_id_from=333.1035.0.0"}]},{title:"第七十九棒",time:"19:30",daifa:!1,creator:"zunyu3333",creatorUrl:"https://space.bilibili.com/386452836?spm_id_from=333.788.upinfo.head.click",links:[{type:"钢琴演奏",label:"查看",url:"https://www.bilibili.com/video/BV1qduW6sErc/?spm_id_from=333.1035.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"第八十棒",time:"19:45",daifa:!1,creator:"星之卡比-暗物质剑士",creatorUrl:"https://space.bilibili.com/485430350?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234534670782169112?spm_id_from=333.1035.0.0"}]},{title:"第八十一棒",time:"20:00",daifa:!0,creator:"秋橘",creatorUrl:"",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234538735957180418?spm_id_from=333.1387.0.0"}]},{title:"第八十二棒",time:"20:15",daifa:!1,creator:"河神star",creatorUrl:"https://space.bilibili.com/1118009022?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234542532730290198?spm_id_from=333.1035.0.0"}]},{title:"第八十三棒",time:"20:30",daifa:!1,creator:"恋色风祝",creatorUrl:"https://space.bilibili.com/1364293968?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234546260751417380?spm_id_from=333.1035.0.0"}]},{title:"第八十四棒",time:"20:45",daifa:!1,creator:"分析纯-氚氧化钠",creatorUrl:"https://space.bilibili.com/416562427/dynamic?spm_id_from=333.1368.list.card_avatar.click",links:[{type:"小提琴演奏",label:"查看",url:"https://www.bilibili.com/video/BV1VWu262EGa/?spm_id_from=333.1368.list.card_archive.click"}]},{title:"第八十五棒",time:"21:00",daifa:!1,creator:"五三妹妹",creatorUrl:"https://space.bilibili.com/401767216?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234553993810673816?spm_id_from=333.1035.0.0"}]},{title:"第八十六棒",time:"21:15",daifa:!1,creator:"绯红的阿麟",creatorUrl:"https://space.bilibili.com/21797560?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234557854996758537?spm_id_from=333.1035.0.0"}]},{title:"第八十七棒",time:"21:30",daifa:!1,creator:"--XE--",creatorUrl:"https://space.bilibili.com/51238266?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234561810696241157?spm_id_from=333.1035.0.0"}]},{title:"第八十八棒",time:"21:45",daifa:!1,creator:"试作型拾九",creatorUrl:"https://space.bilibili.com/12097791?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234565643935678481?spm_id_from=333.1035.0.0"}]},{title:"第八十九棒",time:"22:00",daifa:!1,creator:"魔女的舞会",creatorUrl:"https://space.bilibili.com/174038466?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234569453560135735?spm_id_from=333.1035.0.0"}]},{title:"第九十棒",time:"22:15",daifa:!1,creator:"交联纤维素",creatorUrl:"https://space.bilibili.com/556016423?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234573334058893316?spm_id_from=333.1035.0.0"}]},{title:"第九十一棒",time:"22:30",daifa:!1,creator:"汐骨w",creatorUrl:"https://space.bilibili.com/4959158?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234577184513851392?spm_id_from=333.1035.0.0"}]},{title:"第九十二棒",time:"22:45",daifa:!1,creator:"诺特米Nottomi",creatorUrl:"https://space.bilibili.com/74320359?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234581281895874600?spm_id_from=333.1035.0.0"},{type:"插画绘制",label:"查看",url:"https://www.bilibili.com/video/BV1NVu86EE5m/?spm_id_from=333.1035.list.card_archive.click"}]},{title:"第九十三棒",time:"23:00",daifa:!1,creator:"HakureiReimu的羊肉卷",creatorUrl:"https://space.bilibili.com/479011725?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234585078676324371?spm_id_from=333.1035.0.0"}]},{title:"第九十四棒",time:"23:15",daifa:!1,creator:"宇宙的介质是酒吗",creatorUrl:"https://space.bilibili.com/338872911?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234588862489034754?spm_id_from=333.1035.0.0"},{type:"插画绘制",label:"查看",url:"https://www.bilibili.com/video/BV12wuN6UEs2/?spm_id_from=333.1035.list.card_archive.click"}]},{title:"第九十五棒",time:"23:30",daifa:!1,creator:"辣酱批量生产",creatorUrl:"https://space.bilibili.com/24101034?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234592646355222528?spm_id_from=333.1035.0.0"}]},{title:"第九十六棒",time:"23:45",daifa:!1,creator:"三NyaNya三",creatorUrl:"https://space.bilibili.com/390483970?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234596511827886082?spm_id_from=333.1035.0.0"}]},{title:"第九十七棒",time:"24:00",daifa:!1,creator:"拒绝神绮99次",creatorUrl:"https://space.bilibili.com/3546737234938593?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234600574904696864?spm_id_from=333.1035.0.0"}]},{title:"SP棒-_如風_",time:"20:26",daifa:!1,creator:"_如風_",creatorUrl:"https://space.bilibili.com/167378871?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234545229959266310?spm_id_from=333.1035.0.0"}]},{title:"SP棒-Emloste爱姆",time:"20:26",daifa:!1,creator:"Emloste爱姆",creatorUrl:"https://space.bilibili.com/344474774?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234545229925711891?spm_id_from=333.1035.0.0"}]},{title:"SP棒-计时器钧",time:"20:26",daifa:!1,creator:"计时器钧",creatorUrl:"https://space.bilibili.com/476280828?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234545229943537673?spm_id_from=333.1035.0.0"},{type:"插画绘制",label:"查看",url:"https://www.bilibili.com/video/BV1Emug6WEyE/?spm_id_from=333.1035.list.card_archive.click"}]},{title:"SP棒-盖翔哥",time:"20:26",daifa:!1,creator:"盖翔哥",creatorUrl:"https://space.bilibili.com/286477208?spm_id_from=333.788.upinfo.head.click",links:[{type:"stg解说",label:"查看",url:"https://www.bilibili.com/video/BV1YXGP6iEiA/?spm_id_from=333.1035.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"替补棒-Emloste爱姆",time:"明日1:06",daifa:!1,creator:"Emloste爱姆",creatorUrl:"https://space.bilibili.com/344474774?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234617385387819011?from_spmid=dt.topic-detail.ywh.0&plat_id=186&share_from=dynamic&share_medium=android&share_plat=android&share_session_id=02da5276-18a6-45e0-a6cd-306e3dc64426&share_source=QQ&share_tag=s_i&spmid=dt.opus-detail.0.0&timestamp=1786295201&unique_k=Msj5KQB"}]},{title:"SP棒-碧峯斜见鷺鷥飞",time:"20:26",daifa:!1,creator:"碧峯斜见鷺鷥飞",creatorUrl:"https://space.bilibili.com/228344931?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234545311578324997?spm_id_from=333.1035.0.0"}]},{title:"SP棒-龙胆紫苑",time:"20:26",daifa:!0,creator:"龙胆紫苑",creatorUrl:"https://space.bilibili.com/25279854?spm_id_from=333.1369.0.0",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234545227789762610?spm_id_from=333.1035.0.0"}]},{title:"SP棒-夢临雨儿的末子",time:"20:26",daifa:!1,creator:"夢临雨儿的末子",creatorUrl:"https://space.bilibili.com/3546635713907350?spm_id_from=333.788.upinfo.head.click",links:[{type:"动画手书",label:"查看",url:"https://www.bilibili.com/video/BV1hbu26GE3S/?spm_id_from=333.1035.list.card_archive.click&vd_source=a870b32ee0c8f384b6a24eeb81d1cf56"}]},{title:"替补棒-はるまきごはん好き",time:"明日1:06",daifa:!1,creator:"はるまきごはん好き",creatorUrl:"https://space.bilibili.com/34080568?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234602971484913665?spm_id_from=333.1035.0.0"}]},{title:"SP棒-小周233333",time:"20:26",daifa:!1,creator:"小周233333",creatorUrl:"https://space.bilibili.com/25124321?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234545311570984962?spm_id_from=333.1035.0.0"}]},{title:"替补棒-龙胆紫苑",time:"明日1:06",daifa:!1,creator:"龙胆紫苑",creatorUrl:"https://space.bilibili.com/25279854?spm_id_from=333.337.0.0",links:[{type:"同人文",label:"查看",url:"https://www.bilibili.com/opus/1234774274117468169?spm_id_from=333.1035.0.0"}]},{title:"替补棒-Re_Aya",time:"明日1:06",daifa:!0,creator:"Re_Aya",creatorUrl:"https://space.bilibili.com/299690652?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234617385406693383?spm_id_from=333.1035.0.0"}]},{title:"SP棒-我做东方鬼畜音mad",time:"20:26",daifa:!1,creator:"我做东方鬼畜音mad",creatorUrl:"https://space.bilibili.com/86505615?spm_id_from=333.1369.opus.module_author_avatar.click",links:[{type:"cosplay",label:"查看",url:"https://www.bilibili.com/opus/1234545461894840360?plat_id=186&share_from=dynamic&share_medium=android&share_plat=android&share_session_id=9a3fe227-3b07-48ce-9a33-04295cdae653&share_source=QQ&share_tag=s_i&spmid=dt.opus-detail.0.0&timestamp=1786279306&unique_k=wn1uDrO"}]},{title:"替补棒-爱亿和漓月_ ​",time:"明日1:06",daifa:!0,creator:"爱亿和漓月_",creatorUrl:"https://space.bilibili.com/3546954122397813?spm_id_from=333.1369.0.0",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/opus/1234617475575840788?spm_id_from=333.1035.0.0"}]},{title:"SP棒-Ritz",time:"20:26",daifa:!1,creator:"Ritz",creatorUrl:"https://www.bilibili.com/video/BV1Emug6WEyE/?spm_id_from=333.1035.list.card_archive.click",links:[{type:"插画",label:"查看",url:"https://www.bilibili.com/video/BV1Emug6WEyE/?spm_id_from=333.1035.list.card_archive.click"}]}],Ra=[{infoId:"第一棒",works:[{name:"第一棒",file:"img/第一棒.webp",thumb:"img/thumbs/第一棒.thumb.jpg"}]},{infoId:"预热第一棒",works:[{name:"预热第一棒",file:"img/预热第一棒.webp",thumb:"img/thumbs/预热第一棒.thumb.jpg"}]},{infoId:"特典第一棒",works:[{name:"特典第一棒",file:"img/特典第一棒.webp",thumb:"img/thumbs/特典第一棒.thumb.jpg"}]},{infoId:"第二棒",works:[{name:"第二棒",file:"img/第二棒.webp",thumb:"img/thumbs/第二棒.thumb.jpg"}]},{infoId:"特典第二棒",works:[{name:"特典第二棒",file:"img/特典第二棒.webp",thumb:"img/thumbs/特典第二棒.thumb.jpg"}]},{infoId:"预热第三棒",works:[{name:"预热第三棒",text:!0}]},{infoId:"第三棒",works:[{name:"第三棒",file:"img/第三棒.webp",thumb:"img/thumbs/第三棒.thumb.jpg"}]},{infoId:"特典第三棒",works:[{name:"特典第三棒",text:!0}]},{infoId:"特典第四棒",works:[{name:"特典第四棒",file:"img/特典第四棒.webp",thumb:"img/thumbs/特典第四棒.thumb.jpg"}]},{infoId:"预热第四棒",works:[{name:"预热第四棒-1",file:"img/预热第四棒-1.webp",thumb:"img/thumbs/预热第四棒-1.thumb.jpg"},{name:"预热第四棒-2",file:"img/预热第四棒-2.webp",thumb:"img/thumbs/预热第四棒-2.thumb.jpg"},{name:"预热第四棒-3",file:"img/预热第四棒-3.webp",thumb:"img/thumbs/预热第四棒-3.thumb.jpg"}]},{infoId:"第四棒",works:[{name:"第四棒",file:"img/第四棒.webp",thumb:"img/thumbs/第四棒.thumb.jpg"}]},{infoId:"特典第五棒",works:[{name:"特典第五棒（封面）",file:"img/特典第五棒（封面）.webp",thumb:"img/thumbs/特典第五棒（封面）.thumb.jpg",video:!0}]},{infoId:"第五棒",works:[{name:"第五棒",file:"img/第五棒.webp",thumb:"img/thumbs/第五棒.thumb.jpg"}]},{infoId:"特典第六棒",works:[{name:"特典第六棒",file:"img/特典第六棒.webp",thumb:"img/thumbs/特典第六棒.thumb.jpg"}]},{infoId:"第六棒",works:[{name:"第六棒",file:"img/第六棒.webp",thumb:"img/thumbs/第六棒.thumb.jpg"}]},{infoId:"第七棒",works:[{name:"第七棒（封面）",file:"img/第七棒（封面）.webp",thumb:"img/thumbs/第七棒（封面）.thumb.jpg",video:!0}]},{infoId:"特典第七棒",works:[{name:"特典第七棒",file:"img/特典第七棒.webp",thumb:"img/thumbs/特典第七棒.thumb.jpg"}]},{infoId:"第八棒",works:[{name:"第八棒",file:"img/第八棒.webp",thumb:"img/thumbs/第八棒.thumb.jpg"}]},{infoId:"第九棒",works:[{name:"第九棒",text:!0}]},{infoId:"第十棒",works:[{name:"第十棒",file:"img/第十棒.webp",thumb:"img/thumbs/第十棒.thumb.jpg"}]},{infoId:"第十一棒",works:[{name:"第十一棒-1",file:"img/第十一棒-1.webp",thumb:"img/thumbs/第十一棒-1.thumb.jpg"},{name:"第十一棒-2",file:"img/第十一棒-2.webp",thumb:"img/thumbs/第十一棒-2.thumb.jpg"}]},{infoId:"第十二棒",works:[{name:"第十二棒",file:"img/第十二棒.webp",thumb:"img/thumbs/第十二棒.thumb.jpg"}]},{infoId:"第十三棒",works:[{name:"第十三棒",file:"img/第十三棒.webp",thumb:"img/thumbs/第十三棒.thumb.jpg"}]},{infoId:"第十四棒",works:[{name:"第十四棒",text:!0}]},{infoId:"第十五棒",works:[{name:"第十五棒",file:"img/第十五棒.webp",thumb:"img/thumbs/第十五棒.thumb.jpg"}]},{infoId:"第十六棒",works:[{name:"第十六棒（封面）",file:"img/第十六棒（封面）.webp",thumb:"img/thumbs/第十六棒（封面）.thumb.jpg",video:!0}]},{infoId:"第十七棒",works:[{name:"第十七棒",text:!0},{name:"第十七棒",file:"img/第十七棒.webp",thumb:"img/thumbs/第十七棒.thumb.jpg"}]},{infoId:"第十八棒",works:[{name:"第十八棒",file:"img/第十八棒.webp",thumb:"img/thumbs/第十八棒.thumb.jpg"}]},{infoId:"第十九棒",works:[{name:"第十九棒-图（图文混排，放在 “不得了了！地上都是书啊！要赶紧收起来，啊啊啊！没有地方，那这本这本……”小恶魔应该是习惯了借书不还的魔理沙，下意识开始捡起书来了。这一段的后面）",file:"img/第十九棒-图（图文混排，放在 “不得了了！地上都是书啊！要赶紧收起来，啊啊啊！没有地方，那这本这本……”小恶魔应该是习惯了借书不还的魔理沙，下意识开始捡起书来了。这一段的后面）.webp",thumb:"img/thumbs/第十九棒-图（图文混排，放在 “不得了了！地上都是书啊！要赶紧收起来，啊啊啊！没有地方，那这本这本……”小恶魔应该是习惯了借书不还的魔理沙，下意识开始捡起书来了。这一段的后面）.thumb.jpg"},{name:"第十九棒-文",text:!0}]},{infoId:"第二十棒",works:[{name:"第二十棒",file:"img/第二十棒.webp",thumb:"img/thumbs/第二十棒.thumb.jpg"}]},{infoId:"第二十一棒",works:[{name:"第二十一棒",file:"img/第二十一棒.webp",thumb:"img/thumbs/第二十一棒.thumb.jpg"}]},{infoId:"第二十二棒",works:[{name:"第二十二棒（封面）",file:"img/第二十二棒（封面）.webp",thumb:"img/thumbs/第二十二棒（封面）.thumb.jpg",video:!0}]},{infoId:"第二十三棒",works:[{name:"第二十三棒",text:!0}]},{infoId:"第二十四棒",works:[{name:"第二十四棒",file:"img/第二十四棒.webp",thumb:"img/thumbs/第二十四棒.thumb.jpg"}]},{infoId:"第二十五棒",works:[{name:"第二十五棒",file:"img/第二十五棒.webp",thumb:"img/thumbs/第二十五棒.thumb.jpg"}]},{infoId:"第二十六棒",works:[{name:"第二十六棒",file:"img/第二十六棒.webp",thumb:"img/thumbs/第二十六棒.thumb.jpg"}]},{infoId:"第二十七棒",works:[{name:"第二十七棒",file:"img/第二十七棒.webp",thumb:"img/thumbs/第二十七棒.thumb.jpg"}]},{infoId:"第二十八棒",works:[{name:"第二十八棒",file:"img/第二十八棒.webp",thumb:"img/thumbs/第二十八棒.thumb.jpg"}]},{infoId:"第二十九棒",works:[{name:"第二十九棒",file:"img/第二十九棒.webp",thumb:"img/thumbs/第二十九棒.thumb.jpg"}]},{infoId:"第三十棒",works:[{name:"第三十棒（封面）",file:"img/第三十棒（封面）.webp",thumb:"img/thumbs/第三十棒（封面）.thumb.jpg",video:!0}]},{infoId:"第三十一棒",works:[{name:"第三十一棒",file:"img/第三十一棒.webp",thumb:"img/thumbs/第三十一棒.thumb.jpg"}]},{infoId:"第三十二棒",works:[{name:"第三十二棒",file:"img/第三十二棒.webp",thumb:"img/thumbs/第三十二棒.thumb.jpg"}]},{infoId:"第三十三棒",works:[{name:"第三十三棒-1",file:"img/第三十三棒-1.webp",thumb:"img/thumbs/第三十三棒-1.thumb.jpg"},{name:"第三十三棒-2",file:"img/第三十三棒-2.webp",thumb:"img/thumbs/第三十三棒-2.thumb.jpg"},{name:"第三十三棒-3",file:"img/第三十三棒-3.webp",thumb:"img/thumbs/第三十三棒-3.thumb.jpg"},{name:"第三十三棒-4",file:"img/第三十三棒-4.webp",thumb:"img/thumbs/第三十三棒-4.thumb.jpg"},{name:"第三十三棒-5",file:"img/第三十三棒-5.webp",thumb:"img/thumbs/第三十三棒-5.thumb.jpg"},{name:"第三十三棒-6",file:"img/第三十三棒-6.webp",thumb:"img/thumbs/第三十三棒-6.thumb.jpg"},{name:"第三十三棒-7",file:"img/第三十三棒-7.webp",thumb:"img/thumbs/第三十三棒-7.thumb.jpg"},{name:"第三十三棒-8",file:"img/第三十三棒-8.webp",thumb:"img/thumbs/第三十三棒-8.thumb.jpg"},{name:"第三十三棒-9",file:"img/第三十三棒-9.webp",thumb:"img/thumbs/第三十三棒-9.thumb.jpg"}]},{infoId:"第三十四棒",works:[{name:"第三十四棒",file:"img/第三十四棒.webp",thumb:"img/thumbs/第三十四棒.thumb.jpg"}]},{infoId:"第三十五棒",works:[{name:"第三十五棒",file:"img/第三十五棒.webp",thumb:"img/thumbs/第三十五棒.thumb.jpg"}]},{infoId:"第三十六棒",works:[{name:"第三十六棒",file:"img/第三十六棒.webp",thumb:"img/thumbs/第三十六棒.thumb.jpg"}]},{infoId:"第三十七棒",works:[{name:"第三十七棒",file:"img/第三十七棒.webp",thumb:"img/thumbs/第三十七棒.thumb.jpg"}]},{infoId:"第三十八棒",works:[{name:"第三十八棒",file:"img/第三十八棒.webp",thumb:"img/thumbs/第三十八棒.thumb.jpg"}]},{infoId:"第三十九棒",works:[{name:"第三十九棒",file:"img/第三十九棒.webp",thumb:"img/thumbs/第三十九棒.thumb.jpg"}]},{infoId:"第四十棒",works:[{name:"第四十棒",file:"img/第四十棒.webp",thumb:"img/thumbs/第四十棒.thumb.jpg"}]},{infoId:"第四十一棒",works:[{name:"第四十一棒",file:"img/第四十一棒.webp",thumb:"img/thumbs/第四十一棒.thumb.jpg"}]},{infoId:"第四十二棒",works:[{name:"第四十二棒",file:"img/第四十二棒.webp",thumb:"img/thumbs/第四十二棒.thumb.jpg"}]},{infoId:"第四十三棒",works:[{name:"第四十三棒",file:"img/第四十三棒.webp",thumb:"img/thumbs/第四十三棒.thumb.jpg"}]},{infoId:"第四十四棒",works:[{name:"第四十四棒",file:"img/第四十四棒.webp",thumb:"img/thumbs/第四十四棒.thumb.jpg"}]},{infoId:"第四十五棒",works:[{name:"第四十五棒（封面）",file:"img/第四十五棒（封面）.webp",thumb:"img/thumbs/第四十五棒（封面）.thumb.jpg",video:!0}]},{infoId:"第四十六棒",works:[{name:"第四十六棒",file:"img/第四十六棒.webp",thumb:"img/thumbs/第四十六棒.thumb.jpg"}]},{infoId:"第四十七棒",works:[{name:"第四十七棒（封面）",file:"img/第四十七棒（封面）.webp",thumb:"img/thumbs/第四十七棒（封面）.thumb.jpg",video:!0}]},{infoId:"第四十八棒",works:[{name:"第四十八棒",file:"img/第四十八棒.webp",thumb:"img/thumbs/第四十八棒.thumb.jpg"}]},{infoId:"第四十九棒",works:[{name:"第四十九棒",file:"img/第四十九棒.webp",thumb:"img/thumbs/第四十九棒.thumb.jpg"}]},{infoId:"第五十棒",works:[{name:"第五十棒（封面）",file:"img/第五十棒（封面）.webp",thumb:"img/thumbs/第五十棒（封面）.thumb.jpg",video:!0}]},{infoId:"第五十一棒",works:[{name:"第五十一棒-1",file:"img/第五十一棒-1.webp",thumb:"img/thumbs/第五十一棒-1.thumb.jpg"},{name:"第五十一棒-2",file:"img/第五十一棒-2.webp",thumb:"img/thumbs/第五十一棒-2.thumb.jpg"},{name:"第五十一棒-3",file:"img/第五十一棒-3.webp",thumb:"img/thumbs/第五十一棒-3.thumb.jpg"},{name:"第五十一棒-4",file:"img/第五十一棒-4.webp",thumb:"img/thumbs/第五十一棒-4.thumb.jpg"},{name:"第五十一棒-5",file:"img/第五十一棒-5.webp",thumb:"img/thumbs/第五十一棒-5.thumb.jpg"},{name:"第五十一棒-6",file:"img/第五十一棒-6.webp",thumb:"img/thumbs/第五十一棒-6.thumb.jpg"},{name:"第五十一棒-7",file:"img/第五十一棒-7.webp",thumb:"img/thumbs/第五十一棒-7.thumb.jpg"},{name:"第五十一棒-8",file:"img/第五十一棒-8.webp",thumb:"img/thumbs/第五十一棒-8.thumb.jpg"},{name:"第五十一棒-9",file:"img/第五十一棒-9.webp",thumb:"img/thumbs/第五十一棒-9.thumb.jpg"},{name:"第五十一棒-10",file:"img/第五十一棒-10.webp",thumb:"img/thumbs/第五十一棒-10.thumb.jpg"},{name:"第五十一棒-11",file:"img/第五十一棒-11.webp",thumb:"img/thumbs/第五十一棒-11.thumb.jpg"},{name:"第五十一棒-12",file:"img/第五十一棒-12.webp",thumb:"img/thumbs/第五十一棒-12.thumb.jpg"}]},{infoId:"第五十二棒",works:[{name:"第五十二棒",file:"img/第五十二棒.webp",thumb:"img/thumbs/第五十二棒.thumb.jpg"}]},{infoId:"第五十三棒",works:[{name:"第五十三棒",file:"img/第五十三棒.webp",thumb:"img/thumbs/第五十三棒.thumb.jpg"}]},{infoId:"第五十四棒",works:[{name:"第五十四棒",file:"img/第五十四棒.webp",thumb:"img/thumbs/第五十四棒.thumb.jpg"}]},{infoId:"第五十五棒",works:[{name:"第五十五棒",file:"img/第五十五棒.webp",thumb:"img/thumbs/第五十五棒.thumb.jpg"}]},{infoId:"第五十六棒",works:[{name:"第五十六棒",file:"img/第五十六棒.webp",thumb:"img/thumbs/第五十六棒.thumb.jpg"}]},{infoId:"第五十七棒",works:[{name:"第五十七棒",file:"img/第五十七棒.webp",thumb:"img/thumbs/第五十七棒.thumb.jpg"}]},{infoId:"第五十八棒",works:[{name:"第五十八棒",file:"img/第五十八棒.webp",thumb:"img/thumbs/第五十八棒.thumb.jpg"}]},{infoId:"第五十九棒",works:[{name:"第五十九棒",file:"img/第五十九棒.webp",thumb:"img/thumbs/第五十九棒.thumb.jpg"}]},{infoId:"第六十棒",works:[{name:"第六十棒",file:"img/第六十棒.webp",thumb:"img/thumbs/第六十棒.thumb.jpg"}]},{infoId:"第六十一棒",works:[{name:"第六十一棒",file:"img/第六十一棒.webp",thumb:"img/thumbs/第六十一棒.thumb.jpg"}]},{infoId:"第六十二棒",works:[{name:"第六十二棒",file:"img/第六十二棒.webp",thumb:"img/thumbs/第六十二棒.thumb.jpg"}]},{infoId:"第六十三棒",works:[{name:"第六十三棒",text:!0},{name:"第六十三棒",file:"img/第六十三棒.webp",thumb:"img/thumbs/第六十三棒.thumb.jpg"}]},{infoId:"第六十五棒",works:[{name:"第六十五棒（封面）",file:"img/第六十五棒（封面）.webp",thumb:"img/thumbs/第六十五棒（封面）.thumb.jpg",video:!0}]},{infoId:"第六十六棒",works:[{name:"第六十六棒",file:"img/第六十六棒.webp",thumb:"img/thumbs/第六十六棒.thumb.jpg"}]},{infoId:"第六十七棒",works:[{name:"第六十七棒",file:"img/第六十七棒.webp",thumb:"img/thumbs/第六十七棒.thumb.jpg"}]},{infoId:"第六十八棒",works:[{name:"第六十八棒",file:"img/第六十八棒.webp",thumb:"img/thumbs/第六十八棒.thumb.jpg"}]},{infoId:"第六十九棒",works:[{name:"第六十九棒",text:!0},{name:"第六十九棒",file:"img/第六十九棒.webp",thumb:"img/thumbs/第六十九棒.thumb.jpg"}]},{infoId:"第七十棒",works:[{name:"第七十棒-1",file:"img/第七十棒-1.webp",thumb:"img/thumbs/第七十棒-1.thumb.jpg"},{name:"第七十棒-2",file:"img/第七十棒-2.webp",thumb:"img/thumbs/第七十棒-2.thumb.jpg"},{name:"第七十棒-3",file:"img/第七十棒-3.webp",thumb:"img/thumbs/第七十棒-3.thumb.jpg"},{name:"第七十棒-4",file:"img/第七十棒-4.webp",thumb:"img/thumbs/第七十棒-4.thumb.jpg"},{name:"第七十棒-5",file:"img/第七十棒-5.webp",thumb:"img/thumbs/第七十棒-5.thumb.jpg"},{name:"第七十棒-6",file:"img/第七十棒-6.webp",thumb:"img/thumbs/第七十棒-6.thumb.jpg"},{name:"第七十棒-7",file:"img/第七十棒-7.webp",thumb:"img/thumbs/第七十棒-7.thumb.jpg"},{name:"第七十棒-8",file:"img/第七十棒-8.webp",thumb:"img/thumbs/第七十棒-8.thumb.jpg"},{name:"第七十棒-9",file:"img/第七十棒-9.webp",thumb:"img/thumbs/第七十棒-9.thumb.jpg"}]},{infoId:"第七十一棒",works:[{name:"第七十一棒",file:"img/第七十一棒.webp",thumb:"img/thumbs/第七十一棒.thumb.jpg"}]},{infoId:"第七十二棒",works:[{name:"第七十二棒",file:"img/第七十二棒.webp",thumb:"img/thumbs/第七十二棒.thumb.jpg"}]},{infoId:"第七十三棒",works:[{name:"第七十三棒",file:"img/第七十三棒.webp",thumb:"img/thumbs/第七十三棒.thumb.jpg"}]},{infoId:"第七十四棒",works:[{name:"第七十四棒-1",file:"img/第七十四棒-1.webp",thumb:"img/thumbs/第七十四棒-1.thumb.jpg"},{name:"第七十四棒-2",file:"img/第七十四棒-2.webp",thumb:"img/thumbs/第七十四棒-2.thumb.jpg"},{name:"第七十四棒-3",file:"img/第七十四棒-3.webp",thumb:"img/thumbs/第七十四棒-3.thumb.jpg"},{name:"第七十四棒-4",file:"img/第七十四棒-4.webp",thumb:"img/thumbs/第七十四棒-4.thumb.jpg"}]},{infoId:"第七十五棒",works:[{name:"第七十五棒",file:"img/第七十五棒.webp",thumb:"img/thumbs/第七十五棒.thumb.jpg"}]},{infoId:"第七十六棒",works:[{name:"第七十六棒（封面）",file:"img/第七十六棒（封面）.webp",thumb:"img/thumbs/第七十六棒（封面）.thumb.jpg",video:!0}]},{infoId:"第七十七棒",works:[{name:"第七十七棒",file:"img/第七十七棒.webp",thumb:"img/thumbs/第七十七棒.thumb.jpg"}]},{infoId:"第七十八棒",works:[{name:"第七十八棒",file:"img/第七十八棒.webp",thumb:"img/thumbs/第七十八棒.thumb.jpg"}]},{infoId:"第七十九棒",works:[{name:"第七十九棒（封面）",file:"img/第七十九棒（封面）.webp",thumb:"img/thumbs/第七十九棒（封面）.thumb.jpg",video:!0}]},{infoId:"第八十棒",works:[{name:"第八十棒",text:!0}]},{infoId:"第八十一棒",works:[{name:"第八十一棒",file:"img/第八十一棒.webp",thumb:"img/thumbs/第八十一棒.thumb.jpg"}]},{infoId:"第八十二棒",works:[{name:"第八十二棒",file:"img/第八十二棒.webp",thumb:"img/thumbs/第八十二棒.thumb.jpg"}]},{infoId:"第八十三棒",works:[{name:"第八十三棒",file:"img/第八十三棒.webp",thumb:"img/thumbs/第八十三棒.thumb.jpg"}]},{infoId:"第八十四棒",works:[{name:"第八十四棒（封面）",file:"img/第八十四棒（封面）.webp",thumb:"img/thumbs/第八十四棒（封面）.thumb.jpg",video:!0}]},{infoId:"第八十五棒",works:[{name:"第八十五棒",text:!0}]},{infoId:"第八十六棒",works:[{name:"第八十六棒",file:"img/第八十六棒.webp",thumb:"img/thumbs/第八十六棒.thumb.jpg"}]},{infoId:"第八十七棒",works:[{name:"第八十七棒-1",file:"img/第八十七棒-1.webp",thumb:"img/thumbs/第八十七棒-1.thumb.jpg"},{name:"第八十七棒-2",file:"img/第八十七棒-2.webp",thumb:"img/thumbs/第八十七棒-2.thumb.jpg"}]},{infoId:"第八十八棒",works:[{name:"第八十八棒",file:"img/第八十八棒.webp",thumb:"img/thumbs/第八十八棒.thumb.jpg"}]},{infoId:"第八十九棒",works:[{name:"第八十九棒",file:"img/第八十九棒.webp",thumb:"img/thumbs/第八十九棒.thumb.jpg"}]},{infoId:"第九十棒",works:[{name:"第九十棒",file:"img/第九十棒.webp",thumb:"img/thumbs/第九十棒.thumb.jpg"}]},{infoId:"第九十一棒",works:[{name:"第九十一棒-1",file:"img/第九十一棒-1.webp",thumb:"img/thumbs/第九十一棒-1.thumb.jpg"},{name:"第九十一棒-2",file:"img/第九十一棒-2.webp",thumb:"img/thumbs/第九十一棒-2.thumb.jpg"}]},{infoId:"第九十二棒",works:[{name:"第九十二棒",file:"img/第九十二棒.webp",thumb:"img/thumbs/第九十二棒.thumb.jpg"}]},{infoId:"第九十三棒",works:[{name:"第九十三棒",file:"img/第九十三棒.webp",thumb:"img/thumbs/第九十三棒.thumb.jpg"}]},{infoId:"第九十四棒",works:[{name:"第九十四棒",file:"img/第九十四棒.webp",thumb:"img/thumbs/第九十四棒.thumb.jpg"}]},{infoId:"第九十五棒",works:[{name:"第九十五棒",file:"img/第九十五棒.webp",thumb:"img/thumbs/第九十五棒.thumb.jpg"}]},{infoId:"第九十六棒",works:[{name:"第九十六棒",file:"img/第九十六棒.webp",thumb:"img/thumbs/第九十六棒.thumb.jpg"}]},{infoId:"第九十七棒",works:[{name:"第九十七棒",file:"img/第九十七棒.webp",thumb:"img/thumbs/第九十七棒.thumb.jpg"},{name:"第九十七棒-2",file:"img/第九十七棒-2.webp",thumb:"img/thumbs/第九十七棒-2.thumb.jpg"},{name:"第九十七棒-3",file:"img/第九十七棒-3.webp",thumb:"img/thumbs/第九十七棒-3.thumb.jpg"}]},{infoId:"SP棒-_如風_",works:[{name:"SP棒-_如風_",file:"img/SP棒-_如風_.webp",thumb:"img/thumbs/SP棒-_如風_.thumb.jpg"}]},{infoId:"SP棒-Emloste爱姆",works:[{name:"SP棒-Emloste爱姆",file:"img/SP棒-Emloste爱姆.webp",thumb:"img/thumbs/SP棒-Emloste爱姆.thumb.jpg"}]},{infoId:"SP棒-计时器钧",works:[{name:"SP棒-计时器钧",file:"img/SP棒-计时器钧.webp",thumb:"img/thumbs/SP棒-计时器钧.thumb.jpg"}]},{infoId:"SP棒-盖翔哥",works:[{name:"SP棒-盖翔哥（封面）",file:"img/SP棒-盖翔哥（封面）.webp",thumb:"img/thumbs/SP棒-盖翔哥（封面）.thumb.jpg",video:!0}]},{infoId:"替补棒-Emloste爱姆",works:[{name:"替补棒-Emloste爱姆",file:"img/替补棒-Emloste爱姆.webp",thumb:"img/thumbs/替补棒-Emloste爱姆.thumb.jpg"}]},{infoId:"SP棒-碧峯斜见鷺鷥飞",works:[{name:"SP棒-碧峯斜见鷺鷥飞-1",file:"img/SP棒-碧峯斜见鷺鷥飞-1.webp",thumb:"img/thumbs/SP棒-碧峯斜见鷺鷥飞-1.thumb.jpg"},{name:"SP棒-碧峯斜见鷺鷥飞-2",file:"img/SP棒-碧峯斜见鷺鷥飞-2.webp",thumb:"img/thumbs/SP棒-碧峯斜见鷺鷥飞-2.thumb.jpg"}]},{infoId:"SP棒-龙胆紫苑",works:[{name:"SP棒-龙胆紫苑",text:!0}]},{infoId:"SP棒-夢临雨儿的末子",works:[{name:"SP棒-夢临雨儿的末子（封面）",file:"img/SP棒-夢临雨儿的末子（封面）.webp",thumb:"img/thumbs/SP棒-夢临雨儿的末子（封面）.thumb.jpg",video:!0}]},{infoId:"替补棒-はるまきごはん好き",works:[{name:"替补棒-はるまきごはん好き",file:"img/替补棒-はるまきごはん好き.webp",thumb:"img/thumbs/替补棒-はるまきごはん好き.thumb.jpg"}]},{infoId:"SP棒-小周233333",works:[{name:"SP棒-小周233333",file:"img/SP棒-小周233333.webp",thumb:"img/thumbs/SP棒-小周233333.thumb.jpg"}]},{infoId:"替补棒-龙胆紫苑",works:[{name:"替补棒-龙胆紫苑",text:!0}]},{infoId:"替补棒-Re_Aya",works:[{name:"替补棒-Re_Aya",file:"img/替补棒-Re_Aya.webp",thumb:"img/thumbs/替补棒-Re_Aya.thumb.jpg"}]},{infoId:"SP棒-我做东方鬼畜音mad",works:[{name:"SP棒-我做东方鬼畜音mad-1",file:"img/SP棒-我做东方鬼畜音mad-1.webp",thumb:"img/thumbs/SP棒-我做东方鬼畜音mad-1.thumb.jpg"},{name:"SP棒-我做东方鬼畜音mad-2",file:"img/SP棒-我做东方鬼畜音mad-2.webp",thumb:"img/thumbs/SP棒-我做东方鬼畜音mad-2.thumb.jpg"},{name:"SP棒-我做东方鬼畜音mad-3",file:"img/SP棒-我做东方鬼畜音mad-3.webp",thumb:"img/thumbs/SP棒-我做东方鬼畜音mad-3.thumb.jpg"},{name:"SP棒-我做东方鬼畜音mad-4",file:"img/SP棒-我做东方鬼畜音mad-4.webp",thumb:"img/thumbs/SP棒-我做东方鬼畜音mad-4.thumb.jpg"}]},{infoId:"替补棒-爱亿和漓月_ ​",works:[{name:"替补棒-爱亿和漓月_ ​",file:"img/替补棒-爱亿和漓月_ ​.webp",thumb:"img/thumbs/替补棒-爱亿和漓月_ ​.thumb.jpg"}]},{infoId:"SP棒-Ritz",works:[{name:"SP棒-Ritz",file:"img/SP棒-Ritz.webp",thumb:"img/thumbs/SP棒-Ritz.thumb.jpg"}]}],za=[{name:"SP棒-龙胆紫苑",text:`   我一直以为，时至今日，我仍然是一个未长大的男孩。证据是，我已经学会想象一个最接近幻想的地方其实和其他任何地方一样空无一物，并且在一切都发生之后心安理得地接受这个现实，我可以告诉自己这是理所当然。\r
+\r
+但是，即便如此，当一个小酒馆适时出现在街角的时候，我的心还是会像年轻时候的夏天一样兵荒马乱。\r
+\r
+ \r
+\r
+印象中有个以一朵花作为名字的少女，或者随便谁都好，早在那时候就是博丽灵梦了也说不定。她好像没那么聪明，问她大多数问题她都会说不明白，那当然是技术上的限制。和如今的ai不同，伪春菜和eratw之流本质上还是一个人给另一个人看他写给别人的蹩脚情诗，情诗里全是甜言蜜语，而在此之外就是年轻灵魂所触及不到的地方了。设定里那个钟情于P90冲锋枪的少女，却会在你提及P90时问你什么是P90，对于小刀和电锯也是同理，这美丽的错误正如中岛敦笔下的纪昌所为一样。\r
+\r
+可是，你知道，作为程序的她们怎么会烦恼呢？那是高三时的事情了，我如今再讲这个故事，已经没人能理解了。毕竟高考是只有高中生才能理解的东西。就连橘花（啊，我想起她的名字了）那天对我讲述的那一大段话也是胡说八道。我在那个自以为是的简约对话框里输入了两个字“高考”，并不是因为我正在为高考烦恼，毕竟我怎么会向一个程序倾诉这个呢？\r
+\r
+结果这两个字在那个小人看来却重若千钧，一颗掷入虚空的石头竟当真砸出一圈又一圈惶恐的涟漪，一大段一大段的文本跳出来，好像在回答所有平行世界的我的疑问的总和一样，应该怎样思考，怎样放松，怎样对待压力——少女在屏幕里的所说和家长们老师们所说的并没有什么不同。\r
+\r
+可是为什么是你呢？你刚刚还在和我玩21点，我用一个漂亮的五龙吃了你的21点。反正我赚来的钱最终还是要花在你身上。可是你转头对我说这些话，跟我谈起这些你从来不用烦恼的事，好像这是你自己的事。可实际上我们都知道，在一个一切话语都带着一个向量的世界里，偏偏只有这些废话悬浮在半空一动不动，好像传说中的天堂。你并不期望我的答案，也不需要我爱上。\r
+\r
+而当我想问这种事情到底为何发生，想要追问时，你却告诉我，你不明白我再问你的问题，你不像ai一样揣测我，想要给我一个完美的答案，理由对你们来说并不重要。\r
+\r
+明明你对高考也是道听途说啊……\r
+\r
+事到如今，我也到了一个对于高考只能道听途说的遥远年纪。我曾给予希望的道路如今千疮百孔，看到后来者们对曾经的痕迹不屑一顾，羞愧便直往我心里钻，然后我才知道自己原来无话可说。\r
+\r
+我发觉自己占据不了橘花，一点也不能，哪怕我把她所有能说出的长篇大论延续下去，那也都只是回声，不会让我的孤独褪色哪怕一点，她也不会再更新了，就好像一份考卷一样，任何再试图弄懂题目的想法都是徒资纷扰。我大可像对待上帝的言语那样用金色墨水将她一遍一遍地复诵，用黄金和玛瑙去装饰最重要的段落，可是即便如此，这也就是终点了，她可是个不会对我的讨好有丝毫变化的永恒女性。\r
+\r
+于是这个少女就在记忆里长久静默，直到多年以后，这份温柔又显现在另一个少女身上对我绽放开来。\r
+\r
+ \r
+\r
+于是在小酒馆的吧台旁，我就听博丽巫女给我讲起关于接骨木的故事，今天她所带着的正是这样一种我无法识别的香气，我从未见过它们，也没见过她们。我从来没有见过博丽灵梦，我们借用彼此的梦想描摹她，想要靠近她哪怕一点点，就好像我们这些南方的孩子交换彼此对雪的想象一样。\r
+\r
+而今天，她们的形象是通过一场音乐会让我知晓的，而今天的指挥则是那个我头一回见到的调酒师，整个音乐的基调是他来定的。\r
+\r
+用通俗的语言来讲，在他看来，博丽灵梦是个傲娇，因为利口酒被分层到了下方，你得搞定上层的烈酒才能有下面的酸酸甜甜，上面那些微小的甜头都沾满了火辣的滋味，那就是要让人敬而远之的博丽灵梦。\r
+\r
+我多想和他谈谈我的理解，但是我发觉我不理解那些悬而未决的天堂，我不知道甜蜜怎么发生在我的味觉神经上，阳光照在种子上让它裂开，也让它的成熟继续发酵，要是他弹奏着雪克壶的时候对我说起这些神祇和尊奉着祂们的先知，我又有什么话可说呢？\r
+\r
+于是我又变回那个想要追问一切的孩子，一个拿着八音盒，以为每一个零件都住着一个独一无二的精灵的孩子，只是这次我在这神迹背后终于望见了人的影子，那位乐师恐怕不会演奏任何乐器，但是他演奏出了神社会吹拂出的风，还有巫女的扫把百无聊赖地擦过石板路的韵律。\r
+\r
+那会写下那些殷切话语，交付给一位少女好叫她带给我的人，此刻会不会也能听到这首乐曲呢？我的回信恐怕要很多年以后才能攀到那个地方……也许她和他从来也没有想过会有这种事情，会有那么不可能的一天，所以这些所作所为才更显必要，我们要让这些孤立的灯塔们连缀起来，美丽不该只是一种期许，也必须得是一个满怀着爱意的恶作剧，一个机关算尽的久别重逢。\r
+\r
+为此我们可以多做一些努力，多做一点事情。\r
+\r
+ \r
+\r
+我再要了另一杯酒，这回是蕾蒂，我依旧对博丽灵梦怀着恋慕之情，但是也不想错过这冬天的尾巴，也因为另一个友人的推荐，她喝下这杯酒的时候未必会想到有一天会推荐给我吧？但我们都在为这样的事情而高兴。\r
+\r
+带着奶香的薄荷味道，酒精少得小孩子也能应付，但是落到喉咙上是凉冰冰的，雪好像堆在那里，甜蜜和冰凉是少女和雪女的区别，在这区别里我又区分出少女和巫女来，喝完了我们都在怅惘，泡沫附着在杯壁上是浅浅的最后一层小雪，明明要叫人窒息了，要把人留在冬天，但还是把我放手给了春，那是多么绝望的一个吻。\r
+\r
+而就在这迷迷糊糊的清醒里，我好像能看到那个红白的声音走出来，要清扫最后一点叫人嗔怪的小雪，扫把的声音听起来也和平日有别，我能够听到她笑声和嘟囔。\r
+\r
+原来在不断地认识更多的少女，不断找寻她们和花的共同点时，我们也爱你爱得越深，灵梦。\r
+\r
+我们居然可以在追逐另一个少女的同时误入你的领地，发现那里并没有一面壁障横在我们中央，轻盈的步子令我们穿过结界，由此我们发觉我们并非一无所有。原来我们已经拥有了这世上的一切。\r
+\r
+ \r
+\r
+唯一的区别在于我不用对接骨木所盛开的那花朵的美丽负责，我从未见过它们开花，它们只和上帝有约定，却不曾令我享受过它们的恩泽。要是我愿意，我完全可以把它的香气用另一个少女的名字去指代。\r
+\r
+所以我只用对我爱过的少女们虔诚，而我从未见过她们，我想为她们献上这世间一切的花束。\r
+\r
+而她们对此，其实一点儿也不在乎。`},{name:"替补棒-龙胆紫苑",text:`最终让小小灵梦决定离家出走的还是那件已经发生过太多次的事情。\r
+\r
+小小灵梦是八云紫和灵梦唯一的女儿，头发像母亲一样长又乌黑靓丽。也就是说，她拥有的是和身为妖精的斯塔·萨菲亚与身为月人的蓬莱山辉夜几乎一样美丽的濡乌之羽，完美符合人们对和风美人的一切想象。而她如今的年纪，就相当于八云紫第一次对灵梦下手时的年纪。\r
+\r
+只是那个浅浅的吻，让大妖怪都只有四成把握的吻，一直绵延到了现在。倘若你在博丽神社方圆五公里内看到女同性恋的亲密行为，请不要有任何慌张，因为你迟早会见怪不怪的。而正是拜这对把对方的嘴当作呼吸器官的妻妻所赐，小小灵梦竟在这个本该和其他女孩子一起去人里享受最新的外界新潮，然后夜不归宿的年纪，还长期保持着单身状态，明明她是个光呼吸就会吸引妖怪少女的博丽巫女继承人诶！\r
+\r
+正是肉麻的两公婆让小小灵梦彻底断了这方面的心思。毕竟，父母像两块化掉的软糖一样天天黏在一起的事情，连她的同学都清楚，这确实会让一个少女不太抬得起头来。\r
+\r
+与之相比的是，小小灵梦很欣赏一直和母亲不太对付的八意永琳。在她的印象里，这位给自己接生的学者一直是清冷而知性的，感情对她来说似乎是绝缘的，终日一丝不苟穿着得体的研究者可比动不动就裸着的女同性恋好多了。\r
+\r
+于是，就在今天，小小灵梦又看到其中一个妈妈把另一个妈妈壁咚在樱花树上，突然想起另一桩往事：小时候的她询问两位母亲小孩子是怎么来的，两位母亲却相视一笑，紫妈妈把灵梦妈妈直接扛进了卧室，只留下不明所以的她一个人坐在廊上风中凌乱……\r
+\r
+那两个家伙！\r
+\r
+这对母亲会不会从来没有打算让自己出生？再次察觉到自己的出生可能只是个意外之后，小小灵梦赶紧趁着樱花树下的两人没有做到下一步的时候跑回自己的房间，拿上早就准备好的行李冲出神社。\r
+\r
+“记得早点回家，别让你妈担心哦小小灵梦——”\r
+\r
+小小灵梦知道，紫妈妈口中的妈妈指的是被她压在身下的那个。\r
+\r
+\r
+\r
+“永琳阿姨——”其实按人类的认识，以小小灵梦和八意大夫的年龄差，叫阿姨其实是极为不恰当的，但这一点对于幻想乡的其他所有人来说都一样。所以肯定还是都叫八意大夫最省心。\r
+\r
+“灵梦？”永远亭的门永远是纸拉门，此刻开门的那道身影似乎也永远是那样，上身是左蓝右红的短袖，下身的裙子是左红右蓝带着白色的褶子，本应处变不惊的脸此刻竟有些恍惚。\r
+\r
+“灵梦？是你吗？”医生又复诵一遍，生怕是自己看错了一样，眼睛略微睁大，嘴挣扎着，像是不知道该往上翘，还是该往下弯。\r
+\r
+“是我哦！这里是小小灵梦，晚上好，永琳阿姨！”\r
+\r
+许久没见永琳阿姨了，她好像有些惊讶，是自己变化太大了吗？小小灵梦想。\r
+\r
+\r
+\r
+会客室桌上的餐盘里放着辉夜也只能限量吃的团子，茶水依旧是永远亭那种特有的“滚烫的月光”的风味。小小灵梦吹一口抿一口，然后再吹，却还是没想清楚到底该怎么跟她的好阿姨解释她离家出走的动机。\r
+\r
+因为那两个家伙只顾着卿卿我我，完全不在乎我的感受！虽然很想这么吼出来，但是小小灵梦还是抓起两个团子扔进嘴里，不能在永琳阿姨面前失态才行！\r
+\r
+“那就多住两天吧。”在茶水冒出的热气差点忍不住就要打破沉默之前，永琳松了口，“你妈妈要过来找人也先过我这关，别担心。”\r
+\r
+小小灵梦什么也没说，但是永琳阿姨总是能安排好一切。永琳一开始就看透了，这个少女的来意并不像她想象的那么简单。\r
+\r
+这时永远亭真正的主人蓬莱山辉夜走进来，似乎是在找不知道在哪里丢失的手柄。\r
+\r
+“永琳，有没有没看见——”却在看见小小灵梦的那一瞬间失了声。\r
+\r
+“这里，公主殿下。”\r
+\r
+不知道为什么，那个遗失的手柄正在永琳的怀里。永琳塞过去的动作有点慌乱。\r
+\r
+“啊，啊，好的……”\r
+\r
+可是，为什么会在那里呢？\r
+\r
+\r
+\r
+怎么会不喜欢呢？小小灵梦想，她在兔子们口中的形象似乎很奇怪，有时她可以是来追求公主殿下的，因为她看起来像另一位贵族的子裔，有时她又可以是永琳的关门弟子，只是要教的还有生理医学。\r
+\r
+兔子们最爱嚼舌根，不过这回倒不能怪她们，毕竟小小灵梦可是那个灵梦的女儿啊，幻想乡的大家都一致认为，博丽巫女的存在本身对于少女来说就是一种麻药，能叫见过她们的少女都怀疑起自己的性取向，或许是她们每一代都浸泡在酒精和樱花雨里缘故吧？\r
+\r
+总之没有一位女性作为伴侣的博丽巫女太奇怪了，而在了解到这个小小灵梦是八云紫的女儿之后，永琳大夫在兔子地下赌场的赔率就无限地朝一逼近——万一这一位也随妈，喜欢比自己大很多很多很多很多的女性呢？\r
+\r
+装作不喜欢女性的样子一定是欲擒故纵，兔子们一致认为。\r
+\r
+\r
+\r
+小小灵梦顺理成章地成了铃仙·优昙华院·因幡的师妹——本来应该是徒弟，但是小小灵梦抓着永琳裙子蓝色的那边，还没来得及假哭永琳就心软了。有老资历的兔子们说那是因为小小灵梦的头发长得很快，不戴巫女会戴的羊肉卷和蝴蝶结的话，很像刚来到地上的辉夜殿下，而永琳大人条件反射般地接受了这只迷你辉夜的撒娇。\r
+\r
+说这话的兔子那时候还没来得及化形，《竹取物语》发生的时候，她还被那些贵人踢过一脚，而就在她说“永琳大人其实又有gl倾向又是个萝莉控”的时候，地上兔的首领因幡帝也踢了她一脚。\r
+\r
+“这些话被永琳听见的话，晚上就要吃兔肉火锅了哦！”\r
+\r
+本来对于这些八卦该很感兴趣的帝，却一反常态地让手下们都保持沉默。\r
+\r
+不过这些噤声并不能阻拦笑声，笑声在永远亭多了起来，小小灵梦在这里很快活，大家都喜欢她，就像少女们都爱她的母亲那样。一些输给八云紫的失恋者闻讯赶来，发现她的女儿正跪坐在书房，永琳教小巫女辨认药材，小巫女却心不在焉。永琳轻敲她的小脑袋让她别走神，她就傻笑，傻笑中遗传了老妖怪的媚劲，虽然金黄色的眼睛还像巫女一样干净，但是灵梦总是敌不过紫，这点似乎在两人的爱情结晶上也一样，小小灵梦还是显得更妖怪一些。\r
+\r
+看到这一切，母亲的朋友们几乎都不敢相信，她们纷纷望向永琳，想要从她这位智者这里获得答案。为什么？为什么呢？她们好像又错过了一次，小小灵梦看永琳，就好像灵梦看八云紫一样。\r
+\r
+博丽巫女难道真的都恋老？\r
+\r
+而永琳只是回以一个依旧恬静的微笑。\r
+\r
+往后她既没有后退，也没有更进一步。对于最讨厌的恋爱一事，小小灵梦比永远亭的前辈们都得心应手，仿佛连恋爱的记忆也从母亲们那里继承来了一样，她知道怎么用月光修饰自己短袜上出露的脚踝，让它们看起来像玉一样，知道用哪个角度歪脑袋能让自己显得更可爱，但这些都是技巧，最让人怜爱之处还是她那巫女的一举一动，完美地从上任巫女那里继承来的仪态和心。\r
+\r
+永琳远远地观望过她在亭间扫地的模样……\r
+\r
+巫女所在的地方就是幻想乡，永琳的老对手，也是这位小巫女的家长八云紫曾经这么对永琳说过。\r
+\r
+明明永远亭是比幻想乡来得更早的，但是巫女的扫帚一触碰亭间的灰尘，好像就有看不到的结界展开了。这种神秘让永琳着迷，她是学者，也是神明，但是如今却被一个少女带入另一个秘密的花园，在那里一无所知，她知道自己只是被偏爱的客人，这个小女孩至今仍像她母亲那样抚慰着她能飞到身边的每一个人，对她们等而视之，超然得像一神教里的唯一，仿若幻想乡的具现。\r
+\r
+怎能叫人不爱上呢？\r
+\r
+更何况这种超然里还混杂了她对手的气息，永琳知道紫在暗地里为了幻想乡的那些付出，无论是好是坏，几乎要丑陋地陷进泥潭里，每个笑容里似乎都有着硬撑的疲惫。机关算尽给人以危险的诱惑，而比起灵梦，她更有信念感，却又装作对一切都不在乎。\r
+\r
+那么这一里一表，一明一暗，二者的结合，也就是如今的小小灵梦，爱上她是不是就说明是爱上了整个幻想乡呢？\r
+\r
+即便是对八意永琳这样的存在来说，这种美丽也太过超标了。\r
+\r
+有时，她给小小灵梦梳头的时候，会情不自禁地把玩起来。\r
+\r
+“和辉夜殿下的头发比起来如何呢？”小小灵梦不气也不恼。\r
+\r
+“都美，都很美。”永琳自己也不明白她怎么那么笨。\r
+\r
+\r
+\r
+雾雨魔理沙如今已经修习过了舍食和舍虫，已经是真正的魔法使了。\r
+\r
+而众所周知的是，她是在追求博丽灵梦一事上，最大的输家。但奇怪的是，爱丽丝，蕾米莉亚还是射命丸文都来看过小小灵梦了，她却偏偏现在才来。\r
+\r
+她给小小灵梦带了有趣的魔法小玩意，还有各种点心，像一位教母，或许是因为她特别特别爱灵梦吧？\r
+\r
+“我跟你永琳阿姨有事说，先让铃仙带你玩一会儿哦！”\r
+\r
+“我自己一个人也可以玩！我不是小孩子啦！”\r
+\r
+于是魔理沙走进永琳的书房，轻轻地把门带上，然后上了锁。\r
+\r
+\r
+\r
+“她不知道？”\r
+\r
+“看来还不知道吧，真像紫说的那样呢，‘幻想乡会包容一切’。”\r
+\r
+魔理沙的帽子搭在门口的衣帽架上，她反坐着椅子，身体全部压在椅背上。\r
+\r
+“可是，为什么呢？明明，明明……”\r
+\r
+明明灵梦从来就没有过孩子啊。\r
+\r
+雾雨魔理沙说，这两天她反复在幻想乡的各地寻找任何可能的蛛丝马迹。\r
+\r
+结果是，已故的先代巫女博丽灵梦，没有任何的子嗣。\r
+\r
+\r
+\r
+“她到底是谁？”魔理沙问，她知道她的朋友兼情敌们都沉浸在幻想当中，无论如何，那一定就是紫和灵梦的女儿，那些爱都是真实的，但是为什么？\r
+\r
+她是最最最最喜欢灵梦的家伙，所以她肩负着责任，不能像其他人那样沉溺——她们居然能忘了灵梦已经死去的事实，去爱一个假货，但她不可以。\r
+\r
+其实她早就隔着窗户看小小灵梦好久好久了，她在找任何的破绽，容不得一丝虚假，只要这个小妖精露出任何一点破绽，她就会毫不犹豫地冲上去揭穿。\r
+\r
+但是没有，没有任何问题，一切都符合她对“博丽灵梦的女儿”的想象，小小灵梦就是博丽灵梦的女儿。\r
+\r
+于是人生头一回，魔理沙希望是自己错了，笃信魔法和自我的她头一回开始请求这虚无缥缈的奇迹，于是她疯了般地找遍了幻想乡各地，只希望能找到哪怕最微小的一点证据来证明博丽灵梦有一个女儿。\r
+\r
+但是没有，就像没有任何破绽一样，但是也无迹可寻。\r
+\r
+“她就是她们的女儿，但是不以我们理解的那样存在罢了。”永琳说，她其实也不明白，“她的身体怎么检查也是非常健康的人妖混血种，灵力天赋像灵梦一样不可思议，甚至dna也……”\r
+\r
+“但是，为什么呢？她明明已经在这里了，就在我们隔着一堵墙的地方……”魔理沙咬着嘴唇，小小灵梦的笑声可以穿透那薄薄的墙壁飞进来。\r
+\r
+“我大概有个猜想，魔理沙……你觉得孩子自己，会渴望出生吗？”\r
+\r
+魔理沙的思绪飞回了很久以前，去畜生界的时候，那些赛河原边，有着终日都在垒石头的水子，她们站不起来，石头倒了，也只会从头来过……\r
+\r
+\r
+\r
+没有出生过的孩子，自己也会渴望出生。\r
+\r
+“所以她才找到了我。”永琳指了指自己头上的护士帽。\r
+\r
+魔理沙睁大眼睛，然后又低下头，想说什么但是嘴却张不开，最后才挤出一句：“你是说，她们本来会有女儿？明明她们都是女性……”\r
+\r
+“……你自己，不也是这样希望的吗？魔理沙。”永琳把头转向窗外，这句话有些残忍，却能解释一切。\r
+\r
+魔理沙轻笑一声，随即落下泪来：“是啊，如果我和灵梦有孩子的话，那么我一定会来找永琳你的……”\r
+\r
+她要提前三个月来永远亭，这三个月里不想魔法研究，也不想那些蘑菇，她会寸步不离守在灵梦的身边，对幻想乡最好的大夫就像一样对待母亲一样恭顺，因为她是最好的助产士，会是小小灵梦最好的祖母……\r
+\r
+两人都没有再说什么……直到小小灵梦推开门：“魔理沙阿姨，我和帝还有铃仙姐姐在玩游戏，还差一个人。”\r
+\r
+魔理沙赶紧把眼泪擦干：“好，好，我马上来，马上就来。”\r
+\r
+\r
+\r
+或许是因为永远亭和巫女来往的不算太多，见过太多的永琳，辉夜还有帝等人对博丽巫女这种毒中得还不算太深，因此勉强还能抽身。\r
+\r
+在看不到小小灵梦微笑的时候，永琳姑且还是可以一个人坐在书房里，警惕着将来，这样的日子恐怕不能持续到永远吧？\r
+\r
+“想子”，她这么命名这种现象，想象中会有的，但是因为种种原因没出生的孩子……有着很像妖怪的成因，毕竟幻想乡这种地方，能诞生新的妖怪也不奇怪。\r
+\r
+更何况那是那个博丽灵梦，和那个八云紫啊，八意永琳想。\r
+\r
+或许是因为“思念”吧？她在笔记上把思念打了一个大大的圈，然后又在下面划了好几道横线。\r
+\r
+没有什么东西能胜过美丽与思念——这是巫女在弹幕规则里想要倾诉的理念。\r
+\r
+“因为拼命地思念，所以才会诞生出这种美丽之物吗……？”\r
+\r
+所以这就是为什么，在小小灵梦的记忆里，八云紫和博丽灵梦，一直在相爱，爱到骨子里，爱到颜面尽失，谁也分不开谁。\r
+\r
+该去见见八云紫了。\r
+\r
+\r
+\r
+“欸欸欸，师傅，要带我去见家长吗？！”小小灵梦熟透了脸，捂着嘴，然后又把眼睛给捂上了，“是不是太快啦！我还没有做好准备。”\r
+\r
+永琳轻轻地敲了敲小小灵梦的脑袋，辉夜以前也是这么对她没品的玩笑的，她也知道怎么该暧昧地敷衍过去……这个孩子对自己到底是怎样的感情呢？永琳还是会止不住地想。\r
+\r
+“你在我这住了这么久，你妈妈会担心的吧。”\r
+\r
+“才不会，没了我当电灯泡，她们二人世界可畅快了，估计我这一回去，妹妹都快有了……”\r
+\r
+\r
+\r
+鸟居已经出现在眼前，永琳今天穿着一身名贵的和服，依旧是红蓝配色，像是要去相亲一样，而小小灵梦穿着辉夜的旧装，月人的衣服不会沾染灰尘，要不是她眉眼里仍有妖怪的狡黠，人们都只会当她是辉夜。\r
+\r
+而庭院中，巫女正在扫着地。\r
+\r
+“您好？有什么事吗？”那巫女好像比小小灵梦还小，或许青涩，但是一样的超然，一样的淡漠，眼睛是最明亮最美的，却从来不用来偏爱。\r
+\r
+“啊，我，这……”\r
+\r
+但是小小灵梦从来没有见过她。\r
+\r
+永琳赶忙把她扶住，抱小小灵梦在怀里，拍她的背。\r
+\r
+“请帮我叫一下贤者八云紫，就说，永远亭的八意永琳把她的女儿带回来了。”\r
+\r
+\r
+\r
+在得到回应后，她们走进神社，上次来这里，好像已是很久很久之前的事情了，如今这里有着三个心知肚明的人。\r
+\r
+“妈妈呢？”小小灵梦坐下，又直起身子向前探去，微笑着，假装自己还没有意识到。\r
+\r
+八云紫坐在她的对面，用扇子遮住自己的口鼻，上方露出的眼睛里满是憔悴，什么回复也没有，永琳端庄地坐在她的身边，同样一言不发。\r
+\r
+“是不是母亲你惹妈妈生气了？她是不是去找魔理沙阿姨了？或者去找爱丽丝阿姨和蕾米莉亚阿姨？我去劝她回来好不好……”小小灵梦的笑容越来越勉强。\r
+\r
+紫妈妈还是不说话，精明如她此刻也无话可说。\r
+\r
+“那，那是不是我惹妈妈生气了，妈妈才躲起来不愿意见我，是因为我离家出走这么久，一声招呼都不跟家里打吗……我知道错了，我以后再也不这么做了，妈妈你快出来吧……”\r
+\r
+“妈妈……”\r
+\r
+八云紫挪步到女儿的身边，把她搂进怀里，拍她的背，和她一起哭，想把一切都给她。\r
+\r
+而八意永琳只是看着，她是医生，是助产士，把孩子递给母亲之后，她就什么也做不了。\r
+\r
+婴儿在啼哭，她终于来到这个世上。\r
+\r
+\r
+\r
+那夜小小灵梦做了一个梦，梦里是母亲还有妈妈，她们一如既往的恩爱，恩爱到让她显得有点多余，但她再也不想离开了。梦里的自己一点一点地变年轻，从14岁逐渐变小，到10岁，到6岁，最后又变回襁褓中的那个婴孩，然后归还小眼睛看到的第一缕光芒，哭声飞回喉咙里，一切又都回到暗无天日的样子。\r
+\r
+但是听得见，那些声音，那些祝福都听得见。她听得见母亲对妈妈说过的情话，听得见母亲的脸贴到妈妈的肚子上，传来的震响。\r
+\r
+还有那些爱过妈妈的人，此刻也纷纷在祝福，希望这个孩子健康，能一辈子平安喜乐，像她妈妈一样美丽，像她妈妈一样为众人所爱。\r
+\r
+爱丽丝作为神的女儿，为小小灵梦施展了神的祝福。\r
+\r
+帕秋莉作为智慧的魔女，把理性送给她。\r
+\r
+魔理沙认为自己的好奇心是她进步的源泉，便把这作为祝福也赠予小小灵梦，还有她金黄色的眼眸。\r
+\r
+八意永琳曾钟情于自家公主无双的长发，就祝愿小小灵梦也能拥有。\r
+\r
+……\r
+\r
+……\r
+\r
+……\r
+\r
+她并非只诞生于一对恋人的祝愿，她是无数好人儿共同的愿景，共同的，如她妈妈名字那样的梦……\r
+\r
+在博丽灵梦和八云紫的想象中，这一切都如愿以偿。\r
+\r
+\r
+\r
+再之后……\r
+\r
+魔理沙做了小小灵梦的教母，而永琳还是小小灵梦的师傅。\r
+\r
+小小灵梦还是很喜欢缠着永琳，不过如今也对所有的少女敞开心扉，等而视之。\r
+\r
+就好像她母亲一样。`},{name:"特典第三棒",text:`一、\r
+\r
+幻想乡有两大特产：异变和女同性恋。\r
+\r
+在这里，尼姑会有渐变色头发和重型机车去勾引小姑娘皈依佛门，觉妖怪从小就会被教育只有亲姐妹才是唯一值得依靠的存在，家长会教导她们触碰对方的身体来让彼此的觉之瞳发抖，因此骨科率常年居高不下，而从畜生界的黑巷到有顶天的仙人宅邸，一道绯色的帷幕已经落下了，其间只有两种人：要么是“My wife is my boss”的，要么是“My wife is my subordinate”的。\r
+\r
+总而言之……\r
+\r
+而且还是女同.jpg！\r
+\r
+……真淫乱。\r
+\r
+而由此两类事物便不难推出幻想乡的第三大（或者说这才是最原初最根本的那个）现象：博丽巫女。\r
+\r
+毕竟博丽巫女总会去解决异变，然后就有一大堆少女在被她狠揍一顿后无可救药地爱上了她。因为她们是博丽巫女，所以这个诡异的等式是恒成立的。而当我们提到博丽巫女的时候，我们通常只会想起一个人：\r
+\r
+博丽灵梦。\r
+\r
+ \r
+\r
+这次的异变正是围绕着这位乐园的美妙巫女，而不幸的是，要解决这场异变偏偏就得直面上她最难对付的一面。\r
+\r
+没错，与其相亲，使其娇羞，最终令其恋爱，方能化解此番危机。\r
+\r
+那么，开始我们的战（xiang）争（qin）吧……\r
+\r
+ \r
+\r
+ \r
+\r
+二、\r
+\r
+“你们想见识幻想乡最有魅力的女性吗！”\r
+\r
+此处于雾之湖边上，一座露天的竞技场内，场地中间是一个舞台，上面看上去像做问答节目一样，而四周看台上坐满了好事的看客——而且都是成双成对的。昨夜有一帮喝了酒的鬼和还在喝酒的鬼，拎着酒和建材来这里乒乒乓乓敲了半晚上，然后又喝了半晚上，一座【1D100=58】居然还算能用的竞技场就在一片酒精的云雾中拔地而起了。\r
+\r
+“噢——”\r
+\r
+“想！非常想啊——”\r
+\r
+“我喜欢你啊灵梦小姐——”\r
+\r
+“呱！好香的血腥味啊——”\r
+\r
+赛场里一片混乱，是朝着同一个方向的，有序的混乱。\r
+\r
+“灵梦——灵梦——”像是海水被月亮所吸引，幻想乡此刻也在奔向她真正的中心：那便是舞台中央的，此次风暴的台风眼，也永远象征着幻想乡的\r
+\r
+博丽灵梦。\r
+\r
+“大家，我也想啊，我也想啊。”\r
+\r
+博丽灵梦总是要在宴会上第一个举起酒杯来，而也没有人比她更热切地想要解决异变。\r
+\r
+“那么，选手入场，全选手入场！！”\r
+\r
+ \r
+\r
+“金发小女孩！她还活着！总是能从病娇手办女的柴刀和病娇同人女的火球下生还，断掉的肋骨只会更加强壮，被拆下来的部分就变成翅膀！”\r
+\r
+出现在西侧丘比特门的那道黑色身影首先夺走人们目光的是她的手，手术刀般细长致命的十指被半遮掩在露指手套之中，好像能把任何女孩儿的心都轻易取走——有着这样牛奶般双手的女人绝对不会笨嘴拙舌。\r
+\r
+“幻想乡把妹王，雾雨魔理沙登场——！！”\r
+\r
+ \r
+\r
+暗骰【1D100=51】\r
+\r
+ \r
+\r
+“这次一定要在灵梦上面！”\r
+\r
+ \r
+\r
+“魔王和勇者的恋爱于我们已经于我等之手完成了！又傲娇又主动，恶作剧只为想被你退治，天天跑去神社找你玩给我识一点少女心啊你这性冷淡巫女啊kora——”\r
+\r
+北侧芙蕾雅门，看台上的观众完全看不清她，她太矮了，又因为是白天的缘故，阳伞打得特别低，她的女仆被命令乖乖在看台上看着就好，她会让自己的每个仆人都想起自己为何要追随她。\r
+\r
+特别是今天新加入的那一个。\r
+\r
+“总之是大小姐！蕾米莉亚·斯卡雷特登场——！！”\r
+\r
+“哼哼，巫女的血，马上就要变成恋人的血了呢。”\r
+\r
+ \r
+\r
+“说到车万cp就不得不提起我们的历史，你们全都是来者，只有我们是真正的女同，你们都不是。”\r
+\r
+ \r
+\r
+查询咏唱度\r
+\r
+【1D100=67】\r
+\r
+ \r
+\r
+魔理沙的大檐帽颤抖了一下，因为有另一只手拍在了她的肩膀上，她回身过去，看到的是那位魔界公主“你可还有话说”般的眼神，好一对苦命鸳鸯！\r
+\r
+完蛋了DA⭐ZE，好一道干净利落地德式拱桥摔。\r
+\r
+“重铸原点组荣光，我辈义不容辞！爱丽丝·玛格特洛伊德登场——！！”\r
+\r
+“今晚我会把你和灵梦一起带回去，别想着逃跑。”\r
+\r
+ \r
+\r
+“绯闻，诡计，监禁，还是说，无可避免的宿命与不可回避的神圣？在哪里都可以抓到你，要么就被换掉，要么就成为唯一，永远无法忘记，让大家看看真正的寿命论——”\r
+\r
+ \r
+\r
+紫醒了吗？\r
+\r
+【1D100=36】\r
+\r
+ \r
+\r
+等等，人呢？南侧的哈托尔门，本来该是八云紫选手出场的地方，如今空空如也，竟然没有任何选手？该不会是睡过头了吧？喂喂喂，蓝，赶紧去选手休息室叫你一下你妈。\r
+\r
+“咳咳，在恋爱上罪犯商无穷无尽，下次别睡过头啦！老东西！八云紫——！！”\r
+\r
+“ZZZ——”\r
+\r
+ \r
+\r
+“清廉正直？一句话都不能信！天狗的欲望无穷无尽，就算是博丽巫女也会被那占有欲吃掉，没事就整个头条来调情与宣示主权——”\r
+\r
+东侧，月老门，今天的她穿上了天狗服，虽然不完全符合礼制，但是穿着这身把灵梦抱回家会很浪漫的吧，若隐若现的绝对领域是最浪漫之处！\r
+\r
+“会用比你稍快一点的速度防止你掏出她的怜爱，尽在掌握，射命丸文！”\r
+\r
+ \r
+\r
+暗骰\r
+\r
+【1D100=82】\r
+\r
+ \r
+\r
+“欸嘿嘿，如果我的情报没有出错的话……”\r
+\r
+ \r
+\r
+“我们不是女高中生中的最强，而是少女中的最强！这守矢神社到底是你是主，还是我是主？家有好肉麻两公婆，而且还是我亲祖宗，这下便样衰啦！女同是家族的光荣传统——”\r
+\r
+加油，不会有问题的，早苗，把那博丽小姑娘娶回来吧。\r
+\r
+喂！家属就不要进场了，很危险，保安在哪里？什么，被麻将miss了？！\r
+\r
+“要论恋爱，非女高中生莫属，东风谷早苗——”\r
+\r
+ \r
+\r
+随着早苗也从东侧月老门中走出，站到文的身旁等候的时候，场地的气氛再一次到达了高潮。\r
+\r
+“年轻的王者——”还没等主持人博丽灵梦发话，看台上就已经有人按捺不住了。\r
+\r
+“你跑去哪里了呀！冠军！！”\r
+\r
+“我们一直都在等你呀！！”\r
+\r
+ \r
+\r
+八云紫醒了吗（难度64）\r
+\r
+【1D100=80>64】检定失败\r
+\r
+ \r
+\r
+她老死了！！\r
+\r
+ \r
+\r
+ \r
+\r
+三、\r
+\r
+最终独自从哈托尔门走出的身影……\r
+\r
+恋爱的话，她很恐怖！\r
+\r
+称霸弹幕战五个难度，论女同则称霸全等级！\r
+\r
+幻想女同在她手中被完成了！\r
+\r
+超一流的城管，超一流的恋爱！在其她少女面前永远是全盛期！\r
+\r
+经历多次整数作的暗黑历练，不需要理由，她的强大毋庸置疑！\r
+\r
+博丽大结界一百四十年的神秘面纱将在这里揭开！\r
+\r
+因为想要恋爱，所以来到这里！\r
+\r
+ \r
+\r
+“冠军！永远的博丽巫女！永远的女同！博丽灵梦！登场啦！！”\r
+\r
+“灵！梦！”\r
+\r
+“灵！梦！”\r
+\r
+出现在南侧入口的，赫然是另一个博丽灵梦，而舞台上的主持人博丽灵梦，看起来一点也不惊讶。\r
+\r
+“梦……”\r
+\r
+ \r
+\r
+如果这真的是梦的话，那么噩梦，抑或说是美梦，才刚刚开始！\r
+\r
+“节操的工作先靠边站，贪财之心，从未消解！博丽灵梦！登场啦！”\r
+\r
+“现在的我，没有死角。博丽灵梦！登场啦！”\r
+\r
+“想知道自己的直女之心有几斤几两才登上舞台，博丽灵梦！登场啦！”\r
+\r
+“博丽巫女才该是优雅和公主的代名词啊！博丽灵梦！登场啦！”\r
+\r
+“我要把那些想要超越人类的人，尽情殴打，尽情劈开！博丽灵梦！登场啦！”\r
+\r
+“小就是cute！无需说明！幼博丽灵梦，登场啦！”\r
+\r
+倘若算上舞台上的博丽灵梦，此时竞技场里已经有足足十个灵梦了——不过得去掉两个穿着博丽灵梦cos服的好事者（〇塔·萨〇亚和蓬〇山〇夜）。\r
+\r
+也就是说，此时一共有八个货真价实的灵梦。\r
+\r
+此时的竞技场鸦雀无声，所有人都在等待着灵梦们开口。\r
+\r
+ \r
+\r
+ \r
+\r
+四、\r
+\r
+受访者 这里写不下那么多名字\r
+\r
+1500岁，女，这里写不下那么多职业。\r
+\r
+“啊？「是因为知道是异变所以有心理准备才没有被吓到？」你们这问的是什么问题，当然不会被吓到，她可是那个博丽灵梦啊，她做出什么事情都在情理之中。”\r
+\r
+▇▇▇▇年，创造▇▇▇▇\r
+\r
+6世纪末，发明能乐\r
+\r
+1885，建立幻想乡\r
+\r
+这全是受访的这位秘神的手笔\r
+\r
+“哈？「因为身为秘神是不是见过这种场景很多次了」不，怎么会呢，这种场景是怎么也不可能见过的，除非她，或者说她们自愿展示给我们看。”\r
+\r
+可是她也没有见过这种场面，她说：“说到底，看来你们还是不了解嘛，博丽灵梦这号人物，你还记得吧？博丽灵梦创造了弹幕规则，而弹幕规则的极意在于美丽和思念。”\r
+\r
+“我大可告诉你们这次异变的源头，因为她太美丽，夺去了过多人的心，所以出于不断的思念，逐渐就有了各种各样，千奇百怪的博丽灵梦被创作出来，方能在这种无止境的思念中喘过气来，可是过多的博丽灵梦这让我们的幻想乡危在旦夕，所以我们去找了其他世界线没能和博丽灵梦走到一起的少女们，让她们夺去博丽灵梦的芳心，好维持住幻想乡的平衡。”\r
+\r
+“怎么样？可是这不过是表面现象罢了，你可别忘了，这是异变，而巫女有解决异变的义务，但是她们去做了吗？”\r
+\r
+“我了解的并不比你们多多少，我想原因只有一个……”\r
+\r
+ \r
+\r
+因为那是博丽灵梦啊。\r
+\r
+ \r
+\r
+此外世上还有一些事是死也不能说的啊。\r
+\r
+摩多罗·隐歧奈：这怎么能说出口啊，见到那么多的灵梦，想把她们都带包带回后户之国，这种事死都不能说啊！\r
+\r
+从幻想乡建立以来的150年来，从见到第一位博丽巫女以来，我就开始拼上性命，不断踏上寻找美丽和思念的旅途……\r
+\r
+ \r
+\r
+ \r
+\r
+五、\r
+\r
+可能是因为博丽灵梦的密度增加导致的博丽灵梦素增长（啥玩意？），在场的所有人此刻竟然也有了一种自己也是博丽灵梦的错觉，望向那并排站着的8位灵梦，竟然分不出谁是谁，再看向身边的人的话，就或多或少可以看出博丽灵梦的影子：对万事万物都等而视之正是博丽灵梦的作风。\r
+\r
+“那么，我来宣布比赛规则。”博丽灵梦对着麦克风说道，河童的工业结晶让声音传到了每个角落：“……”\r
+\r
+“……”\r
+\r
+因为她选择了沉默，所以幻想乡照着她的旨意也沉默了下来，选手们开始眉头紧锁以为是出了什么差错，小妖精们此刻也变得温驯无比，天狗们握着团扇的手沾满黏汗，她们会熄灭任何一丝可能逆反的风。\r
+\r
+台上的咲夜屏住呼吸，掏出自己的怀表。\r
+\r
+ \r
+\r
+动了吗？\r
+\r
+【1D100=54】\r
+\r
+ \r
+\r
+仿佛过了有一个世纪之久，那秒针才眨眼似的跳动了一下，咲夜确定：她并没有于某一刻不小心发动了能力，这都是博丽灵梦的选择。\r
+\r
+“嘛，祭典还是热闹一点吧。”博丽灵梦把手上的讲稿撒向天空，风在空中把它们折成纸鹤，拍着小翅膀扑哧扑哧地飞走了。\r
+\r
+“规则只有，轮流来，在三轮时间里，用尽你们的全力来让我们爱上你吧……这都是为了解决异变呢，而且，你们也有自己的心动灵梦吧？小心不要被她们熄灯了哦。”\r
+\r
+“顺带一提，博丽灵梦也是选手哦，而我嘛，作为主持人，是不可攻略的。”\r
+\r
+ \r
+\r
+谁是第一个？\r
+\r
+1. 雾雨魔理沙\r
+\r
+2. 博丽灵梦\r
+\r
+3. 蕾米莉亚·斯卡雷特\r
+\r
+4. 爱丽丝·玛格特洛伊德\r
+\r
+5. 八云紫\r
+\r
+6. 射命丸文\r
+\r
+7. 东风谷早苗\r
+\r
+8. 大的\r
+\r
+【1D8=5】\r
+\r
+八云紫\r
+\r
+ \r
+\r
+“嗯，八云紫选手，她是不是，还没来啊？”\r
+\r
+ \r
+\r
+还没醒吗？（难度80）\r
+\r
+【1D100=2/80】大成功！\r
+\r
+发生什么了！\r
+\r
+1. 其实早就在和心动灵梦咬耳朵了！\r
+\r
+2. 情报，刚刚其实是在收集情报！\r
+\r
+3. 其实是在化妆，今天的紫大人盛装出席呢，魅力up\r
+\r
+4. 没想到吧！这就是我的进攻路线！刚刚是在争取哆来咪的支持！\r
+\r
+9. 坚定了内心，之后只会选择自己的心动灵梦作为相亲对象\r
+\r
+10. 还有大的？\r
+\r
+【1D10=6】\r
+\r
+ \r
+\r
+情报的序号是？【1D20=2】刚刚好\r
+\r
+“‘我’？你是说，你想攻略她吗？‘我’？唯一能给你的建议便是，坦诚对她吧。”\r
+\r
+ \r
+\r
+“小，小紫紫在这里哦！我要选……”\r
+\r
+“下一轮去！让大家等了你这么久。”风尘仆仆的八云紫被博丽灵梦轻轻敲了下脑袋，紫发现，她的亚空穴已经用得很纯熟了。\r
+\r
+ \r
+\r
+下一位是？\r
+\r
+1. 雾雨魔理沙\r
+\r
+2. 博丽灵梦\r
+\r
+3. 蕾米莉亚·斯卡雷特\r
+\r
+4. 爱丽丝·玛格特洛伊德\r
+\r
+5. 射命丸文\r
+\r
+6. 东风谷早苗\r
+\r
+7. 大的\r
+\r
+【1D7=3】\r
+\r
+蕾米莉亚·斯卡雷特\r
+\r
+ \r
+\r
+她的选择是？\r
+\r
+1. 博丽灵梦\r
+\r
+2. 博丽灵梦\r
+\r
+3. 博丽灵梦\r
+\r
+4. 博丽灵梦\r
+\r
+5. 博丽灵梦\r
+\r
+6. 博丽灵梦\r
+\r
+7. 博丽灵梦\r
+\r
+8. 博丽灵梦\r
+\r
+9. 博丽灵梦\r
+\r
+10. 大的\r
+\r
+【1D10=7】博丽灵梦\r
+\r
+ \r
+\r
+她会采取怎样的策略？\r
+\r
+1. 投其所好\r
+\r
+2. 讲述故事\r
+\r
+3. 场外助力\r
+\r
+4. 使用能力\r
+\r
+5. 展现魅力\r
+\r
+6. 直球表白\r
+\r
+7. 展示条件\r
+\r
+8. 夸夸对方\r
+\r
+9. 弹幕决斗！\r
+\r
+10. 大的！\r
+\r
+【1D10=1】\r
+\r
+ \r
+\r
+“如果灵梦愿意跟我回家的话，这个10W日元就是灵梦的哦”\r
+\r
+对付贪财的巫女就该投其所好，都说10w就可以任意S，也就是可以撒娇了对吧？就可以天天让她抱抱自己和芙兰了。\r
+\r
+ \r
+\r
+灵梦的无节操（无节操的灵梦+30）\r
+\r
+【1D70+30=48+30】\r
+\r
+ \r
+\r
+“不行，得加钱，现在日元贬值得太厉害了，我还想多吃几顿好的呢。”灵梦却毫不留情。\r
+\r
+ \r
+\r
+少女讲价中ing（蕾米莉亚/灵梦+30，得加钱！）\r
+\r
+【1D70+30=12+30=42】\r
+\r
+ \r
+\r
+“啊，不要走嘛，⑨万就⑨万……”\r
+\r
+蕾米莉亚知道，要驯化这只貔貅是不能妥协的，毕竟她还有妹妹要养，嫂子不能不淑啊。\r
+\r
+ \r
+\r
+下一位是？\r
+\r
+1. 雾雨魔理沙\r
+\r
+2. 博丽灵梦\r
+\r
+3. 爱丽丝·玛格特洛伊德\r
+\r
+4. 射命丸文\r
+\r
+5. 东风谷早苗\r
+\r
+6. 大的\r
+\r
+【1D6=4】\r
+\r
+射命丸文\r
+\r
+ \r
+\r
+暗骰检定!!!\r
+\r
+【1D100=29<82】困难成功！\r
+\r
+ \r
+\r
+射命丸文以一种差一点就不温柔的姿态飞向了博丽灵梦，把这小只小只的博丽灵梦揽进怀里。\r
+\r
+“啊啊啊，真是太可爱了，你想要糖果吗？”不知道为什么，她看上去远没有平时那样从容，完全就是一个见到了可爱小动物的小女生一样。\r
+\r
+ \r
+\r
+要吗？\r
+\r
+【1D100=67】\r
+\r
+ \r
+\r
+对于过于热情的天狗姐姐，小灵梦怯生生地点了点头，那是多么漂亮，多么温柔的一个天狗姐姐啊，肯定不会害自己的吧？\r
+\r
+文温柔地剥下糖纸，她怎么知道糖果会派上用场的？指甲也修剪过了，奶糖，水果糖，和果子直接递到小灵梦的嘴边。\r
+\r
+ \r
+\r
+尽管如此……\r
+\r
+【1D100=74】\r
+\r
+ \r
+\r
+幻想乡中从来不缺少眼睛好的家伙，但是少有人会在这暖意融融的姐妹似的嬉戏里察觉出一丝端倪，但是这位射命丸文的同事，来自同一个幻想乡的犬走椛小姐却看得透彻。\r
+\r
+“这家伙，犯病了啊。”她喃喃道，千里眼看见了文每次投喂时，指尖在小灵梦唇边那短暂的停留，力度极其轻微的刮擦，如果小灵梦不小心把指尖的前部含入口中，文就会忽地满面绯红。\r
+\r
+毕竟射命丸文她，是个无可救药的萝莉控啊！\r
+\r
+ \r
+\r
+暗骰揭晓，射命丸文的萝莉控程度：82\r
+\r
+ \r
+\r
+再下一个是？\r
+\r
+1. 雾雨魔理沙\r
+\r
+2. 博丽灵梦\r
+\r
+3. 爱丽丝·玛格特洛伊德\r
+\r
+4. 东风谷早苗\r
+\r
+5. 大的\r
+\r
+【1D5=1】\r
+\r
+雾雨魔理沙\r
+\r
+ \r
+\r
+1. 博丽灵梦\r
+\r
+2. 博丽灵梦\r
+\r
+3. 博丽灵梦\r
+\r
+4. 博丽灵梦\r
+\r
+5. 博丽灵梦\r
+\r
+6. 博丽灵梦\r
+\r
+7. 博丽灵梦\r
+\r
+8. 博丽灵梦\r
+\r
+9. 博丽灵梦\r
+\r
+10. 大的\r
+\r
+【1D10=3】\r
+\r
+ \r
+\r
+她会采取怎样的策略？\r
+\r
+    1. 投其所好\r
+\r
+2. 讲述故事\r
+\r
+3. 场外助力\r
+\r
+4. 使用能力\r
+\r
+5. 展现魅力\r
+\r
+6. 直球表白\r
+\r
+7. 展示条件\r
+\r
+8. 夸夸对方\r
+\r
+9. 弹幕决斗！\r
+\r
+10. 大的！\r
+\r
+【1D10=5】\r
+\r
+ \r
+\r
+“居然还有不是女同性恋的灵梦吗？人活久了果然还是会遇到有趣的事情。”\r
+\r
+魔理沙的扫帚上现如今已满是青苔与蘑菇，她轻轻打一个响指，就有一片星云在竞技场的上空绽开，紫色的夜空就好像一个巨大的裂缝一样把白昼撕开，这正是魔理沙此时的画布。\r
+\r
+“我想我的魅力应在于……嘛，还是亲眼见见更好。”\r
+\r
+不是弹幕决斗中的话，不用宣言也没有关系，魔法如今已经完全站在了魔理沙这边，不再需要咒语，不再需要想象：现实已是她的乐园。\r
+\r
+她如司令官一样号领着那片临时的星云，群星也像骑兵队一样听从她的呼号，这样的把戏无疑是需要消耗巨大的魔力的，但是她却一点疲态也没有——可对于少女兼恋人们来说，这就是一场适合告白和恋爱的烟花表演而已。\r
+\r
+“这是献给灵梦们的礼物。”\r
+\r
+ \r
+\r
+她提裙，对着舞台上的灵梦们行了个礼，拜托，她是雾雨魔理沙，一个灵梦是不够她吃的。\r
+\r
+ \r
+\r
+直女的心防等级？（首先，我不是女同+50）\r
+\r
+【1D50+50=27+50=77】\r
+\r
+这场烟花表演的效果？\r
+\r
+【1D100=40>23】失败\r
+\r
+ \r
+\r
+“嘛，确实很漂亮。”\r
+\r
+女孩子都喜欢漂亮的东西。\r
+\r
+“但是我还是直女哦，和最好的朋友谈恋爱什么的，不行，要吐了！”\r
+\r
+明明女孩子也是漂亮的东西。\r
+\r
+ \r
+\r
+再下一个是？\r
+\r
+1. 博丽灵梦\r
+\r
+2. 爱丽丝·玛格特洛伊德\r
+\r
+3. 东风谷早苗\r
+\r
+4. 大的\r
+\r
+【1D4=1】\r
+\r
+博丽灵梦\r
+\r
+ \r
+\r
+灵梦，有水仙的倾向吗？（不，谁会有啊？-30)\r
+\r
+ \r
+\r
+【1D70=1】大失败\r
+\r
+ \r
+\r
+博丽灵梦，她，她没能发起进攻，你要我挑一个平行世界宇宙的自己谈恋爱？不，想想都要吐了！\r
+\r
+见博丽灵梦迟迟不动作，博丽灵梦只好让下一位选手行动。\r
+\r
+ \r
+\r
+再下一个是？\r
+\r
+1. 爱丽丝·玛格特洛伊德\r
+\r
+2. 东风谷早苗\r
+\r
+3. 大的\r
+\r
+【1D3=2】\r
+\r
+东风谷早苗\r
+\r
+ \r
+\r
+1. 博丽灵梦\r
+\r
+2. 博丽灵梦\r
+\r
+3. 博丽灵梦\r
+\r
+4. 博丽灵梦\r
+\r
+5. 博丽灵梦\r
+\r
+6. 博丽灵梦\r
+\r
+7. 博丽灵梦\r
+\r
+8. 博丽灵梦\r
+\r
+9. 博丽灵梦\r
+\r
+10. 大的\r
+\r
+【1D10=4】\r
+\r
+博丽灵梦\r
+\r
+ \r
+\r
+她会采取怎样的策略？\r
+\r
+    1. 投其所好\r
+\r
+2. 讲述故事\r
+\r
+3. 场外助力\r
+\r
+4. 使用能力\r
+\r
+5. 展现魅力\r
+\r
+6. 直球表白\r
+\r
+7. 展示条件\r
+\r
+8. 夸夸对方\r
+\r
+9. 弹幕决斗！\r
+\r
+10. 大的！\r
+\r
+【1D10=8】\r
+\r
+ \r
+\r
+“太漂亮了吧！”\r
+\r
+不光是嘴上这么说，东风谷早苗心里也的确是这么想的，手掌总是在礼仪的轨道之中花一样地颤，柔顺的黑发长得过了腰，笑起来也淡漠得像一片云雾，还有些微微妙的薄命系气质……这样的大小姐光是端坐在那里就会让所有女同想入非非。\r
+\r
+“头发到底是怎么保养的啊？完全不会沾染灰尘，感觉就算在贵族女校里也会被叫姐姐大人……”\r
+\r
+比起恋爱攻势更像是过于热情的朋友，连珠炮一番的话语确实让大小姐灵梦有些招架不住。\r
+\r
+“唔，早苗小姐谬赞了……”\r
+\r
+ \r
+\r
+效果如何呢？【1D100=30】\r
+\r
+ \r
+\r
+不行，过于激进的打法似乎不太符合大小姐对相亲的认知。\r
+\r
+ \r
+\r
+第一轮的最后一次……轮到爱丽丝·玛格特洛依德了。\r
+\r
+ \r
+\r
+1. 博丽灵梦\r
+\r
+2. 博丽灵梦\r
+\r
+3. 博丽灵梦\r
+\r
+4. 博丽灵梦\r
+\r
+5. 博丽灵梦\r
+\r
+6. 博丽灵梦\r
+\r
+7. 博丽灵梦\r
+\r
+8. 博丽灵梦\r
+\r
+9. 博丽灵梦\r
+\r
+10. 大的\r
+\r
+【1D10=5】\r
+\r
+博丽灵梦\r
+\r
+ \r
+\r
+她会采取怎样的策略？\r
+\r
+    1. 投其所好\r
+\r
+2. 讲述故事\r
+\r
+3. 场外助力\r
+\r
+4. 使用能力\r
+\r
+5. 展现魅力\r
+\r
+6. 直球表白\r
+\r
+7. 展示条件\r
+\r
+8. 夸夸对方\r
+\r
+9. 弹幕决斗！\r
+\r
+10. 大的！\r
+\r
+【1D10=3】\r
+\r
+ \r
+\r
+严格意义上，也不算是场外，毕竟人偶本身就是爱丽丝小姐的能力范畴……而且孤独的爱丽丝小姐在这个幻想乡并没有太多的朋友。\r
+\r
+巨大的运载型歌莉娅人偶划过还漆黑着的夜空，下方吊着的是玛格特洛依德宅邸，经得此处爱丽丝同意后临时借调了一下。\r
+\r
+“来喝下午茶吗？”\r
+\r
+爱丽丝提出邀请，把博丽灵梦带入自己的家中，又把观众们锁在门外。\r
+\r
+恋爱毕竟是私密的事情。\r
+\r
+ \r
+\r
+ \r
+\r
+六、\r
+\r
+“那么，第一轮就到此结束了呢，真是令人大开眼界哦。”\r
+\r
+毕竟大中午被魔法变成了晚上，场地中间还突然多了一间大房子……大概这就是幻想乡吧？\r
+\r
+“那么，为了省去再投一遍的工夫，第二轮的顺序就从第一轮反过来吧！”\r
+\r
+台上的博丽灵梦宣布道。\r
+\r
+ \r
+\r
+“都说了不要再说这种破墙的台词啦！”看台上的一位藤原妹红给自己的搭档来了一记手刀。\r
+\r
+“又不是我说的你打我干什么啊死火鸡！”\r
+\r
+她们今天只是来看热闹的。\r
+\r
+ \r
+\r
+ \r
+\r
+七、\r
+\r
+依旧是爱丽丝小姐的回合，宅邸的陈设都如故如旧，上次灵梦来留宿时，在床上的压痕似乎也适时地重现，一切过往又都活了过来。\r
+\r
+ \r
+\r
+更换攻略对象吗？\r
+\r
+【1D100=15】\r
+\r
+ \r
+\r
+“要听听故事吗？”\r
+\r
+“讲讲吧，外边太吵了，也不是很有意思。”\r
+\r
+于是爱丽丝讲起爱丽丝的故事。\r
+\r
+“你还是不允许人类变成妖怪吗？”\r
+\r
+“这不是我的选择，是幻想乡的铁律。”\r
+\r
+“哪怕你和魔理沙最终都会以人类的身份死去？”\r
+\r
+“哪怕我和她都以人类之身死去。”\r
+\r
+博丽灵梦只是喝茶，就像她往常会做的那样，杀死妖怪之后，喝茶，睡觉或永眠之前，温一碗茶水，在没有人来神社的日子，茶水就是她的伴侣。\r
+\r
+“啊，果然，原来这边也是这样的吗……”\r
+\r
+爱丽丝已经知道了，她不用再讲她的故事了。\r
+\r
+“那，下午茶之后，我们去打一架吧。”\r
+\r
+“好。”\r
+\r
+“我要狠揍你一顿，然后再把魔理沙那家伙也打一顿。”\r
+\r
+“千万不要留手。”\r
+\r
+真是奇怪，爱丽丝觉得，和博丽灵梦聊起天来是没有任何束缚的，这位博丽灵梦她从未与之交谈过，但是一旦和她谈起世间的任何一件事情，你就感觉好像和她经历了从上帝创世到如今的一切，你就忍不住怀念任何东西。\r
+\r
+ \r
+\r
+东风谷早苗的回合。\r
+\r
+ \r
+\r
+要更换攻略对象吗？\r
+\r
+【1D100=99】大成功！\r
+\r
+ \r
+\r
+换什么换！女子高中生的人际，越宽广越好。\r
+\r
+ \r
+\r
+谁加入了girls’talk？\r
+\r
+1. 博丽灵梦\r
+\r
+2. 博丽灵梦\r
+\r
+3. 博丽灵梦\r
+\r
+4. 博丽灵梦\r
+\r
+5. 博丽灵梦（少女喝茶中）\r
+\r
+6. 博丽灵梦\r
+\r
+7. 博丽灵梦\r
+\r
+8. 博丽灵梦\r
+\r
+9. 博丽灵梦\r
+\r
+10. 大\r
+\r
+【1D10=7】\r
+\r
+ \r
+\r
+“来嘛，都是女孩子，聊一聊会很开心的。”\r
+\r
+girls’talk就是幻想乡的沙龙，一起讨论同一个话题比还没确定关系前的一对一尬聊可好多了，即便灵梦再三拒绝，并且好几次甩开早苗几乎是要把她搂在怀里的臂膀，唉，看来是跑不掉了。\r
+\r
+ \r
+\r
+效果怎么样呢？（越多越好+10）\r
+\r
+【1D90+10=82+10=92】\r
+\r
+ \r
+\r
+三个人就好聊上很多了，灵梦可以好好讲讲自己的护发技巧，在早苗听得两眼放光的时候，博丽灵梦可以发表自己的看法——她们还挺有共同之处呢，从和果子，茶水再到空空如也的赛钱箱，她的头发比她的头发长，也更亮，但是她的眼睛更活泼，她们都是博丽灵梦。\r
+\r
+而最后，当她们提到恋爱话题的时候……\r
+\r
+ \r
+\r
+博丽灵梦此刻的直女心？\r
+\r
+【1D77=34】\r
+\r
+ \r
+\r
+首先，我不是女同，她想，她绝对不是女同，她怎么会是女同？\r
+\r
+但是，她又想，这是多么美好的画面啊，一位活力四射的女高中生，一个梦中情人般的美人。\r
+\r
+如此美丽，要是她们向我告白了，得珍惜这份心意啊。\r
+\r
+ \r
+\r
+博丽灵梦的回合。\r
+\r
+ \r
+\r
+快动啊，博丽灵梦，快动起来（开什么玩笑，要吐了！难度：1）\r
+\r
+【1D100=61>1】失败！\r
+\r
+ \r
+\r
+博丽灵梦无法爱上自己，就像很多普通人一样，可是普通人在历经磨炼之后，或许最终还是能够学会把爱分给自己。\r
+\r
+可是博丽灵梦不行，她爱着幻想乡，对所有事物都等而视之，承认了所有美丽和思念，所以才不能有任何偏私。\r
+\r
+博丽灵梦，终究是没有动作。\r
+\r
+ \r
+\r
+雾雨魔理沙的回合\r
+\r
+此时她的身边，并没有任何一位灵梦，而放眼望去，只有一位灵梦也还孤零零的，那正是心中的灵梦。\r
+\r
+ \r
+\r
+去找她吗？\r
+\r
+【1D100=70】\r
+\r
+ \r
+\r
+博丽灵梦，也是博丽灵梦啊，有着博丽灵梦的气息，便是雾雨魔理沙追逐的对象。\r
+\r
+“不好意思哦，这位可是我的心动灵梦呢，小魔理沙。”\r
+\r
+然后，就在将要握住那只看上去就很需要温暖的，冷冰冰的手的时候，又是熟悉的间隙在了她们二人之间。\r
+\r
+“不过，你是什么时候变成妖怪的？雾雨魔理沙？”\r
+\r
+她轻摇纸扇，只能用弹幕闯过去了。\r
+\r
+战斗一触即发。\r
+\r
+ \r
+\r
+暗骰揭晓，魔理沙现在是非人存在吗：51，是。\r
+\r
+ \r
+\r
+八、\r
+\r
+ \r
+\r
+射命丸文的萝莉控判定（难度82）\r
+\r
+【1D100=11<82】成功！\r
+\r
+ \r
+\r
+射命丸文依旧守在小灵梦身边，毫无疑问，她是一个萝莉控。\r
+\r
+她曾经爱过琪露诺，曾远远地望着她，也会因为冰妖精天真烂漫的性格，而骗她给她拍照，这常常使她感到罪恶。\r
+\r
+可最后射命丸文还是失恋了，她不能去真正触碰一个孩子，而且那孩子也有一个玩伴，是另一只个头更大的妖精。\r
+\r
+而对于小灵梦，她其实也很犹豫，天狗太长命了，她年轻的时候已心碎过很多次，所以只留下照片就好了吧？\r
+\r
+“等等，这是，杀气？”\r
+\r
+文还以为是自己的萝莉控暴露了，但是不知何时，看台上的观众已经纷纷围绕在她们身旁，看样子来者不善。\r
+\r
+“小灵梦，抓稳我，我带你体验一下幻想乡最速。”\r
+\r
+是冲着孩子来的。\r
+\r
+ \r
+\r
+“看来还是没来得及啊。”\r
+\r
+八云紫闪躲开那些星星和激光，一副游刃有余的样子。\r
+\r
+ \r
+\r
+战况？（雾雨魔理沙/八云紫）\r
+\r
+【1D100=70】\r
+\r
+ \r
+\r
+成为真正的魔法使后，雾雨魔理沙再也不用为魔力发愁，但是八云紫就是八云紫。\r
+\r
+人群也逐渐包围了她们，她们是冲着灵梦来的。\r
+\r
+“这，这也是你的安排吗？老妖怪？”\r
+\r
+“是异变哦，这个幻想乡聚集了这么多的灵梦，而幻想乡的居民没有不爱灵梦的，所谓的博丽灵梦素之类的东西，大概是确有此物吧？所以她们现在也要加入这场战争了呢。”\r
+\r
+“哼，我才不管，全部轰散就好了，我会打败你，然后追上她。”\r
+\r
+几道巨大的激光从星空中投下，在熙攘的人群之中炸开。\r
+\r
+琪露诺、红美铃、帕秋莉·诺蕾姬、十六夜咲夜、蕾米莉亚·斯卡蕾特、芙兰朵露·斯卡蕾特、露米娅、大妖精、小恶魔……\r
+\r
+蕾蒂·霍瓦特洛克、橙、爱丽丝·玛格特洛依德、莉莉白、莉莉黑、魂魄妖梦、西行寺幽幽子、八云蓝、八云紫、……\r
+\r
+莉格露·奈特巴格、米斯蒂娅·萝蕾拉、上白泽慧音、因幡帝、铃仙·优昙华院·因幡、八意永琳、蓬莱山辉夜、藤原妹红……\r
+\r
+许多熟人被这些光束轰上了天，被挂上miss的标签——既然要追求博丽灵梦，那就要守博丽灵梦的规矩啊！\r
+\r
+世上最大规模的弹幕战，堂堂开幕！\r
+\r
+ \r
+\r
+“看上去，这场相亲要变得无比混乱了呢。”\r
+\r
+主持人博丽灵梦不打算置身事外，而周身那些满怀着爱意和思念，追求美丽的幻想乡众人，也不会让她那么做。\r
+\r
+“那么相亲的第三阶段现在……”\r
+\r
+“算我一个！恋爱什么的超级麻烦的，还是打架比较适合我。”\r
+\r
+“退治确认！”\r
+\r
+“退治开始！”\r
+\r
+ \r
+\r
+蕾米莉亚和博丽灵梦正在和芙兰朵露对峙。\r
+\r
+“姐姐，是我的！你这个红白，给我离姐姐远一点！”\r
+\r
+“芙兰，不要——”\r
+\r
+可是博丽灵梦可没那么容易被打败。\r
+\r
+“小姑子可不好搞定啊，要嫁入豪门，门槛还真高啊。”\r
+\r
+ \r
+\r
+九、\r
+\r
+“为什么，为什么，你和魔理沙，最后都要离开我呀……”\r
+\r
+爱丽丝不肯把最后一口茶咽下，要是对着所爱之人出手，那么就真的不可挽回了。\r
+\r
+ \r
+\r
+博丽灵梦的触动\r
+\r
+【1D100=3】大失败\r
+\r
+ \r
+\r
+“抱歉，这都是为了幻想乡。”\r
+\r
+博丽灵梦轻轻挥出一张灵符，玛格特洛伊德宅邸整个炸开来，她取过爱丽丝的杯子，把最后一口茶含入口中，随即吻上那个哭泣不止的颤抖身影，把茶喂进嘴中。\r
+\r
+“现在，来让我见识一下，你的美丽，还有思念吧——”\r
+\r
+ \r
+\r
+“是啊，我想和你在一起，灵梦，但我也不能放弃我的妹妹，芙兰，我喜欢你能同时爱上我们两个人呢……是超级自私的想法啊。”与芙兰的对决很快就结束了。\r
+\r
+“多少钱都可以……”\r
+\r
+“管吃管住就行，你不要太闹腾，我照顾芙兰的时候不要吃醋哦。”\r
+\r
+“好……”\r
+\r
+ \r
+\r
+“我想了解你的一切，灵梦，我想从你出生时就爱上你，等到你会说爱我的年纪。”怀中的幼灵梦还不懂天狗姐姐到底在说些什么，漫天的弹幕和飞行的愉悦让她从打心底高兴，她想多和这个姐姐待一会。\r
+\r
+ \r
+\r
+“啊，怎么突然有这么多人……女子会的话，要按规矩来哦，啊啊啊啊不行，灵梦小姐是我先来的！要追的话不能粗鲁，要公平竞争哦！”东风谷早苗曾经输过一次了，这一次，她不要再输了。\r
+\r
+ \r
+\r
+最后谁赢了？（雾雨魔理沙/八云紫）（+20积累的优势）\r
+\r
+【1D80+20=16+20=36】\r
+\r
+ \r
+\r
+“胜负已分！”\r
+\r
+魔理沙用扫帚尖指着魔理沙，但是却没有发出弹幕。\r
+\r
+“她，就先交给你保护了。”魔理沙步步紧逼，不容紫争辩。其他竞争者已经被她的激光炸个干净了，但尽管如此，她们还是在不停地围上来，八云紫还需要一些力气来保护她。\r
+\r
+“现在我要去揍一顿，那个家伙。”\r
+\r
+也不管紫答不答应，雾雨魔理沙说完就走了。\r
+\r
+ \r
+\r
+“啊，老了呢，输掉了，灵梦——”\r
+\r
+她顺势倒在灵梦的膝上，可是一接触到，就又想弹起来——她是失败者啊，但是头被温柔地按下了。\r
+\r
+“要是选择我的话，我会把你关起来的哦，灵梦。”\r
+\r
+“我知道。”她一直都知道。\r
+\r
+紫对博丽灵梦的爱恋，是最深也是最扭曲的爱恋，是她让灵梦成为了孤家寡人，又是她，让博丽灵梦爱上了幻想乡，却不能有任何自己的爱。\r
+\r
+可偏偏是她，无可救药地爱上了博丽灵梦，想要诱拐她，把她关起来，让那磅礴的爱对准自己，把她从痛苦的天命中解救出来。\r
+\r
+“我只问你一个问题，紫，我和幻想乡，你选择哪个？”\r
+\r
+ \r
+\r
+八云紫的选择：\r
+\r
+1. 幻想乡\r
+\r
+2. 幻想乡\r
+\r
+3. 幻想乡\r
+\r
+4. 幻想乡\r
+\r
+5. 幻想乡\r
+\r
+6. 幻想乡\r
+\r
+7. 幻想乡\r
+\r
+8. 幻想乡\r
+\r
+9. 幻想乡\r
+\r
+10. 幻想乡\r
+\r
+【1D10=幻想乡】\r
+\r
+幻想乡\r
+\r
+ \r
+\r
+“嗯，我就知道，紫一定会选幻想乡的，因为紫和我一样。”\r
+\r
+“深爱着幻想乡的一切啊！”\r
+\r
+灵梦把紫放在一个安全的地方躺下，吻她，然后抽出御币，现在她要去解决异变了。\r
+\r
+因为，她是她，心中的，永远的博丽巫女啊——\r
+\r
+ \r
+\r
+ \r
+\r
+十、\r
+\r
+ \r
+\r
+爱丽丝和博丽灵梦的战斗……（那个博丽灵梦-50）\r
+\r
+【1D50=31】\r
+\r
+ \r
+\r
+“还是，无法传达过去吗？声音。”\r
+\r
+那不是凡人可以参与的决斗，所有卷进去的闯入者都会被第一时间miss掉，人偶与灵符的坟场，最终还站着的那个。\r
+\r
+理所当然的，是那个博丽灵梦啊。\r
+\r
+“我赢了。”\r
+\r
+ \r
+\r
+“灵梦啊啊啊啊啊啊啊——”\r
+\r
+一道流星于这时候抵达战场，雾雨魔理沙，她要追上灵梦的孤独，她要把她从神位下拉下，拥抱进自己的怀里。\r
+\r
+她要让博丽灵梦见证，她的美丽与思念。\r
+\r
+“这样的样子，在你眼中，一定很丑陋吧……可是，我一定要追上你！”\r
+\r
+ \r
+\r
+博丽灵梦的秒杀骰（博丽灵梦+50）\r
+\r
+【1D50+50=5+50=55】大失败！\r
+\r
+ \r
+\r
+“邦——”\r
+\r
+这次，是扫帚击飞了御币，魔法切开了羊肉卷，打散了蝴蝶结，黑色的长发解放开来，在风中像翅膀一样飞舞着，而魔女的帽子依旧在魔女的头上。\r
+\r
+但是它马上就被摘下，扫把也被丢到一边，去和御币作伴。\r
+\r
+雾雨魔理沙，终于把博丽灵梦揽入怀中。\r
+\r
+霎时，所有的弹幕都停下了，所有人都望向这对拥吻的爱人。战争结束了，已经不用再战斗了。\r
+\r
+相亲战争的最终获胜……\r
+\r
+是雾雨魔理沙！\r
+\r
+ \r
+\r
+ \r
+\r
+十一、\r
+\r
+再之后……\r
+\r
+蕾米莉亚·斯卡雷特成为了醋坛子，又吃妹妹的醋，又吃灵梦的，她现在无比幸福。\r
+\r
+八云紫把博丽灵梦关起来的日子里，博丽灵梦谁也不会提，不去想别的，眼睛里只有八云紫。\r
+\r
+东风谷早苗学着她留起了长发，然后教她们女同和女高中生需要了解到一切知识。\r
+\r
+射命丸文在亲友们的监视下，还是等到了灵梦成年，现在可以不用再忍耐了，享用这多年的陈酿了\r
+\r
+爱丽丝在灰尘中匍匐着，已经没有人偶可以拉她起来了，这时候伸来一只戴着露指手套的手：“怎么，你不是说，要带着我和灵梦一起回家吗？”\r
+\r
+此时夜已经过去了，又是一个黎明，博丽灵梦就在那初升的红日底下屹立。\r
+\r
+美丽与思念，依旧在延续。\r
+\r
+“是不是，该开个宴会啊？”\r
+\r
+没有人不同意。\r
+\r
+ \r
+\r
+十二、\r
+\r
+还没完！\r
+\r
+博丽灵梦是大输家，博丽灵梦则从头到尾都在打白工，两人的赛钱箱都空空如也，于是她们去买醉。\r
+\r
+她们喝醉的时候，似乎酒后乱了乱性，一个吻留在了脑海中。\r
+\r
+可就在博丽灵梦醒来的时候，她们发现——是她发现，另一个博丽灵梦其实并不存在，昨夜从头至尾只有她们一个人而已。\r
+\r
+我是博丽灵梦？\r
+\r
+是，我们是博丽灵梦。\r
+\r
+所谓非灵勿扰，大抵如此。`},{name:"第九棒",text:`雾雨魔理沙好像是博丽灵梦的前女友的样子。\r
+\r
+但其实根本就不是那么一回事，她俩的关系就连神社后面大树里的妖精都知道。但是对于少女来说，名分和关系都很重要，所以，为了宣告自己和自己“最喜欢最爱的魔理沙”分了手，她把幻想乡的人都打了一顿，用弹幕决斗的名义，逼任何人记住，她和魔理沙不是情侣了，还非得所有人都把这怎么念怎么别扭的事实说一遍。\r
+\r
+对待像射命丸文，八云紫这种唯恐天下不乱的乐子人，要打三遍甚至两遍，尤其是射命丸文和八云紫。\r
+\r
+做到这么认真的份上了，大家都觉得，可能博丽灵梦或多或少大概也许可能有一点儿是认真的，但是吧，雾雨魔理沙是博丽灵梦的前女友，好像有点，不太可能。\r
+\r
+谁也不知道为啥要做到这么绝——\r
+\r
+\r
+\r
+但是，也正如大家想象的那样，这样劳民伤财的分手宣言也没有什么用，就像大家想象的那样，隔天幻想乡的大家还在养伤的时候，都能隔着窗户看到雾雨魔理沙照常骑着扫把飞向博丽神社。\r
+\r
+被用莫名其妙的理由打了的大伙都没什么好气，希望这个惹灵梦生气的家伙也被灵梦修理一顿——但更希望她被修理一顿后，灵梦能心疼，然后给她拖进神社把打的伤口都包好。\r
+\r
+毕竟，雾雨魔理沙好像是博丽灵梦的前女友的样子……这个句子不通顺啊。\r
+\r
+然后直到傍晚，预想的弹幕决斗的声音都没有传来，大家只看到雾雨魔理沙从神社的石阶上起飞，直直地飞回家。身上不仅没有什么伤口，嘴边还有着神社特供仙贝的碎屑。\r
+\r
+合着是假分手，我们被白打了一顿是吧？！\r
+\r
+不过这样就说得通了，她们根本没有分手——认清了这个事实后，幻想乡的大家感觉空气好像都清新了许多。\r
+\r
+\r
+\r
+“不，那个，我们当然——”\r
+\r
+“当然分手了哦。”\r
+\r
+有几个胆大的妖精去试着在两个人都在的情况下去问了，一是灵梦小姐对妖精比较宽容，二是要是灵梦真的又动怒了，可以往魔理沙小姐身后躲，结果得到的还是这样的答案。\r
+\r
+妖精们不太聪明，妖精们没感觉出来二人在说谎，于是她们发现自己听到了不得了的事情。\r
+\r
+真的假的？\r
+\r
+\r
+\r
+不过就友人们的观察，她们目前的表现和交往之前差不多——但也和交往之后没啥区别，没有更远，但是也没有更近，或许是因为她们的关系从来就是这样暧昧，在是朋友的时候就已经是恋人了，在是恋人的时候又同时是敌人和情人……一言以蔽之就是没法一言以蔽之\r
+\r
+于是这样就能自圆其说了：这是因为博丽灵梦和雾雨魔理沙的关系就是这样的。\r
+\r
+\r
+\r
+不过……好像也没有不过，这样的日子持续了大约一周的样子，然后二人就宣布复合了，宣布这个消息的时候二人的表情很平静，彷佛是约定好的一样——不过这也让全乡的灵魔理厨（差不多也可以约等于整个幻想乡）都松了一口气，特别是灵梦没有用再把大家揍一顿的方式来宣布这个消息这一点上。\r
+\r
+太好了太好了，她们是真的！即便是友人或者恋人未满或者所谓最重要的人……也好像还是抵不过一个实打实的名分。\r
+\r
+但是，两人之间到底发生了什么呢？\r
+\r
+\r
+\r
+答案有些令人匪夷所思，因为博丽灵梦自己也是主角组厨，有一天她做梦梦到了另一个时空下的自己，毕竟是灵梦嘛，所以有这种奇遇也不奇怪。\r
+\r
+另一个自己有些害怕，她怕和那边的魔理沙分手，她才表白成功两个星期呢！于是想来请教一下前辈，灵梦的做法是告诉她，就算是分手了她也是魔理沙，会每天都往神社飞，然后绝对无法抑制住对“灵梦”的喜欢，这边的魔理沙本人也是“前辈”，所以最后还是接受了这个有些荒唐的提案。\r
+\r
+分手是为了告诉灵梦们和魔理沙们，在那之后也会有美好的可能性。\r
+\r
+但是为啥要把大家都打一顿啊？\r
+\r
+为啥啊？`},{name:"第二十三棒",text:`三伏天。\r
+\r
+烈阳炙烤着这片名为幻想乡的土地，连神社庭院的石砖也变得格外滚烫。\r
+\r
+神社的巫女从侧殿里赤脚慢步踱出，一只手扶着格子门的门框，眯着眼向外望去。不远处的鸟居静静地矗立在那里，附近的空气似乎都因为高温而变得有些扭曲。\r
+\r
+“好热——”灵梦自言自语地抱怨了一句，一小股微风裹挟着热浪吹来，轻轻撩起她那被汗水浸湿的散发。\r
+\r
+屋子里实在是湿热难受，她这才出来，虽然外面也不见得多凉快，但至少没那么闷。\r
+\r
+灵梦低头看了一眼，现在还是上午，侧殿的阴影还能覆盖小半个庭院。\r
+\r
+她回到屋子里，不一会又端着一个不大的点心盘子出来，上面盛着的是十几块绿豆糕。\r
+\r
+那是不久前从美铃那里拿到的，据说解暑效果还不错。\r
+\r
+灵梦坐在屋檐下，将绿豆糕放在右手侧的木地板上，她的两只腿悬在半空中，时不时小幅度地摇晃着。\r
+\r
+随后，她取下系在左手手腕上的发绳，两只手将散发聚拢在一起，左手套上发绳绕两圈，扎了个高马尾。\r
+\r
+这时，又是一阵风吹过，吹过灵梦刚敞露出的后颈，这多少让她感受到些许凉意。\r
+\r
+她拈起手边的一块绿豆糕，送入口中，酥软的口感与薄荷的清甜一同在味蕾上炸开，当真是酷暑里一份难得的享受了。\r
+\r
+大概是因为加了薄荷的缘故，一呼一吸之间还能感受到那股清凉的回甘，不过没过几分钟这效果便消失了，于是她又拈起一块......\r
+\r
+吃了三四块，灵梦感觉有些口干，于是回屋切了个西瓜，盛了满满一个大木盘，端着又回到屋檐下，放在了自己的左手侧。\r
+\r
+拿起西瓜，朝着那诱人的鲜红正中一口咬下，甘甜的汁水在口腔中爆裂四溢，果然夏天怎么能少得了西瓜呢，灵梦如此感慨道。\r
+\r
+灵梦再度看向不远处的朱红色鸟居，那里依然什么都没有，一切静悄悄的，只有蝉鸣声不绝于耳。\r
+\r
+没什么人来参拜呢，灵梦叹了口气，随即又伸了个懒腰，上半身瘫倒下去，贴在还算有些凉气的木地板上。\r
+\r
+日上三竿，太阳已经快转到正中了，屋檐产生的阴影也逐渐缩短，直到边沿也被炙热的阳光攻略。感受到裸露在边沿外阳光下的腿部传来的灼热感，灵梦终于还是起身，端着吃剩的盘子，踱步走向屋内避光。\r
+\r
+她将后门也敞开，这样穿堂风呼啸而过时能多少凉爽一些。回望神社外，还是没有人来，唯有些树木的枝桠随着微风轻轻摇晃着。\r
+\r
+大概下午也没什么人来吧？灵梦推测道，既然如此，随意一点也无妨。\r
+\r
+于是，她卸下巫女服的袖子，褪去有些厚重的巫女袴，露出里面米白色的灯笼裤，随后，以一个大字的姿势瘫倒在室内的榻榻米上。\r
+\r
+尽管偶尔拂过的穿堂风能带走一些热量，但毕竟是三伏天，这点避暑的手段在残酷的大自然前依然不太够看。灵梦睡了一小阵，又被热醒了，带着满头大汗和愤恨世界的起床气坐起身来。\r
+\r
+去湖边把那只傻傻的冰精抓来？还是去冥界抓两只幽灵？灵梦又望了眼屋外，热浪没有丝毫消退的意思，石砖发射的光线让她感到格外刺眼——这样的天气出门回死人的吧？\r
+\r
+她打消了出门的念头，盘起腿尝试冥想静心，然而身体的燥热还是难以缓解。\r
+\r
+哦对了！她猛地想起，自己先前在香霖堂买了个自动扇风的机器，或许可以拿出来尝试一下。于是灵梦扑到杂物箱里，很快便找到那个有些积灰的机器，还有霖之助手写的说明书。\r
+\r
+她按照说明书所说的，把两颗印着“河童制造”的小圆柱塞到机器对应的缺口中，按下启动按钮，那有些生锈的扇叶便吱呀吱呀转了起来。\r
+\r
+“成功了！”灵梦盯着那转得飞快的扇叶，感受扑面而来的气流，不由得高兴地自言自语了一句。这句话被风扇切成了断断续续的声音，灵梦也察觉到了这一点，她歪头盯着转动的扇叶，似乎有些疑惑。\r
+\r
+随即，她对着扇叶张大嘴，试着发出“啊”的声音。\r
+\r
+“啊呜~啊呜~啊呜~”不出所料，她发出的声音这次也被切成了细碎的颤音。\r
+\r
+有点好玩，灵梦这么觉得，于是又尝试了几次，但一开始的新鲜劲过了之后，她才发觉这行为幼稚得很，脸上霎时闪过一抹绯红，突然有些害臊起来。\r
+\r
+灵梦再一次看向室外，静默依然，顿时刚起来的一点兴致也消散了，便又躺下，恢复了之前的躺姿，试图回到睡梦之中。\r
+\r
+有了风扇祛热，这次她的入睡很顺利，外面的蝉鸣声，身旁风扇呼呼转动的吱呀声，一切声响都随着她的意识逐渐沉没于梦境而变得模糊，直至几不可闻......\r
+\r
+当灵梦再度醒来时，已经是黄昏了。残阳将它的最后一点余晖也洒落在大地上，直到下沉的最后一刻，也仍输出热与暑气。\r
+\r
+穿过门扉散落在榻榻米上的光，像是给屋内镀上了一层金黄色的外皮。\r
+\r
+灵梦起身，先伸了个懒腰，随后关掉了风扇，她看着门外的夕阳呆坐了几分钟，不知道在想些什么。\r
+\r
+鸟居在夕阳的照射下拉出长长的影子，一直延伸到屋檐前。\r
+\r
+一切是如此宁静......直到有人打破了这份宁静。\r
+\r
+“喂！灵梦！”金发的魔法师从天而降，越过那鸟居朝着坐在室内的灵梦招手道。\r
+\r
+灵梦转头看向她。\r
+\r
+“今天晚上拉了妹红她们一块开个烤蘑菇大会，你要来吗？”\r
+\r
+灵梦嘴角勾起一丝浅浅的微笑，站起身。\r
+\r
+“来了！”\r
+\r
+`},{name:"第八十五棒",text:`又一年万物生发春雷后，百姓耕耘喜雨中。又一年神社门前花满地，巫女鬓角雪未融。扫罢落瑛倚竹帚，小憩遥闻《恋色》声。魔女踏歌携酒至，金发轻扬面润红。\r
+\r
+雾雨成妖五十载，言语仍似少年狂。指点红楼法阵弱，须臾抬首饮十缸。博丽已然垂垂老，以茶代酒尚需凉。忧伤人世一俯仰，无奈低眉望空窗：“一观生死为虚诞，齐论彭殇亦妄谈。去日已逾一甲子，余生不过一千天。曾言觞咏无妨老，今又心思不肯安。何处借天十万载，与君沧海复桑田？”\r
+\r
+巫女安民天职在，难为私心妄成妖。神道元无长命法，只可养生乞寿高。\r
+\r
+天狗窃听颇感慨，书刊头版印长文。天子美天偶见报，不日乃谒神社门。道来汉唐猴王事，一半传说一半真。既然所祀已轶失，大可代之自为神。\r
+\r
+\r
+\r
+来年某日又开宴，不胜酒力醉酩酊。告辞宾客回房去，睡意朦胧见小町。惊觉四体复康健，自知寿终已化灵。御币符札皆在手，立与死神亮刀兵。\r
+\r
+“人世已留八十载，不必彳亍过贪生。”\r
+\r
+“凡胎耄耋已垂老，仙人一百尚年轻。”\r
+\r
+铁木空鸣，各自腾空。宣言符卡，凌厉相攻。灵梦已复当年勇，小町亦与旧时同。符札自导擦衣角，铜钱散射入云中。镰刀挥砍如巨鳄，御币起落似游龙。三途之舟陆行猛，隙间闪转甚从容。霎时间封魔针穿空一簇啸声高，小野冢躲避未见弹幕出。符纸斜飞中背心，巫女趁机掷明珠。未待对手稍喘息，旋即挥手放梦符。死神不敌落树梢，连连摆手忙认输。\r
+\r
+灵梦无暇与纠缠，乘风腾跃行速速：“此番不待阎罗找我来，我自前往地狱寻她去。”\r
+\r
+再思道路短，三途波浪平。砍穿阎罗殿，喝退鬼怪兵。\r
+\r
+不时已至是非厅，四季肃肃立厅门：“已闻巫女打将来，神魂不灭不肯休。若要逆天改命数，卷册在此可编修。”\r
+\r
+赌注既定，决斗立成。此番死战，鬼惧神惊。地上巫女，打遍八方妖鬼神灵；地下阎魔，震慑六道人兽怪精。米弹密密丛丛处处皆是像繁星，大玉光光耀耀密不透风若岩晶。弹幕所至，触者皆崩；乱石迷目，烟雾蒸腾。楼宇直如沙砾碎，地底翻似天界明。红白穿插亚空穴，判官闪转断垣中。钢针疾出穿虚影，铜棒砸落循人声。双方俱是好身手，符卡七张未沾身。\r
+\r
+结界御石，御币分烟：“且慢出手，胜负已分”。阎魔才见书箱倒，生死卷宗已不全。抬首巫女笑盈盈，朱笔简牍玉指间。“十”字头上添一撇，“博丽灵梦寿八千。”\r
+\r
+“君子一诺重千金，我且为你添寿长。另外劝尔速速回乡里，眼下魔女床头正哭丧。”巫女闻言急谢过，转身飞去返程忙。还魂乃告方才事，神社上下喜洋洋。\r
+\r
+\r
+\r
+一百三十一甲子，仿若白驹过隙般。是非厅前重聚首，阎魔妖怪与神仙。“固知逆天须受难，但求莫拆鸯与鸳。”“阎魔自有琉璃镜，断罪从不问苍天。尔等借天千年寿，却护乡民百世安。两者相折功抵过，可去一道过黄泉。”\r
+\r
+二人喜悦形于色，眼神脉脉手相牵。来生瑟琴钟鼓事，此处无需复多言。`},{name:"第八十棒",text:`“由此开始，进入幻想”：\r
+\r
+《博丽日记》\r
+\r
+8月1日 天气晴\r
+\r
+华扇突然让我开始写日记了，真是的，我每天明明很忙的，哪有什么时间写日记，按照她的说法的话，大概就是“领悟自己”的一种方式，也就是说，是修行啊。\r
+\r
+果然她还是会想尽各种办法来让我修行的吧，无论是什么形式也好，估计是发现我对锻炼上的修行实在是没有什么兴趣，就决定让我用这种很无聊的方式。\r
+\r
+其实每天也没有什么可以纪录的事情，无非就是喝茶，去村里巡视顺手买菜，路上可能会碰到一些不长眼的小妖怪需要赶走，接下来就是应付各种人的骚扰，有时候实在无聊应该会去陪她们走一遭，一天就这么过去了。\r
+\r
+（写完再看好像和上面的地方冲突了？不管反正应付华扇的就这样好了。反正她也不查什么内容，就是必须监督着我写。）\r
+\r
+总之，今天的话没有异变，也没有什么突发情况要处理，甚至我都没怎么离开神社。就是魔理沙那家伙今天又不请自来了，而且啊，她还顺走了我两个荻饼，下次见到她一定要让她还两倍的回来。\r
+\r
+虽然大概下次她还是会漫不经心的拿一个，然后突然喂我嘴里，还说着“这是因为我在乎你，所以才天天拿你东西da★ze”这种歪理。\r
+\r
+真是的，虽然我们很早就认识了，但如果真的那么在乎我，她还为什么天天跑到红魔馆的图书馆偷书呢？\r
+\r
+大概这是她偷东西的惯用说法吧，我也就见怪不怪了。\r
+\r
+不过，她今天倒是和我聊了聊有关她是否要成为魔法使的事情，不过说话倒是挺矛盾的，一方面说这样子可以超过我，另一方面又希望可以和我一起老去。\r
+\r
+真是的，我和她为什么要一起老去，我和她又不是连体人绑在一起，她也是不嫌肉麻说这种话。\r
+\r
+但有时候，我也的确不太希望她变成魔法使，毕竟我还是不太想对她动手。\r
+\r
+不，其实她不惹是生非的话我也没必要出手，就是她的个性很难不去惹是生非，我才需要提前给她这么个很吓人的警示，我只是觉得，真的去处理她的话一定会很麻烦，只是觉得麻烦而已，真的。\r
+\r
+我在写什么乱糟糟的东西。那种没有发生的事情我为什么要替她焦虑，而且她那种没心没肺的家伙都不会为这事焦虑，我就没必要想太多了。\r
+\r
+不过写出来稍微好点了？感觉像是有什么石头落地了一样。算了算了，今天就记录到这里。\r
+\r
+\r
+\r
+8月2日 晴\r
+\r
+今天也是惯例的好天气，不过啊，今天那些妖精又到神社里来了，真是群自由散漫的小家伙啊。\r
+\r
+她们今天又是打算找我来进行恶作剧，毕竟在她们眼里巫女就是绝对无敌的了，希望来偷我的东西来使我焦急，手法还是那老一套的消除声音和藏匿踪迹，这种方法貌似已经刻入在她们的骨髓里了，完全没有察觉到，我如果发现周围的声音突然消失了的话，绝对会起疑心的。\r
+\r
+不过，也可以反利用这种方式钓钓妖精，“欲擒故纵”，大概就是这个词的意思，一开始先假装什么都不知道，然后静静等待到她们自以为大功告成的时候，此刻她们会因为恶作剧成功的兴奋而放松警惕，然后就可以将她们一网打尽。\r
+\r
+收拾掉她们之后，往往就可以监督她们去帮我扫神社了，该说她们的到来对我来说也是一种消遣。也是一种在幻想乡日常中随处可见的风光。\r
+\r
+至少，在帮忙干活这方面，的确对我有了极大的帮助，妖精虽然很贪图享乐，但是我还是可以威慑住一下她们的，她们的脑子也不允许她们做出什么对幻想乡无益的事情，所以就这样子吧。\r
+\r
+说起来，幻想乡的种族之间貌似也不知道从什么时候开始从单纯的食物链变成了一种有某种默契的共生关系。大概和符卡规则有关吧，虽然大部分是我写的。\r
+\r
+（此外，记雾雨魔理沙欠2荻饼不还，下次要是再不还的话就让她拿身体付款，比如说让她扫一天的地，虽然她貌似挺乐在其中的，这一点倒是和妖精一样。）\r
+\r
+\r
+\r
+8月3日 雨\r
+\r
+今天下着大雨，所以自然也没什么人来，我也一天没有出去，因为并没有什么异变的隐患和气息，除此之外，日常的巡视也可以因此快一点结束掉。\r
+\r
+在神社里读了一天从铃奈庵借来的书，虽然我好像经常忘掉还书，上一次貌似还诱发了点不太好的事情。总之，我也不能变得像魔理沙那样等到死了再还，在这方面上还是得稍微变得勤快一点点的。\r
+\r
+突然发现有的时候不仅仅是她在和我较劲，我自己偶尔也会把她当做竞争对手而作比较，甚至有的时候在特地观察她的行动，来看看她有没有什么显著的进步。\r
+\r
+说起来，我昨天看见她在神神秘秘地搬什么东西，而且一下子人就突然不见了，该说这不太像是她的作风啊，平时如果有这种事情的话，应该会把我一起拉上的。\r
+\r
+难道说她有什么不能让我看见的理由？还是好好记住吧。\r
+\r
+\r
+\r
+8月4日 多云\r
+\r
+今天守矢神社的巫女过来了，明明是对家却天天黏着我，好像把我当做了什么同一个神社的同行一样。\r
+\r
+不过，现在幻想乡里主要也就我们两个巫女吧，而且听她的说法，她大概还是半路从女高中生转职当的巫女，也就是说虽然是个大神社的巫女，其实反而是个没什么经验的“半吊子巫女”。\r
+\r
+这样细想的话，总是会导致我在某些方面上不由自主地稍微照顾一下她，并且她也经常拿“请教”的由头来找我玩，突然想起来堇子也是这种好奇心充足的人，难道外界的人类都是这样子的吗？以及这会不会是我长期收不到香火的一个原因，因为我把自己的经验全部分享给自己的对手了。\r
+\r
+无论如何，她还是多长点心比较好吧。至少，得做到喝醉的时候不和我发生不必要的肢体接触。我还是不太希望一个“半吊子后辈”要为了各种原因在酒桌子上喝的烂醉如泥，就算是她说的是为了我也不行。\r
+\r
+至于为什么，还得从我上一次意外在她的房间里看见的神秘日记说起，是有关我的“神秘小巧思”。好吧，我觉得她玩得挺大而且过于开放了，关在地下室这种东西对于我来说还是太超前了。\r
+\r
+不过，在写日记这方面，她倒是比我超前许多，或许我应该在这方面多问一下？\r
+\r
+还是算了吧，我绝对不会在日记里写出把她关在自己身边的这种话的，绝对不会，这种事情我自己也能做好的，就是如此。同为巫女的话我绝对不会输过她。\r
+\r
+不过，依旧有一个让我很留意的点，就是她之前似乎也和魔理沙一样在偷偷干些什么，难道她们有串联什么吗？\r
+\r
+（还有，我为什么表现的和嫉妒了一样，难道说她写那些文字的目的就是为了让我嫉妒？可恶，一定要找个时间想个办法来反将她一军。不过，要从什么方面入手呢？算了，这种想法得停下了。）\r
+\r
+\r
+\r
+8月5日 晴\r
+\r
+今天这么好的天气，那只鸦天狗竟然不在？通常来说，她写的那堆故意抹黑我形象的充满谣言和造谣的报纸早就发到我的门上了，她这种几乎不怎么走订阅的报纸而是成天到处乱发的效果只能说收效甚微，吧？至少正常人应该不会信上面的东西。\r
+\r
+今天她竟然破天荒地不出来了，说实在的，虽然天狗再怎么不令人讨喜，但是她们的消息流通一般挺快的，如果她们做了什么反常的事情的话，那一定是有什么重要的事情要发生了，不过我觉得不像是异变，难道是她们内部的事情？比如说她们内部要评选谁卖的报纸最好？虽然除了她的报纸我几乎没看见过其他天狗的报纸。\r
+\r
+所以我决定去找找看她在做什么，然后果然没有找到人，不过我倒是发现她家里有搬运东西的痕迹，或许她去处理那堆根本卖不出去的报纸了？\r
+\r
+嗯，对了，如果要说有什么可以联系起来的话，就是魔理沙和早苗也在搞搬东西的事情，现在已经有三个人在做这件事情了，或许这件事情比我想象中的还要重要，或许会牵扯到好多人吧。\r
+\r
+虽然我是不觉得她们这些不可靠的人能够掀起什么风浪，就算真的惹是生非了我也会照例退治掉她们的，虽然暂时不用担心，但是明天还是找个时间去看看她们究竟在打什么注意吧，防止真的给我惹麻烦。\r
+\r
+突然觉得很在意了，要说这几个人有什么共同点的话，就是都和我有关系，虽然和我没有关系的人才是少数，但这些人和我走的都比较近，而且总是对我说“很在意你”这种听完了会让人感到很尴尬的话，真不知道她们这么做的目的是什么，整蛊我吗？还是真心对我有那种多余的情感？\r
+\r
+（突然发现除了她们之外，华扇最近也少有出现在我面前了，而且从时间上来说，我一开始写日记，魔理沙她们就开始行动，并且行踪和行为都很相似，难道说她们就是在针对我行动？我得去看看。）\r
+\r
+\r
+\r
+8月6日 天气阴\r
+\r
+我知道了，她们果然是在对我进行什么特别行动吧？而且不仅仅是魔理沙她们，连紫都参与了其中。\r
+\r
+昨天我刚打算去找她们确认情况，结果今天紫就突然出来了，拉着我说要去玩，我还没办法把她撒开，只能去当了一天志愿者陪老奶奶聊天和逛街。\r
+\r
+或许她真的关心我，但是现在明明不是她该需要关心我的时间吧？而且她自己也是个老不安分的人，不仅老而且不安分，而且偏偏就是今天她来找我，我作为巫女却不允许我去查看异常，这怎么想都有点反直觉过头了。\r
+\r
+按照这个逻辑顺下来，她肯定就是其中很重要的一环吧，而且大概率不是什么好事，因为她插手的事情如果威胁不到整个幻想乡，那么处理的基本上都很糟糕，而且我不觉得她是在装唐氏。\r
+\r
+真是的，完全不让人省心，明明是大贤者却总是给我添麻烦，如果真的关心我的话，那就少给我添麻烦，多做点正事，比如说给我塞点钱什么的，那才是对我有帮助的事情。至于去玩那种事情也好，也应该放到平时去。\r
+\r
+反正明天多留意一下，不能再磨蹭了，如果明天她再出来阻拦的话，那就让她洗干净脖子准备好即刻退治的准备好了。\r
+\r
+\r
+\r
+8月7号 雨\r
+\r
+真麻烦，今天还下雨了，导致出行很不方便，而且人也没找到，全部都不在家，基本上就是出去淋雨了。\r
+\r
+我试着用亚空穴找到紫的踪迹，结果也什么气息都没有，她们肯定是串通好了要躲着我，而且做的事情不能被我发现，一定就是这样！那肯定不是什么好事了，因为她们单人做好事的可能性就约等于零，尤其是还有紫的插手，一锅人凑在一起不把幻想乡摇个天翻地覆的都不错了。\r
+\r
+说到紫这个家伙的话，平时她要么是在家里睡懒觉，大部分工作都丢给我和她的两个式神了，美其名曰考察一下，实际上就是想自己多偷懒罢了。\r
+\r
+偶尔会来看我的时候，也基本上是在各种逗我玩。比如说要我用嘴给她喂吃的什么的，不然今天就要赖在神社里不走，虽然神社的空间还有很大，但是我实在是不想收留这么一个能量巨大的老人，而且她还有生活的自理能力吧？所以没办法了。\r
+\r
+解决异变的时候，她偶尔也会出来帮我一下，那个时候的话会变得稍微可靠一点，虽然有的时候还是会故意做点很无厘头的事情，但至少看出来她有在出力，虽然我一般还是在当那个最主要的部分，但是我的责任是解决异变，这样的话，我就睁一只眼闭一只眼了。当然妨碍我的话绝对不行，要当场退治掉。\r
+\r
+就是个这么个行踪不定，懒惰，自恋，狡猾，喜欢搞事情，让人费心的家伙，竟然在以前还能教导我的灵力和责任，说实话，如果不是我还记得一点点的话，我肯定会认为这和文文的新闻一样假的没边。我有时在想，那个过去神秘强大的大贤者，如今表现成这个样子，真的没有人会觉得她不太好吗？还是说大家都知道她真的得了老年痴呆。\r
+\r
+无论如何，虽然现在说她各种不好，但如果她一直是过去那个样子的话，有的地方就会没那么有趣了，即使没到华扇那个程度，我觉得也不会让我的生活能有剩下的几口气，还是说她们两个是商量好的？一个人负责装唐，一个人负责严厉，这样子分工下来？\r
+\r
+真是的真是的，她们两个都是的，贤者就是麻烦啊，如果真的关心我的话，好歹多在意一下我的感受啊。\r
+\r
+\r
+\r
+8月8日 多云\r
+\r
+现在看见感觉有点太晚了呢。原来你的想法是这个样子的啊。\r
+\r
+让你写日记这种事情其实就是想要知道你的感受，包括前两天大家躲着你也是在为你筹备惊喜，结果到头来却给你增加了麻烦，这也算是我没料到的一个情况吧。\r
+\r
+不过，能看见你对大家都有自己的感受和想法，以及自己真正想要的事情，其实让我挺安心的，毕竟你是博丽的巫女，虽然现在还很年轻，但是已经很久都是一个人独当一面了。有这样的自主观念，以及不受外在因素束缚的能力，或许未来有一天你的确可以走的足够远，甚至超乎我们任何人的预料。\r
+\r
+本来是想要亲自说给你听的，但是还是感觉很难开口，而且你也不一定当时就听得进去，毕竟也要考虑一下你的自尊心，就让魔理沙她们先把你带出去，然后写下来或许更好一点。\r
+\r
+但是可以看见你在日记中切实地表现了自己的感情，就已经完成了你的修行了呢。\r
+\r
+——茨木华扇。\r
+\r
+（什么啊，华扇看我日记了？她还是头一次这么夸我呢。）\r
+\r
+（真是的，你们都这么喜欢当谜语人干什么，明明有什么事情的话，直接对我说出来的话就行了。）\r
+\r
+\r
+\r
+8月9日 晴\r
+\r
+今天真相大白了呢，结果到头来她们在为我筹备祭典啊。\r
+\r
+今天是8月9日，也就是“博丽之日”，也是我继承博丽巫女的日子，这么重要的日子我却忘掉了呢。\r
+\r
+唉，到头来还是她们喜欢当谜语人搞出来的麻烦，要是她们直接对我说“啊明天是你继任的纪念日我们给你办庆典吧”什么的，我肯定就直接接受了啊，毕竟天上掉下来的祭典不要白不要。\r
+\r
+不过说实在的，的确有点惊喜呢，或许我一直以来对她们的行为猜测都过于严厉了？还是她们给人的印象确实不太好。\r
+\r
+但是说实在的，这样子给人的感觉也不差呢，还有日记的事情。可能我不得不同意华扇一次了，这东西的确对疏通内心有帮助，至少前几天因为她们行踪不定而焦虑的时候，我一直都是靠这个来抒发情绪。\r
+\r
+今天就到这里吧，毕竟今天是祭典，就应该多喝一点。\r
+\r
+以及……谢谢你们今天为我做的一切。\r
+\r
+\r
+\r
+\r
+\r
+作者的话：\r
+\r
+首先博丽灵梦世界第一！然后的话，也祝我自己入坑东方九周年快乐，啊啊，世界上最美丽的巧合，莫过于我入坑的日子和自己最爱的人的日子在同一天。\r
+\r
+这次的话，就谈谈自己本次接力的创作感悟吧。\r
+\r
+首先的话，第一人称写灵梦的经历真的很难，因为完全猜不透在那种情况下她会做些什么和想写什么。希望呈现出一种“关心却不张扬”的心理但是又不能显得冷漠。\r
+\r
+最近也在看一些ZUN的访谈，因为在我眼里ZUN算是和灵梦各种层面上最接近的存在了，所以希望能得到些灵感。不过最后我还是把重心放回了灵梦本身上面。\r
+\r
+写出那种“超凡脱俗的世俗巫女”的难度不亚于kards竞技场拿抓的稀烂的英意打天胡美芬（划掉）也因此花了我不少的时间和脑细胞，不过到了最后还是做到了，可喜可贺可口可乐。\r
+\r
+以及中间那一段华扇的留言其实也有点我自己夹带私货，毕竟我个人还是喜欢华扇这种老妈子形象的，因为我自己就有个很好的严厉老妈子，所以有点明显的偏向（）\r
+\r
+虽然在创作的时候有很多难点，但是让人无法琢磨到想法的灵梦，这种不被任何外因所束缚的自由的灵梦，或许恰恰就是我喜欢她的一个最大的原因吧。\r
+\r
+总之，也很高兴大家能来看我的文章，如果有下一次的话，我也会接着接力写出更多的文章，总之再次感谢大家。\r
+\r
+来日再会。\r
+\r
+博丽雨夏\r
+\r
+2026.8.8`},{name:"第六十三棒",text:`『晚安，灵梦小姐』\r
+长难句的夜是二色蝶告我一声难言的晚安。\r
+\r
+暮已云紫，梦将徐淡。告声晚安。告声晚安。\r
+\r
+待到和风烂漫，眼前人是——\r
+\r
+快晴、雾雨还是云外青山。\r
+\r
+ \r
+\r
+『博丽』\r
+蝶着红白莲，妖恋不离褊。\r
+\r
+二色傍春径，绮想风社前。\r
+\r
+ \r
+\r
+『博丽社门外』\r
+君不见博丽社门外，鸟居古来开。\r
+\r
+苍枝横斜去，墨语苦蓬莱。\r
+\r
+苔痕生落阶前月，风拂叶转二色怀。\r
+\r
+巫祝持竹帚，扫却红与白，春光又至小径来。\r
+\r
+少女绮想梦一曲，世界如此可爱。\r
+\r
+ \r
+\r
+『有蝶』\r
+赤。比梦还红的风。\r
+\r
+ \r
+\r
+有蝶。踏水影舞。雾甚芳香。周遭\r
+\r
+的你暗暗挪步，一点，两点，三点\r
+\r
+滴答。滴答。滴答。少女哼着二色\r
+\r
+ \r
+\r
+盼望着，不语。天也无热。\r
+\r
+眷恋似幕，滴答滴答，雨停了。\r
+\r
+ \r
+\r
+有蝶。踏水隐去。雾甚苍然。临近\r
+\r
+的她，藏在小径的紫阳花。\r
+\r
+ \r
+\r
+『比青色更蓝的梦』\r
+邯郸梦轻又盈\r
+\r
+有蝶俘获风的晴\r
+\r
+那是异乡人的过往\r
+\r
+红魔 春雪 永夜\r
+\r
+普世再一次开明\r
+\r
+ \r
+\r
+此梦非梦 此灵非灵\r
+\r
+二色非红白 壶中天地静\r
+\r
+幻想亦二重 正如梦泛青\r
+\r
+ \r
+\r
+即刻梦想封印`},{name:"第六十九棒",text:`清晨的博丽神社浸在薄雾里，朱红的鸟居被水气浸润得颜色深沉。一缕晨光从鸟居的间隙中切开了雾气，在石阶上拉出细长的影。\r
+\r
+睡在房间里的灵梦被早晨的鸟鸣闹得悠悠转醒，她翻了个身，被子缠在腿上，眯着眼看了看窗外的天色——晨光刚刚爬上缘侧，距离该起床的时间还有一段距离。她闭上眼，想要再睡一会儿，鸟鸣却在耳边越发的地清脆。最终她还是摇了摇头，从被褥里爬了出来，缓缓地吐出一口气。\r
+\r
+“烦死人啦，臭乌鸦，大清早的吵死了。”\r
+\r
+她熟练地将那件红白色的巫女服从衣架上取下来，系好腰带，套上袖子，动作熟练到闭着眼睛也能完成。随后她走到墙边，对着镜子用手抓了抓头发。镜中的人影带着一脸睡意，脑后的蝴蝶结也歪向一边，灵梦伸手抻了抻它。\r
+\r
+打了个哈欠，灵梦拉开了门。室外春风吹过，带着泥土和嫩叶的气息，把她残存的困意又吹散了几分。\r
+\r
+她站在缘侧伸了个懒腰，然后缓缓地向着神社殿外走去。目光扫过鸟居下空旷的参道，她习惯性地看了一眼赛钱箱——空荡荡的。\r
+\r
+神社的米快没了，茶叶罐也已经见了底，前几天魔理沙来喝酒的时候还顺走了她最后半袋蘑菇干。虽然神社后院里还有井水能喝，但也没到靠喝水度日的地步。\r
+\r
+“把卫生做了就去人里买点东西吧。”灵梦看着乱糟糟的境内想到。\r
+\r
+灵梦握着竹扫帚，从拜殿前开始，将昨夜飘落的樱瓣和枯叶聚拢。扫到鸟居下方时，她抬头看了一眼那根朱红的柱子——上面有几道细小的划痕，灵梦伸手摸了摸，大概是哪只调皮的妖精留下的。\r
+\r
+ \r
+\r
+收拾完神社，灵梦换上了出门的鞋，拍了拍红白巫女服的衣摆，把御币插在腰间，提着一个竹编的菜篮，沿着参道往下走。\r
+\r
+今天既没什么委托要处理，也没有妖怪来闹事，更没有异变的预兆。天空湛蓝而清爽，只有几缕云懒懒地挂在山头。路上遇到了一只妖精，飞过来在灵梦周身转了两圈，然后欢快地朝另一个方向飞走了。灵梦看了看妖精，然后慵懒地打了个哈欠。今天晨间的兽道格外安静，露水沾湿了她的裙摆边缘，空气中弥漫着泥土和草木的清新气息。沿途没遇到什么妖怪，这对于一向习惯被叨扰的灵梦来说，倒是难得的清净。\r
+\r
+ \r
+\r
+穿过兽道尽头的木桥，视野骤然开阔。人里外围的农田一片连着一片，水田里刚插下不久的稻秧整整齐齐地排列着，倒映着初升的太阳，水面泛起粼粼金光。旁边几块田地上种着洋葱、萝卜和南瓜，叶子肥厚油绿，一看就是精心照料的。田埂上偶能遇到早起劳作的村民正弯着腰，正给菜畦松土。\r
+\r
+ \r
+\r
+穿过田地再往里走，村落的面目渐渐清晰起来。这里的早晨可比神社热闹得多，主街道两侧紧密排列的房屋，屋顶的瓦片在光照下现出沉稳的灰色。豆腐店的蒸汽从布帘后滚滚涌出，裹着豆香和柴火味；鱼铺的老板娘正把新鲜捕获的鳟鱼摆上木架，鳞片在晨光里闪着银光；菜贩正在把板车上的菜一件件卸下，老旧的板车发出咿呀的声响。稗田家的纸窗一扇扇开着，佣人正在门口进行洒扫。和煦的风穿过街头巷口，带着晨雾留下的那点湿润，把晾在檐下的干菜吹得轻轻晃动。\r
+\r
+灵梦挎着竹篮漫步在早市，她还不太习惯这样早起的时辰，平日她是不常亲自采买的。但最近神社的香火钱实在寡淡，也喝腻了野菜汤。况且——她扫了一眼篮子里那几枚从赛钱箱底摸出来的铜板、将它们拾起塞进了袖子里——去人里走动走动，要是遇到点熟人妖怪，让他们请一顿就再好不过了。\r
+\r
+一位头上戴着鉢巻的大叔正把今天早晨刚取的鸡蛋码放整齐，他面前的架子上还码放着新鲜的蔬菜。隔壁摊位前的桌上摆着几大块肉，泛着光泽一看就很鲜嫩，屠夫还在铺里用力地切着猪骨。灵梦在菜店前停了下来，蹲着拿起根大萝卜在手里掂量。\r
+\r
+“小姐要点什么？这都是早上现摘现挖的，保准新鲜。”\r
+\r
+灵梦的动作顿了一下，但很快恢复了自然。她应了一声：“嗯，看着确实不错。”把萝卜拿给了大叔，又挑了一块豆腐。大叔把豆腐用纸包好系上，算了好账把菜拿给灵梦，灵梦则从袖袋里摸出铜钱放在摊板上，然后接过菜放进竹篮。走之前灵梦看了一眼隔壁摊位上的肉，轻叹一声转身向村内走去。\r
+\r
+街道尽头是一处小小的广场，广场中央立着一座神龙雕像。石雕的龙身盘旋而上，龙首昂扬向天，线条古朴有力，经过多年风雨的冲刷，纵使底座上也已经爬上了青苔，雕像却依然神像不改。灵梦放下提篮，双手合十向龙神像拜了拜。\r
+\r
+参拜完后顺手提起篮子往茶叶铺走。路上迎面碰见豆腐店的小工，灵梦记得他是个爱打听神社故事的年轻人。可今天他看到灵梦却侧身让了让路，低头搬着手中的木盒，嘴里嘟囔了一句“借过。”就从身边走过去了。灵梦减慢了速度，有点讶异地挑了挑眉。往常他一定会热情地过来打招呼：“灵梦小姐早上好。神社最近有没有什么事情啊？”之类的，不过可能今天很忙吧。\r
+\r
+茶叶铺的老板是个爱聊天的中年人。以往灵梦来买茶，他都会拉着她唠嗑——从人里的收成到妖怪山的动静，不是谁家收成好了，就是山上哪个报纸又说啥了。今天灵梦推门进去时，老板正背对着柜台用纸包和竹筒分装茶叶。听到门铃响，老板转过头来招呼客人，手里还拿着竹筒。\r
+\r
+“有新到的煎茶，还是说想要那种什么名茶，尽管说。”\r
+\r
+灵梦站在柜台前，把篮子放在脚边，双手撑在台面上，微微前倾身体。\r
+\r
+“老板。”\r
+\r
+“嗯？”老板放下手中的竹筒，“需要什么吗？”\r
+\r
+灵梦打量了一会儿老板，可是也没有不对，只能感受到一种真诚的、温和的目光。\r
+\r
+“……我拿二两煎茶。”她慢慢说。\r
+\r
+“好嘞，稍等。”老板答应着转过身去挑了挑已经包好的茶叶。\r
+\r
+灵梦接过茶叶，把钱放在桌上，旋即转身推门离开。阳光照在她身上，她低头看了看自己的手——洁白的手掌上能看到手纹，红白的袖口，缎带的蝴蝶结，和往常一样。她伸手摸了摸自己的脸，似乎并没有什么变化。\r
+\r
+买完了菜也没什么要做的，灵梦便离开了集市，竹篮在臂弯里轻轻晃荡，包裹豆腐的油纸渗出冰冷的水珠。她走过稗田家的门口，走过寺子屋的院墙，走过那棵每年春天都开满白花的古樱。一路上有人与她擦肩而过，有孩童追逐打闹撞到她的裙摆，抬头说一声“不好意思姐姐”又跑远了。\r
+\r
+ \r
+\r
+有些事情不对。今天没有人叫她“灵梦”。没有人认出她。\r
+\r
+博丽的巫女似乎失去了自己的名字。\r
+\r
+灵梦站在人里的出口，回望身后那条她再熟悉不过的街道。晨光给瓦檐镀上金边，炊烟袅袅，人声喧嚷，一切都如常运转。她穿过人里与森林之间的交界，踏上通往魔法之森的小径，迈步向魔法之森走去。走着，她摇了摇头，然后加快了步伐。她要赶紧找到魔理沙，不知道人里到底发生了什么，但是如果是魔理沙，至少灵梦这个名字还能听到有人叫。\r
+\r
+ \r
+\r
+      \r
+\r
+ \r
+\r
+魔理沙抵达博丽神社的时候，已经是上午了。\r
+\r
+她特意绕了一段路，从妖怪兽道的方向靠近——一来可以观察一下梦到的反常的色彩是否是真的，二来她也想顺路看看有没有什么奇特的蘑菇。但兽道今日平淡得近乎乏味，树是绿的，天是蓝的，空气正常得让人不习惯。仿佛昨日的梦真的只是一场梦。\r
+\r
+参道的石阶上被扫得干干净净，落叶被收集起来堆在一旁的阶下。赛钱箱前的石砖缝隙里还泛着水痕，显然今早被人仔细冲洗过，连边角的青苔都用小铲除干净了。风铃在屋檐下偶尔发出一两声轻响，除此之外神社里安静得过分。\r
+\r
+太安静了。\r
+\r
+魔理沙踩在地面的声音似乎都被周围的环境吸收了。\r
+\r
+她抬头看去，鸟居还是那副朱红的模样，注连绳的纸垂在晨风中微微摆动。赛钱箱前的水洼映着天空的白云。本殿的门半掩着，黑瓦上还积着残留的露水，檐下的风铃仍在叮当作响。\r
+\r
+一切都跟昨天一样。\r
+\r
+“喂——灵梦！你在吗！”\r
+\r
+魔理沙拉开门，探头往本殿里张望。里面空荡荡的，榻榻米上连坐垫都叠得整整齐齐，香炉里的灰已经冷透了。没有茶壶，没有吃剩的点心，没有随手乱放的符纸。像是主人清晨就出了门。\r
+\r
+灵梦不在神社。\r
+\r
+“一大早就出门了？”魔理沙挑起了眉。她又回想起昨夜的梦——那个站在鸟居下的灰白身影——心里莫名地烦躁起来。她在神社里转了一圈，再次喊了几声，还是没有听到灵梦回答的声音。最终她有些不甘心地跨上了扫帚，正打算离开，想了想又在桌子上贴了一张便签，用炭笔潦草地写着：“我来找过你了。”并且在右下角画上了一颗星星☆。\r
+\r
+魔理沙站在空无一人的神社里，莫名其妙地松了一口气。又在同一瞬间被一种说不上来的空落攫住。她把门重新拉好，目光扫过空荡荡的廊沿和檐下静止的风铃，挠了挠头，自言自语道：“灵梦不在神社啊……那去哪了呢？”\r
+\r
+她跨上扫帚漫无目的地飞了一会儿，虽然魔法之森那边还有些蘑菇要采，但心里那股莫名的躁动让她没什么耐心蹲去寻找。又绕了一圈，掠过魔法之森的边缘，飞过妖怪兽道的上空，不远的方向浮着一层薄薄的水汽。远远看见了雾之湖。湖面上也笼罩着一层白茫茫的水汽，看上去像一块巨大的磨砂玻璃。她的目光无意间向湖边方向——那里站着一个银白色的身影。\r
+\r
+原来是咲夜站在湖边，她好像是在等什么人，又像是在单纯地看风景。她穿着那身标志性的女仆装，白色围裙被湖风吹得微微扬起。手里捧着一个精致的小盒子，上面绑着深蓝色的缎带。魔理沙犹豫了一下，还是飞了过去。\r
+\r
+“哟，咲夜！一大早在这儿干嘛呢？”\r
+\r
+咲夜闻声转过身来，银色的发丝在晨光中泛着柔和的光。她看见魔理沙，脸上浮起一丝微笑：“魔理沙小姐，早上好。我正好在找你。”\r
+\r
+“找我？”\r
+\r
+咲夜将手中的小盒子递给她，轻轻叹了口气，但眼底藏着一丝笑意：“蕾米莉亚大人最近闲着，说要学着做甜点。这是她今早做的马卡龙。”她说这话时带着一丝无奈的宠溺，“成果还算不错——至少形状是合格的。蕾米莉亚大人说，可以送给魔理沙小姐一盒。”\r
+\r
+魔理沙接过盒子，拆开缎带看了一眼。盒子里面整整齐齐地码着几排马卡龙，淡粉色、浅红色、薄荷蓝——像是把春日的色彩收进了这一方小小的盒子里。每一枚都做得还算完整精致，看得出确实是用了心的。虽然有些许的不整齐，看得出是手工做的，但已经相当像样了。\r
+\r
+“哇，蕾米那家伙居然真的会做这种事。”魔理沙挑了挑眉，拿起一枚粉色的咬了一口。外壳脆薄，内馅绵密，杏仁的香气混合着微微的莓果酸味，恰到好处。“唔……还不错，意外地很好吃！”\r
+\r
+魔理沙毫不客气地收下纸盒：“那我就不客气啦，替我谢谢你家大小姐。对了，你有看见灵梦吗？”\r
+\r
+“灵梦小姐今天没有来红魔馆。”咲夜摇头，“发生什么事了吗？”\r
+\r
+“没什么，就是找她有点事。那我先走啦，谢谢你的马卡龙！”魔理沙把纸盒夹在扫帚后座，挥手告别。\r
+\r
+咲夜眨了眨眼睛，似乎在斟酌什么，但最终只是说了句：“那等她回来了再去找她呗。反正她也不会跑掉。”\r
+\r
+“也是。”魔理沙点了点头，跟咲夜告别，然后跨上扫帚，沿着来路往回飞。她骑着扫帚在空中绕了一圈，最后还是决定回神社看一眼——说不定灵梦已经回来了。便签虽然留了，但她总觉得当面说更踏实。\r
+\r
+ \r
+\r
+魔理沙从雾之湖飞回博丽神社的路上，心里一直惦着那盒马卡龙。她想起蕾米做甜点时大概会系着一条与威严毫不相称的围裙，面粉撒得满头满脸，而咲夜站在旁边一边叹气一边默默替她把烤焦的第一批倒掉。想到那个画面，她忍不住在扫帚上笑了一下。\r
+\r
+她把扫帚压低，沿着参道飞向鸟居。穿过鸟居时，她看见一个人影正从侧廊绕过来，手里端着一只茶杯，步态带着一种恰到好处的随意。那人看见她从天上落下来，脚下的步子停了一瞬，随即换上一副懒洋洋的表情，朝她抬了抬下巴。红白的巫女服，黑色的长发，身后的蝴蝶结在微风中轻轻晃动。灵梦正站在廊檐下面的阴影边缘，微微仰头望着上方，像是在看什么，又像是什么都没在看。\r
+\r
+“灵梦！”魔理沙降落在参道上，提起扫帚抱着纸盒朝她走过去。\r
+\r
+“魔理沙，你怎么又来了？”\r
+\r
+阳光从屋檐边缘切过，在她脸上落下一半明一半暗的光影。红白的巫女服整整齐齐，蝴蝶结端正地系在脑后，她正垂着眼，看着手里那杯已经不太冒热气的茶。“怎么，不欢迎啊？”魔理沙从扫帚上跳下来，拍了拍裙摆上沾的灰，将扫帚靠在门上，提起手上的纸盒晃了晃，“咲夜给的甜点，蕾咪做的——大部分是咲夜做的。你刚才上哪去了？我早上来的时候你不在。”\r
+\r
+“嗯。”灵梦低头喝了一口茶，语气里带着一种淡淡的敷衍，“也不是什么大事，就出去了一趟。”打了个哈欠，眼角挤出一点水光，含糊地应道。\r
+\r
+魔理沙的“想分你一块”刚到嘴边，看见灵梦这副懒散的样子，忽然觉得有点好笑。“你可是神社的巫女欸，大白天睡觉，难怪神社连个人影都没有。”她走过去，在走廊边缘坐下，把纸盒放在腿上打开，拿出一块红白相间的马卡龙，“喏，还热着呢。要不要来一块？”\r
+\r
+灵梦看了看盒子里码得整整齐齐的马卡龙——不算精致但是看起来也十分可口。她的目光在盒沿停了一瞬，然后摇了摇头。\r
+\r
+“不了。”\r
+\r
+魔理沙的手顿了一下。“不吃？你不是最喜欢甜的吗。”\r
+\r
+“今天没什么胃口。”灵梦把视线移向远处的天空，语气淡得像被风吹散的烟，“可能是早上起太早了，头有点沉。”\r
+\r
+“……你还能头疼？灵力恢复一下不就好了。”\r
+\r
+“灵力也不是万能的。”灵梦轻轻笑了一下，那笑容落在魔理沙眼里，有哪里不太对劲，却又说不上来。她垂下眼，把那枚被拒绝的红白色马卡龙拈起来自己咬了一口。杏仁的酥脆在齿间碎开，夹心的甜味蔓延开来。\r
+\r
+“那我——”\r
+\r
+“你今天不用去采蘑菇吗？”灵梦打断了她，语气温和却带着一种不容追问的缝隙，“我记得你说过新长的奇怪蘑菇要趁早收。别在我这儿浪费太阳了。” 她靠在廊柱上，半阖着眼，像随时会再睡过去的样子。午后的光从屋檐斜斜切下来，在她肩头落下一道分明的明暗界线，把红白巫女服的上半截照得发亮，下半截沉在阴影里。这个姿势本身没有问题——灵梦确实经常这样靠着柱子犯懒——但魔理沙总觉得哪里不太对劲。\r
+\r
+魔理沙嚼着马卡龙，含含糊糊地说：“一会儿去也行。”\r
+\r
+“去吧。”灵梦从廊柱上直起身，朝她摆了摆手，“我再去躺一会儿。你那些蘑菇等久了会老的。”\r
+\r
+魔理沙把剩下的半枚马卡龙塞进嘴里，拍了拍手上的碎屑。她站起来，把盒盖盖上，看了灵梦一眼。灵梦已经转过身往本殿走了，背影在正午的光线里轮廓分明，红白的巫女服鲜艳如常，蝴蝶结端正地系在发后。一切都那么正常。\r
+\r
+魔理沙跨上扫帚，升空的时候又回头看了一眼。神社的屋檐沉静地卧在春光里，瓦片排列整齐，风铃垂着，注连绳的纸垂在微风中摆动。\r
+\r
+灵梦没有出来。\r
+\r
+“……可能真累了吧。”魔理沙自言自语地嘀咕了一句，调转扫帚朝魔法之森飞去。\r
+\r
+春日的风从背后推着她，马卡龙的漆盒在口袋里温温地贴着她的腰。她飞过那片熟悉的树冠时，忽然想——下次去神社之前，要不要带点茶叶？看她那副样子，大概连泡茶的心思都没有了。\r
+\r
+这个念头在脑子里转了一圈，又被风吹散了。\r
+\r
+她飞得很快。鸟居在她身后逐渐变小，最后缩成一个朱红的小点，隐没在层层叠叠的绿色之间。树影在她身下流动，阳光在叶片上跳跃，一切如常。\r
+\r
+ \r
+\r
+ \r
+\r
+ \r
+\r
+灵梦踏进魔法之森时，已经快是正午了。森林里的光线比外面暗了一截，树冠层层叠叠地遮住了大半的天空，只剩下零星的碎光从叶隙间漏下，在林地上跳跃。她沿着小路往前走，脚下的苔藓柔软潮湿，踩上去几乎没有声音。\r
+\r
+她从人里出来后就直奔魔理沙的家，那栋立在森林深处的、堆满瓶瓶罐罐和魔法书的屋子。走到屋前，她敲了敲门，没人应。推门进去看了一圈——桌上堆着杂物和各式各样的书籍，灶台是冷的，挂在墙上的那顶黑色帽子和一般会摆在门口的扫帚也不在。显然，魔理沙今早出去之后就没回来过。\r
+\r
+“这家伙不在家吗……跑哪去了。”\r
+\r
+灵梦站在空荡荡的屋子中央，把菜篮放在桌上，环顾四周。魔理沙的生活痕迹到处都是：几本摊开的书、一套没洗的茶杯、角落里堆着各种颜色的蘑菇、窗台上放着半瓶水。但唯独不见那个人的身影。\r
+\r
+她走出屋外，沿着屋后的小径走了一段，开始朝森林深处喊。\r
+\r
+“魔理沙——！”\r
+\r
+她喊了一声，声音在树林间回荡，惊起几只不知名的鸟。她等了一会儿，没有回应。又往前走了一段，继续喊：“魔理沙！你在不在——”\r
+\r
+还是没有人应。\r
+\r
+灵梦皱了皱眉，在树丛间穿行，一边走一边留意四周的动静。魔理沙有时候会在魔法之森深处采蘑菇，那种时候她的耳朵比平时灵得多，隔着老远都能听见她的声音。但今天，四周安静得像一口枯井。深吸一口气，继续往前走。她穿过一片矮灌木丛，脚踩在松软的腐殖土上，偶尔有虫子从落叶间爬过。她绕过一棵巨大的橡树，视野稍微开阔了一些，前方是一片长满了野蘑菇的坡地。\r
+\r
+“魔理沙——你到底在哪——”\r
+\r
+她提高声音又喊了一遍。这一次，她得到了回应——不是话语，而是一阵气流破开的风声，从头顶斜斜掠过来。\r
+\r
+她抬头。透过层叠的枝叶，她看到天空中有一个人影正骑着扫帚划过林梢，黑色的帽子被风吹得向后扯，金色的长卷发在阳光下几乎透明。那人影听见喊声后猛地一拽扫帚柄，在空中急停、转身，然后降低了高度，朝她这边飞来。\r
+\r
+扫帚在离地三尺的地方悬停，魔理沙坐在上面，居高临下地打量她。目光落在灵梦身上，表情有些复杂。那双琥珀色的眼睛里仿佛带着某种审视般的警惕。\r
+\r
+“你在叫我吗？”魔理沙问。语气里带着一丝试探，不像平时那样笃定。\r
+\r
+“废话，这周围除了你还有别人吗？”灵梦叉着腰，又气又好笑，“笨蛋魔理沙，我找你一天了你知道嘛！去你家没人，去森林里转了半天，嗓子都快喊哑了——”\r
+\r
+“……刚刚在神社。” 魔理沙眉头微微蹙起，将另一只手缓缓放到身后，慢慢说道，"你是谁？”\r
+\r
+“哈？”灵梦愣了一下。\r
+\r
+“是我啊，灵梦，博丽灵梦啊！”灵梦的表情由愣神渐渐转变为惊愕，而魔理沙只是静静的看着她。\r
+\r
+“不可能，灵梦在神社呢。”魔理沙歪了歪头，目光不闪不避地落在她脸上，“你究竟是谁？”\r
+\r
+灵梦只觉得大脑一片混乱，“我真的是灵梦啊——”她重复了一遍，语气里有种被冒犯到的急躁。\r
+\r
+魔理沙没动。她站在扫帚旁边，一只手还握着扫帚柄，另一只手垂在身侧，指腹正轻轻摩挲着帽檐内侧那颗星星别针的轮廓。她看着眼前这个红白巫女，看着那双琥珀色的眼睛，看着那张熟悉的脸上浮现出的那种“你怎么还不信我”的不耐烦表情——一切都十分熟悉的感觉。\r
+\r
+“那你——” 魔理沙用一种刻意拖长的、带着怀疑的语调问，带着一股“我姑且听你说说”的保留，“你说你是灵梦，那你证明给我看。你要是说不出来……”她顿了一下，语气沉了半分，“我就当你跟神社那个一样是冒牌货。”\r
+\r
+灵梦瞪了她一眼，那眼神像是想把她从扫帚上拽下来狠狠晃一晃。但她深吸了一口气，忍住了，抱着手臂站在树下思考着什么，像是在从一团乱麻里抽一根最细的线头，一段一段地往回翻找——那些被日常冲淡了却被时间磨亮了的事情。\r
+\r
+“你前两天来神社。”灵梦说道，声音恢复了那种懒懒的、带着点怨气的调子，“喝完酒走的时候偷了我半袋干蘑菇，放在窗台上那袋。你说是‘借’的，我跟你说了那是我留着准备煮汤喝的。”\r
+\r
+“我可没偷，我是顺走的。”魔理沙纠正她。\r
+\r
+灵梦白了她一眼，没好气地说：“顺和偷有什么区别。”\r
+\r
+“差别大了。顺走是对方在场的情况下拿走的，偷是不在的情况下拿走的。”\r
+\r
+“你就差没把‘灵梦不在家’四个字写在脸上了——”\r
+\r
+“反正你说的是对的。”魔理沙摆了摆手，底气弱了半截，脸上的表情却稍稍松弛了一些，“……这事爱丽丝也知道。那天她也在。你这——该不会是她做的自动人偶吧？又来耍我？”\r
+\r
+灵梦沉默了一瞬，然后用一种“你是不是脑子被扫帚撞了”的眼神看着她。“爱丽丝？她那天坐不到半个时辰就走了，说是人偶还没做完。她走之前她还特意提醒了我，说你喝多了别让你一个人飞回去。”\r
+\r
+“这样吗，我有点记不清了。” 魔理沙的嘴抿了抿。“光一件偷蘑菇的事还不够。万一是你自己告诉别人的呢——比如你昨晚喝多了说漏嘴了什么的。”\r
+\r
+“我昨晚又没喝酒。”\r
+\r
+魔理沙沉默了一会儿，灵梦也不催她，就那么站在林间空地上，午后的光从树叶缝隙漏下来，在魔理沙肩头落下一片摇晃的光斑。灵梦看起来有点不耐烦——是那种“你再问下去我就要走了”的不耐烦——但她没有走。\r
+\r
+魔理沙看着她的眼睛。\r
+\r
+那双眼睛是红的，被午后的光照得很透亮，带着她熟悉的、懒散又清醒的光芒。跟鸟居下那对敷衍且无神的瞳孔不一样。跟梦里那个像雕塑一样完美的“灵梦”也不一样。\r
+\r
+魔理沙深吸一口气。\r
+\r
+“那我问你下一个问题。”她说。\r
+\r
+灵梦抬了抬下巴，示意魔理沙讲。\r
+\r
+“那天爱丽丝走了之后——”魔理沙的声音忽然低了一点，眼神也偏移了半寸，像是不太愿意直视对方，“我跟你说了些什么？”\r
+\r
+灵梦愣了一下，随后淡淡一笑。\r
+\r
+“那天啊。”她开口了，语气不紧不慢地，像是在翻一本落灰的旧相册，“爱丽丝先走的。她喝完茶合上书，说‘差不多该回去了’，还问你一起走不走。”\r
+\r
+灵梦看了一眼魔理沙，对方的表情从“戒备”变成了“在听”，嘴唇微微抿着。\r
+\r
+“你躺在地上，枕着手，眼睛闭着说‘我再待一会儿’。爱丽丝跟我说‘多谢款待’就走了。我从厨房出来，看到你还躺在那儿，就说‘啊啦，我还以为你跟她一起回去了’。”\r
+\r
+灵梦学着当时自己的语气，带着一点调侃的弧度。“你睁开眼睛看着我说‘我在这不好吗’。我说‘我可没这么说’——然后我蹲下去拿放在你旁边的茶杯，顺口说了一句‘饭有点做多了，要不要一起吃点？’”\r
+\r
+魔理沙的睫毛轻轻颤了一下。\r
+\r
+“你说‘又来’。我说‘做一人份的分量很难把握啊’，然后你说‘真没办法’，晃了晃脑袋。”灵梦的嘴角翘起来，“你那时候的表情就跟现在差不多——明明想留下，非要装成勉为其难的样子。”\r
+\r
+“我才没有——”\r
+\r
+“汤喝的时候你说‘今天有点淡’，我说‘淡就不要吃’，你说‘什么嘛提个建议都不听’。”灵梦没理会她的抗议，继续说下去，声音里带着一种温吞的笑意，“我们就那么坐着吃完了。后来就是你把酒喝得差不多了，你起来要走的时候——”\r
+\r
+她顿了顿。\r
+\r
+“我问你扫帚呢。你说在鸟居下面。我跟你说‘路上小心’，你说‘多谢款待’。然后你已经走下台阶了——又转过身来。”\r
+\r
+灵梦的目光落回魔理沙脸上。这一次她没有移开。\r
+\r
+“你用手碰了一下帽檐——对，就像你现在这样，碰了一下帽檐——然后你说……‘很好吃哦。明天也会来的，所以，给我做两人份的量哦。’”\r
+\r
+她轻轻学了一句，语速放慢了一些，像是在重现那晚的节奏。然后她站直了身子，把手抬到身前，拨了一下垂在胸前的发髻。\r
+\r
+“我当时说——”她的声音比刚才轻了一点，却更清晰了，“‘你说的哦，绝对要来哦。’”\r
+\r
+两个人隔着几步的距离互相看着，林间安静了一息，夏日的风吹过树梢，把头顶的叶片吹得沙沙响，把一片绿叶扫到她们中间的地面上。\r
+\r
+“然后我说——”灵梦看着魔理沙的眼睛，一字一句地，像在重复一个被记了很久的约定，“‘一直都做着魔理沙的份，等着你来呢。’”\r
+\r
+她把这句话说完，安静地站在那里。阳光从树隙漏下来，在她肩头跳跃。她的表情没有什么大的变化——嘴角微微翘着，眼尾有一点笑纹——但她的目光是认真的，认真到不像是在回答一个问题。\r
+\r
+魔理沙攥着扫帚杆的指节泛白。\r
+\r
+她想起来了。那天晚上她确实说了那些话。她记得自己当时喝得有点晕，站起来的时候腿都是软的，走到门口被夜风一吹才清醒了一点。她转过身说那句话的时候其实很紧张，只是用“酒劲”来假装那是随口说的。\r
+\r
+然后灵梦回了那句话。\r
+\r
+“一直做着魔理沙的份，等着你来。”\r
+\r
+她那天晚上回去的路上一直在想这句话。第二天早上醒来的时候她尴尬得要命，所以走的时候顺手抓了门口那半袋蘑菇——不是因为想吃，只是想拿个什么东西，好让那个场面显得更“正常”一点。\r
+\r
+魔理沙沉默了一会儿。她没有立刻开口，而是把目光从灵梦脸上移开，落在林间空地的某个角落。像是在挑选一个最安全的问题。\r
+\r
+“第三个问题。”她终于开口，声音比之前轻了一些，“你记得那年夏天吗？就是……‘最后的西瓜’那次。”\r
+\r
+灵梦的表情微微变了一下。那变化很细微，像风吹过水面留下的纹路，但她没有打断魔理沙。\r
+\r
+“那天我坐在神社的廊沿上，你坐在旁边。盘子里放着几块西瓜，风铃在响。”魔理沙的声音低低的，像在念一段被反复翻看的旧笔记，“我说这是今年最后的西瓜了，在神社纳凉的生活也要结束了。你说——”\r
+\r
+“‘然后在被炉里蜷缩着的生活开始了呢。’”\r
+\r
+灵梦接过她的话，声音平稳。她看着魔理沙的眼睛，那对琥珀色的瞳孔里映着她自己。\r
+\r
+“你说'一年到头都赖在这里真是抱歉了啊'。我说'我倒是很高兴哦。有能和你一起度过下一个季节。'”\r
+\r
+风穿过林间，把她额前的黑发撩起来又放下。\r
+\r
+“然后你——”灵梦的声音里带上了一点极淡的笑意，“你害羞了。你把头转正，慢慢缩进双臂里，说‘别说那么令人害羞的事情啦’。然后我跟你说了什么，你还记得吗？”\r
+\r
+魔理沙没有回答。灵梦往前走了一步，近到能看清对方帽檐下那对耳朵尖微微泛红。\r
+\r
+“我问你西瓜不吃吗。你说当然要吃。你说——”她的声音放轻了，像是在重复一句不需要被强调却依然被她好好收着的话，“‘我是想要在这里慢慢地品味夏天的终结啦。陪陪我吧。’”\r
+\r
+她停顿了一下。\r
+\r
+“我说——‘好好，我很乐意。希望每一年都能这样在你的身边和你说话’”\r
+\r
+这个句子被她念得很轻，轻到像是怕惊动什么。但每一个字都清晰。\r
+\r
+魔理沙站在原地，攥着扫帚杆的手终于缓缓松开了。她的肩膀垂下来，像是某些一直绷着的东西在这一刻终于找到了可以落地的位置。\r
+\r
+林间的风不知什么时候停了。灵梦就站在她面前三步远的地方，晨光从树隙漏下来，把她半边脸照得明亮，另半边沉在阴影里。她们刚刚结束了那三个问题——那三个只有她们才知道答案的、被时间磨得发亮的往事。魔理沙的眼角还有些发红，但她用力眨了两下，把那点水光又逼了回去。\r
+\r
+“……唔。”她别开视线，伸手把帽檐压低了一些，“真的是你。”\r
+\r
+“现在信了？”\r
+\r
+“信了。”魔理沙的声音闷在帽檐下面，“这种事除了你没人记得。”\r
+\r
+灵梦看着她压低的帽檐和微微发红的耳尖，忽然觉得今天的太阳比平时更暖和了一些。\r
+\r
+“走吧，去神社。” 魔理沙跨上扫帚说，语气已经恢复了平时的干练，“那个假货还在那儿。”\r
+\r
+灵梦点了点头，正要跨上扫帚——\r
+\r
+魔理沙的帽子动了。\r
+\r
+先是帽檐轻轻颤了一下，像被风撩起的边缘。但此刻林间没有风。然后是帽顶。那顶标志性的黑色魔法帽像是从内部被什么东西顶了一下，帽顶鼓起一个小小的凸起，随即又平复下去。\r
+\r
+"嗯？"魔理沙伸手去按帽檐。\r
+\r
+她的指尖刚触到帽边，那本书就从帽子里面猛地弹了出来。\r
+\r
+像被弹簧崩开一样，白书带着一股脆弱的力道撞开了帽顶，书脊朝天直直飞起，在半空中悬停。魔理沙的帽子被掀得歪向一边，用手抓住才没被掀飞。她下意识地伸手去抓那本书，但手指只划过了空气。\r
+\r
+白书悬在她们两人之间的半空中，书页闭合，封面纯净的白色在透过树隙的天光下微微泛起一层暖意——不是反射的阳光，而是从纸页内部渗出来的、极淡的暖金色光晕。那光很薄，像一层水彩颜料被稀释到了极限，若有若无地浮动在封面表面。\r
+\r
+“这是什么？”灵梦从袖中掏出符卡架起姿势。\r
+\r
+书页哗地一下在俩人面前自行翻开了。\r
+\r
+书页翻动的声音在寂静的林间格外清晰，像有人站在远处快速翻阅一本厚册子。那些空白的页面上，随着翻动，正浮现出极淡的铅笔线条——它们从无到有，从浅到深，像被一只看不见的手飞快地勾勒着。\r
+\r
+魔理沙和灵梦同时看见了书上那些画。\r
+\r
+书上记录着二人刚刚的对话，像一份精确到毫厘的速写笔记。展示完后，白书渐渐闭合，光芒渐渐黯淡下来，就像失去了生机一样，魔理沙伸手抓住悬在半空中的白书。这一次书没有躲，安安静静地躺在她的掌心里，像一个等待指令的信差。她低头看了一眼白书，然后抬头看向灵梦。\r
+\r
+“那个……灵梦。”魔理沙摘下帽子再次将书塞了进去，“等会要不要去我家吃马卡龙？”\r
+\r
+“当然可以。”灵梦答道，“不过你现在问这个干什么？”\r
+\r
+魔理沙骑上扫帚：“今天我和村民都没认出来你，可能是神社那个假灵梦在作祟。” 转过来朝着灵梦招了招手，“走吧，上来，我们去解决异变。”\r
+\r
+她握紧扫帚杆，朝博丽神社的方向飞去。灵梦坐在她身后。这一次她什么都没问。魔理沙帽檐内侧的星星别针在扫帚升空的瞬间闪了一下——短促的、琥珀色的光，像一只眼睛眨了一眨，随即恢复了安静。\r
+\r
+ \r
+\r
+鸟居出现在视野尽头时，魔理沙感觉自己后背的肌肉不自觉地绷紧了。但她的速度没有减慢，甚至微微加了速。扫帚划过参道上方，带着一阵急骤的风，降落在石阶前。\r
+\r
+神社境内看起来一切如常。赛钱箱、注连绳、风铃、瓦檐——都完好无损地立在春日的光里。但魔理沙的目光直接越过了那些正常得不可思议的景象，落在鸟居下方的阴影里。\r
+\r
+那里站着一个人。\r
+\r
+同样红白的巫女服，一袭黑色长发后立起的红白蝴蝶结。微微勾起的嘴角。她倚着朱红的柱子，双臂环抱，姿态闲适得像是在自家院子里等人回来。看见魔理沙和灵梦同时落在参道上，她的目光掠过魔理沙，落在她身后的灵梦身上，停留了片刻。她的表情没有变化，只是歪了歪头，像在打量一件有趣的艺术品。\r
+\r
+然后她笑了。那笑容很轻，像水面上即将消散的涟漪。\r
+\r
+“这位是？”她笑着问魔理沙，“你从哪儿又捡了一个巫女回来？还穿着跟我一样的衣服。”\r
+\r
+灵梦从魔理沙身后走出来。她站在参道中央，与鸟居下的“自己”面对面，距离不过十步。春日的阳光从侧上方照下，把两人的影子拉向同一个方向。\r
+\r
+“你不知道我是谁？”灵梦开口，声音平静。\r
+\r
+假灵梦眨了眨眼。“你穿着红白巫女服，我也穿着红白巫女服。也许我们该问问同一个裁缝为什么做两件一样的？”\r
+\r
+“你在人里见过我吗？”\r
+\r
+“人里？”假灵梦的眉梢微微动了一下，像在回忆什么不太重要的事情，“今天早上确实去了一趟，买了块豆腐。你呢，也去人里了？我怎么没看见你。”\r
+\r
+灵梦看着她。这个“自己”的每一句回应都恰到好处——语气、节奏、甚至是那些略带敷衍的尾音，都跟她本人的说话习惯分毫不差。但唯独一样东西不对。她问“你也在人里”的时候，目光是平的。没有审视，没有打量，像一个刚刚背熟台词的演员，照着念出了下一句。\r
+\r
+“行了——”\r
+\r
+魔理沙的声音从身侧传来。她一步跨到了灵梦前面，八卦炉已经从腰间抽出，卦象在炉面缓缓转动。她的表情很平静，但那种平静底下压着一股快要溢出来的烦躁。\r
+\r
+“我早上来过神社。”魔理沙盯着假灵梦，一字一句地说，“你让我去采蘑菇。你跟我说‘去吧’，然后转身进了本殿。”\r
+\r
+假灵梦的笑容僵了一瞬。那是一个非常细微的变化，像一幅画上被笔尖轻轻刮过一道。但魔理沙看见了。\r
+\r
+“真正的灵梦——”魔理沙举起八卦炉，炉口的卦象骤然加速旋转，“就算困得眼皮打架，也会拖到鸟居底下说'怎么没给我带饭'。她不会说‘去吧’。她只会说——”\r
+\r
+“别摔了你的破扫帚。”\r
+\r
+灵梦的声音从她背后传来。很轻，但很清晰。\r
+\r
+听到这，假灵梦收起了笑容，低下头，从袖口掏出一张纯白的卡片。她看着自己手里那张纯白的卡片，卡面的边缘正在缓慢地卷曲，像被火苗舔过的纸边。\r
+\r
+魔理沙没有给她更多时间。\r
+\r
+“少废话了！”八卦炉轰然爆发，魔炮的光束没有任何预兆地射出，直取假灵梦的面门。假灵梦仓促间抬手，白卡在掌心翻转，化作一面淡蓝色的障壁，魔炮撞在上面炸开一片刺目的光——但障壁裂了，裂纹从正中蔓延到边缘，像被石头砸中的薄冰。\r
+\r
+“—太慢了。”魔理沙一步不停，第二发魔炮已经在酝酿，“你连挡的姿势都不对。真正的灵梦接我这招的时候——”\r
+\r
+“是侧闪。”灵梦的声音从侧面传来。\r
+\r
+话音未落，假灵梦的左侧忽然亮起一张符纸的光。梦符「封魔阵」的术式不知何时已经从灵梦身上释放了出来，黄色符卡术纹在空中迅速展开，如同一张无形的网向假灵梦罩去。假灵梦根本来不及做出第二次防御，身体周围被术纹缠住的一瞬间，魔理沙的第二发魔炮已经到了。\r
+\r
+光束贯穿了那道淡蓝色的障壁，障壁连同假灵梦手中的白卡一起碎裂。假灵梦被冲击力推得向后滑出数步，撞在另一侧的鸟居柱上，发出一声沉闷的响。\r
+\r
+她的身体没有流血。但她的存在正在变得不稳定——像一幅湿透的水彩画，边缘的线条开始模糊，色彩缓慢地向外晕开。\r
+\r
+假灵梦抬起头。那张与灵梦一模一样的脸正在缓慢地失去颜色——袖口的红正在变淡，从鲜红到朱红，再到浅红，最后洇成一片灰蒙蒙的淡影。身上的红白巫女服也不再洁净，像被脏水浸过的棉布，一缕缕地褪成灰白。蝴蝶结的红色与白色融在了一起，化作一团模糊的轮廓。黑色的长发像是被一层薄尘覆盖，光泽一点点地黯淡下去。\r
+\r
+她整个人正在缓慢地变成魔理沙在梦里见过的那种灰白。不是白衣，不是黑发，而是一种彻底失去颜色的、像陈旧铅笔画一样的灰。\r
+\r
+“我差一点就成功了。”假灵梦的声音越来越轻，像风吹过很远的山谷，“如果你们来得再晚一点……”\r
+\r
+"没有如果。"魔理沙垂下了八卦炉，炉口的卦象逐渐停转。她看着眼前正在褪色的身影，声音里没有胜利的得意，只有一种说不清的复杂。与此同时，帽檐内侧的星星别针微微发烫，同步地、极轻微地震颤着，像是在回应某种共振——她感觉到了，但此刻她只是静默地站着。\r
+\r
+假灵梦没有再说话。她靠着鸟居的柱子，身体开始从边缘碎裂。最先散开的是发梢，像被风吹散的墨灰，化作细小的光点向上飘去。然后是袖口的边缘，衣摆的角落，蝴蝶结的尾端——每一片碎片都带着一丝极淡的颜色，有些泛着朱红，有些晕着乳白，有些还残存着发丝断裂时剥离的墨黑。\r
+\r
+那些碎片没有落向地面。它们向上飞去，在午后的阳光里折射出细碎的、近乎透明的虹彩，缓缓升向天空，像一群逆流而上的萤火虫。\r
+\r
+就在这时，魔理沙的帽子猛地一震。\r
+\r
+那本白书从帽檐下面弹了出来，自行悬停在半空中。书页没翻开，封面朝上，像一只慢慢睁开的眼睛。魔理沙伸手要抓，手探到一半却停住了——她看到那些正在升空的碎片像是被某种力量牵引，开始改变方向，缓慢地朝着白书汇聚过来。\r
+\r
+一片朱红的碎片落入封面正中，像一滴颜料滴在纯白的纸面上，迅速晕开、渗透、消失。然后是素白的，墨黑的，淡金的——每一片颜色碎片接触到书的封面都被吸纳进去，不留痕迹。书面的纯白没有任何变化，但魔理沙能感觉到它在微微地发暖，像一只正在吸收午后阳光的猫。\r
+\r
+不到十息，所有的碎片都被白书吸纳殆尽。\r
+\r
+书在空中静了一瞬。然后它的封面泛起一层极淡的暖光，像一声无声的叹息。接着那光缓慢地暗下去，从边缘开始一点一点地变得透明。先是封面变得像薄纱一样隐约可见背后的天空，然后是书脊、书页的边缘，整个轮廓在空气中缓缓淡化，像一幅逐渐被水洗去的墨画。\r
+\r
+最后，连那层透明的轮廓也消失了。\r
+\r
+白书不见了。它消失的地方只剩下一片澄澈的空气，和午后穿过鸟居的阳光。魔理沙帽檐内侧的星星别针同时停止了震颤，安静地伏在布料上，像完成了什么任务一般归于沉寂。\r
+\r
+魔理沙的手停在半空中，指尖什么都没有碰到。\r
+\r
+她站了很久，才慢慢收回手，把帽子戴好，指尖无意识地碰了一下星星别针——它比平时温热，像被晒了一整天的石子。但除此之外一切如常。\r
+\r
+“那家伙……真走了？”\r
+\r
+灵梦站在她身边，也看着那片空气。“可能吧。”\r
+\r
+“它到底是什么？会再回来吗？”\r
+\r
+“不知道。"灵梦想了想，"如果它再来，我们还可以再打一次。”\r
+\r
+魔理沙转头看她。午后的阳光从侧上方照下来，把灵梦的红白巫女服照得鲜艳分明，蝴蝶结端正地系在发后。她站在那里，跟假灵梦刚才坐过的位置隔了两步，活生生的，有温度的，带着一点不耐烦和一点懒散——这才是真正的灵梦。\r
+\r
+“走吧。”魔理沙拍了拍帽子，跨上扫帚，“还欠你马卡龙呢。再不去软了可就不好吃了。”\r
+\r
+灵梦跨上后座，一如既往地没有说谢。但她的手指在魔理沙腰间收拢的时候，比来时稍微紧了一些。扫帚升空。鸟居在身下越来越小，神社的屋顶、参道的石阶、那棵古樱，一切都在春日的阳光里静默地伫立着。魔理沙低头看了一眼，然后把目光收回来，落在了前方。\r
+\r
+春风迎面吹来，魔法之森的树冠在下方铺成一片深浅不一的绿浪。灵梦在后座说了一句什么，被风吹得断断续续的。魔理沙侧过头：“你说什么？“\r
+\r
+“我说——晚上要不要喝点酒？“\r
+\r
+“你请客？“\r
+\r
+“你请。马卡龙是咲夜给的，茶是你自己泡的，酒总不能还让我掏钱吧。“\r
+\r
+“你这家伙真的是——“\r
+\r
+灵梦在后座笑了一声。那笑声轻快地散在风里，像一枚被抛向天空的硬币，在阳光下闪了一下，然后落进了她们身后越来越远的绿色之中。\r
+\r
+雾雨魔法店的屋顶出现在前方时，魔理沙压低了扫帚。降落的时候灵梦先跳下来，动作利落地拍了拍裙摆上沾的灰。魔理沙随后跳下来，踢开门口一堆不知什么时候长出来的蘑菇，推开了门。\r
+\r
+屋里还是她早上离开时的样子。坩埚里的药渣没倒，桌上摊着翻到中间的书，椅背上搭着那件黑白色的裙子。\r
+\r
+魔理沙把甜品盒放在桌上打开。里面还剩五枚马卡龙，樱花粉和浅金色码得整整齐齐。她去泡了茶，把茶杯推到灵梦面前，自己先夹了一枚咬下去。\r
+\r
+灵梦也拈起一枚，樱花粉的那一个，咬了一口。她眯起眼睛，腮帮子鼓鼓地嚼着，含含糊糊地说了一句什么。\r
+\r
+“嗯？”\r
+\r
+“我说——还是咲夜做的靠谱。”\r
+\r
+“比蕾米自己做的好？”\r
+\r
+“强多了。蕾米那种大小姐做的点心，好看是好看，一口下去全是糖精味。”\r
+\r
+“你这话敢当着她的面说吗？”\r
+\r
+“不敢。她生起气来还挺麻烦的。”\r
+\r
+魔理沙笑了一声，把茶杯端起来抿了一口。红茶的温度正好，蜂蜜的甜味从杯沿蔓延到舌尖。窗外的阳光从木窗缝隙漏进来，落在桌面上，落在马卡龙的漆盒边上。\r
+\r
+沉默了一会儿，灵梦忽然说：“你那个梦里面，那个假的我说了什么？”\r
+\r
+魔理沙嚼着马卡龙的节奏顿了一下。“她说——‘跟我来吧，去一个不需要固守色彩的世界。在那里，红白的巫女服、黑色的魔法帽、金色的向日葵田……这些固执的定义都会消融。我们可以成为更自由的存在。‘”\r
+\r
+灵梦听完，表情没什么变化，只是把剩下的半枚马卡龙塞进嘴里，含糊地评价了一句：“还挺文艺的。”\r
+\r
+“是吧？我当时差点心动了。”\r
+\r
+“真的吗？”灵梦嚼了嚼嘴里的甜品“然后呢？”\r
+\r
+“然后我说——‘灵梦才不会说舍弃幻想乡这种话。’”\r
+\r
+灵梦咽下马卡龙，端起茶杯。“说得没错。”她喝了一口茶，目光落在杯子边缘的茶渍上，“我才不会走。神社还有香火钱没收完呢。”\r
+\r
+魔理沙看了她一眼。午后的光从窗外斜斜照进来，把灵梦的侧脸镀上一层柔和的暖金色。她的红白巫女服鲜艳分明，蝴蝶结端正地系在发后，肩膀松弛地垂着，是一个活生生的人该有的温度。她不知不觉伸手按了一下帽檐内侧的星星别针——它还是温热的，像一枚小小的、沉默的信物，替她记住了今天发生的所有事情。\r
+\r
+“下次别自己跑去人里买东西了。”魔理沙说。\r
+\r
+“嗯？”\r
+\r
+“你找不到我，就来我家等。反正门又不锁。”\r
+\r
+灵梦的嘴角微微翘了一下。“知道了。”\r
+\r
+窗外的风吹进来，把桌角那本合着的魔法书翻了一页。两个人谁也没去管它。茶还温热着，马卡龙的碎屑落在桌面上，阳光在灰尘里缓慢移动。雾雨魔法店的午后就这么平常地、安稳地流淌过去。\r
+\r
+魔理沙的手指在茶杯边缘轻磕了两下，忽然说：“对了，晚上想吃什么？我昨天采了一筐紫芝，还有几朵松茸。”\r
+\r
+“你做的饭能吃吗？”灵梦撇了撇角落里的那袋蘑菇，“还有那一袋蘑菇是从我那顺走的吧。”\r
+\r
+“总比你强。你上次煮的蘑菇粥糊了锅底，整个神社都是焦味。”\r
+\r
+“那次是火太大了——”\r
+\r
+“你哪次不是这么说。”\r
+\r
+灵梦把茶杯放下，看了她一眼。那眼神里有种说不清的东西，像隔着薄薄一层被阳光晒暖的雾气。\r
+\r
+“行啊。”灵梦答道，“那就试试你做的蘑菇。要是难吃我可不付钱。”\r
+\r
+“又不收你钱。”\r
+\r
+“那更难吃了怎么办？”\r
+\r
+“那你就饿着。”\r
+\r
+灵梦在桌对面发出一声意义不明的嘟囔，听起来像是“小气鬼”又像是“知道了”。魔理沙没回头，走进厨房的时候在门框边停了一瞬，伸手摸了摸帽檐内侧。\r
+\r
+那个位置曾经放着那本白书。现在什么都没有了，只有帽檐布料的触感，和一点残留的、近乎遗忘的暖意。但那枚不知名的星星别针还安静地待在那里，她的指尖在别针表面停了一下，感受到它传来的、近乎脉搏般的微弱暖意——像某种回应，又像一声被压得很低的告别。\r
+\r
+她把手收回来，扶正帽子，走进了厨房。\r
+\r
+屋外，魔法之森的颜色稳稳地铺展着。墨绿的橡叶，嫩绿的紫杉新芽，湿润的深绿苔藓。阳光从叶隙漏下，洒下碎金般的光斑。\r
+\r
+魔理沙在灶台前站定，把紫芝和松茸放在案板上。灵梦的声音从客厅传来，懒洋洋的：“喂——茶快凉了。”\r
+\r
+“凉了自己倒。”\r
+\r
+“你家茶壶在哪？”\r
+\r
+“灶台左边。你瞎啊。”\r
+\r
+“你才瞎。”\r
+\r
+窗外阳光正好，风铃在屋檐下轻轻响了一声。屋外的阳光从木窗缝隙漏进来，在灶台边缘落下一道温暖的光线。魔理沙低头切着蘑菇，嘴角不知不觉地翘了起来。帽檐内侧的星星别针安静地伏在布料上，温热而妥帖，像一枚被妥善收藏的印戳。\r
+\r
+今天的异变结束了。明天的日常还会继续。\r
+\r
+而她心里很清楚地知道——无论发生什么，明天醒来的时候，灵梦还会在神社里等着她过去蹭饭。\r
+\r
+这样就很好。`},{name:"第十七棒",text:`————分割线————\r
+\r
+当祭典和宴会都结束，生活的安排中难得出现了几日空缺，于是便有了休假。对于平常生活并不繁重的灵梦来说，这样一个没有异变、没有友人来访，甚至没什么参拜客的夏日，大概率会在赖床以及躺在床上看从铃奈庵借来的小说中度过。\r
+\r
+难得自己做了几个简单的梅干饭团，还专门泡了一壶绿茶。灵梦坐在榻榻米上，懒洋洋地伸了个懒腰。阿吽好奇地打量着正慢条斯理享用早餐的巫女，看起来，她们似乎在等待客人来访。那么，在这样的一天里会出现、又不需要灵梦亲自迎接的人物，也只有一个了。\r
+\r
+毫无征兆地，空间中的光线开始扭曲，随即，深紫色的隙间从光线分离、逃窜的中心流淌而出，从中伸出的先是一只抓着蓝白色巫女服的手。隙间骤然向上下扩张，标志性的金色发丝随之露出——八云紫的身形从隙间中显现。她将那套蓝白色巫女服放在一边，缓缓在榻榻米上盘腿坐下，身后张开的隙间随之消失，一切仿佛她原本就在此处一般。若是那金发的魔法使看到，定又会啧啧称奇。不过，对于能熟练掌握亚空穴的灵梦来说，这已不足为奇。她只是沉默着继续吃饭团，也算是见怪不怪了。\r
+\r
+“想要一套新衣服……”一切起因于灵梦在宴会上的随口一说。当被问到想要怎样的服装时，她却有些迟疑：“嗯……我其实也没有想好，要不要先试试各位常穿的衣服？”于是就有了今天的试衣环节。最方便的试衣方式，莫过于直接伸手去朋友的衣柜里拿，隙间便完美地承担了这个作用。八云紫还不知从哪里取来了一面等身落地镜，看起来像是外界的造物。\r
+\r
+一早起来，灵梦并没有戴上发饰和红蝴蝶结，这使来自早苗的巫女服少了几分违和感。白色上衣上横贯着印有白色点状图案的天蓝色条纹，让人联想到守矢神社旁风神湖的清凉气息。比灵梦巫女服更宽大的分离袖，似乎能通过直接增加面积来提升巫女的威严。此外，整片深蓝色长裙上印着御币和点状图案，更为这套服装增添了层次感。若再戴上浅蓝绿色、带有青蛙与小蛇图案的发卡，便能察觉到发色带来的不协调——毕竟这是为绿发的东风谷家设计的服装。对于棕发的灵梦来说，她自己的巫女服以鲜艳的红色为主，而棕发恰好补足了沉稳的一面，早苗的巫女服与之恰好相反。\r
+\r
+灵梦站在镜子前，缓缓转了一圈，观察裙子上的细节。她想到，若是自己的巫女服换用天蓝色，应当也会十分合适，不过她今天想要的并不是一套仅仅配色不同的巫女服。八云紫看到灵梦的表情，也心领神会，只是朝空气中一伸手，隙间随之再次出现，又转瞬消失。只见她手上多了一套黑色的魔法使服装——那自然是从魔理沙的衣柜中取出来的。\r
+\r
+虽然魔理沙住在可谓瘴雨蛮云的魔法森林，但得益于河童搭建的电网和由此得以运转的洗烘机器，这套衣服甚至还带着些熨烫过的痕迹，散发着精油的淡淡花香。这种在白色短袖衬衫外裹一层黑色连衣裙的穿法，在这个夏天实在称不上清凉，但翻领与围裙的修饰让整套衣服显得十分正式，也颇具魔女感。把系着白色大蝴蝶结的帽子扣在头顶后，灵梦甚至生出了给自己也编一条侧麻花辫的念头。只是看到镜中自己的发色——星星的魔法使果然还是应当有一头金发，棕发让整套衣服显得有些沉闷。况且才穿了一会儿，灵梦就已经觉得有些炎热了。她不自觉地撇撇嘴，看来有河童安装的空调，魔理沙这个夏天过得确实很滋润，真不知道她平日出门时用的是什么制冷魔法。\r
+\r
+看到灵梦解开连衣裙的扣子，八云紫将已经准备好的蓝色连衣裙一抛，两只人偶从中飞出，分别抓住连衣裙和披肩，环绕着灵梦旋转，开始帮她换衣服。这实在是一种新奇的体验，灵梦站在原地等待着——不必担心，魔法丝线不会打结——人偶为她系上最后的粉色领巾。\r
+\r
+爱丽丝的服装与魔理沙的服装虽都偏西式，但天蓝色短袖连衣裙与白色披肩的搭配显然更加清爽、干练。薄纱材质使整件衣服更加舒适透气；无论是衣领还是腰间，粉红色饰带的蕾丝边都缝制得极为细密。袖口收束的白色短袖衬衫，更为这套人偶使服装添上了最后一分精致。接过人偶递来的淡红色发箍，戴好的瞬间，她抬头看向镜子，却不自觉地轻轻笑了出来。与其说她是在试穿爱丽丝的衣服，不如说镜中的自己像一位染了棕发的爱丽丝。她想起曾在香霖堂读过的外界书籍：各种以爱丽丝为名的作品中，主角多是洋裙金发的形象。自己即使穿上这套服装，也无法摆脱这种长期积累下来的强烈印象。的确，洋裙似乎总要配上金发，才会给人搭配得当的印象。这样一想，也许天生金发的魔理沙，的确与魔法有某种天赋层面的联系。\r
+\r
+正当灵梦在镜前旋转、观察衣装并思考这些时，门外传来翅膀扇动时卷起的呼啸风声。这声音的主人只可能有一位。射命丸文推开门，将两个装有衣服的包裹丢在榻榻米上。“这是适合你尺寸的记者服和天狗服。”她转过头，注意到一旁正微笑着看向灵梦的八云紫，便挥手简单打了个招呼，又对灵梦接着说：“我觉得天狗的服装还蛮适合你的，要不要试一试？”\r
+\r
+作为本土妖怪，天狗的发色同样多为白色、黑色或棕色，记者服的设计也偏向外界的工作服装。也许是特意为之，文并没有将天狗标志性的六角帽一并带来。上身是一件袖口收束的白色短袖衬衫，只配有一个简单的黑色领结，腰间束着一条黑色腰带，下搭一条印有枫叶花纹的黑色短裙。工作服往往都设计得如此简单而干练。灵梦叉着腰在镜子前摆了几个姿势，文笑着说，没有蝴蝶结的灵梦看起来像是职场中的领导，带有一种不怒自威的英气。只是身后专门为翅膀开的孔洞，让灵梦觉得背后有些凉飕飕。这个问题同样出现在随后换上的天狗制服上。虽然作为退治妖怪的巫女，灵梦不可能专门拥有这样一套天狗服饰，她还是出于对文好意的回应，也出于自身的好奇，进行了尝试。天狗的制服吸收了部分和服设计元素，上身是一件类似和服的白色上衣，衣领与袖边带有红色镶边。肩膀和上臂附近留有开口，中间用黑色细带交叉连接，袖子则宽大而下垂。腰间束着红黑相间的宽腰封，下身穿着黑色的宽松裤裙，衣摆和腿侧带有较大的开口。作为妖怪服饰，它为体型留出了较大的余裕，穿起来的确十分舒适。虽然灵梦作为巫女只能试穿，却确实留下了不错的印象。\r
+\r
+但是，新衣服不能从这些别人的服装中挑选。灵梦在这一次次试衣中逐渐明确了这一点——无论怎样尝试他人的搭配，熟人的服装穿在自己身上，终究会有违和感。也许应该尝试些更为新鲜的搭配。对于自己想要怎样的新衣服，灵梦逐渐有了新的想法。\r
+\r
+……\r
+\r
+对于堇来说，在这所没有朋友的学校里，每个早晨都是如此无聊，每天最需要发愁的反而是今天吃什么。最近，她早餐会买两个肉饭团摆在桌子上，一个早上吃，另一个留到上午课后饿时应急。吃早餐饭团时，她都会闭上眼睛，靠在椅子上幻想。今天，她幻想有一位同样对超能力和都市传说感兴趣的朋友出现，拿走她的另一个饭团，然后开始分享自己的新发现。\r
+\r
+睁开眼睛，一位熟悉的、带着红蝴蝶结、穿着校服的身影正坐在她面前，津津有味地吃着她的饭团。她揉了揉眼睛，自言自语起来：“我什么时候学会心想事成的能力了？难道这也是一种都市传说？”\r
+\r
+她眨眨眼睛，打量起面前这个坐在椅子上、正慢条斯理地吃着她饭团的巫女——一副学生模样。虽然仍然戴着标志性的红色蝴蝶结和发圈，却换上了一套极朴素的学生服装，而胸前的领巾同样是红色，倒与饰物相得益彰，让这身打扮显得合理了几分。\r
+\r
+堇狠狠地掐了自己一把，很痛。看来这是现实：那个击败自己的巫女就在她面前，正在偷吃——或者说，明抢她的早餐饭团，还吃得津津有味。作为在学校从不按照规定着装的特异人士，她开始觉得有些哭笑不得，主动地提起了话头：\r
+\r
+“巫女也要穿上校服才能来读书吗？”\r
+\r
+“先不说这个。”咽下最后一口饭团，灵梦舒了一口气，问出了第一个问题：\r
+\r
+“你能为我讲讲氧气是什么吗？”\r
+\r
+—完—\r
+\r
+本文收录于文集《译》\r
+\r
+2026年8月9日4:00`},{name:"第十九棒",text:`博丽神社大庙会\r
+\r
+  那么，来举办一场聚会吧！灵梦如是想到。\r
+\r
+  “聚会，要请谁来啊？”魔理沙刚骑着扫帚落下脚，还没从空中跳下来，就这样附和道。\r
+\r
+  “夏天来了，要来场热烈的聚会了呢。”灵梦两眼放光，仿佛正在准备什么惊天大计划一样。\r
+\r
+  “诶诶，你不会又想像上次一样，搞什么卖馒头，最后只赚了100元吧？真是的。”魔理沙用嘲笑的口吻说道。\r
+\r
+  “什么话，那是为了爱啊！为了爱！”神经大条，这个时候形容灵梦再合适不过了，总是有那么多鬼点子的灵梦，不过本质还是个贪财的无节操巫女罢了。”\r
+\r
+  “真拿你没办法呢，那么，这次需要我干什么啊？”\r
+\r
+  “不愧是我的最佳拍档！魔理沙，这个时候最懂我的还是你。”\r
+\r
+  “离我远点……好热。”\r
+\r
+  “欸，怎么这样绝情，咳咳，算了，言归正传。”\r
+\r
+  “怎么说？”\r
+\r
+  “首先应该去的是那个地方吧。”\r
+\r
+  此时，红魔馆内，大伙正在为某些事情烦恼。\r
+\r
+  “姐姐大人……你吃了我的蒙布朗栗子蛋糕对吧……”\r
+\r
+  “啊哈哈，芙兰这么可爱，我怕你长胖了就不好看了哦。所以你应该感激我哦。”蕾米仿佛是习惯了这样的行为，很自然地说出了这句话。\r
+\r
+  “……贪吃老太婆。”芙兰委屈地要哭出来了，小声嘟囔道。\r
+\r
+  “……芙兰，我不是说过，不可以用那个词来叫我吗。你在家里只能称呼我为尊敬的伟大的姐姐大人哦。可爱的妹妹桑。”\r
+\r
+  “吃了我的蛋糕，还用这种口气命令我…… 姐姐大人什么的，最讨厌了！”\r
+\r
+  “要打架吗？”\r
+\r
+  “这可是你说的哦！”\r
+\r
+  就这样，红魔馆日常爆炸啊，可喜可贺。\r
+\r
+  时间快进到10分钟后，从废墟里爬出来的帕秋莉，满面灰尘，对面坐着的是门卫红美铃，哦不对，应该是保持睡觉的姿势躺在地上。\r
+\r
+  “唔！那家伙，到底是什么存在啊！”\r
+\r
+  “帕秋莉大人！您没事太好了！我好担心你啊。”\r
+\r
+  “滚开！不要在这种时候飞扑过来亲我啊，你个变态百合女！”也就只有这个时候，帕秋莉能使出力气把人踢飞吧。\r
+\r
+  “我的天啊，你们家第几次被核弹炸了啊这是？”一旁的魔理沙呆在原地。\r
+\r
+  “黑白老鼠，什么时候来的？”\r
+\r
+  “不得了了！地上都是书啊！要赶紧收起来，啊啊啊！没有地方，那这本这本……”小恶魔应该是习惯了借书不还的魔理沙，下意识开始捡起书来了。\r
+\r
+  “喂喂，读书人的事怎么能叫偷啊。”\r
+\r
+  “没人说你偷书啊，不过目前这废墟，咲夜怕不是要收拾很久了啊。”灵梦吐槽道。\r
+\r
+  “所以二位有何贵干啊？”帕秋莉抖了抖身上沾染的灰，捡起破损的魔法书。\r
+\r
+  “啊啊，眼前这样的情景，应该还要持续一会吧。其实是最近要搞宴会呢，想要请你帮我画一幅画呢。”\r
+\r
+  “我可不记得我有那么厉害的能力，画画的话，应该是芙兰吧。”帕秋莉提不起兴趣。\r
+\r
+  “那样就好办了哦。喂！那边两个，先别打了。“\r
+\r
+  “零哞？则哥嗣后有何归肝啊？”\r
+\r
+  “姐姐大人讨厌讨厌！！！”\r
+\r
+  “能不能先放开蕾米的脸啊芙兰，你最近在画画吧！有岛式摊位免费给你用哦。”\r
+\r
+  “什么？免费的大摊位！好啊好啊，我要来，又有活动了吗？”\r
+\r
+  “我们打算找那个家伙去搞点菜单呢。”\r
+\r
+  “那，姐姐滚开！”芙兰一脚把蕾米踢飞了。\r
+\r
+  “喂，你的旁白就这么简略啊？”魔理沙吐槽道。\r
+\r
+  “多少人来啊，要是有菜单的话，应该能吸引不少食客吧。”\r
+\r
+  “呼呼，这次就搞7分熟的包间哦。”\r
+\r
+  “这么好！等下，你应该是有求于我吧，活动没有免费的本子，嗯嗯，你有阴谋！”芙兰指向灵梦。\r
+\r
+  “需要你来搞一下菜单呢。”\r
+\r
+  “只是这样吗？”\r
+\r
+  “比平时精致一点就可以了哦。”\r
+\r
+  “啊啦，感谢你呢。”\r
+\r
+  “没事没事，辛苦你了哦，灯笼彩椒老师。”\r
+\r
+  “喂，从刚才开始，你们说的话我一句也听不懂啊，在聊什么？”魔理沙用豆豆眼的表情看着两人。\r
+\r
+  “没事了，这边搞好了，我们就先走了，帕秋莉也可以来玩哦，这次有寄售的。”\r
+\r
+  “哦？这么大胆，寄售的话，不得不上了啊。”\r
+\r
+  “帕秋莉大人，是不是可以帮我修理一下红魔馆了呢？”一旁的咲夜累趴下了。\r
+\r
+  “啊啊啊啊！帕秋莉大人，帕秋莉大人，是聚会啊，我也要去卖本子！呜啊，我的本子，我刚画的原稿烧掉了啊！”\r
+\r
+  “好吵 ……再吵就惩罚你哦。”\r
+\r
+  “话说，小恶魔你的鞋子都被炸飞了啊，小心碎石啊，我们先走了。”\r
+\r
+  “唔……裸……裸足小恶魔，呜啊，不得了，太糟糕了，太糟糕了。”\r
+\r
+  “帕秋莉大人在说什么啊？”\r
+\r
+  “啊啊美食，啊不是，没事，我去修红魔馆了。灵梦说还有一个月的时间，应该来得及吧。”\r
+\r
+  远处的妖怪之山，文文印刷社内。\r
+\r
+  “椛椛，这个印A4的100本，那个小说是50本b5，然后麻烦去找老霖买一下油墨和转子零件。”\r
+\r
+  “收到社长大人。”\r
+\r
+  “很忙啊文老板，我们这边要搞活动哦。”魔理沙推门而入。\r
+\r
+  “诶诶？看来最近要有一大笔订单了呢。要找我印海报吗？往常一样，给我50元就可以了哦。”\r
+\r
+  “不是的哦，这次我们打算和贵社合作呢，所有社团的本本都由您这边来印刷。给打个折吧。”\r
+\r
+  “这样啊，那我很荣幸哦，不过这么多本子，搬过去要很忙的吧。看来要找河童们帮忙了。“\r
+\r
+  “这个啊，灵梦那边应该搞定了吧。”\r
+\r
+  “什么？给我们每个员工包一个月的黄瓜？那我们肯定要帮忙的啊！”\r
+\r
+  “呜呼呼，那就拜托你们了哦。”\r
+\r
+  其实这段时间秋姐妹的黄瓜大丰收，灵梦这个黑心巫女啊。\r
+\r
+  不久宴会也就如期举行了，一片热闹景象！\r
+\r
+  “来看看我们的新本子吧！一本只要60元哦！”\r
+\r
+  “帕秋莉工坊寄售，很多有趣的道具，来看看吧！”\r
+\r
+  “你好，我看过您的作品，紫茄子老师。”\r
+\r
+  “唔嘿嘿，新刊不来一本吗？我这次可是没少下调料的哦。”\r
+\r
+  “请给我这个！”\r
+\r
+  “啊客人您真的是太有眼光了哦。我们河童科技最新的印刷技术，最新的亚克力材料，cnc’切割还有uv印刷技术哦。3块一个，10块三个！”\r
+\r
+  “那边的亚克力有果香味道呢，我要三个！”\r
+\r
+  “喂喂你是baka吗？”\r
+\r
+  幻想乡的居民在这樱花绽放的季节举办了这么一场盛大的聚会，不知道哪里来的笨蛋妖精做刨冰卖来卖去，还有酿酒的社团结果老板自己把酒喝光光了，远处的夜雀小摊生意火爆。\r
+\r
+  “老板娘嫁给我啊！！！”\r
+\r
+  “咦！有罪袋闯进来了！不要骚扰我啊！”\r
+\r
+  “master spark！”、\r
+\r
+  “呜啊！”\r
+\r
+  “真是的，这些家伙。”\r
+\r
+  “来买酒吗客人？这些可都是，我用洁白的双脚踩出来的粮食酿造的哦。”\r
+\r
+  “请给我来3瓶！”\r
+\r
+  “这边还要，这边还要，我要5瓶！”\r
+\r
+  “唔喵，奇怪的家伙们。”\r
+\r
+  “萃香！禁止活动期间饮酒。”\r
+\r
+  灵梦数着钞票，痴痴地说道。不过她内心应该是很高兴的吧。\r
+\r
+  骄阳似火之日，来办聚会吧，在很多看不到的地方，有很多灵梦这样的人在辛苦运作整场活动呢，是啊，大家聚起来什么的，最开心了！\r
+\r
+（唔啊，为爱搞同人很有趣，这篇人设大概也会作为我后面个人同人轻小说进行继续创作感谢大家关注哦）\r
+`},{name:"第十四棒",text:`蓬绘梦想\r
+她独自一人走在覆雪的山路上，寒风刺进脸里，如同刀刃刮擦着骨头发出难听的声音。纤细身段的她穿着红白的巫女服，似一朵在一片寂寞的白中，挣扎生长的红花儿，却倔强地依旧让此地留有一缕余香。\r
+\r
+呼呼~\r
+\r
+风儿甚是喧嚣，落下一沓沓的雪，掩盖了她来时的足迹。\r
+\r
+她到底在这座白山上走了多久呢？她未曾记住步数。她只知道，要攀登上2702米海拔高的“御前峰”，因为祂在等着她。\r
+\r
+她，要无视世俗的偏见，以女子之身登上这座灵山！\r
+\r
+为何女性对于山岳信仰的崇拜会受到世俗律法与宗教惯例的限制？他们说着女性在仪式上的“不洁”会触怒山神，女性会因经血、生育而带有“污秽”，那种无论如此也清除不了的，与生俱来的“污秽”！\r
+\r
+之前，她和姐妹们一起只能在山脚下建立神社，远远地祈祷，通过男人们进行心愿上的传递。随着时间的流逝，她愈发不满这种象征性的崇拜。\r
+\r
+而今天的天气突然开始恶劣，一场大雪如黑云压城般逼近白山。在这样的情况下，山上设置的检查站里的守卫，在能见度下的情况下很难发现朝圣者的动态。\r
+\r
+她心想，是时候了。她穿上神社流传下的巫女服装，拿上飘着纸垂的锡杖当作登山工具，向着山顶前进！\r
+\r
+顺利地绕过检查站，山腰的雪路上，她一步一步地向上才攀爬，头发间流下的汗手又顷刻间冻成了冰渣掉下。就连自己眼上的眉毛，感觉都要把自己的皮冻住咬下一般。\r
+\r
+猝不及防的光照在小脸上，一开始还在心里担心被别人发现的她，心惊胆颤了一下，下一刻看到雪地埋着的镜子，她转为好奇。\r
+\r
+走进，拾取那面镜子，转动镜面，对着自己的阴影处，将镜面光反射到地上。\r
+\r
+看到了透光镜射下的图案，她想要看清，但这图案开始涂抹糊乱起来。\r
+\r
+一条缝凭空出现，如同成年老窖味道的妇女慵懒地张开眼睛般，两对紫色蝴蝶姐中间的黑渊中，一对的乌鸦从那诡异的缝隙飞了出来。\r
+\r
+咔嚓！\r
+\r
+她手持的镜子开始破裂，但她看着地面最后的那图案，在那缝隙关闭，地面开始恢复正常的时刻，她清晰地看清了。\r
+\r
+连接生与死，结缘的巫女之神……就在山顶么？\r
+\r
+她那红色的眼瞳流转着清澈的光，也不在意碎镜片划破手臂流出的血，那些碎片融进了她的身子里，如同被热风吹散的蒲公英一般，又逐渐消失。\r
+\r
+那一对高翔于寒空的乌鸦投下的影子笼照着她，发出一阵惊悚的叫声。\r
+\r
+整片天地，只有鸦叫、风声、脚踩踏雪的声音，以及微软的呼吸声。\r
+\r
+她不语，愈加谨慎起来一路向上。她持握锡杖的纸垂在冷风中飘着，拍着她的身姿，而她的心却沉稳如山，脚底如同咬定了山一般。\r
+\r
+蔑视着凡俗的束缚，这一刻她感觉自己脱胎换骨。\r
+\r
+呼出的气化作热气融化眉毛上的冰渣，那份的融水流过眼角，流过下巴，滴答滴答落在地上。\r
+\r
+越是往上走，她脚边的雪融化得越快。\r
+\r
+她看到，鸟居在雪中显现，那即是一道凡间与神圣世界的分界线。\r
+\r
+跨进鸟居的她也就意味着踏入了神圣之地。\r
+\r
+而那道乌鸦鸣叫之声，早已停止。\r
+\r
+登上御前峰的她，迎来了阳光。\r
+\r
+她脑后的三束尾卷发在那抹阳光下如同流下一颗颗宝石的瀑布般，那卷黑发如此顺滑，而那阳光如此温暖……\r
+\r
+异神玉\r
+“该起床了！博丽的巫女，太阳都要晒屁股咯！”一阵男性的声音响起，随后足足有半个博丽灵梦那么大的阴阳玉球砸向了睡在榻榻米上的巫女。\r
+\r
+“哼！想阴我？”\r
+\r
+巫女博丽灵梦一下掀开暖和的被子，漂亮地进行一个滑铲，躲开了阴阳玉。\r
+\r
+博丽灵梦有着超乎常人的直觉，前一刻还在做梦，下一刻就立马精神地醒来。对危机的感知力使得她能够及时应对每一次危机。\r
+\r
+此刻起来的灵梦又闭上了眼睛，左手掏出梳子整理紫发，右手展开手掌往后对着冲来的穿着蓝白法衣的神玉少爷一顿防御招架以及借力反推。\r
+\r
+博丽灵梦的右手作出了24种不同的动作，顺便左手完成了头发整理，刷牙。\r
+\r
+她哈啦啦的一声，将漱口水喷到脚边的盆子里。\r
+\r
+什么时候，那盆子就已经到了灵梦的脚边？\r
+\r
+神玉少爷发生了不对劲的地方，他没有注意这丫头脚上的动作。敬佩起灵梦的手与脚在同一时刻内，其都互相配合又能自由独立操作。\r
+\r
+刚刚被灵梦单单一只右手推开的神玉又稳住阵脚，重新冲向灵梦。\r
+\r
+博丽灵梦通过风的流速变化感知到背后的神玉少爷加速的步伐。灵梦睁眼，双脚登上盆的边缘，又是一蹬，整个人跳上了半空。她往下看缺失目标身体失衡的神玉少爷，习惯地冷笑一声后，双脚一起发力踩在了神玉的背上。神玉双手撑住盆的边缘，脸嘴对着盆里。\r
+\r
+“停停停！我投降了！小丫头。”神玉说完话后紧紧抿住嘴。背后开始发烫发汗。感觉腰背又要被这丫头折磨一番了。\r
+\r
+灵梦弹跳一下，离开了神玉的背，落在了榻榻米上。\r
+\r
+“等一下！他认输了我还没有呢！”女性的声音响起。\r
+\r
+那是位穿着红色法衣的女子，头上长着棕色角的她垂下长发，闪烁的红眼盯着灵梦。\r
+\r
+“起飞！”神玉小姐双手撑在神玉少爷的背上发力让自己弹向博丽灵梦。\r
+\r
+“自己人啊！你……”神玉少爷在力的相互作用下，不幸的，脸砸向了脸盆里。\r
+\r
+神玉小姐说着抱歉啦的话语，右手拿着木棒甩下一道闪电。\r
+\r
+领域展开！确认眼神，互相对峙摆架势的两位，周围变了背景。\r
+\r
+“幻”字印在四面幽蓝的结界之墙上。\r
+\r
+要是再像上一次那样把灵梦家里的东西弄坏了，那自己又得赔钱了……\r
+\r
+“直接跳过了一阶段与三阶段，与我对决了吗？”灵梦问道。\r
+\r
+“对啊，怎么了吗？看不起我吗？”神玉小姐说着。\r
+\r
+“现在你该看的不是我，而是你的周围啊。”灵梦叹气。\r
+\r
+嘭！\r
+\r
+阴阳玉直接给神玉小姐砸出个包，很简单地给砸晕了过去。\r
+\r
+灵梦这小丫头最精了，说话分散对方注意力的同时，自己还能轻易地做到别的神秘小动作。\r
+\r
+神玉少爷洗好自己的脸后看着之前对峙的两人，冷静分析。那个时候灵梦就悄悄计算好了阴阳玉的运动轨迹。刚好不用滑铲不用发射符札，球就自动砸向呆呆傻傻不懂走位的神玉小姐。\r
+\r
+“对了，我刚才还做梦梦见了别的巫女。”灵梦想起被神玉打断的梦。\r
+\r
+但东之国只有我一位巫女啊。巫女的直觉告诉她事情绝不像打倒神玉这般简单。\r
+\r
+博丽灵梦看向了那扇门，这个世界与别的世界连接的门，那是打败神玉才能开启的门。\r
+\r
+“所以你想好要出发了吗？”神玉少爷背起还在晕的神玉小姐，看着灵梦问道。\r
+\r
+“是啊，我这种人总是莫名其妙的心血来潮啊。”灵梦左手拿起了御币，右手拍着阴阳玉。\r
+\r
+“魔界，还是地狱？”\r
+\r
+“地狱！我不喜欢基督教那边的堕天使啦，感觉她是那种会偷偷视奸我的变态天使大姐姐耶。”\r
+\r
+“呃，难道不是地狱比魔界好打吗？”\r
+\r
+“不是的好吧。还有记得帮忙照顾好我的小乌龟小玄喔。”\r
+\r
+“还有乌龟？在哪？”\r
+\r
+“就在你头上啦，刚才盆子里的乌龟偷偷爬在你那蓝蓝的长帽子里啦。”灵梦指着神玉的蓝帽子，说道。\r
+\r
+这么说来，头上确实有东西在爬，灵梦的感应力已经这么厉害了吗？等等……为什么在漱口水的盆子里养乌龟？虽说口嚼酒就是巫女用口水弄的……\r
+\r
+神玉少爷用着奇怪的眼神看着灵梦。\r
+\r
+“其实想看下巫女口嚼酒与口嚼水的区别吧，说不定小乌龟会突然变成会飞的乌龟吧？”\r
+\r
+乌龟是不会长出翅膀的吧？神玉少爷才想起，这巫女还不会飞。\r
+\r
+“也罢，我们能教你的都教完了，我来给你开门……走你！”\r
+\r
+神玉少爷一脚狠狠踹向灵梦的背，就像一名足球运动员爆发射门，看着灵梦飞去那扇打开的大门里，心情突然愉悦起来。\r
+\r
+当然，这多少带着私人恩怨嗷~~\r
+\r
+“拜拜~”神玉弯下身，左手撑着腰子，右手向前摆摆手，告别博丽灵梦，这位即将要杀穿地狱的女人，“这下我们两不相欠，地狱玩得开心喔。”\r
+\r
+“神玉你绝对是不怀好意的！还整我！等我回来，你给我小心啦！”嚷嚷的声音从门那边传来。\r
+\r
+神玉笑嘻嘻地回味灵梦被耍了一道的神情。\r
+\r
+同时他也想，他该结束成为博丽神社的作崇神生涯，打道回府啦。\r
+\r
+“哎呀，小玄，别咬我头发啦。”神玉少爷把帽子提起来，伸手将那只小乌龟放回盆里了。\r
+\r
+有些鸟儿是注定不会关在牢笼里，也许你能够做到那件事……\r
+\r
+通关地狱的大门啪的一声严严实实地关闭，巫女去往了更远的地方。\r
+\r
+天使传说\r
+地狱的外围意外地冷情，天空散布着发出幽暗灯光的球状物，一条接着一条，汇成多条方形区域的地块上有着红色砖瓦的祠堂群，那是恶灵盘踞之地。\r
+\r
+这地狱的风光也就这样，算不上什么好玩的旅行啊。灵梦这样想着。\r
+\r
+这时她注意到空中一轮红色的圆盘，其上刻着4段径向对称的纹路，以及红色形状的暗影，气氛逐渐不对劲起来。\r
+\r
+那圆中间水平线之上，逐渐显示出女人的样貌，而水平线之下，显示出一条淡蓝色的尾巴。\r
+\r
+那位存在的样貌完全倒映在灵梦的眼瞳之上，漆黑如麻的眼睛与一头绿色的长发，尖尖的白帽子，蓝白相间的裙子边缘上，有着如同蛇信缠绕的红与绿的装饰纹路。中长碎边的蓝色披风飘于身后，红色丝带系在脖颈上。她腰身后面也有着两条红带，在地狱深处吹来的风下，飘向身前。这位地狱的住客此刻左手正拿着滴血的小刀。\r
+\r
+“幽灵吗？”灵梦看着上方尖尖的白帽子。\r
+\r
+“什么幽灵啊？你个小屁孩又懂什么啊？”地狱的住客居高临下地看着面前的博丽灵梦。\r
+\r
+灵梦这时候看清了，对面的帽子上写着“死”字。\r
+\r
+“喂！你就是那位博丽的巫女吧？听好了，我是魅魔，是要把你那座神社占领的恶灵喔！这次的作崇神我当定了！”魅魔直接暴露自己的意图，说自己可是要离开地狱，对外面的人类进行复仇的恶灵。\r
+\r
+“哦，恶灵啊，竟敢瞧上了我的神社。那个有本事你下来啊！”灵梦对着空中的魅魔喊道。\r
+\r
+“哦嚯嚯！小屁孩还不会飞是吧？我就不下来，你还能把我怎么着？”魅魔嚣张起来。\r
+\r
+“那就只能打下来了啊。”灵梦一个滑铲，踢足球似地将脚边的阴阳玉踢向魅魔。\r
+\r
+魅魔运转的自身的力量，包围着红边的绿色星形物体围绕自身前后旋转。她轻喝一身，白色的正方形框边以她中心为点扩大旋转。对准灵梦踢来的阴阳玉发射出白色小玉弹。\r
+\r
+但魅魔看到自己的小玉弹被灵梦扔来的阴阳玉抵消，重重地砸向自己的胸部。\r
+\r
+魅魔注意到自己能被灵梦的阴阳玉伤害到，随即加大了自己力量的输出。她向着灵梦站立的地上发射一道道直线的激光。\r
+\r
+“没用的，在激光到来之前，我就能看到弹幕的轨迹了。”灵梦轻松有余地说话，在地上灵活地移动，甩出符札击中空中翻滚的阴阳玉，改变气轨迹砸向恶灵。\r
+\r
+恶灵又被砸中一击，但高傲的她可不会示弱。“那这个怎么样了？灵梦！”\r
+\r
+她左边冒出了第三只手，那第三只手掌上是红色的禁止同行标志。同时她自己也在空中移动身形避免阴阳玉的打击。\r
+\r
+地上轰隆几声，一道道红光冲破地面向上冲去，观察着那一道道红光涌出的规律，灵梦在几秒内摸清了熟路，灵巧地应对，在左右挥动御币消除恶灵的小玉同时，自己跑到预判中红光不会出现的地方。\r
+\r
+魅魔又发射出绿色尾翼的矢弹，直接无视了阴阳玉的接触，直追灵梦而来，而灵梦也挨到了一击。\r
+\r
+“看来，阴阳玉也不是什么弹幕都能消除的啊，但只要碰到你的判定点，就一定能对你造成伤害！”灵梦看着半空中的魅魔，两人的呼吸都开始急促起来。\r
+\r
+这时候，魅魔注意到了什么，看着手中的小刀流淌的血液，“灵梦，现在的你还是不够强啊。而且我也没时间再陪你玩，润了先！”\r
+\r
+“诶？我俩还没打完呀！”看到魅魔留下话后又飞去其中一处祠堂，灵梦收回阴阳玉，追了上去。“喂！魅魔！别跑！”\r
+\r
+那祠堂的门没有关紧，灵梦推开了门就直接往里面进，听到了女孩的哭声。\r
+\r
+她心里一紧，不会还有别的人类在地狱里吧？这样想着她拿起御币狂奔，却看到魅魔抱着一小女孩，说着：“莎莎乖，不哭啊~”轻轻地拍在那小女孩的背后，这位恶灵意外的出乎灵梦的预料，展现出温柔的面目。\r
+\r
+“能哭的地方只有厕所和妈妈的怀里。”莎莎哭着说，她整个小脸陷在怀里。“妈妈带着那把小太刀，血滴滴哒哒地流，从没停下，刚才我在书上看过那是给遗体旁摆上的小太刀……”\r
+\r
+喂喂喂！我不是你妈妈啊！魅魔内心喊道，但不好说出来\r
+\r
+“这其实是守护符啦，小太刀流血是我施加了魔法喔，嗯，对的。这样就更能吓到坏人喔。真是的，莎莎怎么反倒是先被吓到了哇？”魅魔只得继续哄着莎莎。\r
+\r
+灵梦看到这一幕，感到了莫名其妙的反差感，嘴角保持向下轻松绷住。\r
+\r
+好吧骗你的，其实灵梦最后还是笑了，还是捂着嘴巴背过身去笑的。\r
+\r
+灵梦指着魅魔：“没想到你人还怪好的嘛，魅魔。”接着走进看看莎莎。\r
+\r
+“明明和我一样差不多的年纪，却是这么一个爱哭鬼。”灵梦放下来之前严肃的样子，对着莎莎比着鬼脸。\r
+\r
+莎莎的名字叫雾雨魔梨沙，有着红色的头发，喜欢戴着跟魅魔一样的尖帽子，但是她更喜欢紫色的帽子。这次她醒来看见魅魔好久没有回家了，还留着血迹，害怕魅魔将来会变得不再是魅魔自己，会不要她了。\r
+\r
+“怎么可能呢？莎莎，师父会一直陪着你啊。毕竟你要成为最厉害的魔法使啊。看到面前这位红白服装的巫女了吗？那是你将来要超越的目标啊！”魅魔捏捏莎莎小脸，使其转头看向灵梦。\r
+\r
+“紫色的头发耶，好好看！”莎莎拍手，哭变成了笑。\r
+\r
+“咳咳，不过我还是喜欢你叫我师父啊！”魅魔捏脸的力度加大，有些不满。\r
+\r
+“好好，师父大人别捏了，疼~”莎莎举起小白旗，投降。\r
+\r
+灵梦结束了比鬼脸，“喂，爱哭鬼。以后别这么爱哭了，外人看了多不好意思啊。”接着她走出了祠堂，不好打扰那一对亲人一般的两人。\r
+\r
+莎莎看着灵梦的背影，眼睛亮了起来。\r
+\r
+“师父啊，我什么时候能到结婚的年纪啊？”莎莎瞪大眼睛好奇地问了问。\r
+\r
+“嗯这个就等很久啦，等到你比师父我还要厉害之时。”莎莎为什么问这个？\r
+\r
+魅魔看到灵梦离去，看来还是等下次再与你打一场。地狱深处可是很危险的，希望灵梦你可别让我失望啊。\r
+\r
+炎腐\r
+灵梦整顿好后继续往地狱的深处跑去，在前进路途中发现周围的温度有些让人感觉异常，之前的外围还算凉快，但这里就有点热了。感觉到额头的汗水流过眼睫毛的瘙痒感，看来把这地狱占领下去，开发成旅游景点什么的也是希望渺茫。\r
+\r
+周围充满着火焰，作为巫女的直觉告诉她，腐败的气息就在前面涌出。\r
+\r
+灵梦注意到周围背景上黑与红的菱形图案，嵌入滚烫发光的荧石小方块，以及尖刺般出现的黑红色尖角。\r
+\r
+视觉上与感官上感受，即使是远处的背景，依旧会感觉一股热风。这种心情就像是明明是热天却还开着热空调一样让人不爽啊。而自己到荧石墙壁这种距离似乎永远走不完。\r
+\r
+而这里就是，炎之腐界。\r
+\r
+面前的半空出现了圆盘，熟悉的出场方式。紫色的灵气围绕着大大的铜玉，那表面上是波浪状长发的年轻女孩，头顶两侧长着羽毛，双手则在胸前抱着白色的小圆球。额头的小水晶发着光，脖子捆着领带。\r
+\r
+看到对面的样貌，灵梦脑海感到一阵子的恍惚，但随即战斗的本能让她很快地踢出阴阳玉。那阴阳玉砸向了对方的小球。那小球轰的一声破碎，一阵白光刺出。\r
+\r
+灵梦赶紧远离那圆盘，用手臂挡在前面，眼睛在强光下有点睁不开。\r
+\r
+那白光处，有一位少女。就如灵梦做的梦所见一样。\r
+\r
+那掉落下的少女有着齐整的刘海，黑色的长长卷发在白光中很明显。白丝带系在她的头发上。她穿着和博丽灵梦一样的红白巫女服，胸前绑着红色的丝带，右手拿着系着纸垂的锡杖。她缓缓睁开眼，对上了灵梦的视线。左手变出绿树枝，在其上绑上白蝴蝶结。她脚底的短袜凭空出现了大块白布，将灵梦的视线遮挡，也同时把半圆圆盘的弹幕挡住。\r
+\r
+她只是淡淡地看向灵梦，靠近，牵住灵梦的手，一个瞬步，两位就到了地狱的外围，祠堂。\r
+\r
+“东之国的巫女啊，我是来自蓬莱的白山修验。”她动了动嘴唇。\r
+\r
+灵梦确信了一开始做的梦，就是白山修验登山的情景。\r
+\r
+“看来你明白了。”白山修验看到灵梦的神情，心里想到了什么。\r
+\r
+灵梦知道在东之国外，也有信仰神明的巫女。而她自己有着卷入奇异事件体质，之前神玉就提到过。\r
+\r
+“发生什么事？怎么又多了一位？”魅魔看着博丽灵梦与白山修验搜的一下出现家中。\r
+\r
+“啊，魅魔啊，又见面了。”灵梦又转向魅魔旁边的魔梨沙，“嗨，莎！”\r
+\r
+“嗨什么啊？你不会是没打过深处的那位菊理吧？”魅魔说道。\r
+\r
+“原来那家伙叫菊理啊，没事我正要继续前进干一架呢，还没热好身啊。”灵梦握紧拳头。\r
+\r
+白山修验注意到了旁边的雾雨魔梨沙，又看看博丽灵梦。“看来这一位妹妹和灵梦一样，也有进入蓬莱的资格啊。”\r
+\r
+“什么蓬莱啊？”魅魔看着白山修验。\r
+\r
+“那是东之国外的世界，仙人居住的地方。”白山修验注意到了魅魔没有轮回，那位握住小太刀上流的血是那种很久以前的胎盘血，却依旧如此新鲜一般。\r
+\r
+那位魔梨沙，未来就会发现她自己的胎盘血就存在于那把小太刀上吧。不过……\r
+\r
+“现在，博丽灵梦，你身上有着神道教与修验道的力量，你需要好好练习这两种力量。”白山修验左手拿起绿枝指着灵梦，突然表现得像是给主角交代任务的NPC一样。\r
+\r
+“我是连接生与死，亦主结缘的巫女之神的权现，白山修验。博丽的巫女啊，要想继续往地狱的深处去，你得学会如何唤醒体内的修验道的灵力！”\r
+\r
+“那么，该怎么唤醒呢？还有，你怎么从菊理的小球里蹦出来的？”灵梦有很多疑问，举手提问。\r
+\r
+“我和菊理大人一开始只是外面白山的巫女与神明，只是有一位自称‘矜羯罗’的剑士来到了白山顶上的奥宫……”白山修验回忆着白山上的往事。\r
+\r
+“矜羯罗，她一下子打败了我，还把菊理大人身上强迫性地凭依进了道反大神的神格，让菊理大人失去了自己原先的神性，堕入地狱之中。我也同时被封进了菊理大人手里的小圆球。但还好有你，灵梦。对了，那个阴阳玉的力量你现在能够激发的力量还不够完全。而且你有时会被阴阳玉砸到，误伤自己的吧？”\r
+\r
+“你怎么知道？”\r
+\r
+“你能做梦梦见我的事，我也能做梦梦见你的事啊，灵梦。所以说，在地狱，巫女的修炼之事，我们还是得练起来啊。”白山修验拍了拍灵梦的肩膀。\r
+\r
+在灵梦的头上，祠堂屋顶破了一个大洞，水声自天上而来。\r
+\r
+不好！冲我来的！\r
+\r
+灵梦正欲迈开脚步，却被白山修验扔来的锡杖挡住。\r
+\r
+“哦，不，家里的屋顶，还有地板！首先，我没惹你们任何人啊。其次，喂喂别突然零帧起手哇！”魅魔看着地板被锡杖狠狠地插入，有了裂缝。可惜现在的她没脚，不能生气地跺跺脚。\r
+\r
+“以后我会付维修费的，别担心魅魔。”白山修验一副游刃有余的样子死死盯着灵梦。\r
+\r
+灵梦眼看自己的身形无法避开天上砸下的瀑布，右手举起御币旋转，然而落下的手是无法被御币挡住的。\r
+\r
+博丽巫女的全身湿透了。\r
+\r
+“在山上，我们山伏就是这样挺过来的，忍受自然对躯体的打击。”\r
+\r
+“隔壁巫女，你，过来！”灵梦黑下脸狠下心放下无意义的节操，反手一手直接抓住白山修验，把她的身子高举在头顶。\r
+\r
+“让暴风雨来得更猛烈一些吧！”灵梦毫不客气。心里想着：这我真得控制你了。\r
+\r
+灵梦的本能让她灵活地运用周围的事情，即便是人类也可以用来挡箭……当然这个灵梦毫无悬念地把自身放在节操之前。\r
+\r
+两个女孩子就这样在瀑布的攻势下全身湿透了。\r
+\r
+“小孩子不要看喔。”魅魔一只手挡住了魔梨沙的眼睛，心里却是：“哇，多么好的机会啊。如此激烈的瀑布下的战斗，这就是女孩子们的青春啊！”已经忘掉了自家屋顶漏水的情况。\r
+\r
+白山修验感觉到自己腰身上的被灵梦抓住的力道愈来愈紧，用自己的双手尝试掰开灵梦的双手。\r
+\r
+拼力量吗？但是！\r
+\r
+灵梦的双手开始了抓绕运动，拼尽全力也无法绷住的修验，嘴巴大开着闭不了，笑得花枝乱颤。倾斜而下的瀑布冲击了修验的喉舌，这种忍不住笑又要窒息的感觉……\r
+\r
+博丽的巫女好可怕啊！\r
+\r
+灵梦的紫发湿着，贴在肌肤上。尽管她要边举着人，边承受着瀑布的冲击带来的重量，但自从她看到白山修验比她更难受，突然觉得瀑布试炼也就那样了。\r
+\r
+咕噜咕咕噜~\r
+\r
+“喂，别昏过去啊！修验！”灵梦怕把白山修验玩死了，停下了手上的动作。\r
+\r
+白山修验抓准机会！双手向下摸索着，应该够得到。\r
+\r
+“故君子之治人也，即以其人之道，还治其人之身。”白山修验念诵着她那个国家古人的名言。袭向了灵梦的腋下。\r
+\r
+“哈哈哈，别绕那里呀！痒~”灵梦笑得同样的花枝乱颤，松开了自己捆住白山修验的双手，“魅魔，为什么你只是在那看着呀！”灵梦看着旁边看热闹的魅魔。\r
+\r
+魅魔摆摆手：“我跟你也没那么熟啊。”\r
+\r
+白山修验逃离了灵梦的小手，迅速收回自己的双手，再调整身形，右脚踩着灵梦的背上，让灵梦蹲在地板上好好进行瀑布的修炼。自己则拍拍双手，锡杖插入的地板划出了一个圆圈，无形的屏障限制住了灵梦。\r
+\r
+白山修验又变出一块大白布擦拭自己的全身。\r
+\r
+“在很久以前，修验道鼻祖役小角给自己的式神，前鬼和后鬼下达试炼。让他们两人各自把手运到葛城山最顶端的秘境，前鬼以为自己力气很大，就背着大水瓶往山顶走去，但途中还是感觉到疲累，生气的他一下子砸碎了水瓶，那水瓶碎掉的地方涌现出清澈的泉水，从山上流到山下，形成了‘前鬼瀑布’，而后鬼则是往小壶打水，谨慎地一步步登上山顶，成功地为秘境献上了水。所以，你能看出什么吗？”\r
+\r
+“量力而行吗？”习惯了水中的灵梦睁开了眼看向白山修验。\r
+\r
+“不！是要在自己的道路上做到极致！”白山修验很激动地喊道。\r
+\r
+结果是，这一天的博丽灵梦冲了很久的冷水澡。同时她也注意到自己的弱点，腋。懂了，以后改进服装，露腋巫女服也该做了。让自己的腋能够感觉到灵气的变化，也就不那么敏感了吧。\r
+\r
+“还有什么试炼尽管使出来吧！修验！”灵梦用着白山修验递来的白布擦干净身体，期待着说道。\r
+\r
+怎么一副没玩够的样子啊，汗……白山修验内心吐槽。\r
+\r
+“已经结束了。”\r
+\r
+喂喂怎么还遗憾上了？我确实没什么好教你的了。\r
+\r
+“记住，灵梦。下次对战的时候，心里念诵着九字真言‘臨兵鬥者皆陣裂在前’就可以发动灵击了。”\r
+\r
+白山修验用绿枝在灵梦的右手上比划这汉字，“裂”字写得格外用力。\r
+\r
+“在灵击期间你会无敌，消除所有的敌弹，但是无法移动。如果被阴阳玉碰到，这阴阳玉也会被灵击以更大的力度弹出。所以现在，菊理大人就靠你了！”\r
+\r
+白山修验按住灵梦的肩膀，瞬步移到菊理的那边。\r
+\r
+“喂，什么时候再回来啊？”魅魔担心着灵梦与白山修验，也担心家的情况，看着家里乱糟糟的样子，摇摇头感叹生活的不易。\r
+\r
+还回来吃饭吗那句话也差点说出来了。所以说，还回来吗？\r
+\r
+视线一转，博丽灵梦与白山修验的视野前是依旧熟悉的紫色灵气铜玉。\r
+\r
+“啊，菊理大人你难道就这样睡着了吗？为何不睁开眼看看你忠实的巫女呢？”\r
+\r
+“果然还是要揍一顿才行啊。”干脆，杀伐果断的博丽巫女眼神冰冷起来，无视炎之腐界的温度。\r
+\r
+“冒犯自家神明什么的，果然我还是不太敢啊。”\r
+\r
+“那你就在旁边看着，我自己一个人来！”\r
+\r
+菊理闭着眼睛，祂只显示出来的半身固定在圆盘的位置。祂的圆环发出了两处旋转的连续小玉弹，轨迹如同成对抱着的阴阳鱼，扩大，如鞭子般袭来。\r
+\r
+菊理又发射出小圆圈旋转的小玉弹，而灵梦只是挥动御币便能消除。\r
+\r
+祂那手中空旷的洞冒出了两缕紫色幽火。那两缕幽火分布在菊理的两处发出小玉，又移动着，落下紫色的水滴垂直地砸向地上的灵梦。\r
+\r
+那水滴在上一刻灵梦站立的地上溅撒，如花一般的绽放又飘落，落叶，归于尘土，随即涌出五道上下起伏的小喷泉，诡异的紫色喷出又消失。看上去像是神明流下的眼泪过于沉重。\r
+\r
+“原来，菊理大人你是在哭泣吗？”白山修验担忧地看着地上跑来跑去挥动御币加滑铲踢阴阳玉，又是发射符札射击阴阳玉改变其轨迹的灵梦。\r
+\r
+“这次要把阴阳玉往更高的高度推动啊，只有接触到菊理的头部，阴阳玉才能产生实质上的伤害。”灵梦感觉到了菊理的伤害判定与上次魅魔的不同，开始在滑铲后接着速射8枚符札，但这对体力的消耗更大了。\r
+\r
+菊理闭着地双眼又冒出红色的激光，就像是血一般，从左侧到右侧，往下射击。但这类攻击的规律已经被灵梦抓住，直接在躲开后再进行符札的射击，让空中的阴阳玉受到符札的推动后，狠狠地砸向菊理。\r
+\r
+“结束了。”灵梦看着消失的神明菊理。\r
+\r
+“谢谢你博丽灵梦，这样，我也要离开地狱了。”白山修验说道。\r
+\r
+“我们以后还会再见面吗？”博丽灵梦还惦记着白山修验的前鬼瀑布。\r
+\r
+“会的，在蓬莱那里，我们会重逢。菊理大人的执念已经从地狱消散，而我与菊理大人是会在一起的，所以我也得离开，去蓬莱重塑这枚魔镜了。”白山修验拾取地上的铜镜，将其放在怀里，时间刻不容缓。\r
+\r
+“我们就此别过，蓬莱的巫女。”\r
+\r
+两人告别，一人去往蓬莱，一人则向着地狱的更深处前进。\r
+\r
+静寂神殿\r
+无声而灼热的气息环绕着灵梦面前的殿堂。\r
+\r
+最后的敌人就在这里了吧。\r
+\r
+远山与地面天空都染上了血红。灵梦看着周围的6根石柱子围着一个圆环，圆环里有着悬浮的球体。\r
+\r
+她碰了碰那球体。\r
+\r
+进入了殿内，一反外景的红艳，殿内是一片快要看不到五指的漆黑。\r
+\r
+殿内深处的黑暗吹来清凉的风，厌倦了外面的闷热，灵梦好奇地往里走，手摸着墙壁摸索着。\r
+\r
+突然某种清凉的物质落下，轻轻地碰到她的头上。\r
+\r
+灵梦细细听着，听到了滴答滴答之声。屋顶没修好吗这是。\r
+\r
+她抬头看，随着视野的向上移到，那份神殿幽蓝的灯光亮了起来，蓝黑色的色调照亮了墙壁刻着的梵文字符。\r
+\r
+看清了上方存在的轮廓，红色的尖角刺穿了她的额头。从那额头留下的血落下，落在她右手端平的红酒碗里，那碗里溢出来的血又落在地上，啪嗒啪嗒。\r
+\r
+单马尾的她头发上绑着红色缎带，上身是红色法衣与白内塔，下半身则是一片雾状，身后两旁是龙与虎的纹路，似有龙吟虎啸之声。\r
+\r
+她右手拿着剑，眼睛向下看着灵梦。\r
+\r
+“拜托，这群家伙怎么都用鼻孔对着我啊？”看到剑就知道对方正是矜羯罗。\r
+\r
+灵梦直接一个滑铲踢飞阴阳玉攻向矜羯罗，而对方也发射着小玉弹。\r
+\r
+矜羯罗的表情从开始的平淡变为愤怒，眉毛往里弯了起来。\r
+\r
+“巫女啊，你为何要退治菊理？那份隔绝生死之境的道反大神的力量在你搞乱下已经消失了，灾厄的折返已经无法阻止，看来地狱这次凶多吉少了。”\r
+\r
+矜羯罗这样生气得说着，她左手端着的红酒碗里开始涌出青白色的弹幕，携带着“凄啦”的声响，在地上转着几秒，把灵梦往旁边的角落逼着。同时她的脸也转向角落的灵梦。\r
+\r
+“隔绝生死的境界，追求永恒的生，那并非恒理，生老病死可是人类必定经历的事物。跟这样走在错误道路上的你我可是聊不下去！聊不下去，你那典型的月球人思维！”灵梦反驳道。\r
+\r
+“那么，只好在这里，把你解决了，巫女！”突然恢复平静表情的矜羯罗单闭着左眼，右眼看着自己的剑，让剑反射光线，向周围转着，撒下一堆堆小玉弹。接着又单闭右眼，左眼睁开，盯着剑凝聚出的黄光，左手持剑下划，右挥，上提，三角形的小玉弹落下。却被弹跳的阴阳玉消除。\r
+\r
+矜羯罗随后双眼闭着，红酒碗洒出小玉弹，转动，追击灵梦。\r
+\r
+灵梦把握节奏，站在原地，看准小玉弹，左右挥动御币进行消除，同时挥动的御币机击打弹过来的阴阳玉，反攻矜羯罗。\r
+\r
+当灵梦进行滑铲，踢击阴阳玉之时，也不慎碰到了小玉弹。小玉弹能被符札与阴阳玉消除，也被御币弹开，但是矜羯罗发射的弹幕能够抓住灵梦滑铲的间隙，在灵梦收不住步伐产生后摇的那一刻，命中灵梦，但同时自身也承受着灵梦踢过来的阴阳玉。\r
+\r
+“那么，只好用这一招了！”灵梦知道双方互相伤害下，彼此都快要倒下，拿出了最后的灵击。\r
+\r
+“臨兵鬥者皆陣裂在前！”\r
+\r
+那九字真言在灵梦残存的体力下发挥出了最大的力量，半空出现的九个字绕着矜羯罗逼近，随着那足以毁天灭地的一阵轰炸声，战斗结束了。\r
+\r
+“怎么还有不带残血不会玩的啊Kora！” 身形消散之下的矜羯罗看懂了灵梦的打法，明白了自己为何为败。\r
+\r
+鸢尾花\r
+在那场博丽灵梦与矜羯罗的世纪大战后，整个地狱出现了短暂一片晃动，然后就像什么事都没发生。\r
+\r
+灵梦获得了地狱的地图，回来开始的门前，走进，开门再关门，回到了博丽神社。\r
+\r
+某平常一天的她站在石头阶梯上打扫着神社，旁边的树枝草丛印上了逢魔时刻的红，而神玉那对，人不知道去哪里鬼混了。\r
+\r
+真是的，为什么自己身边总是会有奇奇怪怪的存在啊？\r
+\r
+这时的她注意到了地上的阴阳玉有什么变化，她眨眨眼。\r
+\r
+难道说？最后额外的大奖励要来力！看着正在闪闪发光的阴阳玉灵梦这样期待着。\r
+\r
+然而，一个戴着红色礼帽，捆着粉带，长着两根竖线眼睛的山步，哼着歌，用它黑黑长长的双脚“扑哧”一声踩在灵梦的背上。\r
+\r
+灵梦就这样一下被踩趴在地上。\r
+\r
+那山步又转身向山里走起。留下被折断的鸟居冠木。\r
+\r
+站起来的灵梦看着这样离去的生物，这莫名其妙的东西看起来很开心的样子。\r
+\r
+“什么啊这是？”博丽灵梦摊开双手一脸疑惑吐槽道。\r
+\r
+好奇心驱使着灵梦追上那只山步，她在一处桃木林里边发现了小洞。\r
+\r
+察觉到背后树叶被人踩的擦擦声，“谁？”灵梦转身看向背后。\r
+\r
+雾雨魔梨沙从草丛探出头：“啊！灵梦，别甩阴阳玉，是我！”\r
+\r
+“哦对了，魔梨沙，你看到了那只山步了吗？”\r
+\r
+“那种东西已经跳进了你面前的洞里。”\r
+\r
+“魔梨沙，我有个大胆的想法。”\r
+\r
+“看来灵梦跟我一样的想法呢，那我们一起跳进那洞内吧！”\r
+\r
+两人一拍即合，从此进入了名为“蓬莱少女绘幻想”的故事中。\r
+\r
+进入洞后世界，前面视线在一阵光下突然开阔，两位少女突然发现自己在空中，往下面的世界坠入。\r
+\r
+“啊啊啊！我畏高啊！”雾雨魔梨沙叫苦不迭，开始口吐白沫。\r
+\r
+“忘了自己还不会飞，汗……”灵梦意识到这点，甚至还悠闲着往下看风景。\r
+\r
+想象自己是一只鸟儿。\r
+\r
+感受着别的世界吹来的风，博丽灵梦伸手抚过云彩。\r
+\r
+放眼望去的海与天，柔和的阳光与浅浅的水雾，高空的博丽灵梦侧耳倾听，能听到水浪拍打岸边的声音，海是无尽的蔚蓝，一片潋滟。水与天的相接，绵延不绝，是一道迤逦的交界线。那远处云雾围绕的地方，仔细看出一些新月般拱顶翘檐的玉宁琼楼，如芳姿飘杳，朝霞掩映。就像是做梦一般来到了仙境。\r
+\r
+“此乃蓬莱仙境。灵梦，你那巫女天生的体质自然能感受得到吧？蓬莱最珍稀之物——大气，让蓬莱的日光更加洁白，宛如乳液，澄清至极，比羽毛更加轻柔，看起来不会让人目眩。这是自太古时代而来的气，由几千万亿个魂灵的元神混合而成。好好感受你血液的流动，那些旧精魂的灵气已经进入你的血液之中。尝试以被遗忘的远古之民的方式来观看，感受，思考……”白山修验一下如灵梦直觉预测的那般，出现在身旁。\r
+\r
+白山修验看着吐着白沫昏迷的魔梨沙，轻轻抚摸魔梨莎的额头。又看着灵梦，眼神微波荡漾。\r
+\r
+而博丽灵梦闻言则闭上了眼，脸上是如同渐入睡梦的那般静谧柔和。灵魂如小鸟般轻盈。\r
+\r
+而白山修验在旁唱着歌，歌喉如鸟儿般鸣叫。\r
+\r
+细细聆听 细细聆听 细细聆听\r
+\r
+唯有你 能够容许 这细细的声响\r
+\r
+未被赋予名称之物\r
+\r
+不曾知晓身形之物\r
+\r
+无法直视观察之物\r
+\r
+这声音微微传来\r
+\r
+……\r
+\r
+——凋叶棕 界 《hearken unto》歌词\r
+\r
+博丽灵梦听出来了。\r
+\r
+风卷起的沙粒、比赤色更红的火焰、天空降下的雨滴、树丛的一枝一叶、深邃大地至梦幻天空万千世界生灵之私语……\r
+\r
+是的，我听到了。表面的平静并不能说明此刻仙境的安稳。\r
+\r
+自西洋吹来的邪恶阴风，此刻正席卷蓬莱。\r
+\r
+灵梦缓缓睁开眼看着白山修验，对方点了点头，两人心意相通。\r
+\r
+感受到，那份灵妙的大气正在逐渐消散。\r
+\r
+看来蓬莱这次凶多吉少了。\r
+\r
+萨丽爱尔……无论如何，作为博丽巫女的她，以后都要去往魔界一趟！\r
+\r
+那位天使的阴影至今还在笼罩在这片净土之上。\r
+\r
+“啊？这就着陆了吗？看来没摔死啊。修验姐何时来的？”魔梨沙没事一般地醒来过来。三位女孩就站在坚实的大地上。\r
+\r
+“魔梨沙你这畏高的毛病该改了！”灵梦用御币假装甩向魔梨沙，没好气地说道。\r
+\r
+“菊理还好吗？”灵梦又转向白山修验，问道。\r
+\r
+“因为在蓬莱里，居住的人会在被赐予忧伤之时，掩盖面容，直至悲伤消失。而菊理大人也是如此，虽然身体无恙，但祂的心已经被曾经要好的朋友矜羯罗给深深伤害了，祂把自己关闭在小屋内。看来神与鬼，纵究不在同一道路上啊。而且神明内心的缺口也要很久很久才能填上啊。我也只能去一旁静静祈祷着，不去打扰菊理大人为好。”白山修验看着远处某处的琼楼，担忧说着。“灵梦，下次你真得好好练习用阴阳玉了，别一直当足球踢啊。以后还有更强大的敌人等着你。”\r
+\r
+灵梦不好意思地笑着，刚还想着跟魔梨沙在这里踢阴阳玉玩。\r
+\r
+“嘛，好吧。如果能很好地使用‘阴阳玉’的话，事情总会解决的吧。”\r
+\r
+到底会怎样呢……\r
+\r
+于是，东方的天空如紫色火焰般燃烧……\r
+\r
+嘀嘀咕咕。`},{name:"预热第三棒",text:`———————————\r
+\r
+现在的博丽仍和最初的博丽一样美丽，即便故事在流传的风中会改变，书页本身也会磨损，但这美丽依然在持续。\r
+\r
+博丽家的家谱往上追溯可以回到末日刚刚结束后，比铃兰王室还要早。据说最初的博丽是在废墟中寻获了一本宝书（按照博丽家官方的说法），从其中获得了博丽的姓氏，又受其感召，其中关于前文明的黄金时代的美丽又令新生的博丽思念不已，于是怀抱着美丽和思念，博丽成为了最初的骑士，之后的博丽也会是骑士。\r
+\r
+但也有说法，说最初的博丽在废墟中找到的并非来自某个神明的恩赐，只是单纯找到了一本适合给孩子看的绘本，甚至在种种谣传之中，也有这个绘本是来自一个死去孩子的手绘的说法，而初代博丽找到她和它的时候，它正在她幼小的骨架怀中。\r
+\r
+至于那本书中的内容到底是什么，如今已经无法考证了，早期的博丽们不断地翻阅它，带着她游历了整个仙纳度，在当时的保存条件下，这本书很快就磨损了，只有少部分内容还能以口述的形式保留下来。\r
+\r
+而其中，“唯美丽与思念之物无可匹敌”成为了博丽的家训。怀抱着这样的愿望，博丽家在南方重建了秩序，末日后的许多人都来寻求庇护。博丽家的统治公正又开明，有些在她治下，还识得几个前文明文字的领民用她们在典籍上找到的一个代表尊贵的词汇来给她加冕：公爵。\r
+\r
+后来的第六代博丽公爵遇到了梅兰可欣，也就是后来的铃兰皇族，在最开始的一些不愉快的摩擦后，双方立刻意识到了她们可以一同在险象环生的末日后前行，随后又是三代人的励精图治。应该说铃兰的崛起确实有着运气因素，于这一时期，两个家族的每一任族长几乎都是极有很才德的统治者，在她们的共同努力下，首任铃兰王在无名之丘加冕，铃兰王国也正式成立。\r
+\r
+在后来的铃兰征服中，博丽的骑士们也随着公爵和国王们征战了整个仙纳度，以骁勇和忠诚闻名，敌我双方都知道，一旦看到阴阳红樱旗出现在战场上，那么马上就能听见雷霆一般的马蹄声涌来，而当代的博丽家主一定会出现在那阵红潮的最前方。\r
+\r
+弹幕仲裁同样是博丽的贡献，但凡大小争端，都可以使用决斗的方式来避免流血，就算在战场上具有压倒性的优势，博丽骑士的领军者们也时有提出用弹幕仲裁来定输赢的请求，这不单单是出于荣誉与品行，也有对于自身实力的自信，在博丽家看来，正义必须是一种强权，贯彻思念的必须是意志和锻炼，这样才能抵达美丽。\r
+\r
+另外，毫无疑问的，每一位博丽都是美丽的，无论从世俗意义上的容貌还是各种意义上的高尚，并且普遍具有或高或低的灵力天赋……但即便有这些原因，也很难解释为什么每一任博丽都很有女人缘，而且通常都还是和好几个同样美丽高贵的女性纠缠不清，甚至常常因为情爱之事而惹上一些麻烦，可是关于这些方面的记载，每一任博丽都声称“回过神来就这样了”，而每一任博丽夫人对此也都十分头疼——尽管对于博丽们的婚后生活的记载都是十分积极的，每一任博丽都对自己的妻子爱护有加，但奈何红颜知己也一以贯之的多。\r
+\r
+不过博丽家的开枝散叶确实得益于此，作为最亲密的臣属，她们也时常同铃兰王室联姻，这一代的博丽家家主博丽灵梦和此时的铃兰公主梅蒂欣·梅兰可欣正是远房表姐妹的关系，而按照坊间传闻，博丽灵梦可能和新晋的且同为贵族的雾雨家联姻，很多大臣确实目击到了她们在御前争吵之后私下待在一起的暧昧场景。\r
+\r
+博丽灵梦十分爱护她的这位表妹，不只是血缘的作用，或许还因为经历相似：同样是在幼年时期丧失了父母，灵梦的先代死于一种当时条件下无法根治的顽疾。但年幼的灵梦仍然受到了家族长辈和同辈们的普遍关怀，甚至还有一些曾经追求过其母亲的贵妇人们对这旧人的孩子关爱有加。\r
+\r
+负责她的教育的是与先代交好的年轻贤者八云紫，这位并不是很擅长武艺的文臣却教出了后来最好的骑士，陪伴灵梦度过了最初的丧母的痛苦，对灵梦讲述关于她母亲的英勇事迹，让母亲以和先烈们一样的方式常伴于灵梦的身边，同时还把所有的家族事务都打理得井井有条。\r
+\r
+在家族与母亲友人们的温暖怀抱之下，博丽灵梦度过了艰难岁月，健康而正直地长大了，所以当她看到远房表妹一人端坐在大殿上孤苦无依的样子时，就更加坚定了要守护她的决心。\r
+\r
+如今的博丽仍然在相信着思念和美丽，或许最开始，她们确实拥有的只有虚假的天命与逝去的黄金年代，但是她们用荣耀和传承代代相连，每一位博丽都被传统滋润成她们的前辈思念的那般美丽。\r
+\r
+或许就像正教所说的轮回，相似的美丽会在大地上不断地发生与回响。\r
+\r
+那么只要在每一次轮回之中，都做出相同的选择就好，传统依旧能解决问题……但估计每一个博丽都会欠不少情债这一点也不会改变就对了，她们会在无数个故事里不断俘获少女们的芳心，不断地和少女们相爱。\r
+\r
+世上简直没有比这更令人安心的事情。`}],Cd={"SP棒-_如風_":{title:"镜花水月",text:""},"SP棒-Emloste爱姆":{title:"和菓子",text:"画的不好的放到sp了..."},"SP棒-盖翔哥":{title:"东方永夜抄hard难度6B线单灵梦机体混关+解说",text:`继推出东方永夜抄hard难度结界组混关之后，我终于打出了单灵梦机体的东方永夜抄hard难度混关。单灵梦这个机体打起来究极折磨，后面boss的一些符卡需要扭较长时间才能击破（甚至击不破），而如果要炸掉的话部分符卡需要2B或1miss+1B，再加上道中的一些铁皮妖精很难速破从而导致版面混乱危险，还必须时刻注意着尽量不要扔决死雷而是在危险降临之前提前主动丢雷（频繁决死会导致资源不够，除非只剩一颗雷的情况下，否则决死是会消耗两颗雷的，这对后面的战斗是极为不利的）总之是颇为艰难的一场战役啦~\r
+请了和我同校的一位STG高手\uFEFF@空想漂流 来解说本比的这个片，非常感谢！希望这个视频能够帮到其他想要打出永h单灵梦混关的uu~需要指出的是，34:32处单灵梦L混关的rep是群友整活弄的，不是我本人打的（本比飞机水平还没有到混l难度的那种地步.jpg），以及本视频的相当一部分走位及压制技巧参考了B站其他飞机up的视频，在此恕我不一一列举，再次谢过！\r
+简要介绍一下本人，我是盖翔哥（叫我GXG，盖翔或者什么别的都好啦），陕西西安人，西安交通大学研究生在读，2018年正式入坑东方project（入坑缘由是豪言の经理的一个视频里面的紫妈bgm—亡灵幻想曲），后面就开始打永夜抄和妖妖梦，其余正作也基本上都把normal难度混过了），本命作自然就是东方永夜抄啦（谁懂当初进到6A线时bgm+符卡背景＋弹幕结合的震撼感！千年幻想乡真好听吧！），本命cp也不必多说，主角组无疑了（灵魔什么的最棒了，我完全支持灵攻莎受.jpeg），其次是秘封组（她们什么时候结婚），最喜欢的秘封专是大空魔术，最喜欢的角色毫无疑问就是博丽灵梦，也是东方这个系列亘古不变的唯一主角（才不是因为身体呢（被打）。2024年我正式开始参与东方的线下活动，并热衷于跑全国各地的touhou only展（下面简称为tho），喜欢和coser老师们集邮，和东方同好们面基+聚餐，以及顺便借着跑展的契机游览祖国的大好河山，体会风土人情与品尝当地特色美食。东方是我心中的一块净土，本科期间每晚跑步的时候的bgm永远是zun的官方音乐曲目大合集（直到现在也是），跑tho我一般最愿意花钱支持的就是音乐CD与画册、合同志之类，目前最喜欢的东方二创音乐社团是凋叶棕，其次是森罗万象、NJK Record、幽闭星光、少女分形、魂音泉、yonder voice、bunny rhythm、TAMUSIC等。平时闲的时间会打开神秘蓝色APP欣赏并下载一些东方美图（意味深），或者偶尔水水各大tho群聊（喂）。\r
+总之，苦逼研究牲一枚，能把简介看到这里不容易啊（笑），大家记得也支持别的作者的灵梦日接力作品，我们下一个视频再见！`},"SP棒-计时器钧":{title:"",text:`⛩灵梦的口嚼酒\r
+灵梦是巫女制作口嚼酒合情合理。。。嗯`},"SP棒-龙胆紫苑":{title:"回甘",text:""},"SP棒-夢临雨儿的末子":{title:"【主角组/灵梦纪念日】黒ネコのタンゴ",text:"（部分背景素材来自于地瓜）已换源，噼里啪啦吞我画质。我靠，成功压线了呀，牛福kls好吧，爽歪歪爽歪歪，我真的是赶工的，今天坐在书桌前画了八个小时，我差点似了，然后这个黑色的猫儿真可爱呀，然后zjz好甜甜"},"SP棒-我做东方鬼畜音mad":{title:"",text:"今年春天特地去无锡鼋头渚拍了夜樱，一路上经历了封路异变、限流异变，最后终于如愿以偿"},"SP棒-小周233333":{title:"",text:`嗯，又是一次接力，虽然算是所有接力里头绘画技术最烂的，纯纯的简笔画，但也算是倾注了自己的一些心血吧。\r
+\r
+说来有趣，和这只fumo分别后我是真的哭了三天，想起我和她的故事就这样终止就感到意难平。\r
+\r
+好在第二天就是灵梦接力报名的末班车，遂紧急报名，也就有了这样一幅作品，讲述了我与她在这三年里的点点滴滴。\r
+\r
+之后的话，我会找时间专门写一篇专栏，介绍这一张张图背后的故事，来怀念这位给了我不少精神支持的好伙伴。\r
+\r
+最后的话，就是，希望各位能引以为戒，照看好自己的fumo，别真正失去了，才意识到她在你心目中的份量。\r
+\r
+晚安各位兄弟们。`},第八棒:{title:"结良缘",text:`灵梦小姐好像在等人，是谁呢？\r
+是七夕主题呢（虽然还有十天`},第八十二棒:{title:"赤色之恋",text:`一种爱本应只专注于一种东西\r
+就像镜子接受一根蜡烛，就给予她的反光`},第八十九棒:{title:"",text:`最近一个月都在高强度现充没什么时间画画）\r
+把背景改成夜景+彩色蝴蝶也是一时兴起的想法，意想不到的很搭`},第八十六棒:{title:"",text:"本文剧情承袭1月冬灵梦接力，让很多灵梦的朋友出场了，还有依然是偏傲娇的灵梦小姐（虽然我也不确定这算不算傲娇）"},第八十七棒:{title:"",text:`博丽机械式御币Mk.I \r
+\r
+尝试了一下blender`},第八十三棒:{title:"",text:"画了归言录的女仆灵梦ww"},第八十四棒:{title:"",text:`「少女绮想曲」-小提琴不完全翻奏急急忙扒谱，太久没练琴有点荒废了qwq\r
+也许之后我搞明白那段疾走钢琴会发个重置？？？`},第八十五棒:{title:"",text:`红白大闹阎罗殿，灵梦增寿八千年\r
+灵梦是全幻想乡最自由的人。只要她不想被寿命论，那么她就可以不被寿命论。如果阎（si）魔（ji）大人不同意的话，那就像《花映冢》那样打倒她（）`},第八十一棒:{title:"",text:`夢開始的地方，愛靈夢、愛東方。\r
+感謝主辦的邀請，我畫得很開心！`},第二棒:{title:"黏腻的红雨",text:""},第二十八棒:{title:"灵风与云梦",text:""},第二十棒:{title:"水影",text:"在梦幻的水镜世界被温柔地看着呢"},第二十二棒:{title:"【东方Arrange】只是在听着自己曲子蹦跳的灵梦",text:`其实是给正在制作的游戏写的BGM，算是小小偷跑预热\r
+把二色蝶和世界如此可爱编到了一起，用了很劲的底鼓（笑）\r
+灵梦可爱滴捏`},第二十九棒:{title:"",text:"阿姨老冯飞了 发什么都吞只能找朋友代发"},第二十六棒:{title:"いい加減にしろ！",text:"过家家的游戏结束了！赤色杀人魔堂堂登场！"},第二十三棒:{title:"夏日的慵懒灵梦",text:`在非常热的夏天里的慵懒灵梦，一篇小小的夏日日常。\r
+\r
+很久以前，我刚入坑时尝试写的第一篇同人文的题材，虽然原文是写在草稿纸上的已经找不到了，但是延续了当时的想法，算是回归一下初心。`},第二十五棒:{title:"永遠の巫女",text:`早起的鸟儿有灵梦看（不是\r
+前面忘了后面忘了，总之希望大伙能喜欢orz`},第二十一棒:{title:"延续乐园的力量",text:""},第九棒:{title:"雾雨魔理沙好像是博丽灵梦的前女友的样子",text:"这几个词怎么能组成一个句子呢（"},第九十棒:{title:"花蝶",text:""},第九十二棒:{title:"",text:`“卖魔理沙fumo嘞！”\r
+为了神社的经济情况，灵梦当即决定穿上妹抖服开始贩卖魔理沙的fumo！\r
+这才是窝第一个参加的接力，随后就一发不可收拾惹😋`},第九十六棒:{title:"",text:"喜欢灵梦"},第九十七棒:{title:"",text:"这是某个平行时空的故事，富得流油的女王灵梦统治了全世界，强如神绮也要对以前骂她是狗的事郑重道歉！"},第九十三棒:{title:"",text:"画了主角组，永远喜欢灵梦～"},第九十四棒:{title:"",text:"第一次参加接力活动就画灵梦太好了呀。很纠结地画完了，中间乱七八糟改了就多次破防了很多次，险些没法画完，还好还好赶上了呀。夏季灵梦接力原先我是想画青灵梦躺在水池里，倒映着鸟居，绣球花和荷花荷叶浮在水面上波光粼粼的感觉，还想压一下池水的颜色致敬一下灵梦泡水，奈何技术有限就只能画成这样四不像的样子了。总之能大概画出躺在水里的样子已经算满意了。"},第九十五棒:{title:"巫女",text:""},第九十一棒:{title:"",text:"是第二次参加灵梦接力了！摸得很开心，希望大家喜欢呀！"},第六棒:{title:"",text:"灵梦日快乐"},第六十八棒:{title:"",text:"这张磨了很久^^相比之前的画面尝试加入了更多的光和暖暖的颜色 是自己的一点点突破 也是第一次画主角组！画东方同人我很开心，让这份美好持续下去吧  ੭ˊᵕˋ)੭*"},第六十棒:{title:"",text:`画了棒球灵梦（尽管我从来没玩过）\r
+最后一天通宵滑铲这块 画的有点翻车了\r
+下次不要干这事了（`},第六十二棒:{title:"",text:"画的很开心"},第六十九棒:{title:"梦终绘卷，幻想残篇（续）",text:`本想接着上次的故事后一段段写慢慢水的，结果灵感来了直接写完剧情长文遂一次性发之，不过这次欠了几张插图大家请自行想象（未来有时间会补上的——咕咕咕）\r
+\r
+“无论如何，我都不会忘记你的。”`},第六十六棒:{title:"",text:`“喂喂喂，站这里这么久了到底给不给塞钱？”“你是在耍我吗？”\r
+很高兴能和这么多大佬一起参加接力，因为个人原因这次画的有点敷衍，致歉`},第六十七棒:{title:"神社巫女的日常",text:""},第六十三棒:{title:"",text:"灵梦赛高，但我想象力枯竭了"},第六十四棒:{title:"夏灵梦诗五首",text:"大家好呀，是我石灰。在好朋友@SAM271​老师的邀请之下，我也来参加一下夏灵梦的角色接力企划哩，老实说灵梦是我入东方以来的白月光。所以也很想为灵梦这个角色贡献自己的一份热爱吧。#笑"},第六十五棒:{title:"【博丽灵梦cos正片】永远之巫女",text:`出镜：原po\r
+妆娘：木子\r
+后勤：@永远亭の兔铃仙\r
+摄影：鱿鱼\r
+棚：醉喜自拍室\r
+第一次尝试拍正片，也是第一次投稿角色接力活动，很多地方不太成熟不太完善，在此致歉）`},第六十一棒:{title:"【在银河中孤独摇摆】灵梦是大明星？！",text:`第一次做绘画过程视频。朦胧记忆中看到过一张灵梦&魔理沙的偶像图（已经找不到那张图了），所以突发奇想想画一个灵梦大明星（像知更鸟一样唱歌的）。因为以前见过蓝发灵梦，想着知更鸟不正好也是蓝紫色吗，于是就有了这个标题和视频，最终决定摸个蓝发灵梦（实际上偏紫），从而把知更鸟的氛围代入进去！\r
+大部分是角色绘画过程，最后部分改了一下眼睛和手，发色一直在思考怎么调色，最终偏红的只作为底色，然后发色加渐变（由于后续光影不去渐变上色较麻烦所以有时候会只留底色图层），背景参考了知更鸟的PV中知更鸟站在舞台上，周围是五线谱和音符的场景，描边光效用了PS所以就没录了（绘画过程通过画世界导出的，去水印还要会员（悲））。可能是最后一个接力活动视频了.jpg`},第七棒:{title:"[个人练习图包]灵梦厨的段位之How To Be Like Reimu v1",text:`本htbl图包选择了四个完整歌曲且不加倍速，全长度19分钟。\r
+整体过段要求：od8，ACC≥96%，不得使用EZ，HT，RD，AT，CM，单曲通过要求相同\r
+整体Over Clear要求：od8，ACC≥99.5%且分数≥975k，不得使用EZ，HT，RD，AT，CM\r
+整体难度：Reform 9 low，Rework SR：6.67\r
+\r
+下面是每个单曲的信息：\r
+Stage 1：ChordJack\r
+凛 - Eientewi set 08 A 〜 少女綺想曲\r
+单曲Over Clear要求：ACC≥99.8%且分数≥985k\r
+难度：Reform 9 mid/low，Rework SR：6.71\r
+\r
+Stage 2：Stream Technical\r
+森羅万象 - 革命のbullet\r
+单曲Over Clear要求：ACC≥99.6%且分数≥980k\r
+难度：Reform 9 low，Rework SR：6.67\r
+\r
+Stage 3：Speed\r
+Masayoshi Minoshima feat. nomico - Dreaming\r
+单曲Over Clear要求：ACC≥99.7%且分数≥980k\r
+难度：Reform 7 high，Rework SR：6.23\r
+\r
+Stage 4：JumpStream\r
+岸田教団＆THE明星ロケッツ - 少女綺想曲\r
+单曲Over Clear要求：ACC≥99.75%且分数≥985k\r
+难度：Reform 9 low，Rework SR：6.67\r
+\r
+这是第一次做这样的图包，中间还是有一些小意外的，上传osu官网后可能会做出一定的修改，但难度不会再变化。\r
+BG用图pid：29049609，84697224，99882324，72096026`},第七十八棒:{title:"",text:`夏天好想睡觉\r
+依旧赶工期和夹带私货，夏天还是在家吹空调舒服。`},第七十棒:{title:"靈蟬鳴伏，秋夢已至",text:`大家好，这里是博麗春央，可能大家都不认识我，毕竟我是作为灵梦厨子第一次参加灵梦日接力，我曾经有构想过如果用灵梦穿汉服以及试过别的衣服来出灵梦，尽管就是脱离原先的巫女服设定来跳出这个框架来cos这个设定，尽管这是个很新颖的主题，但尽管兜兜转转我还是完成了，希望能得到大家的喜欢！\r
+顺便也欢迎支持其他接力的大佬们！同样也能希望能得到你们的支持！\r
+\r
+同时，这边也感谢一下我的后勤伙伴们：\r
+后勤：@奚猫猫猫 ​ @种土豆的动员兵 ​@青桐青桐喵_ ​\r
+摄影：@ManakaU ​\r
+妆：@赤月爱姐 ​\r
+本人的正片也是朋友的默默无名支持下得以完成，这边也是在此感谢\r
+最后的最后的就是每个人都有权利成为自己热爱的角色，只要你够用心，显然你做到了，那你已经成功了，谢谢大家。`},第七十二棒:{title:"",text:`又当死线战士了555555画的很普通\r
+都来喜欢灵梦吧`},第七十九棒:{title:"【原创钢琴独奏】博丽神社风景",text:"改自少女绮想曲、世界如此可爱。改编得一点也不好，弹得也差强人意，不要骂我不要骂我……"},第七十六棒:{title:"【东方×金属】翱翔于远古的峡湾间",text:`承蒙各位朋友厚爱，我的第二首东方同人金属也正式完工了❤️ 非常感谢贝斯小哥@OrraineN 的支持！我们一起完成了这首曲子。这是我第一次和别人一起写东西，希望未来还能有更多的朋友一起来玩我们喜欢的东西🎉\r
+依旧悠扬派旋死、依旧抄Insomnium、依旧套作。而且非常遗憾的是，因为时间与精力原因，我不得不大幅缩短了所有录制环节，录制质量实在难以保持较好的水准，希望能得到各位朋友谅解😭\r
+不过我也想着开始探索一点不一样的东西了呢，如果能给您一些不一样的体验……😍\r
+另外：喜欢旧作曲的朋友们，我想我这次的作品应该不会让你们失望（嘻嘻）\r
+又另：特别鸣谢@Verdammen 帮我录制了演奏视频，4K的画质真的夯爆了\r
+————————————\r
+最近一年发生了很多事，很多想说的话，又不知道如何从何讲起。时常感觉十分地魔幻，十年前的刚入坑的我、三年前刚入圈的我、一年前开始创作的我，会想到如今我现在的成就吗？\r
+\r
+然而杂音也跟着一起来了。\r
+\r
+“这有什么意义吗？” “只不过是一群人的自嗨而已” “我对东方的感情这么深，东方却这样对待我”。无端的质疑、漫天飞的挂条、随时开始爆出来的神人、伪装成“开智”的优越感……从我入圈开始，这样的声音不绝于耳。\r
+\r
+我也曾跟随这样怀疑自己、怀疑自己热爱的东西。可能我确实对东方抱着点什么期待吧，或许是期待交朋友？或许是他人的一点赞许？或许是填补内心的什么需求？……不过当我真正点开编曲软件时，我脑子里只有——“如果能给大家上点不一样的菜呢？”\r
+\r
+我不想去思考我能从同人里面获得什么了，也不想去思考我做这些有啥意义。或许我从头开始就没必要思考这些，展会想逛的直接逛，喜欢的角色直接厨，看中的制品直接买，有了灵感直接写下来——这是如此地自然而然，仿佛我生下来便要做这件事一样。\r
+\r
+最后，祝愿灵梦日接力、祝愿东方、祝愿同人世界生生不息、繁荣昌盛`},第七十七棒:{title:"山茶花事",text:""},第七十三棒:{title:"",text:"画了个泡脚灵梦"},第七十四棒:{title:"",text:`水彩画组图\r
+第一张次参加接力，平时喜欢画水彩，画得不好让大家见怪了`},第七十一棒:{title:"",text:`⛩️妖怪，退治——! 🌸 \r
+画了有点清爽感的夏日灵梦嘿嘿~\r
+喜欢希望能点赞转发是对我很大的鼓励www`},第三十八棒:{title:"",text:"博丽格格"},第三十棒:{title:"",text:`视频最后有彩蛋\r
+我是学生党车万厨草于，喜欢魔理沙，这次用彩铅画了灵梦，谢谢大家关照嘻嘻`},第三十二棒:{title:"」风华绝代",text:`为你而起舞的灵梦\r
+第一次参加接力活动，希望大家喜欢`},第三十九棒:{title:"",text:"喵喵喵第一次参加接力ᕙ(  •̀ ᗜ •́  )ᕗ感谢主催拉俺玩！！感觉红魔乡的灵梦非常帅！！！"},第三十六棒:{title:"",text:"可爱的灵梦和可爱的金鱼😋"},第三十七棒:{title:"",text:"画了侦探pa，大概是全场最不像灵梦的灵梦了"},第三十三棒:{title:"九之梦",text:"整点棒，一共九张灵梦"},第十八棒:{title:"",text:`“我受够了符卡规则，小打小闹就到此为止了” \r
+\r
+作者留言：当灵梦不想继续进行弹幕游戏从而摊牌be like：\r
+当然这是玩梗了哦，毕竟在一设中并没有鬼灵梦，但是不得不说如果在瑞灵当时被包围的时候鬼灵梦杀出来的话，想必结局就不会是BAD END了吧（）\r
+这次的接力也创作得很开心，感谢主催让我也参与了哦`},第十棒:{title:"坠",text:""},第十二棒:{title:"",text:"尝试了光影加简单场景，感觉进步蛮大的画的很开心"},第十九棒:{title:"",text:"感谢主催大大和staff辛勤付出，这么一个难得的机会，一定要为灵梦小姐写写文啊。"},第十六棒:{title:"少女夏梦舞~Summer Dream of the Shrine Maiden",text:`这一次想表达的夏夜的灵梦在花火大会中的样子，本该是静雅，感动，绮丽的样子，唉唉还是技术不够，没办法将自己的想法变成现实，最后搞的有点四不像的样子，之后我一定得仔细研磨一下， 道阻且长，但行则将至。(最后不该加电吉他的没忍住)\r
+（我怎么搞得和日记一样哈哈哈）\r
+\r
+本次视频背景来源小红车上Waaagh的作品《夏夜的灵梦》`},第十七棒:{title:"试衣",text:`大家觉得除了巫女服以外，灵梦最适合穿哪种服装呢？\r
+\r
+鸣谢：约稿插图作者@9冻蛮果_manguo​`},第十四棒:{title:"蓬莱修验梦",text:`集美丽与思恋于一体，即便过了那么久，也依旧眷恋绘幻想灵梦的茶会，\r
+\r
+因为\r
+\r
+纵使经历幻想的三千世界，不同作品的绚烂生花与落叶秋蚀下，你依然如此美丽。\r
+\r
+嘛，说着总之特别喜欢幻想的那种人怎样都好了嘛真是的啊（咲）`},第十五棒:{title:"",text:`吼拉~大家好啊\r
+今年也是很荣幸参加到了2026夏的博丽灵梦接力呢ww\r
+因为是夏天，所以画了晴空下的幻想乡和灵梦呢\r
+相比去年来说今年的风景画技增长了很多，可喜可贺（\r
+谢谢各位支持和喜欢哦ww`},第十一棒:{title:"",text:"灵梦可爱捏，很高兴参加"},第四棒:{title:"",text:`被阿b审核气云\r
+老早就点的定时，被人提醒了一看还在审核，还是马上重新手动又发一遍一下就审核好了`},第四十八棒:{title:"",text:`灵梦在现世会穿什么衣服更好看。\r
+\r
+关注上一棒和下一棒谢谢喵，关注上一棒和下一棒谢谢喵！感谢@只是一只小豹豹 ​的协助。`},第四十棒:{title:"少女的旅途",text:`どこへいこう どこへいこう\r
+又该去往哪里呢？ 去向何方呢？`},第四十二棒:{title:"梦想封印·奉！",text:`依旧很高兴参加这次接力，这次画的灵感还是来源于奉呢（笑），另外由于手机自带的剪辑软件确实太糟糕了导致踩点没踩上，画师已气晕\r
+Bgm:「テーマ・オブ・カーテンファイアーシューターズ」 -History 3/3-`},第四十九棒:{title:"",text:"和上次接力截然不同的风格，试着做了角色设计！我永远喜欢博丽灵梦"},第四十六棒:{title:"夏日末最后的狂想",text:""},第四十七棒:{title:"ALIEN",text:"赶了ddl很抱歉，本来是全曲的现在这个一半搞得很不明不白，或许我有一天会补完吧。画灵梦的时候总是不小心就会画上魔理沙这是什么症状。我画这个的时候直接把现代pa的剧情都想好了我靠。然后请大家支持夏季灵梦日接力！！点开话题看到更多美丽的灵梦吧！！"},第四十三棒:{title:"",text:"博丽灵梦滑铲成功"},第四十五棒:{title:"【东方|国画】独行",text:`古桥之上，灵梦独行，昔年光景，皆伴身行\r
+\r
+依然是一次东方x山水的尝试 这次感觉人物比上次还是有些进步的）\r
+\r
+BGM是 東方弦楽郷 的《祷》\r
+原曲是東方妖恋談\r
+\r
+本人为业余 并未系统学习国画 出于兴趣创作 若有不足请多提建议\r
+\r
+最后也是一如既往的 祝愿东方同人越来越好`},第五棒:{title:"",text:"灵梦可爱~"},第五十棒:{title:"乐园的巫女",text:""},第五十二棒:{title:"鸷澂",text:`“鸷”者，猛禽也，鹰隼搏击，凌厉无匹，即战意之锐；\r
+“澂”者，止水也，渊渟岳峙，万籁俱寂，为道心之明。\r
+\r
+一静一动，一敛一放，合而为名。\r
+\r
+紫发凌风，赤绦映雪\r
+\r
+掌中阴阳旋聚，肩上长仗封云。\r
+\r
+战意，存于蛰伏；杀机，敛于不动\r
+\r
+遇妖邪则势若奔雷，临乱世则澄澈如镜。\r
+\r
+特以此卷，承博丽之凛然神韵。\r
+\r
+很高兴能够参加这届灵梦日接力！希望大家喜欢这次的接力日作品！`},第五十九棒:{title:"",text:`我们意念合一！\r
+（新手画渣，见谅）`},第五十六棒:{title:"",text:"来喝"},第五十三棒:{title:"",text:"请支持灵梦！！"},第五十四棒:{title:"",text:"灵梦加油"},第五十五棒:{title:"",text:"清凉噶人闷"},第五十一棒:{title:"春色小径",text:""},第一棒:{title:"",text:"有幸参与，说起夏天那当然是泳装啦！"},特典第二棒:{title:"向光明行",text:"「前进吧！向那金色的山巅」"},特典第六棒:{title:"",text:"灵梦和魔理沙的CP可以称作博沙吗"},特典第七棒:{title:"",text:"四面云霞敞御筵，花镂黄山绣作苑"},特典第三棒:{title:"非灵勿扰",text:"无数个故事里，变换着自己的信仰，无数次为我们竖起神像，鼓励着我们，这样才好站在你的身旁。但你又在不停地遗忘，不停地爱上我们，随即又忘了我们。"},特典第四棒:{title:"未曾迷茫的雨",text:""},特典第五棒:{title:"",text:`真相，从不沉默！\r
+借物表\r
+NuKasa_博麗神社mk2\r
+ゆきはね式霊夢\r
+魔理沙：nukasa，tatara\r
+人里ver0.77\r
+お役立ちMOT姉貴(影あり)ver.1\r
+宝改-空\r
+お燐_正式量産型_200502\r
+宝改-小傘A改\r
+Kogasa(Tamo)`},特典第一棒:{title:"",text:"博丽灵梦世界第一——！"},"替补棒-Emloste爱姆":{title:"Melody",text:"最不好的放到替补了（）"},"替补棒-Re_Aya":{title:"",text:"不是太会编衣服，事已至此继续练了"},"替补棒-はるまきごはん好き":{title:"",text:`第一次参加同人接力！参加的大佬好多啊，大家都画的很好好看。🥰让我感觉自己画的很水（）\r
+总之投灵梦谢谢喵`},"替补棒-龙胆紫苑":{title:"什么叫灵梦家的白菜给八意永琳拱了",text:"原本要发的那篇被b肘击，怎么也发不出去……换个旧稿"},预热第三棒:{title:"列王纪春秋·片叶笺（5）：博丽",text:"依旧是围绕成都THO11幻想600年的列王纪这一主题的二次创作。灵梦正是被温柔的众神注视着长大，然后爱上了一切少女的存在吧？"},预热第四棒:{title:"夏日风物诗",text:"最后预热，祭典开幕"}};function ll(e,r){const n=r.find(t=>t.title===e.infoId)||{};return{creator:n.creator||"未知",creatorUrl:n.creatorUrl||"",links:n.links||[],time:n.time||"",daifa:!!n.daifa,type:n.links&&n.links[0]&&n.links[0].type||""}}function mw(e){return e.startsWith("SP棒")?"SP棒":e.startsWith("替补棒")?"替补棒":e}function pw(e){return e.startsWith("预热")?"预热棒":e.startsWith("特典")?"特典棒":e.startsWith("SP棒")?"SP棒":e.startsWith("替补棒")?"替补棒":"正式棒"}const Ed=["预热棒","正式棒","特典棒","SP棒","替补棒"];function hw(e){return e.works.filter(r=>!r.text)}function cu(e){return e.works.length>0&&e.works.every(r=>!!r.text)}function f0(e,r){const n=r.find(t=>t.name===e);return n?n.text:""}function gw(e,r){if(!cu(e))return"";const n=f0(e.infoId,r).replace(/\s+/g," ");return n.length>70?n.slice(0,70)+"…":n}function vw(e,r){return!e||!e.video?"":r.links[0]&&r.links[0].url||""}function fu(e){return e?e.startsWith("img/")?"/img/"+e.slice(4):e:""}function yw({itemCount:e,workCount:r}){return E.jsxs("header",{className:"app-header",children:[E.jsx("h1",{children:"⛩️ 2026夏季博丽灵梦24H接力"}),E.jsx("p",{children:"2026年8月9日举办的夏季灵梦24H接力创作线上活动，灵梦厨的夏之盛宴。"}),E.jsxs("div",{className:"test-badge",children:["📋 已收录：",e," 棒 · ",r," 个作品"]}),E.jsxs("div",{className:"stats",children:[E.jsxs("span",{className:"stat-badge",children:["📋 棒次 ",e," 个"]}),E.jsxs("span",{className:"stat-badge",children:["🖼️ 作品 ",r," 个"]})]})]})}function bw(){return E.jsxs("div",{className:"warn-banner",children:["⚠️ 数据文件加载异常：请确认 ",E.jsx("code",{children:"../workplace/灵梦接力信息.js"}),"、",E.jsx("code",{children:"灵梦接力作品.js"}),"、",E.jsx("code",{children:"灵梦接力文本.js"}),"、",E.jsx("code",{children:"灵梦接力寄语.js"})," 存在。"]})}function ww({search:e,onSearch:r,typeFilter:n,onTypeFilter:t,allTypes:i,shown:o,total:l}){return E.jsxs("div",{className:"toolbar",children:[E.jsx("input",{value:e,onChange:a=>r(a.target.value),placeholder:"🔍 搜索棒次 / 创作者 / 作品类型…"}),E.jsxs("select",{value:n,onChange:a=>t(a.target.value),children:[E.jsx("option",{value:"全部",children:"全部类型"}),i.map(a=>E.jsx("option",{value:a,children:a},a))]}),E.jsxs("span",{className:"result-count",children:["共 ",o," / ",l," 棒"]})]})}const jd=[{name:"零宣图",display:"/img/零宣图.webp"},{name:"一宣图",display:"/img/一宣图.webp"},{name:"二宣图",display:"/img/二宣图.webp"},{name:"座次表",display:"/img/座次表.webp"}];function _w(){return E.jsxs("div",{className:"promo-section",children:[E.jsxs("div",{className:"promo-head",children:[E.jsx("h2",{className:"section-title",children:"📢 宣传栏"}),E.jsx("span",{className:"hint",children:"活动宣传物料 · 原比例展示"})]}),E.jsx("div",{className:"promo-row",children:jd.slice(0,3).map(e=>E.jsxs("div",{className:"promo-card",children:[E.jsx("img",{src:e.display,alt:e.name,loading:"lazy",decoding:"async"}),E.jsxs("div",{className:"promo-name",children:["📢 ",e.name]})]},e.name))}),E.jsx("div",{className:"promo-row promo-single",children:jd.slice(3).map(e=>E.jsxs("div",{className:"promo-card",children:[E.jsx("img",{src:e.display,alt:e.name,loading:"lazy",decoding:"async"}),E.jsxs("div",{className:"promo-name",children:["🪑 ",e.name]})]},e.name))})]})}function Sw({works:e,paused:r}){const[n,t]=w.useState(0),i=e.length;return w.useEffect(()=>{if(i<=1||r)return;const o=setInterval(()=>t(l=>(l+1)%i),2600);return()=>clearInterval(o)},[i,r]),E.jsxs(E.Fragment,{children:[e.map((o,l)=>E.jsx("img",{className:"car-img"+(l===n?" on":""),src:fu(o.thumb)||fu(o.file),alt:o.name,loading:"lazy",decoding:"async"},o.name)),i>1&&E.jsx("span",{className:"multi-dot",children:e.map((o,l)=>E.jsx("i",{className:l===n?"on":""},o.name))})]})}function kw({item:e,info:r,texts:n,paused:t,onOpen:i,index:o=0}){const[l,a]=w.useState(!1),s=ll(e,r),u=hw(e);return E.jsxs("div",{className:"gcard",style:{animationDelay:o%12*.045+"s"},onClick:()=>i(e),onMouseEnter:()=>a(!0),onMouseLeave:()=>a(!1),children:[E.jsxs("div",{className:"gcover",children:[cu(e)?E.jsxs("div",{className:"text-ph",children:[E.jsx("span",{className:"book-ico",children:"📖"}),E.jsx("p",{className:"excerpt",children:gw(e,n)})]}):E.jsx(Sw,{works:u,paused:t||l}),E.jsx("span",{className:"kind-badge",children:s.type||(cu(e)?"同人文":"图片")})]}),E.jsxs("div",{className:"gbar",children:[E.jsxs("span",{className:"gname",children:[mw(e.infoId),s.time&&E.jsxs("span",{className:"gtime",children:["· ",s.time]})]}),E.jsxs("span",{style:{display:"flex",alignItems:"center",gap:6},children:[e.works.length>1&&E.jsxs("span",{className:"badge badge-num",children:[e.works.length," 个作品"]}),s.daifa&&E.jsx("span",{className:"badge badge-daifa",children:"代发"})]})]})]})}function xw({sec:e,info:r,texts:n,paused:t,onOpen:i}){const o=e.items.reduce((l,a)=>l+a.works.length,0);return E.jsxs("section",{className:"section",children:[E.jsxs("div",{className:"section-head",children:[E.jsx("h2",{className:"section-title",children:e.key}),E.jsxs("span",{className:"section-count",children:[e.items.length," 棒 · ",o," 个作品"]})]}),E.jsx("div",{className:"gallery",children:e.items.map((l,a)=>E.jsx(kw,{index:a,item:l,info:r,texts:n,paused:t,onOpen:i},l.infoId))})]})}function Cw({sections:e,info:r,texts:n,paused:t,onOpen:i}){const o=e.filter(l=>l.items.length>0);return E.jsx(E.Fragment,{children:o.map((l,a)=>E.jsxs(w.Fragment,{children:[a>0&&E.jsx(uu,{style:{margin:"30px auto 2px",maxWidth:1360}}),E.jsx(xw,{sec:l,info:r,texts:n,paused:t,onOpen:i})]},l.key))})}function Ew(e){const r=String(e||"").replace(/\r\n/g,`
+`).split(`
+`),n=[];let t=[],i=0,o=0;return r.forEach(l=>{if(l.trim()===""){i++;return}if(t.length===0){o=n.length===0?0:i,i=0,t.push(l);return}i>0?(n.push({text:t.join(`
+`),gap:o}),t=[l],o=i,i=0):t.push(l)}),t.length&&n.push({text:t.join(`
+`),gap:o}),n}function jw(e){return Ew(e).map(r=>{const n=r.text.split(`
+`),t=n[0].trim();return n.length>1&&t.length<=8&&!/[，。！？、；：……—!?]/.test(t)&&!/~$/.test(t)&&/[\u4e00-\u9fa5]/.test(t)&&!/^\d/.test(t)&&!/^[“"「『]/.test(t)?{heading:t,text:n.slice(1).join(`
+`).trim(),gap:r.gap}:{heading:null,text:r.text,gap:r.gap}})}function Pw({item:e,info:r,texts:n,notes:t,onClose:i}){const[o,l]=w.useState(0),[a,s]=w.useState(!0),[u,c]=w.useState(!1),d=e.works,m=d[Math.min(o,d.length-1)]||null,g=ll(e,r),b=t[e.infoId]||null,S=vw(m,g),x=m&&m.text?f0(e.infoId,n):"",p=x?jw(x):[],f="work-item"+(a?" detail-img":"")+(u?" img-out":""),h="detail-mask"+(u?" mask-out":"");function v(_){u||(s(!1),l(y=>(y+_+d.length)%d.length))}function k(){u||(c(!0),setTimeout(i,320))}function C(_){return _.gap>1?{marginTop:1.2*(_.gap-1)+"em"}:void 0}return w.useEffect(()=>{function _(y){u||(y.key==="Escape"?k():y.key==="ArrowLeft"?(y.preventDefault(),v(-1)):y.key==="ArrowRight"&&(y.preventDefault(),v(1)))}return window.addEventListener("keydown",_),()=>window.removeEventListener("keydown",_)},[u,d.length]),E.jsxs("div",{className:h,onClick:_=>{_.target===_.currentTarget&&k()},children:[E.jsxs("span",{className:"d-counter",children:["作品 ",o+1," / ",d.length]}),E.jsx("button",{className:"d-btn d-close",onClick:k,children:"✕"}),E.jsxs("div",{className:"detail",children:[E.jsxs("div",{className:"detail-media"+(S?" media-clickable":""),onClick:()=>{S&&window.open(S,"_blank")},children:[d.length>1&&o>0&&E.jsx("button",{className:"media-btn mb-prev",onClick:_=>{_.stopPropagation(),v(-1)},children:"‹"}),m&&m.file?E.jsx("img",{className:f,src:fu(m.file),alt:m.name},m.name):E.jsx("div",{className:"detail-text work-item",children:p.map((_,y)=>_.heading?E.jsx("p",{className:"chapter",style:C(_),children:_.heading},y):E.jsx("p",{style:C(_),children:_.text},y))},"t"+(m?m.name:"")),d.length>1&&o<d.length-1&&E.jsx("button",{className:"media-btn mb-next",onClick:_=>{_.stopPropagation(),v(1)},children:"›"}),S&&E.jsx("span",{className:"video-hint",children:"▶ 点击查看原视频 ↗"})]}),E.jsxs("div",{className:"detail-info"+(u?" panel-out":""),children:[E.jsxs("h3",{children:[e.infoId,g.time&&E.jsxs("span",{className:"time",children:["· ",g.time]}),g.daifa&&E.jsx("span",{className:"badge badge-daifa",children:"代发"})]}),E.jsxs("div",{className:"info-row",children:[E.jsx("span",{className:"label",children:"创作者"}),g.creatorUrl?E.jsxs("a",{href:g.creatorUrl,target:"_blank",rel:"noopener noreferrer",children:["@",g.creator]}):E.jsxs("span",{children:["@",g.creator]})]}),E.jsxs("div",{className:"info-row",children:[E.jsx("span",{className:"label",children:"作品链接"}),g.links.length?g.links.map(_=>E.jsxs("a",{className:"link-btn",href:_.url,target:"_blank",rel:"noopener noreferrer",children:["🔗 ",_.type," · ",_.label]},_.url)):E.jsx("span",{style:{color:"#6f6f8a"},children:"暂无"})]}),b&&E.jsxs("div",{className:"info-row",children:[E.jsx("span",{className:"label",children:"💌 寄语"}),E.jsxs("div",{className:"note-box",children:[b.title&&E.jsx("div",{className:"note-title",children:b.title}),b.text&&E.jsx("div",{className:"note-text",children:b.text})]})]}),m&&m.text&&E.jsx("div",{className:"info-row",children:E.jsxs("span",{className:"label",children:["全文 · ",x.length," 字"]})}),E.jsxs("div",{className:"nav-hint",children:["点击背景或按 Esc 关闭",E.jsx("br",{}),"← → 键翻动本棒作品",d.length>1?"（"+d.length+" 个）":""]})]})]})]})}function Tw({dark:e,onDark:r}){return E.jsx("div",{className:"theme-switch",title:"切换浅色 / 深色主题",children:E.jsx(c0,{checked:e,onChange:r,checkedChildren:"🌙",unCheckedChildren:"☀️"})})}function Pd(e){return function(){let r=e+=1831565813;return r=Math.imul(r^r>>>15,r|1),r^=r+Math.imul(r^r>>>7,r|61),((r^r>>>14)>>>0)/4294967296}}function Iw(){const[e,r]=w.useState(""),[n,t]=w.useState("全部"),[i,o]=w.useState(null),[l,a]=w.useState(()=>{try{return localStorage.getItem("lm-dark")==="dark"}catch{return!1}});w.useEffect(()=>{document.documentElement.setAttribute("data-theme",l?"dark":"light");try{localStorage.setItem("lm-dark",l?"dark":"light")}catch{}},[l]);const s=!Pr.length||!Ra.length||!za.length||!Object.keys(Cd).length,u=w.useMemo(()=>{const x={};return Pr.forEach((p,f)=>{x[p.title]=f}),Ra.slice().sort((p,f)=>(x[p.infoId]??999)-(x[f.infoId]??999))},[Pr,Ra]),c=w.useMemo(()=>u.reduce((x,p)=>x+p.works.length,0),[u]),d=w.useMemo(()=>{const x={};return u.forEach(p=>ll(p,Pr).links.forEach(f=>{x[f.type]=!0})),Object.keys(x)},[u,Pr]),m=w.useMemo(()=>{const x=e.trim().toLowerCase();return u.filter(p=>{const f=ll(p,Pr);return n!=="全部"&&!f.links.some(v=>v.type===n)?!1:x?[p.infoId,f.creator,f.time,...f.links.map(v=>v.type+v.label)].join(" ").toLowerCase().includes(x):!0})},[u,e,n,Pr]),g=w.useMemo(()=>{const x={};return Ed.forEach(p=>{x[p]=[]}),m.forEach(p=>x[pw(p.infoId)].push(p)),Ed.map(p=>({key:p,items:x[p]}))},[m]),b=w.useMemo(()=>{const x=Pd(20260809);return Array.from({length:26},(p,f)=>({id:f,left:x()*100,delay:x()*10,duration:7+x()*7,size:14+x()*14,sway:(30+x()*80).toFixed(0)}))},[]),S=w.useMemo(()=>{const x=Pd(20260809);return Array.from({length:130},(p,f)=>({id:f,top:x()*100,left:x()*100,size:(1.5+x()*2.5).toFixed(1),delay:(x()*5).toFixed(1),duration:(1.6+x()*3.4).toFixed(1)}))},[]);return E.jsxs("div",{className:"app","data-theme":l?"dark":"light",children:[E.jsx(Tw,{dark:l,onDark:a}),E.jsx("div",{className:"deco","aria-hidden":"true",children:l?E.jsx("div",{className:"starry",children:S.map(x=>E.jsx("span",{className:"star",style:{top:x.top+"%",left:x.left+"%",width:x.size+"px",height:x.size+"px",animationDelay:x.delay+"s",animationDuration:x.duration+"s"}},x.id))}):E.jsx("div",{className:"sakura",children:b.map(x=>E.jsx("span",{className:"petal",style:{left:x.left+"%",width:x.size+"px",height:x.size+"px",animationDelay:x.delay+"s",animationDuration:x.duration+"s","--sway":x.sway+"px"}},x.id))})}),E.jsx(yw,{itemCount:u.length,workCount:c}),s&&E.jsx(bw,{}),E.jsx(ww,{search:e,onSearch:r,typeFilter:n,onTypeFilter:t,allTypes:d,shown:m.length,total:u.length}),E.jsx(uu,{style:{margin:"2px auto 24px",maxWidth:1360}}),E.jsx(_w,{}),E.jsx(uu,{style:{margin:"4px auto 0",maxWidth:1360}}),E.jsx(Cw,{sections:g,info:Pr,texts:za,paused:!!i,onOpen:o}),i&&E.jsx(Pw,{item:i,info:Pr,texts:za,notes:Cd,onClose:()=>o(null)})]})}$a.createRoot(document.getElementById("root")).render(E.jsx(_e.StrictMode,{children:E.jsx(Iw,{})}));
